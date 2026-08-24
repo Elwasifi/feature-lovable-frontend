@@ -5,6 +5,7 @@ import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { Container } from "@/components/site/Primitives";
 import { primaryNav } from "@/data/site";
 import { SITE } from "@/config/site";
+import { AuthButtons } from "@/components/site/AuthButtons";
 import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useI18n } from "@/i18n";
@@ -57,6 +58,7 @@ export function SiteHeader() {
           >
             <Search className="size-4" />
           </a>
+          <AuthButtons />
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? t("Close menu") : t("Open menu")}

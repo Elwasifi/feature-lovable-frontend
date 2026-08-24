@@ -1,0 +1,269 @@
+import { useEffect, useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Apple, Chrome, Loader2, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
+import { useAuth } from "@/hooks/use-auth";
+import { useI18n } from "@/i18n";
+import { SITE } from "@/config/site";
+import logo from "@/assets/egypt-one-logo.jpg.asset.json";
+import { cn } from "@/lib/utils";
+
+export const Route = createFileRoute("/auth")({
+  head: () => ({
+    meta: [
+      { title: "Create your Egypt One account — Sign up or sign in" },
+      {
+        name: "description",
+        content:
+          "Join Egypt One with Google, Apple, or your email and WhatsApp number to manage trips, live booking status and Egypt One Pass rewards.",
+      },
+      { property: "og:title", content: "Create your Egypt One account" },
+      {
+        property: "og:description",
+        content: "One account for trips, live status, rewards and 24/7 traveller support in Egypt.",
+      },
+    ],
+  }),
+  component: AuthPage,
+});
+
+function AuthPage() {
+  const { t } = useI18n();
+  const navigate = useNavigate();
+  const { user, loading } = useAuth();
+  const [mode, setMode] = useState<"signup" | "signin">("signup");
+  const [busy, setBusy] = useState<string | null>(null);
+  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
+
+  useEffect(() => {
+    if (!loading && user) navigate({ to: "/account" });
+  }, [loading, user, navigate]);
+
+  async function social(provider: "google" | "apple") {
+    setBusy(provider);
+    try {
+      const result = await lovable.auth.signInWithOAuth(provider, {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) {
+        toast.error(t("Sign-in failed. Please try again."));
+        return;
+      }
+      if (result.redirected) return;
+      navigate({ to: "/account" });
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy("email");
+    try {
+      if (mode === "signup") {
+        const { error } = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/account`,
+            data: { full_name: form.name, whatsapp: form.whatsapp },
+          },
+        });
+        if (error) throw error;
+        toast.success(t("Account created. Check your email to confirm it."));
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+        if (error) throw error;
+        navigate({ to: "/account" });
+      }
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : t("Sign-in failed. Please try again."));
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  return (
+    <main className="grid min-h-screen bg-background lg:grid-cols-[1.05fr_1fr]">
+      <section className="relative hidden overflow-hidden border-e border-gold-line/40 lg:block">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,oklch(0.3_0.06_85/0.55),transparent_60%),radial-gradient(circle_at_75%_80%,oklch(0.28_0.05_250/0.6),transparent_55%)]" />
+        <div className="relative flex h-full flex-col justify-between p-12">
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo.url} alt={`${SITE.name} logo`} className="size-12 rounded-full ring-1 ring-gold-line" />
+            <span className="font-display text-lg tracking-[0.22em] text-foreground">
+              EGYPT <span className="text-gold">ONE</span>
+            </span>
+          </Link>
+          <div className="max-w-md">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold/80">
+              {t("One account, all of Egypt")}
+            </p>
+            <h1 className="mt-4 font-display text-4xl leading-tight text-foreground">
+              {t("Your trips, rewards and live support in one place")}
+            </h1>
+            <ul className="mt-8 grid gap-3 text-sm text-muted-foreground">
+              {[
+                "Live status for every booking",
+                "Egypt One Pass points and partner benefits",
+                "24/7 emergency assistance during your trip",
+                "Rate past journeys and unlock member pricing",
+              ].map((line) => (
+                <li key={line} className="flex items-start gap-2.5">
+                  <ShieldCheck className="mt-0.5 size-4 shrink-0 text-gold" />
+                  {t(line)}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="text-xs text-muted-foreground">{t("100% secure & trusted")}</p>
+        </div>
+      </section>
+
+      <section className="flex items-center justify-center px-5 py-12 lg:px-12">
+        <div className="w-full max-w-md">
+          <Link to="/" className="mb-8 flex items-center gap-3 lg:hidden">
+            <img src={logo.url} alt={`${SITE.name} logo`} className="size-10 rounded-full ring-1 ring-gold-line" />
+            <span className="font-display text-base tracking-[0.2em] text-foreground">
+              EGYPT <span className="text-gold">ONE</span>
+            </span>
+          </Link>
+
+          <div className="mb-7 grid grid-cols-2 gap-1 rounded-full border border-border bg-card/60 p-1">
+            {(["signup", "signin"] as const).map((m) => (
+              <button
+                key={m}
+                onClick={() => setMode(m)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  mode === m ? "bg-gold text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {t(m === "signup" ? "Create account" : "Sign in")}
+              </button>
+            ))}
+          </div>
+
+          <h2 className="font-display text-2xl text-foreground">
+            {t(mode === "signup" ? "Create your Egypt One account" : "Welcome back")}
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            {t("Continue with a social account or use your email and WhatsApp number.")}
+          </p>
+
+          <div className="mt-6 grid gap-2.5">
+            <button
+              onClick={() => social("google")}
+              disabled={busy !== null}
+              className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
+            >
+              {busy === "google" ? <Loader2 className="size-4 animate-spin" /> : <Chrome className="size-4 text-gold" />}
+              {t("Continue with Google")}
+            </button>
+            <button
+              onClick={() => social("apple")}
+              disabled={busy !== null}
+              className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
+            >
+              {busy === "apple" ? <Loader2 className="size-4 animate-spin" /> : <Apple className="size-4 text-gold" />}
+              {t("Continue with Apple")}
+            </button>
+          </div>
+
+          <div className="my-6 flex items-center gap-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="h-px flex-1 bg-border" />
+            {t("or")}
+            <span className="h-px flex-1 bg-border" />
+          </div>
+
+          <form onSubmit={submit} className="grid gap-3">
+            {mode === "signup" && (
+              <Field icon={User} label={t("Full name")}>
+                <input
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder={t("Full name")}
+                  className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+                />
+              </Field>
+            )}
+            <Field icon={Mail} label={t("Email address")}>
+              <input
+                required
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder={t("Email address")}
+                className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+              />
+            </Field>
+            {mode === "signup" && (
+              <Field icon={Phone} label={t("WhatsApp number")}>
+                <input
+                  required
+                  type="tel"
+                  dir="ltr"
+                  value={form.whatsapp}
+                  onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+                  placeholder="+20 1x xxx xxxx"
+                  className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+                />
+              </Field>
+            )}
+            <Field icon={Lock} label={t("Password")}>
+              <input
+                required
+                type="password"
+                minLength={6}
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                placeholder={t("Password")}
+                className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+              />
+            </Field>
+
+            <button
+              type="submit"
+              disabled={busy !== null}
+              className="mt-2 flex h-12 items-center justify-center gap-2 rounded-xl bg-gold text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
+            >
+              {busy === "email" && <Loader2 className="size-4 animate-spin" />}
+              {t(mode === "signup" ? "Create account" : "Sign in")}
+            </button>
+          </form>
+
+          <p className="mt-5 text-center text-xs leading-relaxed text-muted-foreground">
+            {t("By continuing you agree to the Egypt One terms and privacy policy.")}
+          </p>
+          <p className="mt-4 text-center text-sm">
+            <Link to="/" className="text-gold underline">
+              {t("Back to the national gateway")}
+            </Link>
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function Field({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: typeof Mail;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <label aria-label={label} className="relative flex items-center rounded-xl border border-border bg-card/60 focus-within:border-gold-line">
+      <Icon className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
+      {children}
+    </label>
+  );
+}

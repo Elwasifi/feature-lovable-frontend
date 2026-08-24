@@ -399,7 +399,7 @@ function SectorStrip() {
   const { t } = useI18n();
   return (
     <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="#invest" />}>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {egyptSectors.map((s) => (
           <a
             key={s.title}
@@ -481,11 +481,11 @@ function ThroughTime() {
   const { t } = useI18n();
   return (
     <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
-      <div className="flex gap-3 overflow-x-auto pb-2">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {eras.map((era) => (
           <figure
             key={era.name}
-            className="group w-48 shrink-0 overflow-hidden rounded-xl border border-border/70 bg-card"
+            className="group min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
           >
             <img
               src={era.image}
@@ -493,7 +493,7 @@ function ThroughTime() {
               loading="lazy"
               width={800}
               height={600}
-              className="h-28 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <figcaption className="p-3">
               <p className="truncate font-display text-sm text-foreground">{t(era.name)}</p>

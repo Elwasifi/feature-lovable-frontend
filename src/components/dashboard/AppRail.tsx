@@ -42,17 +42,12 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
   const { t } = useI18n();
   return (
     <>
-      <div
-        onClick={onClose}
-        className={cn(
-          "fixed inset-0 z-40 bg-background/70 backdrop-blur-sm lg:hidden",
-          open ? "block" : "hidden",
-        )}
-      />
       <aside
         className={cn(
-          "fixed inset-y-0 start-0 z-50 w-[272px] overflow-y-auto border-e border-border/70 bg-sidebar transition-[transform,width] duration-300 lg:sticky lg:top-0 lg:z-30 lg:h-screen lg:shrink-0 lg:translate-x-0",
-          open ? "translate-x-0 lg:w-[272px]" : "-translate-x-full rtl:translate-x-full lg:w-0 lg:overflow-hidden lg:border-e-0",
+          "sticky top-0 z-30 h-screen shrink-0 overflow-y-auto bg-sidebar transition-[width] duration-300",
+          open
+            ? "w-[240px] border-e border-border/70 sm:w-[272px]"
+            : "w-0 overflow-hidden border-e-0",
         )}
       >
         <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-4">

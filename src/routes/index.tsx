@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarDays,
@@ -24,6 +24,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egypt-one.jpg";
 import mapImage from "@/assets/map-egypt.jpg";
 import { AppRail } from "@/components/dashboard/AppRail";
@@ -37,7 +38,6 @@ import {
   eras,
   heroImages,
   investSectors,
-  marketplaceItems,
   offerCards,
   popularDestinations,
   programmes,
@@ -637,18 +637,19 @@ function Marketplace() {
           </div>
         </div>
         <div className="grid content-start gap-3">
-          {marketplaceItems.map((m) => (
-            <article
+          {marketplacePages.map((m) => (
+            <Link
               key={m.title}
-              className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-border/70 bg-card p-4"
+              to={m.href}
+              className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-border/70 bg-card p-4 transition-colors hover:border-gold-line"
             >
               <ShoppingBag className="size-5 shrink-0 text-gold" />
               <span className="min-w-0">
                 <span className="block truncate text-sm text-foreground">{t(m.title)}</span>
-                <span className="block truncate text-[11px] text-muted-foreground">{t(m.note)}</span>
+                <span className="block truncate text-[11px] text-muted-foreground">{t(m.tagline)}</span>
               </span>
               <ArrowRight className="size-4 shrink-0 text-muted-foreground rtl:rotate-180" />
-            </article>
+            </Link>
           ))}
         </div>
       </div>

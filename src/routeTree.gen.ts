@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketplace.egyptian-cotton'
+import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
+import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
+import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.wear-egypt'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,89 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarketplaceEgyptianCottonRoute =
+  MarketplaceEgyptianCottonRouteImport.update({
+    id: '/marketplace/egyptian-cotton',
+    path: '/marketplace/egyptian-cotton',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MarketplaceHandmadeCraftsRoute =
+  MarketplaceHandmadeCraftsRouteImport.update({
+    id: '/marketplace/handmade-crafts',
+    path: '/marketplace/handmade-crafts',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MarketplaceLocalProducersRoute =
+  MarketplaceLocalProducersRouteImport.update({
+    id: '/marketplace/local-producers',
+    path: '/marketplace/local-producers',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
+  id: '/marketplace/wear-egypt',
+  path: '/marketplace/wear-egypt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
+  '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
+  '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
+  '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
+  '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
+  '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
+  '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
+  '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
+  '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
+  '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/marketplace/egyptian-cotton'
+    | '/marketplace/handmade-crafts'
+    | '/marketplace/local-producers'
+    | '/marketplace/wear-egypt'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact'
-  id: '__root__' | '/' | '/contact'
+  to:
+    | '/'
+    | '/contact'
+    | '/marketplace/egyptian-cotton'
+    | '/marketplace/handmade-crafts'
+    | '/marketplace/local-producers'
+    | '/marketplace/wear-egypt'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/marketplace/egyptian-cotton'
+    | '/marketplace/handmade-crafts'
+    | '/marketplace/local-producers'
+    | '/marketplace/wear-egypt'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
+  MarketplaceEgyptianCottonRoute: typeof MarketplaceEgyptianCottonRoute
+  MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
+  MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
+  MarketplaceWearEgyptRoute: typeof MarketplaceWearEgyptRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +127,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marketplace/egyptian-cotton': {
+      id: '/marketplace/egyptian-cotton'
+      path: '/marketplace/egyptian-cotton'
+      fullPath: '/marketplace/egyptian-cotton'
+      preLoaderRoute: typeof MarketplaceEgyptianCottonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace/handmade-crafts': {
+      id: '/marketplace/handmade-crafts'
+      path: '/marketplace/handmade-crafts'
+      fullPath: '/marketplace/handmade-crafts'
+      preLoaderRoute: typeof MarketplaceHandmadeCraftsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace/local-producers': {
+      id: '/marketplace/local-producers'
+      path: '/marketplace/local-producers'
+      fullPath: '/marketplace/local-producers'
+      preLoaderRoute: typeof MarketplaceLocalProducersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace/wear-egypt': {
+      id: '/marketplace/wear-egypt'
+      path: '/marketplace/wear-egypt'
+      fullPath: '/marketplace/wear-egypt'
+      preLoaderRoute: typeof MarketplaceWearEgyptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
+  MarketplaceEgyptianCottonRoute: MarketplaceEgyptianCottonRoute,
+  MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
+  MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,
+  MarketplaceWearEgyptRoute: MarketplaceWearEgyptRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

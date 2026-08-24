@@ -64,6 +64,8 @@ export function EgyptMap() {
   const [hoverId, setHoverId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [showLabels, setShowLabels] = useState(true);
+  const [cardOpen, setCardOpen] = useState(false);
+
 
   const [view, setView] = useState({ z: 1, x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement | null>(null);

@@ -45,15 +45,14 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
       <div
         onClick={onClose}
         className={cn(
-          "fixed inset-0 z-40 bg-background/70 backdrop-blur-sm xl:hidden",
+          "fixed inset-0 z-40 bg-background/70 backdrop-blur-sm",
           open ? "block" : "hidden",
         )}
       />
       <aside
         className={cn(
-          "fixed inset-y-0 start-0 z-50 w-[272px] shrink-0 overflow-y-auto border-e border-border/70 bg-sidebar transition-transform duration-300 xl:sticky xl:top-0 xl:z-30 xl:h-screen",
+          "fixed inset-y-0 start-0 z-50 w-[272px] shrink-0 overflow-y-auto border-e border-border/70 bg-sidebar transition-transform duration-300",
           open ? "translate-x-0" : "-translate-x-full rtl:translate-x-full",
-          "xl:!translate-x-0",
         )}
       >
         <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-4">

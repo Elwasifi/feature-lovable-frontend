@@ -48,21 +48,8 @@ export function SiteFooter() {
             <p className="mt-1 text-xs text-muted-foreground" dir="ltr">
               {SITE.domain}
             </p>
-            <div className="mt-5 flex gap-2">
-              {socials.map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
-                >
-                  <Icon className="size-4" />
-                </a>
-              ))}
-            </div>
           </div>
+
 
           {footerColumns.map((col) => (
             <div key={col.title}>

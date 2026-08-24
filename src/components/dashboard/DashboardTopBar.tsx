@@ -1,4 +1,7 @@
 import { Bell, Heart, Menu, Search, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import logo from "@/assets/egypt-one-logo.jpg.asset.json";
+import { SITE } from "@/config/site";
 import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useI18n } from "@/i18n";
@@ -10,13 +13,32 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:px-6">
-        <button
-          onClick={onMenu}
-          aria-label={t("Open menu")}
-          className="grid size-10 shrink-0 place-items-center rounded-full border border-border text-muted-foreground xl:hidden"
-        >
-          <Menu className="size-4" />
-        </button>
+        <div className="flex shrink-0 items-center gap-2">
+          <button
+            onClick={onMenu}
+            aria-label={t("Open menu")}
+            className="grid size-10 shrink-0 place-items-center rounded-full border border-border text-muted-foreground xl:hidden"
+          >
+            <Menu className="size-4" />
+          </button>
+          <Link to="/" className="flex min-w-0 items-center gap-2.5">
+            <img
+              src={logo.url}
+              alt={`${SITE.name} logo`}
+              width={40}
+              height={40}
+              className="size-10 shrink-0 rounded-full ring-1 ring-gold-line"
+            />
+            <span className="hidden min-w-0 leading-tight sm:block">
+              <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
+                EGYPT <span className="text-gold">ONE</span>
+              </span>
+              <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
+                {t(SITE.tagline)}
+              </span>
+            </span>
+          </Link>
+        </div>
 
         <label className="relative hidden min-w-0 items-center md:flex" id="search">
           <Search className="pointer-events-none absolute left-4 size-4 text-muted-foreground" />

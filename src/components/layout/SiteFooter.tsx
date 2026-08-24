@@ -5,6 +5,7 @@ import { Container } from "@/components/site/Primitives";
 import { footerColumns, govIntegrations } from "@/data/site";
 import { useI18n } from "@/i18n";
 import { SITE, mailto } from "@/config/site";
+import { SocialBar } from "@/components/layout/SocialBar";
 
 const socials = [
   { Icon: Facebook, href: SITE.social.facebook, label: "Facebook" },

@@ -14,7 +14,143 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          country: string | null
+          created_at: string
+          email: string | null
+          emergency_contact: string | null
+          full_name: string | null
+          id: string
+          points: number
+          preferred_language: string | null
+          tier: string
+          updated_at: string
+          whatsapp: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          emergency_contact?: string | null
+          full_name?: string | null
+          id: string
+          points?: number
+          preferred_language?: string | null
+          tier?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          emergency_contact?: string | null
+          full_name?: string | null
+          id?: string
+          points?: number
+          preferred_language?: string | null
+          tier?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      trip_reviews: {
+        Row: {
+          comment: string | null
+          created_at: string
+          id: string
+          rating: number
+          trip_id: string
+          user_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating?: number
+          trip_id: string
+          user_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          id?: string
+          rating?: number
+          trip_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trip_reviews_trip_id_fkey"
+            columns: ["trip_id"]
+            isOneToOne: false
+            referencedRelation: "trips"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trips: {
+        Row: {
+          cover_key: string | null
+          created_at: string
+          destination: string
+          end_date: string | null
+          id: string
+          live_stage: string | null
+          points_earned: number
+          price_usd: number
+          progress: number
+          reference: string
+          start_date: string | null
+          status: string
+          title: string
+          travellers: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          cover_key?: string | null
+          created_at?: string
+          destination: string
+          end_date?: string | null
+          id?: string
+          live_stage?: string | null
+          points_earned?: number
+          price_usd?: number
+          progress?: number
+          reference?: string
+          start_date?: string | null
+          status?: string
+          title: string
+          travellers?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          cover_key?: string | null
+          created_at?: string
+          destination?: string
+          end_date?: string | null
+          id?: string
+          live_stage?: string | null
+          points_earned?: number
+          price_usd?: number
+          progress?: number
+          reference?: string
+          start_date?: string | null
+          status?: string
+          title?: string
+          travellers?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

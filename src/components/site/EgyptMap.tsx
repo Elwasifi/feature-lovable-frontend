@@ -434,11 +434,21 @@ export function EgyptMap() {
           </div>
         </div>
 
-        {/* floating detail card */}
+        {/* floating detail card — only after clicking a pin */}
+        {cardOpen && (
         <div
           className="absolute bottom-3 right-3 w-[248px] overflow-hidden rounded-2xl border border-gold-line/60 bg-background/85 shadow-2xl backdrop-blur-md"
           onPointerDown={(e) => e.stopPropagation()}
         >
+          <button
+            type="button"
+            aria-label={t("Close")}
+            title={t("Close")}
+            onClick={() => setCardOpen(false)}
+            className="absolute right-2 top-2 grid size-7 place-items-center rounded-full border border-gold-line/60 bg-background/80 text-gold backdrop-blur"
+          >
+            <X className="size-3.5" />
+          </button>
           {profile?.image && (
             <img
               src={profile.image}
@@ -479,6 +489,8 @@ export function EgyptMap() {
             </Link>
           </div>
         </div>
+        )}
+
 
         {/* hover chip */}
         {hoverId && hoverId !== activeId && (

@@ -7,12 +7,6 @@ import { useI18n } from "@/i18n";
 import { SITE, mailto } from "@/config/site";
 import { SocialBar } from "@/components/layout/SocialBar";
 
-const socials = [
-  { Icon: Facebook, href: SITE.social.facebook, label: "Facebook" },
-  { Icon: Instagram, href: SITE.social.instagram, label: "Instagram" },
-  { Icon: Youtube, href: SITE.social.youtube, label: "YouTube" },
-  { Icon: Linkedin, href: SITE.social.linkedin, label: "LinkedIn" },
-];
 
 export function SiteFooter() {
   const { t } = useI18n();

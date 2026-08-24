@@ -13,6 +13,11 @@ import producers2 from "@/assets/mkt-producers-2.jpg";
 
 export type MarketplacePage = {
   slug: "egyptian-cotton" | "handmade-crafts" | "wear-egypt" | "local-producers";
+  href:
+    | "/marketplace/egyptian-cotton"
+    | "/marketplace/handmade-crafts"
+    | "/marketplace/wear-egypt"
+    | "/marketplace/local-producers";
   eyebrow: string;
   title: string;
   tagline: string;
@@ -29,6 +34,7 @@ export type MarketplacePage = {
 export const marketplacePages: MarketplacePage[] = [
   {
     slug: "egyptian-cotton",
+    href: "/marketplace/egyptian-cotton",
     eyebrow: "Made in Egypt",
     title: "Egyptian Cotton",
     tagline: "Certified mills & ateliers",
@@ -70,6 +76,7 @@ export const marketplacePages: MarketplacePage[] = [
   },
   {
     slug: "handmade-crafts",
+    href: "/marketplace/handmade-crafts",
     eyebrow: "Made in Egypt",
     title: "Handmade Crafts",
     tagline: "Artisans across 27 governorates",
@@ -111,6 +118,7 @@ export const marketplacePages: MarketplacePage[] = [
   },
   {
     slug: "wear-egypt",
+    href: "/marketplace/wear-egypt",
     eyebrow: "Made in Egypt",
     title: "Wear Egypt",
     tagline: "Modern design, ancient roots",
@@ -152,6 +160,7 @@ export const marketplacePages: MarketplacePage[] = [
   },
   {
     slug: "local-producers",
+    href: "/marketplace/local-producers",
     eyebrow: "Made in Egypt",
     title: "Local Producers",
     tagline: "Farms, spices & Nile harvests",

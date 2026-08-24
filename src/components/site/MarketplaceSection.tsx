@@ -147,7 +147,7 @@ export function MarketplaceSection({ page }: { page: MarketplacePage }) {
             {others.map((o) => (
               <Link
                 key={o.slug}
-                to={`/marketplace/${o.slug}` as string}
+                to={o.href}
                 className="group relative overflow-hidden rounded-2xl border border-border/70"
               >
                 <img

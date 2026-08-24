@@ -400,7 +400,7 @@ export function EgyptMap() {
 
         {/* floating detail card */}
         <div
-          className="absolute right-3 top-3 w-[248px] overflow-hidden rounded-2xl border border-gold-line/60 bg-background/85 shadow-2xl backdrop-blur-md"
+          className="absolute bottom-3 right-3 w-[248px] overflow-hidden rounded-2xl border border-gold-line/60 bg-background/85 shadow-2xl backdrop-blur-md"
           onPointerDown={(e) => e.stopPropagation()}
         >
           {profile?.image && (

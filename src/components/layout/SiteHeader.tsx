@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Search, Sparkles, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { Container } from "@/components/site/Primitives";
 import { primaryNav } from "@/data/site";
@@ -56,13 +56,6 @@ export function SiteHeader() {
             className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
           >
             <Search className="size-4" />
-          </a>
-          <a
-            href="#ai-concierge"
-            className="hidden items-center gap-2 rounded-full border border-gold-line bg-gold-soft px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold hover:text-primary-foreground sm:inline-flex"
-          >
-            <Sparkles className="size-4" />
-            {t("AI Concierge")}
           </a>
           <button
             onClick={() => setOpen((v) => !v)}

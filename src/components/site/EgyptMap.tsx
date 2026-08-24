@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { MapPin, Landmark, ArrowRight } from "lucide-react";
 import { useI18n } from "@/i18n";
 import {
@@ -192,12 +193,13 @@ export function EgyptMap() {
           </div>
         </div>
 
-        <a
-          href="#explore"
+        <Link
+          to="/governorates/$id"
+          params={{ id: active.id }}
           className="inline-flex items-center justify-center gap-2 rounded-xl border border-gold-line bg-gold-soft px-4 py-2 text-sm font-semibold text-gold"
         >
-          <MapPin className="size-4" /> {t("Browse governorates")} <ArrowRight className="size-4" />
-        </a>
+          <MapPin className="size-4" /> {t("Discover")} {t(active.name)} <ArrowRight className="size-4" />
+        </Link>
       </div>
     </div>
   );

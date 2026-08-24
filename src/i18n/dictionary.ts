@@ -121,14 +121,8 @@ const ar: Dict = {
   "Close menu": "إغلاق القائمة",
   "Sign in": "تسجيل الدخول",
   Weather: "الطقس",
-  Cairo: "القاهرة",
-  Luxor: "الأقصر",
-  Aswan: "أسوان",
-  Alexandria: "الإسكندرية",
-  Hurghada: "الغردقة",
-  "Sharm El Sheikh": "شرم الشيخ",
-  "Red Sea": "البحر الأحمر",
-  "South Sinai": "جنوب سيناء",
+  Others: "أخرى",
+
   Others: "أخرى",
 
   // Top tabs

@@ -352,28 +352,51 @@ export function EgyptMap() {
         {/* zoom / view controls */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {[
-            { icon: Plus, label: t("Zoom in"), onClick: () => zoomButton(1.35) },
-            { icon: Minus, label: t("Zoom out"), onClick: () => zoomButton(1 / 1.35) },
-            { icon: Maximize2, label: t("Reset view"), onClick: () => setView({ z: 1, x: 0, y: 0 }) },
-            { icon: Crosshair, label: t("Focus"), onClick: () => focusGovernorate(active) },
+            { icon: Plus, label: t("Zoom in"), onClick: () => zoomButton(1.35), on: false },
+            { icon: Minus, label: t("Zoom out"), onClick: () => zoomButton(1 / 1.35), on: false },
+            {
+              icon: Maximize2,
+              label: t("Reset view"),
+              onClick: () => {
+                setView({ z: 1, x: 0, y: 0 });
+                setCardOpen(false);
+              },
+              on: false,
+            },
+            {
+              icon: Crosshair,
+              label: t("Focus"),
+              onClick: () => {
+                focusGovernorate(active);
+                setCardOpen(true);
+              },
+              on: false,
+            },
             {
               icon: Layers,
               label: t("Toggle labels"),
               onClick: () => setShowLabels((s) => !s),
+              on: showLabels,
             },
-          ].map(({ icon: Icon, label, onClick }) => (
+          ].map(({ icon: Icon, label, onClick, on }) => (
             <button
               key={label}
               type="button"
               aria-label={label}
               title={label}
+              aria-pressed={on}
               onClick={onClick}
               onPointerDown={(e) => e.stopPropagation()}
-              className="grid size-9 place-items-center rounded-xl border border-gold-line/60 bg-background/70 text-gold backdrop-blur transition-colors hover:bg-gold-soft"
+              className={`grid size-9 place-items-center rounded-xl border backdrop-blur transition-colors hover:bg-gold-soft ${
+                on
+                  ? "border-gold bg-gold-soft text-gold"
+                  : "border-gold-line/60 bg-background/70 text-gold"
+              }`}
             >
               <Icon className="size-4" />
             </button>
           ))}
+
         </div>
 
         {/* compass */}

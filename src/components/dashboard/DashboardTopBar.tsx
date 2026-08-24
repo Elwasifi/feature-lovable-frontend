@@ -2,6 +2,7 @@ import { Bell, Heart, Menu, Search } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { SITE } from "@/config/site";
+import { AuthButtons } from "@/components/site/AuthButtons";
 import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useI18n } from "@/i18n";

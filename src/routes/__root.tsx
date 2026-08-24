@@ -15,6 +15,7 @@ import { SITE } from "../config/site";
 import { I18nProvider } from "../i18n";
 import { CurrencyProvider } from "../i18n/currency";
 import { FloatingConcierge } from "../components/site/FloatingConcierge";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -166,6 +167,7 @@ function RootComponent() {
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
           <FloatingConcierge />
+          <Toaster position="top-center" richColors />
         </CurrencyProvider>
       </I18nProvider>
     </QueryClientProvider>

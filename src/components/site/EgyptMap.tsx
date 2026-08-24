@@ -168,8 +168,9 @@ export function EgyptMap() {
               <stop offset="100%" stopColor="oklch(0.16 0.035 250)" />
             </linearGradient>
             <linearGradient id="egLand" x1="0.1" y1="0" x2="0.9" y2="1">
-              <stop offset="0%" stopColor="oklch(0.30 0.032 258)" />
-              <stop offset="55%" stopColor="oklch(0.24 0.028 255)" />
+              <stop offset="0%" stopColor="oklch(0.33 0.035 70)" />
+              <stop offset="55%" stopColor="oklch(0.26 0.03 60)" />
+
               <stop offset="100%" stopColor="oklch(0.185 0.022 252)" />
             </linearGradient>
             <radialGradient id="egDeltaGlow" cx="0.5" cy="0.5" r="0.5">

@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      legal_document_versions: {
+        Row: {
+          approval_status: string
+          change_note: string | null
+          content: Json | null
+          created_at: string
+          effective_date: string
+          id: string
+          language: string
+          owner: string
+          slug: string
+          title: string
+          updated_date: string
+          version: string
+        }
+        Insert: {
+          approval_status?: string
+          change_note?: string | null
+          content?: Json | null
+          created_at?: string
+          effective_date: string
+          id?: string
+          language?: string
+          owner: string
+          slug: string
+          title: string
+          updated_date: string
+          version: string
+        }
+        Update: {
+          approval_status?: string
+          change_note?: string | null
+          content?: Json | null
+          created_at?: string
+          effective_date?: string
+          id?: string
+          language?: string
+          owner?: string
+          slug?: string
+          title?: string
+          updated_date?: string
+          version?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -148,6 +193,51 @@ export type Database = {
           travellers?: number
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      user_consents: {
+        Row: {
+          consent_type: string
+          created_at: string
+          granted_at: string | null
+          id: string
+          locale: string | null
+          policy_slug: string | null
+          policy_version: string | null
+          status: string
+          updated_at: string
+          user_agent: string | null
+          user_id: string
+          withdrawn_at: string | null
+        }
+        Insert: {
+          consent_type: string
+          created_at?: string
+          granted_at?: string | null
+          id?: string
+          locale?: string | null
+          policy_slug?: string | null
+          policy_version?: string | null
+          status?: string
+          updated_at?: string
+          user_agent?: string | null
+          user_id: string
+          withdrawn_at?: string | null
+        }
+        Update: {
+          consent_type?: string
+          created_at?: string
+          granted_at?: string | null
+          id?: string
+          locale?: string | null
+          policy_slug?: string | null
+          policy_version?: string | null
+          status?: string
+          updated_at?: string
+          user_agent?: string | null
+          user_id?: string
+          withdrawn_at?: string | null
         }
         Relationships: []
       }

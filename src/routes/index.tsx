@@ -50,6 +50,7 @@ import {
 } from "@/data/site";
 import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
+import { useCurrency } from "@/i18n/currency";
 import { cn } from "@/lib/utils";
 
 const title = "Egypt One — One Egypt. One Journey. One Platform.";
@@ -260,6 +261,7 @@ function Field({
 
 function WeatherStrip() {
   const { t } = useI18n();
+  const { currency } = useCurrency();
   return (
     <section className="grid gap-2 rounded-2xl border border-border/70 bg-card p-3 sm:grid-cols-2 lg:grid-cols-5">
       {weatherStrip.map((w) => (
@@ -277,7 +279,10 @@ function WeatherStrip() {
       ))}
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2.5 rounded-xl border border-gold-line bg-gold-soft px-3 py-2">
         <TrendingUp className="size-4 shrink-0 text-gold" />
-        <span className="min-w-0 truncate text-xs text-gold">1 USD ≈ 48.2 EGP</span>
+        <span className="min-w-0 truncate text-xs text-gold" dir="ltr">
+          1 USD ≈ {(48.2 / currency.perUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}{" "}
+          EGP · {currency.code}
+        </span>
       </div>
     </section>
   );

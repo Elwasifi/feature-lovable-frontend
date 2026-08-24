@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE } from "../config/site";
 import { I18nProvider } from "../i18n";
+import { CurrencyProvider } from "../i18n/currency";
+import { FloatingConcierge } from "../components/site/FloatingConcierge";
 
 function NotFoundComponent() {
   return (
@@ -160,8 +162,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <CurrencyProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <FloatingConcierge />
+        </CurrencyProvider>
       </I18nProvider>
     </QueryClientProvider>
   );

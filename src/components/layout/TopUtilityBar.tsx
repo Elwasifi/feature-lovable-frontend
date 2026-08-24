@@ -1,4 +1,5 @@
 import { LifeBuoy, Mail } from "lucide-react";
+import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useI18n } from "@/i18n";
 import { Container } from "@/components/site/Primitives";
@@ -11,7 +12,7 @@ export function TopUtilityBar() {
       <Container className="flex h-9 items-center justify-between">
         <div className="flex items-center gap-4">
           <LanguageSwitcher compact />
-          <span className="hidden sm:inline">USD</span>
+          <CurrencySwitcher compact />
           <span className="hidden lg:inline">{t("Visiting from: Worldwide")}</span>
         </div>
         <div className="flex items-center gap-4">

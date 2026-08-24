@@ -1,4 +1,5 @@
 import { Bell, Heart, Menu, Search, Sparkles } from "lucide-react";
+import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
 import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useI18n } from "@/i18n";
 import { topTabs } from "@/data/site";
@@ -29,6 +30,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
 
         <div className="flex shrink-0 items-center gap-2">
           <LanguageSwitcher />
+          <CurrencySwitcher />
           <button
             aria-label={t("Wishlist")}
             className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold"

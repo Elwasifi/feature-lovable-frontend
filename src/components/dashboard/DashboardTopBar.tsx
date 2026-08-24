@@ -13,16 +13,16 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
   const { t } = useI18n();
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:px-6">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4 lg:px-6">
         <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
           <img
             src={logo.url}
             alt={`${SITE.name} logo`}
             width={40}
             height={40}
-            className="size-10 shrink-0 rounded-full ring-1 ring-gold-line"
+            className="size-9 shrink-0 rounded-full ring-1 ring-gold-line sm:size-10"
           />
-          <span className="hidden min-w-0 leading-tight sm:block">
+          <span className="hidden min-w-0 leading-tight lg:block">
             <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
               EGYPT <span className="text-gold">ONE</span>
             </span>
@@ -43,18 +43,25 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         </label>
         <div className="md:hidden" />
 
-        <div className="flex shrink-0 items-center gap-2">
-          <LanguageSwitcher />
-          <CurrencySwitcher />
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <LanguageSwitcher compact />
+          <CurrencySwitcher compact />
+          <a
+            href="#search"
+            aria-label={t("Search")}
+            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
+          >
+            <Search className="size-4" />
+          </a>
           <button
             aria-label={t("Wishlist")}
-            className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold"
+            className="hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
           >
             <Heart className="size-4" />
           </button>
           <button
             aria-label={t("Notifications")}
-            className="relative grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold"
+            className="relative hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
           >
             <Bell className="size-4" />
             <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-gold text-[9px] font-bold text-primary-foreground">
@@ -64,6 +71,15 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
           <AuthButtons />
         </div>
       </div>
+
+      <label className="relative mx-3 mb-2 flex items-center md:hidden">
+        <Search className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
+        <input
+          type="search"
+          placeholder={t("Search Egypt One")}
+          className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
+        />
+      </label>
 
       <div className="flex items-center gap-2 overflow-x-auto px-4 pb-3 lg:px-6 [scrollbar-width:none]">
         <button

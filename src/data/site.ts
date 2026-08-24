@@ -307,3 +307,82 @@ export const programmes = [
   { title: "Stopover Egypt", body: "Turn a transit stop into a curated short journey." },
   { title: "One More Night", body: "Extend a stay and unlock added value with partners." },
 ];
+
+// ---------------------------------------------------------------------------
+// Dashboard shell data (matches the Egypt One reference layout)
+// ---------------------------------------------------------------------------
+
+import destCairo from "@/assets/dest-cairo.jpg";
+import destLuxor from "@/assets/dest-luxor.jpg";
+import destAswan from "@/assets/dest-aswan.jpg";
+import destSharm from "@/assets/dest-sharm.jpg";
+import destHurghada from "@/assets/dest-hurghada.jpg";
+import destAlexandria from "@/assets/dest-alexandria.jpg";
+import promoSummer from "@/assets/promo-summer.jpg";
+import promoCruise from "@/assets/promo-cruise.jpg";
+import promoAdventure from "@/assets/promo-adventure.jpg";
+
+export const topTabs = [
+  "Home",
+  "Explore",
+  "Experiences",
+  "Stay",
+  "Events",
+  "Transport",
+  "Services",
+  "eSIM & Connectivity",
+] as const;
+
+export const searchTabs = ["Experiences", "Hotels", "Flights", "Packages", "Attractions"] as const;
+
+export const popularDestinations = [
+  { name: "Cairo", note: "The Timeless Capital", rating: 4.8, reviews: "3,245", image: destCairo },
+  { name: "Luxor", note: "World's Greatest Open Air Museum", rating: 4.9, reviews: "2,150", image: destLuxor },
+  { name: "Aswan", note: "Nubian Charm & Timeless Beauty", rating: 4.7, reviews: "1,842", image: destAswan },
+  { name: "Sharm El Sheikh", note: "Red Sea Paradise", rating: 4.6, reviews: "1,523", image: destSharm },
+  { name: "Hurghada", note: "Sun. Sea. Adventure.", rating: 4.5, reviews: "1,234", image: destHurghada },
+  { name: "Alexandria", note: "Mediterranean Elegance", rating: 4.6, reviews: "987", image: destAlexandria },
+];
+
+export const promoBanners = [
+  {
+    kicker: "Summer Escapes",
+    title: "Up to 30% off on selected hotels",
+    cta: "Book Now",
+    image: promoSummer,
+  },
+  {
+    kicker: "Nile Cruise Special",
+    title: "Save up to 25% on cruise itineraries",
+    cta: "Explore Cruises",
+    image: promoCruise,
+  },
+  {
+    kicker: "Egypt Adventure",
+    title: "Desert safari, dives & balloon rides",
+    cta: "Discover Experiences",
+    image: promoAdventure,
+  },
+];
+
+export const trendingExperiences = [
+  { name: "Pyramids of Giza Tour", rating: 4.9, reviews: "2,845", from: "$65", image: destCairo },
+  { name: "Nile Dinner Cruise", rating: 4.7, reviews: "1,543", from: "$75", image: promoCruise },
+  { name: "Abu Simbel Day Trip", rating: 4.8, reviews: "1,234", from: "$90", image: destAswan },
+];
+
+export const visitorPurpose = [
+  { label: "Leisure", value: 62 },
+  { label: "Culture", value: 21 },
+  { label: "Business", value: 9 },
+  { label: "Other", value: 8 },
+];
+
+export const monthlyVisitors = [
+  { month: "Jan", value: 42 },
+  { month: "Feb", value: 48 },
+  { month: "Mar", value: 55 },
+  { month: "Apr", value: 63 },
+  { month: "May", value: 74 },
+  { month: "Jun", value: 100 },
+];

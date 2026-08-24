@@ -266,9 +266,9 @@ export function EgyptMap() {
 
             {/* neighbour labels */}
             <g fill="oklch(0.72 0.01 260 / 60%)" fontSize="2" letterSpacing="0.4">
-              <text x="4" y="55">LIBYA</text>
-              <text x="70" y="96">SUDAN</text>
-              <text x="86" y="30">SAUDI ARABIA</text>
+              <text x="4" y="55">{t("LIBYA")}</text>
+              <text x="70" y="96">{t("SUDAN")}</text>
+              <text x="86" y="30">{t("SAUDI ARABIA")}</text>
               <text x="34" y="6" fill="oklch(0.78 0.05 220 / 70%)">
                 Mediterranean Sea
               </text>

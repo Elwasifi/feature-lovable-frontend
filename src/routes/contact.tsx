@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader } from "@/components/site/Primitives";
 import { SITE, mailto } from "@/config/site";
+import { useI18n } from "@/i18n";
 
 const title = "Contact Egypt One — Talk to the platform team";
 const description =
@@ -36,6 +37,7 @@ const topics = [
 ];
 
 function Contact() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background">
       <TopUtilityBar />
@@ -43,9 +45,9 @@ function Contact() {
       <main>
         <Section>
           <SectionHeader
-            eyebrow="Contact"
-            title="Talk to the Egypt One team"
-            description="One address handles every enquiry while the platform is in build. We reply from the same team that maintains the content."
+            eyebrow={t("Contact")}
+            title={t("Talk to the Egypt One team")}
+            description={t("One address handles every enquiry while the platform is in build. We reply from the same team that maintains the content.")}
           />
           <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr]">
             <div className="rounded-2xl border border-gold-line bg-card p-7">
@@ -62,21 +64,20 @@ function Contact() {
                 <span dir="ltr">{SITE.domain}</span>
               </p>
               <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-                No phone line or office address is published yet. We will add them here once they
-                are confirmed rather than list placeholders.
+                {t("No phone line or office address is published yet. We will add them here once they are confirmed rather than list placeholders.")}
               </p>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              {topics.map((t) => (
+              {topics.map((topic) => (
                 <a
-                  key={t.label}
-                  href={mailto(t.subject)}
+                  key={topic.label}
+                  href={mailto(topic.subject)}
                   className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-gold-line"
                 >
-                  <div className="text-sm font-semibold text-foreground">{t.label}</div>
+                  <div className="text-sm font-semibold text-foreground">{t(topic.label)}</div>
                   <div className="mt-1 text-xs text-muted-foreground">
-                    Opens an email to our team
+                    {t("Opens an email to our team")}
                   </div>
                 </a>
               ))}

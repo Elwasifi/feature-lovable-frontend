@@ -1,23 +1,20 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useMemo, useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   BadgeCheck,
   CalendarDays,
   Gem,
+  Info,
   LifeBuoy,
   Loader2,
-  LogOut,
   MapPin,
   Phone,
-  Plus,
   Radio,
   Settings,
   Star,
   Ticket,
 } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
-import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/i18n";
 import { mailto } from "@/config/site";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -84,102 +81,70 @@ const LIVE_STAGES = [
   "Completed",
 ];
 
+/* ---- Static preview data (no backend connected) ---- */
+
+const DEMO_PROFILE: Profile = {
+  id: "demo-user",
+  full_name: "Sample Traveller",
+  email: "traveller@example.com",
+  whatsapp: "+20 10 0000 0000",
+  country: "Egypt",
+  emergency_contact: "+20 10 1111 1111",
+  points: 2450,
+  tier: "Explorer",
+};
+
+const DEMO_TRIPS: Trip[] = [
+  {
+    id: "demo-trip-1",
+    reference: "EO-DEMO-1042",
+    title: "Nile Heritage Journey",
+    destination: "Luxor & Aswan",
+    start_date: "2026-09-04",
+    end_date: "2026-09-09",
+    status: "in_progress",
+    live_stage: "Guide assigned",
+    progress: 40,
+    travellers: 2,
+    price_usd: 1480,
+    points_earned: 740,
+  },
+  {
+    id: "demo-trip-2",
+    reference: "EO-DEMO-0871",
+    title: "Red Sea Escape",
+    destination: "Hurghada",
+    start_date: "2026-05-12",
+    end_date: "2026-05-16",
+    status: "completed",
+    live_stage: "Completed",
+    progress: 100,
+    travellers: 3,
+    price_usd: 990,
+    points_earned: 495,
+  },
+];
+
+const DEMO_REVIEWS: Review[] = [
+  { id: "demo-review-1", trip_id: "demo-trip-2", rating: 5, comment: "Sample review — preview content." },
+];
+
 function AccountPage() {
   const { t } = useI18n();
-  const navigate = useNavigate();
-  const { user, loading, signOut } = useAuth();
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [trips, setTrips] = useState<Trip[]>([]);
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [saving, setSaving] = useState(false);
   const [tab, setTab] = useState<"live" | "past" | "settings">("live");
 
-  useEffect(() => {
-    if (!loading && !user) navigate({ to: "/auth" });
-  }, [loading, user, navigate]);
-
-  const load = useCallback(async (uid: string) => {
-    const [p, tr, rv] = await Promise.all([
-      supabase.from("profiles").select("*").eq("id", uid).maybeSingle(),
-      supabase.from("trips").select("*").eq("user_id", uid).order("start_date", { ascending: false }),
-      supabase.from("trip_reviews").select("id, trip_id, rating, comment").eq("user_id", uid),
-    ]);
-    if (p.data) setProfile(p.data as Profile);
-    setTrips((tr.data ?? []) as Trip[]);
-    setReviews((rv.data ?? []) as Review[]);
-  }, []);
-
-  useEffect(() => {
-    if (!user) return;
-    void load(user.id);
-    const channel = supabase
-      .channel("account-trips")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "trips", filter: `user_id=eq.${user.id}` },
-        () => void load(user.id),
-      )
-      .subscribe();
-    return () => {
-      void supabase.removeChannel(channel);
-    };
-  }, [user, load]);
+  const profile = DEMO_PROFILE;
+  const trips = DEMO_TRIPS;
+  const reviews = DEMO_REVIEWS;
 
   const live = useMemo(() => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"), [trips]);
   const past = useMemo(() => trips.filter((x) => x.status === "completed"), [trips]);
 
-  async function saveProfile(patch: Partial<Profile>) {
-    if (!user) return;
-    setSaving(true);
-    const { error } = await supabase.from("profiles").update(patch).eq("id", user.id);
-    setSaving(false);
-    if (error) toast.error(error.message);
-    else {
-      toast.success(t("Settings saved"));
-      void load(user.id);
-    }
+  function notLive() {
+    toast.info(t("Preview — account system not yet connected"));
   }
 
-  async function addSampleTrip() {
-    if (!user) return;
-    const { error } = await supabase.from("trips").insert({
-      user_id: user.id,
-      title: "Nile Heritage Journey",
-      destination: "Luxor & Aswan",
-      start_date: new Date(Date.now() + 6 * 864e5).toISOString().slice(0, 10),
-      end_date: new Date(Date.now() + 11 * 864e5).toISOString().slice(0, 10),
-      status: "in_progress",
-      live_stage: "Guide assigned",
-      progress: 40,
-      travellers: 2,
-      price_usd: 1480,
-      points_earned: 740,
-    });
-    if (error) toast.error(error.message);
-    else toast.success(t("Booking added to your dashboard"));
-  }
-
-  async function saveReview(tripId: string, rating: number, comment: string) {
-    if (!user) return;
-    const { error } = await supabase
-      .from("trip_reviews")
-      .upsert({ trip_id: tripId, user_id: user.id, rating, comment }, { onConflict: "trip_id,user_id" });
-    if (error) toast.error(error.message);
-    else {
-      toast.success(t("Thank you for your review"));
-      void load(user.id);
-    }
-  }
-
-  if (loading || !user) {
-    return (
-      <div className="grid min-h-screen place-items-center bg-background">
-        <Loader2 className="size-6 animate-spin text-gold" />
-      </div>
-    );
-  }
-
-  const name = profile?.full_name || user.email?.split("@")[0] || t("Traveller");
+  const name = profile.full_name || t("Traveller");
 
   return (
     <div className="min-h-screen bg-background">
@@ -187,6 +152,11 @@ function AccountPage() {
       <SiteHeader />
 
       <Container className="py-8 lg:py-12">
+        <div className="mb-5 flex items-center gap-2.5 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
+          <Info className="size-4 shrink-0" />
+          {t("Preview — account system not yet connected")}
+        </div>
+
         {/* Identity header */}
         <div className="flex flex-wrap items-center gap-4 rounded-2xl border border-gold-line/50 bg-gold-soft p-5 lg:p-6">
           <div className="grid size-16 place-items-center rounded-full bg-gold text-xl font-bold text-primary-foreground">
@@ -196,7 +166,7 @@ function AccountPage() {
             <p className="text-[11px] uppercase tracking-[0.24em] text-gold/80">{t("My profile")}</p>
             <h1 className="truncate font-display text-2xl text-foreground lg:text-3xl">{name}</h1>
             <p className="truncate text-sm text-muted-foreground" dir="ltr">
-              {profile?.email || user.email}
+              {profile.email}
             </p>
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
@@ -207,23 +177,13 @@ function AccountPage() {
               <LifeBuoy className="size-4" />
               {t("Emergency help")}
             </a>
-            <button
-              onClick={async () => {
-                await signOut();
-                navigate({ to: "/" });
-              }}
-              className="flex items-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <LogOut className="size-4" />
-              {t("Sign out")}
-            </button>
           </div>
         </div>
 
         {/* Stat cards */}
         <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <StatCard icon={Gem} label={t("Egypt One Pass points")} value={String(profile?.points ?? 0)} hint={t("1 point = 1 EGP of partner value")} />
-          <StatCard icon={BadgeCheck} label={t("Membership tier")} value={t(profile?.tier ?? "Explorer")} hint={t("Unlock Gold at 5,000 points")} />
+          <StatCard icon={Gem} label={t("Egypt One Pass points")} value={String(profile.points)} hint={t("1 point = 1 EGP of partner value")} />
+          <StatCard icon={BadgeCheck} label={t("Membership tier")} value={t(profile.tier)} hint={t("Unlock Gold at 5,000 points")} />
           <StatCard icon={Radio} label={t("Active bookings")} value={String(live.length)} hint={t("Live status updates in real time")} />
           <StatCard icon={Ticket} label={t("Completed journeys")} value={String(past.length)} hint={t("Rate them to earn bonus points")} />
         </div>
@@ -248,13 +208,6 @@ function AccountPage() {
               {label}
             </button>
           ))}
-          <button
-            onClick={addSampleTrip}
-            className="ms-auto flex items-center gap-2 rounded-full border border-gold-line px-4 py-2 text-sm text-gold"
-          >
-            <Plus className="size-4" />
-            {t("Add a booking")}
-          </button>
         </div>
 
         <div className="mt-6 grid gap-5">
@@ -272,7 +225,7 @@ function AccountPage() {
                   key={trip.id}
                   trip={trip}
                   review={reviews.find((r) => r.trip_id === trip.id)}
-                  onSave={saveReview}
+                  onSave={notLive}
                 />
               ))
             ) : (
@@ -280,7 +233,7 @@ function AccountPage() {
             ))}
 
           {tab === "settings" && (
-            <SettingsPanel profile={profile} saving={saving} onSave={saveProfile} email={user.email ?? ""} />
+            <SettingsPanel profile={profile} saving={false} onSave={notLive} email={profile.email ?? ""} />
           )}
         </div>
       </Container>
@@ -289,6 +242,7 @@ function AccountPage() {
     </div>
   );
 }
+
 
 function StatCard({
   icon: Icon,

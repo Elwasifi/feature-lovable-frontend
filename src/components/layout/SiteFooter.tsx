@@ -12,7 +12,6 @@ export function SiteFooter() {
   const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-sidebar">
-      <SocialBar />
       <Container className="py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-x-10">
           <div>

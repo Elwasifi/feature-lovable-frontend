@@ -210,7 +210,7 @@ function AuthPage() {
                   dir="ltr"
                   value={form.whatsapp}
                   onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-                  placeholder="+20 1x xxx xxxx"
+                  placeholder={t("+20 1x xxx xxxx")}
                   className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
                 />
               </Field>

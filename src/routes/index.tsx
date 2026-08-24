@@ -167,7 +167,7 @@ function Hero() {
     <section className="relative overflow-hidden rounded-3xl border border-border/70">
       <img
         src={heroImage}
-        alt="The Sphinx, the Pyramids of Giza and a Nile felucca at dusk"
+        alt={t("The Sphinx, the Pyramids of Giza and a Nile felucca at dusk")}
         width={1920}
         height={1088}
         fetchPriority="high"
@@ -515,7 +515,7 @@ function Research() {
       <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <img
           src={heroImages.research}
-          alt="Golden DNA helix over a hieroglyph wall"
+          alt={t("Golden DNA helix over a hieroglyph wall")}
           loading="lazy"
           width={1200}
           height={800}
@@ -553,7 +553,7 @@ function Film() {
       <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-2">
         <img
           src={heroImages.film}
-          alt="Film crew shooting on location in the Egyptian desert at dusk"
+          alt={t("Film crew shooting on location in the Egyptian desert at dusk")}
           loading="lazy"
           width={1200}
           height={800}
@@ -586,7 +586,7 @@ function Marketplace() {
         <div className="relative overflow-hidden rounded-2xl border border-border/70">
           <img
             src={heroImages.market}
-            alt="Egyptian handicrafts and textiles in a lantern-lit souk"
+            alt={t("Egyptian handicrafts and textiles in a lantern-lit souk")}
             loading="lazy"
             width={1000}
             height={700}

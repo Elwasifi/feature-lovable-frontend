@@ -33,7 +33,7 @@ function Donut() {
       className="relative size-28 shrink-0 rounded-full"
       style={{ background: `conic-gradient(${stops})` }}
       role="img"
-      aria-label="Visitors by purpose"
+      aria-label={t("Visitors by purpose")}
     >
       <div className="absolute inset-[22%] grid place-items-center rounded-full bg-card text-center">
         <span className="text-[11px] leading-tight text-muted-foreground">
@@ -80,7 +80,7 @@ export function IntelligenceRail() {
         <div className="overflow-hidden rounded-xl border border-border/60">
           <img
             src={worldDots}
-            alt="Illustrative world map of visitor origins"
+            alt={t("Illustrative world map of visitor origins")}
             loading="lazy"
             width={1024}
             height={512}
@@ -177,26 +177,26 @@ export function IntelligenceRail() {
 
       <Panel title="Trending experiences" icon={<Star className="size-3.5" />}>
         <ul className="grid gap-3">
-          {trendingExperiences.map((t, i) => (
-            <li key={t.name} className="grid grid-cols-[auto_auto_minmax(0,1fr)_auto] items-center gap-3">
+          {trendingExperiences.map((x, i) => (
+            <li key={x.name} className="grid grid-cols-[auto_auto_minmax(0,1fr)_auto] items-center gap-3">
               <span className="shrink-0 font-display text-sm text-gold">{i + 1}</span>
               <img
-                src={t.image}
-                alt={t.name}
+                src={x.image}
+                alt={x.name}
                 loading="lazy"
                 width={64}
                 height={48}
                 className="size-12 shrink-0 rounded-lg object-cover"
               />
               <span className="min-w-0">
-                <span className="block truncate text-xs text-foreground">{t.name}</span>
+                <span className="block truncate text-xs text-foreground">{x.name}</span>
                 <span className="block text-[10px] text-muted-foreground">
-                  ★ {t.rating} ({t.reviews})
+                  ★ {x.rating} ({x.reviews})
                 </span>
               </span>
               <span className="shrink-0 text-right text-xs">
-                <span className="block text-[9px] uppercase text-muted-foreground">From</span>
-                <span className="font-semibold text-gold">{t.from}</span>
+                <span className="block text-[9px] uppercase text-muted-foreground">{t("From")}</span>
+                <span className="font-semibold text-gold">{x.from}</span>
               </span>
             </li>
           ))}

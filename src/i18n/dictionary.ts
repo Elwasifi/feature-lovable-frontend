@@ -28,6 +28,8 @@ const ar: Dict = {
   "Zoom in": "تكبير",
   "Zoom out": "تصغير",
   "Reset view": "إعادة ضبط العرض",
+  Close: "إغلاق",
+
   Focus: "تركيز",
   "Toggle labels": "إظهار/إخفاء الأسماء",
   Zone: "المنطقة",

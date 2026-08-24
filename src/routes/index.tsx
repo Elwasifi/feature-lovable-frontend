@@ -6,12 +6,14 @@ import {
   Car,
   Clapperboard,
   Compass,
+  Dna,
   HeartPulse,
   Hotel,
   MoreHorizontal,
   Plane,
   ShoppingBag,
   Ship,
+  Sun,
   TrendingUp,
   Utensils,
   Heart,
@@ -22,9 +24,8 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
-import heroImage from "@/assets/hero-egypt.jpg";
+import heroImage from "@/assets/hero-egypt-one.jpg";
 import mapImage from "@/assets/map-egypt.jpg";
-import filmImage from "@/assets/card-through-time.jpg";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
@@ -32,17 +33,23 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";
 import {
   discoverCards,
+  egyptSectors,
   eras,
+  heroImages,
   investSectors,
+  marketplaceItems,
+  offerCards,
   popularDestinations,
   programmes,
-  promoBanners,
   quickCategories,
+  researchItems,
   searchTabs,
   sectorCards,
   trustItems,
+  weatherStrip,
 } from "@/data/site";
 import { SITE, mailto } from "@/config/site";
+import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 const title = "Egypt One — One Egypt. One Journey. One Platform.";
@@ -78,13 +85,17 @@ function Home() {
         <main className="grid gap-6 px-4 py-5 lg:px-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="grid min-w-0 grid-cols-1 gap-8">
             <Hero />
+            <WeatherStrip />
             <Categories />
             <Discover />
             <Destinations />
-            <Promos />
+            <SectorStrip />
+            <Offers />
             <Governorates />
             <ThroughTime />
+            <Research />
             <Film />
+            <Marketplace />
             <Concierge />
             <Invest />
             <Programmes />
@@ -116,17 +127,18 @@ function Block({
   action?: React.ReactNode;
   children: React.ReactNode;
 }) {
+  const { t } = useI18n();
   return (
     <section id={id} className="scroll-mt-32">
       <div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
         <div className="min-w-0">
           {eyebrow && (
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold/80">
-              {eyebrow}
+              {t(eyebrow)}
             </p>
           )}
           <h2 className="mt-1 font-display text-xl tracking-tight text-foreground sm:text-2xl">
-            {heading}
+            {t(heading)}
           </h2>
         </div>
         {action}
@@ -137,59 +149,85 @@ function Block({
 }
 
 function ViewAll({ href = "#explore" }: { href?: string }) {
+  const { t } = useI18n();
   return (
     <a
       href={href}
       className="shrink-0 text-xs font-semibold text-gold transition-opacity hover:opacity-80"
     >
-      View all
+      {t("View all")}
     </a>
   );
 }
 
 function Hero() {
+  const { t } = useI18n();
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border/70">
       <img
         src={heroImage}
-        alt="Sunset over the pyramids and the Nile"
-        width={1600}
-        height={900}
+        alt="The Sphinx, the Pyramids of Giza and a Nile felucca at dusk"
+        width={1920}
+        height={1088}
+        fetchPriority="high"
         className="absolute inset-0 size-full object-cover"
       />
-      <div className="relative flex min-h-[420px] flex-col justify-end p-5 sm:min-h-[460px] sm:p-8">
-        <p className="mb-2 inline-flex items-center gap-2 rounded-full border border-gold-line bg-background/60 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold backdrop-blur">
-          <Sparkles className="size-3" /> {SITE.tagline}
+      {/* Legibility scrims: a full darkening wash plus a stronger bottom/leading fade. */}
+      <div className="absolute inset-0 bg-background/45" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, oklch(0.12 0.02 255 / 96%) 0%, oklch(0.12 0.02 255 / 72%) 45%, oklch(0.12 0.02 255 / 20%) 100%)",
+        }}
+      />
+
+      <div className="relative flex min-h-[460px] flex-col justify-end p-5 sm:min-h-[520px] sm:p-8">
+        <p className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-gold-line bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold backdrop-blur">
+          <Sparkles className="size-3" /> {t("The official gateway to Egypt")}
         </p>
-        <h1 className="max-w-2xl font-display text-3xl leading-tight text-foreground sm:text-5xl">
-          One journey. <span className="text-gold">Countless wonders.</span>
+        <h1 className="max-w-3xl font-display text-3xl leading-tight text-foreground drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-5xl">
+          {t("One Egypt.")} <span className="text-gold">{t("One Journey.")}</span>{" "}
+          {t("One Platform.")}
         </h1>
-        <p className="mt-2 max-w-xl text-sm text-muted-foreground">
-          Discover Egypt like never before — heritage, experiences, stays and investment in one place.
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] sm:text-base">
+          {t(
+            "Plan, discover and invest across 27 governorates — heritage, culture, experiences and opportunity in a single national platform.",
+          )}
         </p>
 
-        <div className="mt-5 rounded-2xl border border-border/70 bg-background/85 p-3 backdrop-blur-xl">
+        <div className="mt-6 rounded-2xl border border-border/70 bg-background/90 p-3 backdrop-blur-xl">
           <div className="flex gap-1 overflow-x-auto pb-2 [scrollbar-width:none]">
             {searchTabs.map((tab, i) => (
               <button
                 key={tab}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
-                  i === 0
-                    ? "bg-gold-soft text-gold"
-                    : "text-muted-foreground hover:text-foreground",
+                  i === 0 ? "bg-gold-soft text-gold" : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                {tab}
+                {t(tab)}
               </button>
             ))}
           </div>
           <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
-            <Field icon={<MapPin className="size-4" />} label="Where to?" value="Cairo, Luxor, Aswan" />
-            <Field icon={<CalendarDays className="size-4" />} label="Dates" value="Select dates" />
-            <Field icon={<Users className="size-4" />} label="Travellers" value="2 adults, 0 children" />
+            <Field
+              icon={<MapPin className="size-4" />}
+              label={t("Where are you going?")}
+              value="Cairo, Luxor, Aswan"
+            />
+            <Field
+              icon={<CalendarDays className="size-4" />}
+              label={t("Dates")}
+              value={t("Select dates")}
+            />
+            <Field
+              icon={<Users className="size-4" />}
+              label={t("Travellers")}
+              value={t("2 adults, 0 children")}
+            />
             <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
-              <Search className="size-4" /> Search
+              <Search className="size-4" /> {t("Search")}
             </button>
           </div>
         </div>
@@ -220,6 +258,31 @@ function Field({
   );
 }
 
+function WeatherStrip() {
+  const { t } = useI18n();
+  return (
+    <section className="grid gap-2 rounded-2xl border border-border/70 bg-card p-3 sm:grid-cols-2 lg:grid-cols-5">
+      {weatherStrip.map((w) => (
+        <div
+          key={w.city}
+          className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5 rounded-xl border border-border/60 bg-surface-2 px-3 py-2"
+        >
+          <Sun className="size-4 shrink-0 text-gold" />
+          <span className="min-w-0">
+            <span className="block truncate text-xs text-foreground">{t(w.city)}</span>
+            <span className="block truncate text-[10px] text-muted-foreground">{t(w.state)}</span>
+          </span>
+          <span className="shrink-0 font-display text-sm text-gold">{w.temp}</span>
+        </div>
+      ))}
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2.5 rounded-xl border border-gold-line bg-gold-soft px-3 py-2">
+        <TrendingUp className="size-4 shrink-0 text-gold" />
+        <span className="min-w-0 truncate text-xs text-gold">1 USD ≈ 48.2 EGP</span>
+      </div>
+    </section>
+  );
+}
+
 const categoryIcons = [
   Hotel,
   Plane,
@@ -236,20 +299,21 @@ const categoryIcons = [
 ];
 
 function Categories() {
+  const { t } = useI18n();
   return (
-    <Block eyebrow="Explore by category" title="Everything Egypt, one click away">
+    <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12">
         {quickCategories.map((c, i) => {
           const Icon = categoryIcons[i % categoryIcons.length]!;
           return (
-          <a
-            key={c}
-            href="#explore"
-            className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
-          >
-            <Icon className="size-5 text-gold" />
-            <span className="w-full truncate text-[11px] text-muted-foreground">{c}</span>
-          </a>
+            <a
+              key={c}
+              href="#explore"
+              className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
+            >
+              <Icon className="size-5 text-gold" />
+              <span className="w-full truncate text-[11px] text-muted-foreground">{t(c)}</span>
+            </a>
           );
         })}
       </div>
@@ -258,8 +322,9 @@ function Categories() {
 }
 
 function Discover() {
+  const { t } = useI18n();
   return (
-    <Block id="explore" eyebrow="Discover Egypt" title="Explore Egypt" action={<ViewAll />}>
+    <Block id="explore" eyebrow="Discovery" title="Discover Egypt in depth" action={<ViewAll />}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {discoverCards.map((card) => (
           <a
@@ -276,10 +341,10 @@ function Discover() {
               className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            {card.badge && <SourceBadge status="DEMO" className="absolute right-3 top-3" />}
+            {card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />}
             <div className="absolute inset-x-0 bottom-0 p-4">
-              <p className="font-display text-base text-foreground">{card.title}</p>
-              <p className="text-xs text-muted-foreground">{card.subtitle}</p>
+              <p className="font-display text-base text-foreground">{t(card.title)}</p>
+              <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
             </div>
           </a>
         ))}
@@ -289,8 +354,9 @@ function Discover() {
 }
 
 function Destinations() {
+  const { t } = useI18n();
   return (
-    <Block eyebrow="Popular destinations" title="Where travellers go first" action={<ViewAll />}>
+    <Block eyebrow="Destinations" title="Popular destinations" action={<ViewAll />}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {popularDestinations.map((d) => (
           <article
@@ -306,16 +372,15 @@ function Destinations() {
                 height={600}
                 className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute right-2 top-2 grid size-8 place-items-center rounded-full border border-border/70 bg-background/70 text-muted-foreground backdrop-blur">
+              <span className="absolute end-2 top-2 grid size-8 place-items-center rounded-full border border-border/70 bg-background/70 text-muted-foreground backdrop-blur">
                 <Heart className="size-3.5" />
               </span>
             </div>
             <div className="p-3">
-              <p className="truncate font-display text-sm text-foreground">{d.name}</p>
-              <p className="mt-0.5 line-clamp-2 text-[11px] text-muted-foreground">{d.note}</p>
+              <p className="truncate font-display text-sm text-foreground">{t(d.name)}</p>
+              <p className="mt-0.5 line-clamp-2 text-[11px] text-muted-foreground">{t(d.note)}</p>
               <p className="mt-2 text-[11px] text-gold">
-                ★ {d.rating}{" "}
-                <span className="text-muted-foreground">({d.reviews})</span>
+                ★ {d.rating} <span className="text-muted-foreground">({d.reviews})</span>
               </p>
             </div>
           </article>
@@ -325,34 +390,64 @@ function Destinations() {
   );
 }
 
-function Promos() {
+function SectorStrip() {
+  const { t } = useI18n();
   return (
-    <Block eyebrow="Offers & programmes" title="Curated deals across Egypt">
-      <div className="grid gap-4 md:grid-cols-3">
-        {promoBanners.map((p) => (
-          <article
-            key={p.kicker}
-            className="relative overflow-hidden rounded-2xl border border-border/70"
+    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="#invest" />}>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
+        {egyptSectors.map((s) => (
+          <a
+            key={s.title}
+            href="#invest"
+            className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img
-              src={p.image}
-              alt={p.kicker}
+              src={s.image}
+              alt={s.title}
               loading="lazy"
-              width={900}
-              height={512}
-              className="h-40 w-full object-cover"
+              width={800}
+              height={1000}
+              className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
+            <div className="absolute inset-x-0 bottom-0 p-3">
+              <p className="font-display text-sm leading-tight text-foreground">{t(s.title)}</p>
+              <p className="mt-1 text-[10px] leading-snug text-foreground/70">{t(s.note)}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </Block>
+  );
+}
+
+function Offers() {
+  const { t } = useI18n();
+  return (
+    <Block id="offers" eyebrow="Offers" title="Offers & programmes">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {offerCards.map((o) => (
+          <article key={o.title} className="relative overflow-hidden rounded-2xl border border-border/70">
+            <img
+              src={o.image}
+              alt={o.title}
+              loading="lazy"
+              width={1000}
+              height={700}
+              className="h-44 w-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
+            <span className="absolute start-3 top-3 rounded-full border border-gold-line bg-background/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold backdrop-blur">
+              {t(o.tag)}
+            </span>
             <div className="absolute inset-x-0 bottom-0 p-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-gold">
-                {p.kicker}
-              </p>
-              <p className="mt-1 text-sm text-foreground">{p.title}</p>
+              <p className="font-display text-base text-foreground">{t(o.title)}</p>
+              <p className="mt-1 text-xs text-foreground/75">{t(o.body)}</p>
               <a
-                href={mailto(`Egypt One — ${p.kicker}`)}
+                href={mailto(`Egypt One — ${o.title}`)}
                 className="mt-3 inline-flex rounded-lg bg-gold px-3 py-1.5 text-[11px] font-semibold text-primary-foreground"
               >
-                {p.cta}
+                {t(o.cta)}
               </a>
             </div>
           </article>
@@ -363,11 +458,12 @@ function Promos() {
 }
 
 function Governorates() {
+  const { t } = useI18n();
   return (
     <Block
       id="governorates"
-      eyebrow="27 Governorates"
-      title="One country, twenty-seven stories"
+      eyebrow="The map of Egypt"
+      title="Explore all 27 governorates"
       action={<ViewAll href="#governorates" />}
     >
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
@@ -380,12 +476,13 @@ function Governorates() {
             height={700}
             className="h-[320px] w-full object-cover"
           />
-          <SourceBadge status="DEMO" className="absolute left-3 top-3" />
+          <SourceBadge status="DEMO" className="absolute start-3 top-3" />
         </div>
         <div className="grid content-start gap-3 rounded-2xl border border-border/70 bg-card p-5">
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Every governorate gets its own profile: geography, heritage sites, museums, experiences
-            and local partners — mapped into one national index.
+            {t(
+              "Every governorate gets its own profile: geography, heritage sites, museums, experiences and local partners — mapped into one national index.",
+            )}
           </p>
           <dl className="grid grid-cols-2 gap-3">
             {[
@@ -396,14 +493,14 @@ function Governorates() {
             ].map((s) => (
               <div key={s.k} className="rounded-xl border border-border/60 bg-surface-2 p-3">
                 <dt className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                  {s.k}
+                  {t(s.k)}
                 </dt>
                 <dd className="mt-1 font-display text-lg text-gold">{s.v}</dd>
               </div>
             ))}
           </dl>
           <GhostButton href="#explore" className="mt-1 w-full">
-            Browse governorates <ArrowRight className="size-4" />
+            {t("Browse governorates")} <ArrowRight className="size-4" />
           </GhostButton>
         </div>
       </div>
@@ -412,16 +509,16 @@ function Governorates() {
 }
 
 function ThroughTime() {
+  const { t } = useI18n();
   return (
-    <Block id="through-time" eyebrow="Egypt through time" title="Fifteen eras, one continuous story">
+    <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
       <div className="flex gap-3 overflow-x-auto pb-2">
         {eras.map((era) => (
-          <div
-            key={era.name}
-            className="w-44 shrink-0 rounded-xl border border-border/70 bg-card p-4"
-          >
-            <p className="font-display text-sm text-foreground">{era.name}</p>
-            <p className="mt-1 text-[11px] text-muted-foreground">{era.years}</p>
+          <div key={era.name} className="w-44 shrink-0 rounded-xl border border-border/70 bg-card p-4">
+            <p className="font-display text-sm text-foreground">{t(era.name)}</p>
+            <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
+              {era.years}
+            </p>
           </div>
         ))}
       </div>
@@ -429,27 +526,69 @@ function ThroughTime() {
   );
 }
 
-function Film() {
+function Research() {
+  const { t } = useI18n();
   return (
-    <Block id="film" eyebrow="Film & screen tourism" title="Egypt on screen">
+    <Block id="research" eyebrow="Research & continuity" title="Egyptian genetic continuity">
+      <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <img
+          src={heroImages.research}
+          alt="Golden DNA helix over a hieroglyph wall"
+          loading="lazy"
+          width={1200}
+          height={800}
+          className="h-56 w-full object-cover lg:h-full"
+        />
+        <div className="grid content-center gap-3 p-6">
+          <Dna className="size-6 text-gold" />
+          <p className="font-display text-lg text-foreground">
+            {t("An unbroken line, studied and documented")}
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {t(
+              "A dedicated research track presenting genetic, linguistic and cultural continuity between ancient and modern Egyptians — sourced from published studies and national archives.",
+            )}
+          </p>
+          <ul className="mt-1 grid gap-2 sm:grid-cols-2">
+            {researchItems.map((r) => (
+              <li key={r.title} className="rounded-xl border border-border/60 bg-surface-2 p-3">
+                <p className="text-xs text-foreground">{t(r.title)}</p>
+                <p className="mt-1 text-[11px] text-muted-foreground">{t(r.note)}</p>
+              </li>
+            ))}
+          </ul>
+          <SourceBadge status="PLANNED" className="w-fit" />
+        </div>
+      </div>
+    </Block>
+  );
+}
+
+function Film() {
+  const { t } = useI18n();
+  return (
+    <Block id="film" eyebrow="Film & culture" title="Film, culture & creative Egypt">
       <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-2">
         <img
-          src={filmImage}
-          alt="Cinematic Egyptian heritage location"
+          src={heroImages.film}
+          alt="Film crew shooting on location in the Egyptian desert at dusk"
           loading="lazy"
-          width={800}
-          height={600}
+          width={1200}
+          height={800}
           className="h-56 w-full object-cover lg:h-full"
         />
         <div className="grid content-center gap-3 p-6">
           <Clapperboard className="size-6 text-gold" />
-          <p className="font-display text-lg text-foreground">Films, series and location scouting</p>
+          <p className="font-display text-lg text-foreground">
+            {t("Films, series and location scouting")}
+          </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            A dedicated track for productions: shooting locations, permits guidance and cultural
-            advisers — turning screen exposure into visits.
+            {t(
+              "A dedicated track for productions: shooting locations, permits guidance and cultural advisers — turning screen exposure into visits.",
+            )}
           </p>
           <GhostButton href={mailto("Egypt One — Film & screen tourism")} className="w-fit">
-            Contact the film desk
+            {t("Contact the film desk")}
           </GhostButton>
         </div>
       </div>
@@ -457,37 +596,81 @@ function Film() {
   );
 }
 
+function Marketplace() {
+  const { t } = useI18n();
+  return (
+    <Block id="marketplace" eyebrow="Marketplace & crafts" title="Made in Egypt">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+        <div className="relative overflow-hidden rounded-2xl border border-border/70">
+          <img
+            src={heroImages.market}
+            alt="Egyptian handicrafts and textiles in a lantern-lit souk"
+            loading="lazy"
+            width={1000}
+            height={700}
+            className="h-64 w-full object-cover"
+          />
+          <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
+          <div className="absolute inset-x-0 bottom-0 p-5">
+            <p className="font-display text-lg text-foreground">{t("Wear Egypt & local makers")}</p>
+            <p className="mt-1 max-w-lg text-xs text-foreground/75">
+              {t("Cotton, crafts and produce from verified artisans across the country.")}
+            </p>
+          </div>
+        </div>
+        <div className="grid content-start gap-3">
+          {marketplaceItems.map((m) => (
+            <article
+              key={m.title}
+              className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-border/70 bg-card p-4"
+            >
+              <ShoppingBag className="size-5 shrink-0 text-gold" />
+              <span className="min-w-0">
+                <span className="block truncate text-sm text-foreground">{t(m.title)}</span>
+                <span className="block truncate text-[11px] text-muted-foreground">{t(m.note)}</span>
+              </span>
+              <ArrowRight className="size-4 shrink-0 text-muted-foreground rtl:rotate-180" />
+            </article>
+          ))}
+        </div>
+      </div>
+    </Block>
+  );
+}
+
 function Concierge() {
+  const { t } = useI18n();
   return (
     <section id="ai-concierge" className="scroll-mt-32">
       <div className="grid gap-4 rounded-2xl border border-gold-line bg-gold-soft p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
-            <Sparkles className="size-3.5" /> AI Concierge
+            <Sparkles className="size-3.5" /> {t("AI Concierge")}
           </p>
           <h2 className="mt-2 font-display text-xl text-foreground sm:text-2xl">
-            Your personal assistant for everything Egypt
+            {t("Your personal assistant for everything Egypt")}
           </h2>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Ask for a 7-day itinerary, a Nile cruise window or a quiet heritage route — the concierge
-            drafts it, you refine it.
+            {t(
+              "Ask for a 7-day itinerary, a Nile cruise window or a quiet heritage route — the concierge drafts it, you refine it.",
+            )}
           </p>
         </div>
-        <GoldButton href={mailto("Egypt One — AI Concierge access")}>Open AI Concierge</GoldButton>
+        <GoldButton href={mailto("Egypt One — AI Concierge access")}>
+          {t("Open AI Concierge")}
+        </GoldButton>
       </div>
     </section>
   );
 }
 
 function Invest() {
+  const { t } = useI18n();
   return (
-    <Block id="invest" eyebrow="Invest & business" title="Build with Egypt">
+    <Block id="invest" eyebrow="Invest & Business" title="Build with Egypt">
       <div className="grid gap-4 md:grid-cols-3">
         {sectorCards.map((s) => (
-          <article
-            key={s.title}
-            className="overflow-hidden rounded-2xl border border-border/70 bg-card"
-          >
+          <article key={s.title} className="overflow-hidden rounded-2xl border border-border/70 bg-card">
             <img
               src={s.image}
               alt={s.title}
@@ -497,13 +680,13 @@ function Invest() {
               className="h-36 w-full object-cover"
             />
             <div className="p-4">
-              <p className="font-display text-base text-foreground">{s.title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{s.body}</p>
+              <p className="font-display text-base text-foreground">{t(s.title)}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t(s.body)}</p>
               <a
                 href={mailto(`Egypt One — ${s.title}`)}
                 className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
               >
-                {s.cta} <ArrowRight className="size-3.5" />
+                {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
               </a>
             </div>
           </article>
@@ -515,7 +698,7 @@ function Invest() {
             key={s}
             className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
           >
-            {s}
+            {t(s)}
           </span>
         ))}
       </div>
@@ -524,13 +707,14 @@ function Invest() {
 }
 
 function Programmes() {
+  const { t } = useI18n();
   return (
     <Block id="programmes" eyebrow="National programmes" title="Egypt One initiatives">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {programmes.map((p) => (
           <article key={p.title} className="rounded-2xl border border-border/70 bg-card p-5">
-            <p className="font-display text-sm text-gold">{p.title}</p>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{p.body}</p>
+            <p className="font-display text-sm text-gold">{t(p.title)}</p>
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t(p.body)}</p>
           </article>
         ))}
       </div>
@@ -539,14 +723,17 @@ function Programmes() {
 }
 
 function Trust() {
+  const { t } = useI18n();
   return (
     <section className="grid gap-3 rounded-2xl border border-border/70 bg-card p-5 sm:grid-cols-2 lg:grid-cols-5">
-      {trustItems.map((t) => (
-        <div key={t.title} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
+      {trustItems.map((item) => (
+        <div key={item.title} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
           <ShieldCheck className="size-5 shrink-0 text-gold" />
           <span className="min-w-0">
-            <span className="block truncate text-xs font-semibold text-foreground">{t.title}</span>
-            <span className="block truncate text-[11px] text-muted-foreground">{t.body}</span>
+            <span className="block truncate text-xs font-semibold text-foreground">
+              {t(item.title)}
+            </span>
+            <span className="block truncate text-[11px] text-muted-foreground">{t(item.body)}</span>
           </span>
         </div>
       ))}

@@ -386,3 +386,103 @@ export const monthlyVisitors = [
   { month: "May", value: 74 },
   { month: "Jun", value: 100 },
 ];
+
+// ---------------------------------------------------------------------------
+// Sector strip, offers, research & marketplace (reference-mockup parity)
+// ---------------------------------------------------------------------------
+
+import secEntertainment from "@/assets/sec-entertainment.jpg";
+import secWellness from "@/assets/sec-wellness.jpg";
+import secMarina from "@/assets/sec-marina.jpg";
+import secDesert from "@/assets/sec-desert.jpg";
+import secEducation from "@/assets/sec-education.jpg";
+import secMice from "@/assets/sec-mice.jpg";
+import secSports from "@/assets/sec-sports.jpg";
+import secFamily from "@/assets/sec-family.jpg";
+import offerDeals from "@/assets/offer-deals.jpg";
+import offerStopover from "@/assets/offer-stopover.jpg";
+import offerVisit27 from "@/assets/offer-visit27.jpg";
+import offerClub from "@/assets/offer-club.jpg";
+import researchGenome from "@/assets/research-genome.jpg";
+import filmEgypt from "@/assets/film-egypt.jpg";
+import marketCrafts from "@/assets/market-crafts.jpg";
+
+export const heroImages = { film: filmEgypt, research: researchGenome, market: marketCrafts };
+
+export const egyptSectors = [
+  { title: "Entertainment & Leisure", note: "Parks, shows & nightlife", image: secEntertainment },
+  { title: "Wellness & Retreats", note: "Spas, springs & healing", image: secWellness },
+  { title: "Yachts & Marinas", note: "Red Sea & Mediterranean", image: secMarina },
+  { title: "Desert & Oases", note: "Safari, dunes & stargazing", image: secDesert },
+  { title: "Education & Study", note: "Universities & academies", image: secEducation },
+  { title: "Conferences & MICE", note: "Expos, summits & venues", image: secMice },
+  { title: "Sports & Celebrations", note: "Stadiums, races & festivals", image: secSports },
+  { title: "Families & Kids", note: "Journeys for every age", image: secFamily },
+];
+
+export const offerCards = [
+  {
+    title: "Special Offers",
+    body: "Up to 40% off selected hotels and experiences.",
+    cta: "View Deals",
+    image: offerDeals,
+    tag: "Save 40%",
+  },
+  {
+    title: "One More Night",
+    body: "Extend your stay and unlock partner benefits.",
+    cta: "Extend Now",
+    image: promoHotel,
+    tag: "Free night",
+  },
+  {
+    title: "Stopover Egypt",
+    body: "Turn your transit time into a curated short journey.",
+    cta: "Explore Stopovers",
+    image: offerStopover,
+    tag: "Transit",
+  },
+  {
+    title: "Visit All 27 Challenge",
+    body: "Collect every governorate and earn national badges.",
+    cta: "Start Challenge",
+    image: offerVisit27,
+    tag: "Challenge",
+  },
+  {
+    title: "ONE CLUB GOLD",
+    body: "Membership tiers with lounge, upgrade and priority perks.",
+    cta: "Join the Club",
+    image: offerClub,
+    tag: "Members",
+  },
+];
+
+export const researchItems = [
+  { title: "Ancient & modern genome studies", note: "Peer-reviewed continuity research" },
+  { title: "Linguistic continuity", note: "From Ancient Egyptian to Coptic to Arabic" },
+  { title: "Craft & tradition lineage", note: "Living practices traced across millennia" },
+  { title: "Document & archive centre", note: "Digitised records open to researchers" },
+];
+
+export const marketplaceItems = [
+  { title: "Egyptian Cotton", note: "Certified mills & ateliers" },
+  { title: "Handmade Crafts", note: "Artisans across 27 governorates" },
+  { title: "Wear Egypt", note: "Modern design, ancient roots" },
+  { title: "Local Producers", note: "Farms, spices & Nile harvests" },
+];
+
+export const weatherStrip = [
+  { city: "Cairo", temp: "28°", state: "Clear" },
+  { city: "Alexandria", temp: "24°", state: "Breezy" },
+  { city: "Luxor", temp: "34°", state: "Sunny" },
+  { city: "Sharm El Sheikh", temp: "31°", state: "Sunny" },
+];
+
+export const govIntegrations = [
+  "Ministry of Tourism & Antiquities",
+  "Ministry of Civil Aviation",
+  "Egyptian Tourism Authority",
+  "Supreme Council of Antiquities",
+  "Invest in Egypt (GAFI)",
+];

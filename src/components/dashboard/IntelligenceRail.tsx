@@ -1,6 +1,7 @@
 import { BarChart3, Globe2, Star, TrendingUp, Users } from "lucide-react";
 import worldDots from "@/assets/world-dots.jpg";
 import { SourceBadge } from "@/components/site/Primitives";
+import { useI18n } from "@/i18n";
 import {
   monthlyVisitors,
   topCountries,
@@ -17,6 +18,7 @@ const donutColors = [
 ];
 
 function Donut() {
+  const { t } = useI18n();
   let acc = 0;
   const stops = visitorPurpose
     .map((slice, i) => {
@@ -37,7 +39,7 @@ function Donut() {
         <span className="text-[11px] leading-tight text-muted-foreground">
           1.25M
           <br />
-          visitors
+          {t("visitors")}
         </span>
       </div>
     </div>
@@ -55,12 +57,13 @@ function Panel({
   children: React.ReactNode;
   badge?: "DEMO" | "SIMULATED" | "PLANNED";
 }) {
+  const { t } = useI18n();
   return (
     <section className="rounded-2xl border border-border/70 bg-card p-4 shadow-[var(--shadow-card)]">
       <header className="mb-3 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
         <h3 className="flex min-w-0 items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold/85">
           <span className="shrink-0">{icon}</span>
-          <span className="truncate">{title}</span>
+          <span className="truncate">{t(title)}</span>
         </h3>
         <SourceBadge status={badge} />
       </header>
@@ -70,6 +73,7 @@ function Panel({
 }
 
 export function IntelligenceRail() {
+  const { t } = useI18n();
   return (
     <aside className="grid gap-4">
       <Panel title="Egypt at a glance" icon={<Globe2 className="size-3.5" />}>
@@ -90,7 +94,7 @@ export function IntelligenceRail() {
             { k: "Top origin", v: "Saudi Arabia" },
           ].map((s) => (
             <div key={s.k} className="rounded-lg border border-border/60 bg-surface-2 px-2 py-2.5">
-              <dt className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">{s.k}</dt>
+              <dt className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground">{t(s.k)}</dt>
               <dd className="mt-1 truncate text-sm font-semibold text-foreground">{s.v}</dd>
             </div>
           ))}
@@ -107,7 +111,7 @@ export function IntelligenceRail() {
                   className="size-2.5 shrink-0 rounded-full"
                   style={{ background: donutColors[i] }}
                 />
-                <span className="min-w-0 flex-1 truncate text-muted-foreground">{s.label}</span>
+                <span className="min-w-0 flex-1 truncate text-muted-foreground">{t(s.label)}</span>
                 <span className="shrink-0 font-semibold text-foreground">{s.value}%</span>
               </li>
             ))}
@@ -115,7 +119,7 @@ export function IntelligenceRail() {
         </div>
         <div className="mt-4">
           <p className="mb-2 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-            Monthly visitors
+            {t("Monthly visitors")}
           </p>
           <div className="flex h-24 items-end gap-2">
             {monthlyVisitors.map((m, i) => (
@@ -141,7 +145,7 @@ export function IntelligenceRail() {
             <li key={c.name} className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2">
               <span className="shrink-0 text-base">{c.flag}</span>
               <span className="min-w-0">
-                <span className="block truncate text-xs text-foreground">{c.name}</span>
+                <span className="block truncate text-xs text-foreground">{t(c.name)}</span>
                 <span className="mt-1 block h-1.5 w-full rounded-full bg-surface-2">
                   <span
                     className="block h-1.5 rounded-full bg-gold"
@@ -164,7 +168,7 @@ export function IntelligenceRail() {
                 style={{ height: `${g.value}%` }}
               />
               <span className="w-full truncate text-center text-[9px] text-muted-foreground">
-                {g.name}
+                {t(g.name)}
               </span>
             </div>
           ))}

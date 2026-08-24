@@ -108,27 +108,12 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-              {t("Government integration")}
-            </h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {govIntegrations.map((g) => (
-                <li
-                  key={g}
-                  className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
-                >
-                  {t(g)}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
           <div>
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
               {t("Download the app")}
             </h3>
-            <ul className="mt-4 flex flex-nowrap items-center gap-2">
+            <ul className="mt-4 flex flex-nowrap items-center justify-start gap-2">
               {[
                 { label: "App Store", Icon: AppleIcon },
                 { label: "Google Play", Icon: GooglePlayIcon },
@@ -145,7 +130,23 @@ export function SiteFooter() {
               ))}
             </ul>
           </div>
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+              {t("Government integration")}
+            </h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {govIntegrations.map((g) => (
+                <li
+                  key={g}
+                  className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
+                >
+                  {t(g)}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
       </Container>
 
       <SocialBar />

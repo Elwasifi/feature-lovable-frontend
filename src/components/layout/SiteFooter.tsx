@@ -13,8 +13,8 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-sidebar">
       <SocialBar />
-      <Container className="py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+      <Container className="py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -81,7 +81,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 border-t border-border pt-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <div>
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
               {t("Government integration")}
@@ -114,7 +114,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
           </p>

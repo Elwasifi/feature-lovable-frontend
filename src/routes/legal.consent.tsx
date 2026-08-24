@@ -40,50 +40,11 @@ type ConsentRow = {
 
 function ConsentCentre() {
   const { t } = useI18n();
-  const { user, loading } = useAuth();
-  const [rows, setRows] = useState<Record<string, ConsentRow>>({});
-  const [busy, setBusy] = useState<string | null>(null);
+  const [rows] = useState<Record<string, ConsentRow>>({});
+  const [busy] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!user) return;
-    supabase
-      .from("user_consents")
-      .select("consent_type,status,policy_version,granted_at,withdrawn_at")
-      .eq("user_id", user.id)
-      .then(({ data }) => {
-        const next: Record<string, ConsentRow> = {};
-        for (const r of (data ?? []) as ConsentRow[]) next[r.consent_type] = r;
-        setRows(next);
-      });
-  }, [user]);
-
-  async function setConsent(key: string, grant: boolean) {
-    if (!user) return;
-    const type = consentTypes.find((c) => c.key === key);
-    const policy = type ? getLegalDocument(type.policySlug) : undefined;
-    setBusy(key);
-    const now = new Date().toISOString();
-    const payload = {
-      user_id: user.id,
-      consent_type: key,
-      policy_slug: type?.policySlug ?? null,
-      policy_version: policy?.version ?? null,
-      status: grant ? "granted" : "withdrawn",
-      granted_at: grant ? now : (rows[key]?.granted_at ?? null),
-      withdrawn_at: grant ? null : now,
-      locale: typeof navigator !== "undefined" ? navigator.language : null,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent.slice(0, 300) : null,
-    };
-    const { error } = await supabase
-      .from("user_consents")
-      .upsert(payload, { onConflict: "user_id,consent_type" });
-    setBusy(null);
-    if (error) {
-      toast.error(t("We could not record that consent. Please try again."));
-      return;
-    }
-    setRows((prev) => ({ ...prev, [key]: payload as unknown as ConsentRow }));
-    toast.success(grant ? t("Consent recorded") : t("Consent withdrawn"));
+  function setConsent(_key: string, _grant: boolean) {
+    toast(t("Preview — consent recording isn't connected to a backend yet"));
   }
 
   return (

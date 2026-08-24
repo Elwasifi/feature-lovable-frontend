@@ -376,7 +376,7 @@ export function EgyptMap() {
         </div>
 
         {/* scale bar + legend */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-3 p-3 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+        <div className="pointer-events-none absolute bottom-0 left-0 flex flex-wrap items-end gap-6 p-3 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
           <div>
             <div className="flex items-end gap-0 text-[9px]">
               <span>0</span>

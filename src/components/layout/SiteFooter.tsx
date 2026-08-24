@@ -8,13 +8,21 @@ import { SITE, mailto } from "@/config/site";
 import { SocialBar } from "@/components/layout/SocialBar";
 
 
+const legalLinks = [
+  { label: "Privacy Policy", href: mailto("Egypt One — Privacy Policy") },
+  { label: "Terms of Use", href: mailto("Egypt One — Terms of Use") },
+  { label: "Cookie Preferences", href: mailto("Egypt One — Cookie Preferences") },
+  { label: "Accessibility", href: mailto("Egypt One — Accessibility") },
+];
+
 export function SiteFooter() {
   const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-sidebar">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-x-10">
+        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)] lg:gap-x-10">
           <div>
+
             <div className="flex items-center gap-3">
               <img
                 src={logo.url}
@@ -112,17 +120,36 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
+      </Container>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
-          </p>
-          <p className="text-xs text-muted-foreground">
+      <SocialBar />
+
+      <div className="border-t border-border/70 bg-background/40">
+        <Container className="py-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
+            </p>
+            <nav aria-label={t("Legal")}>
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                {legalLinks.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      className="text-xs text-muted-foreground transition-colors hover:text-gold"
+                    >
+                      {t(l.label)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
             {t("Content shown on this preview is demonstration data unless labelled otherwise.")}
           </p>
-        </div>
-      </Container>
-      <SocialBar />
+        </Container>
+      </div>
     </footer>
   );
 }

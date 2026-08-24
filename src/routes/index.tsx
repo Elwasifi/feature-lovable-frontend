@@ -280,8 +280,8 @@ function WeatherStrip() {
       <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2.5 rounded-xl border border-gold-line bg-gold-soft px-3 py-2">
         <TrendingUp className="size-4 shrink-0 text-gold" />
         <span className="min-w-0 truncate text-xs text-gold" dir="ltr">
-          1 USD ≈ {(48.2 / currency.perUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}{" "}
-          EGP · {currency.code}
+          1 {currency.code} ≈ {(48.2 / currency.perUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}{" "}
+          EGP
         </span>
       </div>
     </section>

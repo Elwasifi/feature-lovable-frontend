@@ -73,6 +73,9 @@ type Trip = {
 
 type Review = { id: string; trip_id: string; rating: number; comment: string | null };
 
+const INPUT =
+  "h-11 rounded-lg border border-border bg-background/60 px-3 text-sm text-foreground outline-none focus:border-gold-line";
+
 const LIVE_STAGES = [
   "Booking confirmed",
   "Guide assigned",
@@ -373,7 +376,7 @@ function PastTripCard({
   onSave,
 }: {
   trip: Trip;
-  review?: Review;
+  review?: Review | undefined;
   onSave: (tripId: string, rating: number, comment: string) => void;
 }) {
   const { t } = useI18n();
@@ -460,25 +463,25 @@ function SettingsPanel({
             <input
               value={form.full_name}
               onChange={(e) => setForm({ ...form, full_name: e.target.value })}
-              className="input-line"
+              className={INPUT}
             />
           </Labelled>
           <Labelled label={t("Email address")}>
-            <input value={email} disabled dir="ltr" className="input-line opacity-60" />
+            <input value={email} disabled dir="ltr" className={cn(INPUT, "opacity-60")} />
           </Labelled>
           <Labelled label={t("WhatsApp number")}>
             <input
               value={form.whatsapp}
               dir="ltr"
               onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
-              className="input-line"
+              className={INPUT}
             />
           </Labelled>
           <Labelled label={t("Country")}>
             <input
               value={form.country}
               onChange={(e) => setForm({ ...form, country: e.target.value })}
-              className="input-line"
+              className={INPUT}
             />
           </Labelled>
           <Labelled label={t("Emergency contact")}>
@@ -486,7 +489,7 @@ function SettingsPanel({
               value={form.emergency_contact}
               dir="ltr"
               onChange={(e) => setForm({ ...form, emergency_contact: e.target.value })}
-              className="input-line"
+              className={INPUT}
             />
           </Labelled>
         </div>
@@ -516,7 +519,7 @@ function SettingsPanel({
           )}
         </ul>
         <a
-          href={`tel:${SITE.phone ?? ""}`}
+          href={mailto("Egypt One — 24/7 traveller support")}
           className="mt-5 flex items-center justify-center gap-2 rounded-lg border border-gold-line py-2 text-sm text-gold"
         >
           <Phone className="size-4" />

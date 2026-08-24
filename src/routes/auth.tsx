@@ -28,7 +28,6 @@ export const Route = createFileRoute("/auth")({
 function AuthPage() {
   const { t } = useI18n();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
-  const busy: string | null = null;
   const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
   const [notice, setNotice] = useState(false);
 
@@ -111,7 +110,6 @@ function AuthPage() {
           <div className="mt-6 grid gap-2.5">
             <button
               onClick={comingSoon}
-              disabled={busy !== null}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Chrome className="size-4 text-gold" />
@@ -119,7 +117,6 @@ function AuthPage() {
             </button>
             <button
               onClick={comingSoon}
-              disabled={busy !== null}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Apple className="size-4 text-gold" />

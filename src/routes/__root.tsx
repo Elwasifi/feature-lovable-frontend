@@ -77,21 +77,59 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: `${SITE.name} — ${SITE.tagline}` },
+      {
+        name: "description",
+        content:
+          "Egypt One is a unified digital gateway to Egypt: destinations, heritage, culture, events and investment in one platform.",
+      },
+      { name: "author", content: SITE.name },
+      { property: "og:site_name", content: SITE.name },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Outfit:wght@300..700&family=IBM+Plex+Sans+Arabic:wght@300;400;600&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: SITE.name,
+              url: SITE.url,
+              email: SITE.email,
+              slogan: SITE.tagline,
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  email: SITE.email,
+                  availableLanguage: ["en", "ar"],
+                },
+              ],
+            },
+            {
+              "@type": "WebSite",
+              name: SITE.name,
+              url: SITE.url,
+              inLanguage: ["en", "ar"],
+              publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+            },
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,

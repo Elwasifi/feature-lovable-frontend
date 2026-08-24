@@ -1,0 +1,358 @@
+// Geographic data for the interactive Egypt map (lon/lat in decimal degrees).
+
+export type Site = { name: string; lon: number; lat: number };
+export type Governorate = {
+  id: string;
+  name: string;
+  capital: string;
+  lon: number;
+  lat: number;
+  region: "Delta & Coast" | "Greater Cairo" | "Canal & Sinai" | "Upper Egypt" | "Deserts & Red Sea";
+  sites: Site[];
+};
+
+/** Rough Egypt outline in lon/lat, traced clockwise from the north-west corner. */
+export const egyptOutline: [number, number][] = [
+  [25.0, 31.62],
+  [26.2, 31.5],
+  [27.24, 31.36],
+  [28.5, 30.92],
+  [29.5, 30.85],
+  [29.92, 31.2],
+  [30.6, 31.45],
+  [31.25, 31.6],
+  [31.85, 31.5],
+  [32.3, 31.26],
+  [33.2, 31.15],
+  [34.25, 31.22],
+  [34.9, 29.5],
+  [34.55, 29.35],
+  [34.25, 27.72],
+  [33.35, 28.6],
+  [32.9, 29.35],
+  [32.55, 29.97],
+  [32.35, 29.6],
+  [33.0, 28.2],
+  [33.55, 27.6],
+  [33.81, 27.05],
+  [34.4, 26.0],
+  [34.9, 25.07],
+  [35.6, 24.0],
+  [36.4, 23.1],
+  [36.9, 22.0],
+  [25.0, 22.0],
+];
+
+export const governorates: Governorate[] = [
+  {
+    id: "cairo",
+    name: "Cairo",
+    capital: "Cairo",
+    lon: 31.35,
+    lat: 30.1,
+    region: "Greater Cairo",
+    sites: [
+      { name: "The Egyptian Museum", lon: 31.233, lat: 30.048 },
+      { name: "Salah El Din Citadel", lon: 31.26, lat: 30.029 },
+      { name: "Khan El Khalili", lon: 31.262, lat: 30.047 },
+      { name: "Coptic Cairo", lon: 31.23, lat: 30.005 },
+    ],
+  },
+  {
+    id: "giza",
+    name: "Giza",
+    capital: "Giza",
+    lon: 31.0,
+    lat: 29.87,
+    region: "Greater Cairo",
+    sites: [
+      { name: "Pyramids of Giza & Sphinx", lon: 31.134, lat: 29.976 },
+      { name: "Grand Egyptian Museum", lon: 31.119, lat: 29.994 },
+      { name: "Saqqara & Dahshur", lon: 31.216, lat: 29.871 },
+    ],
+  },
+  {
+    id: "qalyubia",
+    name: "Qalyubia",
+    capital: "Banha",
+    lon: 31.19,
+    lat: 30.46,
+    region: "Delta & Coast",
+    sites: [{ name: "Tell Atrib antiquities", lon: 31.19, lat: 30.47 }],
+  },
+  {
+    id: "alexandria",
+    name: "Alexandria",
+    capital: "Alexandria",
+    lon: 29.92,
+    lat: 31.2,
+    region: "Delta & Coast",
+    sites: [
+      { name: "Bibliotheca Alexandrina", lon: 29.909, lat: 31.209 },
+      { name: "Qaitbay Citadel", lon: 29.885, lat: 31.214 },
+      { name: "Catacombs of Kom El Shoqafa", lon: 29.892, lat: 31.178 },
+    ],
+  },
+  {
+    id: "beheira",
+    name: "Beheira",
+    capital: "Damanhur",
+    lon: 30.47,
+    lat: 31.04,
+    region: "Delta & Coast",
+    sites: [{ name: "Rosetta (Rashid) heritage town", lon: 30.416, lat: 31.4 }],
+  },
+  {
+    id: "matrouh",
+    name: "Matrouh",
+    capital: "Marsa Matruh",
+    lon: 27.24,
+    lat: 31.35,
+    region: "Deserts & Red Sea",
+    sites: [
+      { name: "Agiba Beach", lon: 27.0, lat: 31.4 },
+      { name: "Siwa Oasis", lon: 25.52, lat: 29.2 },
+    ],
+  },
+  {
+    id: "kafr-el-sheikh",
+    name: "Kafr El Sheikh",
+    capital: "Kafr El Sheikh",
+    lon: 30.94,
+    lat: 31.11,
+    region: "Delta & Coast",
+    sites: [{ name: "Burullus Lake", lon: 30.9, lat: 31.45 }],
+  },
+  {
+    id: "gharbia",
+    name: "Gharbia",
+    capital: "Tanta",
+    lon: 31.0,
+    lat: 30.79,
+    region: "Delta & Coast",
+    sites: [{ name: "Sayyid El Badawi Mosque", lon: 30.998, lat: 30.788 }],
+  },
+  {
+    id: "monufia",
+    name: "Monufia",
+    capital: "Shibin El Kom",
+    lon: 31.01,
+    lat: 30.55,
+    region: "Delta & Coast",
+    sites: [{ name: "Rural Delta life trails", lon: 31.0, lat: 30.53 }],
+  },
+  {
+    id: "dakahlia",
+    name: "Dakahlia",
+    capital: "Mansoura",
+    lon: 31.38,
+    lat: 31.04,
+    region: "Delta & Coast",
+    sites: [{ name: "Gamasa beaches", lon: 31.47, lat: 31.44 }],
+  },
+  {
+    id: "damietta",
+    name: "Damietta",
+    capital: "Damietta",
+    lon: 31.81,
+    lat: 31.42,
+    region: "Delta & Coast",
+    sites: [{ name: "Ras El Bar", lon: 31.83, lat: 31.51 }],
+  },
+  {
+    id: "port-said",
+    name: "Port Said",
+    capital: "Port Said",
+    lon: 32.3,
+    lat: 31.26,
+    region: "Canal & Sinai",
+    sites: [{ name: "Suez Canal waterfront", lon: 32.32, lat: 31.25 }],
+  },
+  {
+    id: "ismailia",
+    name: "Ismailia",
+    capital: "Ismailia",
+    lon: 32.27,
+    lat: 30.6,
+    region: "Canal & Sinai",
+    sites: [{ name: "Lake Timsah", lon: 32.31, lat: 30.57 }],
+  },
+  {
+    id: "suez",
+    name: "Suez",
+    capital: "Suez",
+    lon: 32.55,
+    lat: 29.97,
+    region: "Canal & Sinai",
+    sites: [{ name: "Ain Sokhna", lon: 32.34, lat: 29.6 }],
+  },
+  {
+    id: "north-sinai",
+    name: "North Sinai",
+    capital: "Arish",
+    lon: 33.8,
+    lat: 31.05,
+    region: "Canal & Sinai",
+    sites: [{ name: "Arish coast", lon: 33.8, lat: 31.13 }],
+  },
+  {
+    id: "south-sinai",
+    name: "South Sinai",
+    capital: "El Tor",
+    lon: 33.75,
+    lat: 28.5,
+    region: "Canal & Sinai",
+    sites: [
+      { name: "Sharm El Sheikh", lon: 34.33, lat: 27.92 },
+      { name: "Saint Catherine Monastery", lon: 33.976, lat: 28.556 },
+      { name: "Dahab & Blue Hole", lon: 34.516, lat: 28.5 },
+    ],
+  },
+  {
+    id: "sharqia",
+    name: "Sharqia",
+    capital: "Zagazig",
+    lon: 31.5,
+    lat: 30.59,
+    region: "Delta & Coast",
+    sites: [{ name: "Tanis (San El Hagar)", lon: 31.88, lat: 30.97 }],
+  },
+  {
+    id: "faiyum",
+    name: "Faiyum",
+    capital: "Faiyum",
+    lon: 30.84,
+    lat: 29.31,
+    region: "Upper Egypt",
+    sites: [
+      { name: "Wadi El Rayan", lon: 30.4, lat: 29.2 },
+      { name: "Wadi El Hitan (Whale Valley)", lon: 30.04, lat: 29.27 },
+    ],
+  },
+  {
+    id: "beni-suef",
+    name: "Beni Suef",
+    capital: "Beni Suef",
+    lon: 31.1,
+    lat: 29.07,
+    region: "Upper Egypt",
+    sites: [{ name: "Meidum Pyramid", lon: 31.157, lat: 29.388 }],
+  },
+  {
+    id: "minya",
+    name: "Minya",
+    capital: "Minya",
+    lon: 30.75,
+    lat: 28.1,
+    region: "Upper Egypt",
+    sites: [
+      { name: "Tell El Amarna", lon: 30.9, lat: 27.65 },
+      { name: "Beni Hasan tombs", lon: 30.87, lat: 27.93 },
+    ],
+  },
+  {
+    id: "asyut",
+    name: "Asyut",
+    capital: "Asyut",
+    lon: 31.18,
+    lat: 27.18,
+    region: "Upper Egypt",
+    sites: [{ name: "Deir El Muharraq", lon: 30.9, lat: 27.35 }],
+  },
+  {
+    id: "sohag",
+    name: "Sohag",
+    capital: "Sohag",
+    lon: 31.7,
+    lat: 26.56,
+    region: "Upper Egypt",
+    sites: [
+      { name: "Abydos Temple", lon: 31.919, lat: 26.185 },
+      { name: "White Monastery", lon: 31.65, lat: 26.53 },
+    ],
+  },
+  {
+    id: "qena",
+    name: "Qena",
+    capital: "Qena",
+    lon: 32.72,
+    lat: 26.16,
+    region: "Upper Egypt",
+    sites: [{ name: "Dendera Temple", lon: 32.67, lat: 26.142 }],
+  },
+  {
+    id: "luxor",
+    name: "Luxor",
+    capital: "Luxor",
+    lon: 32.64,
+    lat: 25.69,
+    region: "Upper Egypt",
+    sites: [
+      { name: "Karnak Temple", lon: 32.657, lat: 25.719 },
+      { name: "Valley of the Kings", lon: 32.601, lat: 25.74 },
+      { name: "Luxor Temple", lon: 32.639, lat: 25.7 },
+    ],
+  },
+  {
+    id: "aswan",
+    name: "Aswan",
+    capital: "Aswan",
+    lon: 32.9,
+    lat: 24.09,
+    region: "Upper Egypt",
+    sites: [
+      { name: "Abu Simbel", lon: 31.626, lat: 22.337 },
+      { name: "Philae Temple", lon: 32.884, lat: 24.025 },
+      { name: "Nubian Village", lon: 32.87, lat: 24.11 },
+    ],
+  },
+  {
+    id: "red-sea",
+    name: "Red Sea",
+    capital: "Hurghada",
+    lon: 33.81,
+    lat: 27.26,
+    region: "Deserts & Red Sea",
+    sites: [
+      { name: "Hurghada marinas", lon: 33.83, lat: 27.23 },
+      { name: "El Gouna", lon: 33.68, lat: 27.4 },
+      { name: "Marsa Alam reefs", lon: 34.9, lat: 25.07 },
+    ],
+  },
+  {
+    id: "new-valley",
+    name: "New Valley",
+    capital: "Kharga",
+    lon: 30.55,
+    lat: 25.44,
+    region: "Deserts & Red Sea",
+    sites: [
+      { name: "Kharga Oasis", lon: 30.55, lat: 25.44 },
+      { name: "Dakhla Oasis", lon: 28.98, lat: 25.51 },
+      { name: "White Desert (Farafra)", lon: 27.98, lat: 27.06 },
+    ],
+  },
+];
+
+/** Nile course, simplified, for the map backdrop. */
+export const nileCourse: [number, number][] = [
+  [31.2, 31.5],
+  [31.24, 30.6],
+  [31.22, 30.05],
+  [31.1, 29.3],
+  [30.85, 28.4],
+  [31.1, 27.6],
+  [31.8, 26.5],
+  [32.6, 25.9],
+  [32.75, 25.2],
+  [32.9, 24.09],
+  [31.9, 22.5],
+];
+
+export const LON_MIN = 24.6;
+export const LON_MAX = 37.2;
+export const LAT_MIN = 21.6;
+export const LAT_MAX = 32.1;
+
+export const projectX = (lon: number) => ((lon - LON_MIN) / (LON_MAX - LON_MIN)) * 100;
+export const projectY = (lat: number) => ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * 100;

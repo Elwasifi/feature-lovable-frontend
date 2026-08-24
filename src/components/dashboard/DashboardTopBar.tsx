@@ -70,6 +70,13 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
       </div>
 
       <div className="flex items-center gap-2 overflow-x-auto px-4 pb-3 lg:px-6 [scrollbar-width:none]">
+        <button
+          onClick={onMenu}
+          aria-label={t("Open menu")}
+          className="grid size-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold xl:hidden"
+        >
+          <Menu className="size-4" />
+        </button>
         {topTabs.map((tab, i) => (
           <a
             key={tab}

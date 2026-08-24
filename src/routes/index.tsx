@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import heroImage from "@/assets/hero-egypt.jpg";
 import filmImage from "@/assets/card-through-time.jpg";
+import mapImage from "@/assets/card-governorates.jpg";
 import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -218,7 +219,7 @@ function Governorates() {
       <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr]">
         <div className="relative overflow-hidden rounded-2xl border border-border">
           <img
-            src={discoverCards[0].image}
+            src={mapImage}
             alt="Map view of Egypt's governorates"
             loading="lazy"
             className="h-[420px] w-full object-cover"
@@ -488,7 +489,7 @@ function Trust() {
     <section id="support" className="scroll-mt-24 border-y border-border bg-sidebar py-10">
       <Container className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
         {trustItems.map((t, i) => {
-          const Icon = trustIcons[i % trustIcons.length];
+          const Icon = trustIcons[i % trustIcons.length] ?? ShieldCheck;
           return (
             <div key={t.title} className="flex items-start gap-3">
               <Icon className="mt-0.5 size-5 shrink-0 text-gold" />

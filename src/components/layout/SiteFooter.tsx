@@ -122,6 +122,7 @@ export function SiteFooter() {
           </p>
         </div>
       </Container>
+      <SocialBar />
     </footer>
   );
 }

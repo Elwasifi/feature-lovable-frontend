@@ -16,6 +16,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
+import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketplace.egyptian-cotton'
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
@@ -56,6 +57,11 @@ const LegalIndexRoute = LegalIndexRouteImport.update({
   path: '/legal/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalSlugRoute = LegalSlugRouteImport.update({
+  id: '/legal/$slug',
+  path: '/legal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketplaceEgyptianCottonRoute =
   MarketplaceEgyptianCottonRouteImport.update({
     id: '/marketplace/egyptian-cotton',
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/legal/$slug': typeof LegalSlugRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/encyclopedia'
     | '/governorates/$id'
+    | '/legal/$slug'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/encyclopedia'
     | '/governorates/$id'
+    | '/legal/$slug'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/encyclopedia'
     | '/governorates/$id'
+    | '/legal/$slug'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
+  LegalSlugRoute: typeof LegalSlugRoute
   MarketplaceEgyptianCottonRoute: typeof MarketplaceEgyptianCottonRoute
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
@@ -227,6 +240,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/$slug': {
+      id: '/legal/$slug'
+      path: '/legal/$slug'
+      fullPath: '/legal/$slug'
+      preLoaderRoute: typeof LegalSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace/egyptian-cotton': {
       id: '/marketplace/egyptian-cotton'
       path: '/marketplace/egyptian-cotton'
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
+  LegalSlugRoute: LegalSlugRoute,
   MarketplaceEgyptianCottonRoute: MarketplaceEgyptianCottonRoute,
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,

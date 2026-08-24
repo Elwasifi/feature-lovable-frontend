@@ -19,7 +19,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { useI18n } from "@/i18n";
-import { SITE, mailto } from "@/config/site";
+import { mailto } from "@/config/site";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { TopUtilityBar } from "@/components/layout/TopUtilityBar";

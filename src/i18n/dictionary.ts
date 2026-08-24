@@ -123,7 +123,6 @@ const ar: Dict = {
   Weather: "الطقس",
   Others: "أخرى",
 
-  Others: "أخرى",
 
   // Top tabs
   Home: "الرئيسية",

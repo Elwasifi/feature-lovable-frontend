@@ -60,6 +60,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
               3
             </span>
           </button>
+          <AuthButtons />
         </div>
       </div>
 

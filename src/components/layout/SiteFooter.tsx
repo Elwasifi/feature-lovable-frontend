@@ -120,17 +120,36 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
+      </Container>
 
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
-          </p>
-          <p className="text-xs text-muted-foreground">
+      <SocialBar />
+
+      <div className="border-t border-border/70 bg-background/40">
+        <Container className="py-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
+            </p>
+            <nav aria-label={t("Legal")}>
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                {legalLinks.map((l) => (
+                  <li key={l.label}>
+                    <a
+                      href={l.href}
+                      className="text-xs text-muted-foreground transition-colors hover:text-gold"
+                    >
+                      {t(l.label)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
             {t("Content shown on this preview is demonstration data unless labelled otherwise.")}
           </p>
-        </div>
-      </Container>
-      <SocialBar />
+        </Container>
+      </div>
     </footer>
   );
 }

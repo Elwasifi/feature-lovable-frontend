@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { ShieldCheck } from "lucide-react";
 import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
@@ -8,8 +8,6 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader } from "@/components/site/Primitives";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
-import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
 import { consentTypes, getLegalDocument } from "@/data/legal";
 
 const title = "Consent Centre — Egypt One";
@@ -42,50 +40,11 @@ type ConsentRow = {
 
 function ConsentCentre() {
   const { t } = useI18n();
-  const { user, loading } = useAuth();
-  const [rows, setRows] = useState<Record<string, ConsentRow>>({});
-  const [busy, setBusy] = useState<string | null>(null);
+  const [rows] = useState<Record<string, ConsentRow>>({});
+  const [busy] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!user) return;
-    supabase
-      .from("user_consents")
-      .select("consent_type,status,policy_version,granted_at,withdrawn_at")
-      .eq("user_id", user.id)
-      .then(({ data }) => {
-        const next: Record<string, ConsentRow> = {};
-        for (const r of (data ?? []) as ConsentRow[]) next[r.consent_type] = r;
-        setRows(next);
-      });
-  }, [user]);
-
-  async function setConsent(key: string, grant: boolean) {
-    if (!user) return;
-    const type = consentTypes.find((c) => c.key === key);
-    const policy = type ? getLegalDocument(type.policySlug) : undefined;
-    setBusy(key);
-    const now = new Date().toISOString();
-    const payload = {
-      user_id: user.id,
-      consent_type: key,
-      policy_slug: type?.policySlug ?? null,
-      policy_version: policy?.version ?? null,
-      status: grant ? "granted" : "withdrawn",
-      granted_at: grant ? now : (rows[key]?.granted_at ?? null),
-      withdrawn_at: grant ? null : now,
-      locale: typeof navigator !== "undefined" ? navigator.language : null,
-      user_agent: typeof navigator !== "undefined" ? navigator.userAgent.slice(0, 300) : null,
-    };
-    const { error } = await supabase
-      .from("user_consents")
-      .upsert(payload, { onConflict: "user_id,consent_type" });
-    setBusy(null);
-    if (error) {
-      toast.error(t("We could not record that consent. Please try again."));
-      return;
-    }
-    setRows((prev) => ({ ...prev, [key]: payload as unknown as ConsentRow }));
-    toast.success(grant ? t("Consent recorded") : t("Consent withdrawn"));
+  function setConsent(_key: string, _grant: boolean) {
+    toast(t("Preview — consent recording isn't connected to a backend yet"));
   }
 
   return (
@@ -102,20 +61,12 @@ function ConsentCentre() {
             )}
           />
 
-          {!user && !loading && (
-            <div className="rounded-2xl border border-gold-line bg-card p-6">
-              <ShieldCheck className="size-5 text-gold" />
-              <p className="mt-3 text-sm text-muted-foreground">
-                {t("Sign in to view and manage the consent records attached to your account.")}
-              </p>
-              <Link
-                to="/auth"
-                className="mt-4 inline-block rounded-xl border border-gold-line bg-gold/10 px-5 py-2.5 text-sm text-gold hover:bg-gold/20"
-              >
-                {t("Sign in")}
-              </Link>
-            </div>
-          )}
+          <div className="rounded-2xl border border-gold-line bg-card p-6">
+            <ShieldCheck className="size-5 text-gold" />
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t("Preview — consent recording isn't connected to a backend yet")}
+            </p>
+          </div>
 
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {consentTypes.map((c) => {
@@ -169,7 +120,7 @@ function ConsentCentre() {
                     ) : (
                       <button
                         type="button"
-                        disabled={!user || busy === c.key}
+                        disabled={busy === c.key}
                         onClick={() => setConsent(c.key, !granted)}
                         className="rounded-xl border border-gold-line bg-gold/10 px-4 py-2 text-xs text-gold transition-colors hover:bg-gold/20 disabled:cursor-not-allowed disabled:opacity-50"
                       >

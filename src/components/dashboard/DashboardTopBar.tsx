@@ -1,4 +1,4 @@
-import { Bell, Heart, Menu, Search, Sparkles } from "lucide-react";
+import { Bell, Heart, Menu, Search } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { SITE } from "@/config/site";
@@ -60,12 +60,6 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
               3
             </span>
           </button>
-          <a
-            href="#ai-concierge"
-            className="hidden items-center gap-2 rounded-full border border-gold-line bg-gold-soft px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold hover:text-primary-foreground lg:inline-flex"
-          >
-            <Sparkles className="size-4" /> {t("AI Concierge")}
-          </a>
         </div>
       </div>
 

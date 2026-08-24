@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egypt-one.jpg";
-import mapImage from "@/assets/map-egypt.jpg";
+import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";

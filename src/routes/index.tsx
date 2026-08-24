@@ -481,11 +481,11 @@ function ThroughTime() {
   const { t } = useI18n();
   return (
     <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
-      <div className="flex gap-3 overflow-x-auto pb-2">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {eras.map((era) => (
           <figure
             key={era.name}
-            className="group w-48 shrink-0 overflow-hidden rounded-xl border border-border/70 bg-card"
+            className="group min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
           >
             <img
               src={era.image}

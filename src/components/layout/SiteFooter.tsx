@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { Container } from "@/components/site/Primitives";

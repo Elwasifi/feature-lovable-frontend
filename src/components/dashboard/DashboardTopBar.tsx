@@ -69,7 +69,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         <button
           onClick={onMenu}
           aria-label={t("Open menu")}
-          className="grid size-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold xl:hidden"
+          className="grid size-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
         >
           <Menu className="size-4" />
         </button>

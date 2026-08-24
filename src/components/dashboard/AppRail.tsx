@@ -62,7 +62,7 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
           <button
             onClick={onClose}
             aria-label={t("Close menu")}
-            className="ms-auto grid size-8 shrink-0 place-items-center rounded-full border border-sidebar-border text-muted-foreground xl:hidden"
+            className="ms-auto grid size-8 shrink-0 place-items-center rounded-full border border-sidebar-border text-muted-foreground"
           >
             <X className="size-4" />
           </button>

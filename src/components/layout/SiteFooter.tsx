@@ -108,28 +108,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
-          <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-              {t("Download the app")}
-            </h3>
-            <ul className="mt-4 flex flex-nowrap items-center justify-start gap-2">
-              {[
-                { label: "App Store", Icon: AppleIcon },
-                { label: "Google Play", Icon: GooglePlayIcon },
-              ].map(({ label, Icon }) => (
-                <li key={label}>
-                  <span
-                    title={t(label)}
-                    aria-label={t(label)}
-                    className="group grid size-9 place-items-center rounded-full border border-gold-line/60 bg-card/70 text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:bg-gold hover:text-background hover:shadow-[0_10px_24px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
-                  >
-                    <Icon className="size-[15px]" />
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <div>
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
               {t("Government integration")}
@@ -141,6 +120,27 @@ export function SiteFooter() {
                   className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
                 >
                   {t(g)}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="text-start">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+              {t("Download the app")}
+            </h3>
+            <ul className="mt-4 flex flex-nowrap items-center justify-start gap-3">
+              {[
+                { label: "App Store", Icon: AppleIcon },
+                { label: "Google Play", Icon: GooglePlayIcon },
+              ].map(({ label, Icon }) => (
+                <li key={label}>
+                  <span
+                    title={t(label)}
+                    aria-label={t(label)}
+                    className="group grid size-14 place-items-center rounded-full border border-gold-line/60 bg-card/70 text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:bg-gold hover:text-background hover:shadow-[0_10px_24px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
+                  >
+                    <Icon className="size-7" />
+                  </span>
                 </li>
               ))}
             </ul>

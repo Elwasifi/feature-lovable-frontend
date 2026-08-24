@@ -9,6 +9,17 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Discover": "اكتشف",
+  "Plan a visit": "خطط لزيارة",
+  "See top places": "أهم الأماكن",
+  "A short history": "لمحة تاريخية",
+  "Where to go": "أين تذهب",
+  "Famous places in": "أشهر أماكن",
+  "Nearby": "بالجوار",
+  "More in this region": "المزيد في هذا الإقليم",
+  "Back to the 27 governorates map": "العودة إلى خريطة الـ27 محافظة",
+  "Archaeological, touristic and leisure landmarks mapped for your itinerary.":
+    "معالم أثرية وسياحية وترفيهية على الخريطة لتخطيط رحلتك.",
   // Interactive map
   "Interactive map of Egypt's 27 governorates": "خريطة تفاعلية لمحافظات مصر الـ27",
   Governorate: "محافظة",

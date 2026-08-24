@@ -142,6 +142,7 @@ const ar: Dict = {
   "Visiting from: Worldwide": "الزيارة من: العالم",
   "Open menu": "فتح القائمة",
   "Close menu": "إغلاق القائمة",
+  Menu: "القائمة",
   "Sign in": "تسجيل الدخول",
   Weather: "الطقس",
   Others: "أخرى",

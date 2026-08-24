@@ -29,6 +29,7 @@ import heroImage from "@/assets/hero-egypt-one.jpg";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
+import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";

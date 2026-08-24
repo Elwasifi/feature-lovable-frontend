@@ -128,7 +128,7 @@ function GovernoratePage() {
           <SectionHeader
             eyebrow={t("Where to go")}
             title={`${t("Famous places in")} ${t(gov.name)}`}
-            subtitle={t("Archaeological, touristic and leisure landmarks mapped for your itinerary.")}
+            description={t("Archaeological, touristic and leisure landmarks mapped for your itinerary.")}
           />
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {gov.sites.map((s) => (

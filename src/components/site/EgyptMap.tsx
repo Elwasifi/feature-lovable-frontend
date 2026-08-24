@@ -10,6 +10,8 @@ import {
   Crosshair,
   Search,
   Layers,
+  X,
+
 } from "lucide-react";
 import { useI18n } from "@/i18n";
 import {

@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { Container } from "@/components/site/Primitives";
@@ -7,20 +7,14 @@ import { useI18n } from "@/i18n";
 import { SITE, mailto } from "@/config/site";
 import { SocialBar } from "@/components/layout/SocialBar";
 
-const socials = [
-  { Icon: Facebook, href: SITE.social.facebook, label: "Facebook" },
-  { Icon: Instagram, href: SITE.social.instagram, label: "Instagram" },
-  { Icon: Youtube, href: SITE.social.youtube, label: "YouTube" },
-  { Icon: Linkedin, href: SITE.social.linkedin, label: "LinkedIn" },
-];
 
 export function SiteFooter() {
   const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-sidebar">
       <SocialBar />
-      <Container className="py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
+      <Container className="py-16">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -54,21 +48,8 @@ export function SiteFooter() {
             <p className="mt-1 text-xs text-muted-foreground" dir="ltr">
               {SITE.domain}
             </p>
-            <div className="mt-5 flex gap-2">
-              {socials.map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                  className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
-                >
-                  <Icon className="size-4" />
-                </a>
-              ))}
-            </div>
           </div>
+
 
           {footerColumns.map((col) => (
             <div key={col.title}>
@@ -100,7 +81,7 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 border-t border-border pt-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
           <div>
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
               {t("Government integration")}
@@ -133,7 +114,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-8">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
           </p>

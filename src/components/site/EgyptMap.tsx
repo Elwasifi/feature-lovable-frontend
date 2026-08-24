@@ -157,7 +157,7 @@ export function EgyptMap() {
       >
         <svg
           viewBox="0 0 100 100"
-          preserveAspectRatio="xMidYMid slice"
+          preserveAspectRatio="xMidYMid meet"
           role="img"
           aria-label={t("Interactive map of Egypt's 27 governorates")}
           className="absolute inset-0 h-full w-full"

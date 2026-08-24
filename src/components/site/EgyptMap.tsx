@@ -214,10 +214,9 @@ export function EgyptMap() {
           <rect width="100" height="100" fill="url(#egGraticule)" opacity="0.55" />
 
           <g
-            transform={`translate(${(view.x / (containerRef.current?.clientWidth || 100)) * 100} ${
-              (view.y / (containerRef.current?.clientHeight || 100)) * 100
-            }) scale(${view.z}) translate(50 50) scale(0.9) translate(-50 -50)`}
+            transform={`translate(${view.x} ${view.y}) scale(${view.z}) translate(50 50) scale(0.9) translate(-50 -50)`}
           >
+
             {/* land */}
             <path d={outlinePath} fill="url(#egLand)" />
             <path d={outlinePath} fill="url(#egGraticule)" opacity="0.4" />

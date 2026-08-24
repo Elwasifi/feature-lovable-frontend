@@ -19,7 +19,6 @@ import { useI18n } from "@/i18n";
 import { mailto } from "@/config/site";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { Container } from "@/components/site/Primitives";
 import { cn } from "@/lib/utils";
 
@@ -148,7 +147,6 @@ function AccountPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
 
       <Container className="py-8 lg:py-12">

@@ -156,6 +156,14 @@ export function FloatingConcierge() {
             >
               <Send className="size-3.5" /> {t("Open AI Concierge")}
             </a>
+            <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground/80">
+              {t(
+                "You are talking to an AI system, not a human agent or a government official. Its answers are not legal, medical or investment advice and never replace official emergency services — for emergencies contact the official authorities.",
+              )}{" "}
+              <Link to="/legal/ai-transparency" className="text-gold hover:underline">
+                {t("AI Transparency Policy")}
+              </Link>
+            </p>
           </div>
         </div>
       )}

@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { Apple, Chrome, Loader2, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
-import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
-import { useAuth } from "@/hooks/use-auth";
+import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Apple, Chrome, Info, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { SITE } from "@/config/site";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
@@ -31,61 +27,18 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const { t } = useI18n();
-  const navigate = useNavigate();
-  const { user, loading } = useAuth();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
-  const [busy, setBusy] = useState<string | null>(null);
+  const busy: string | null = null;
   const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
+  const [notice, setNotice] = useState(false);
 
-  useEffect(() => {
-    if (!loading && user) navigate({ to: "/account" });
-  }, [loading, user, navigate]);
-
-  async function social(provider: "google" | "apple") {
-    setBusy(provider);
-    try {
-      const result = await lovable.auth.signInWithOAuth(provider, {
-        redirect_uri: window.location.origin,
-      });
-      if (result.error) {
-        toast.error(t("Sign-in failed. Please try again."));
-        return;
-      }
-      if (result.redirected) return;
-      navigate({ to: "/account" });
-    } finally {
-      setBusy(null);
-    }
+  function comingSoon() {
+    setNotice(true);
   }
 
-  async function submit(e: React.FormEvent) {
+  function submit(e: React.FormEvent) {
     e.preventDefault();
-    setBusy("email");
-    try {
-      if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
-          email: form.email,
-          password: form.password,
-          options: {
-            emailRedirectTo: `${window.location.origin}/account`,
-            data: { full_name: form.name, whatsapp: form.whatsapp },
-          },
-        });
-        if (error) throw error;
-        toast.success(t("Account created. Check your email to confirm it."));
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email: form.email,
-          password: form.password,
-        });
-        if (error) throw error;
-        navigate({ to: "/account" });
-      }
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : t("Sign-in failed. Please try again."));
-    } finally {
-      setBusy(null);
-    }
+    comingSoon();
   }
 
   return (
@@ -157,19 +110,19 @@ function AuthPage() {
 
           <div className="mt-6 grid gap-2.5">
             <button
-              onClick={() => social("google")}
+              onClick={comingSoon}
               disabled={busy !== null}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
-              {busy === "google" ? <Loader2 className="size-4 animate-spin" /> : <Chrome className="size-4 text-gold" />}
+              <Chrome className="size-4 text-gold" />
               {t("Continue with Google")}
             </button>
             <button
-              onClick={() => social("apple")}
+              onClick={comingSoon}
               disabled={busy !== null}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
-              {busy === "apple" ? <Loader2 className="size-4 animate-spin" /> : <Apple className="size-4 text-gold" />}
+              <Apple className="size-4 text-gold" />
               {t("Continue with Apple")}
             </button>
           </div>
@@ -229,13 +182,19 @@ function AuthPage() {
 
             <button
               type="submit"
-              disabled={busy !== null}
+              title={t("Coming soon")}
               className="mt-2 flex h-12 items-center justify-center gap-2 rounded-xl bg-gold text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
             >
-              {busy === "email" && <Loader2 className="size-4 animate-spin" />}
               {t(mode === "signup" ? "Create account" : "Sign in")}
             </button>
           </form>
+
+          {notice && (
+            <p className="mt-4 flex items-center gap-2 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
+              <Info className="size-4 shrink-0" />
+              {t("Account sign-in isn't live yet")}
+            </p>
+          )}
 
           <p className="mt-5 text-center text-xs leading-relaxed text-muted-foreground">
             {t("By continuing you agree to the Egypt One terms and privacy policy.")}

@@ -206,25 +206,95 @@ export const topGovernorates = [
   { name: "Others", value: 24 },
 ];
 
-export const footerColumns = [
+export const primaryNav = [
+  { label: "Explore Egypt", href: "#explore" },
+  { label: "Governorates", href: "#governorates" },
+  { label: "Through Time", href: "#through-time" },
+  { label: "Plan Your Trip", href: "#plan" },
+  { label: "Invest", href: "#invest" },
+  { label: "Film & Culture", href: "#film" },
+  { label: "Contact", href: "/contact" },
+];
+
+export type FooterLink = { label: string; to?: string; href?: string };
+
+export const footerColumns: { title: string; links: FooterLink[] }[] = [
   {
-    title: "About",
-    links: ["About Us", "Careers", "Press", "Partners"],
+    title: "Explore",
+    links: [
+      { label: "Destinations", href: "#explore" },
+      { label: "27 Governorates", href: "#governorates" },
+      { label: "Heritage & Museums", href: "#explore" },
+      { label: "Egypt Through Time", href: "#through-time" },
+    ],
   },
   {
-    title: "Travel",
-    links: ["Plan Your Trip", "Destinations", "Travel Guides", "Visa Information"],
+    title: "Plan",
+    links: [
+      { label: "Smart Trip Planner", href: "#plan" },
+      { label: "AI Concierge", href: "#ai-concierge" },
+      { label: "Programmes", href: "#programmes" },
+      { label: "Search Egypt One", href: "#search" },
+    ],
   },
   {
     title: "Invest",
-    links: ["Invest in Egypt", "Opportunities", "Why Egypt", "Success Stories"],
-  },
-  {
-    title: "Legal",
-    links: ["Terms & Conditions", "Privacy Policy", "Cookie Policy", "Data Protection"],
+    links: [
+      { label: "Investment Sectors", href: "#invest" },
+      { label: "Opportunities", href: "#invest" },
+      { label: "Partner With Us" },
+      { label: "Press & Media" },
+    ],
   },
   {
     title: "Support",
-    links: ["Help Center", "Contact Us", "Safety Center", "Report an Issue"],
+    links: [
+      { label: "Contact Us", to: "/contact" },
+      { label: "Help Centre", to: "/contact" },
+      { label: "Report an Issue" },
+      { label: "Accessibility" },
+    ],
   },
+];
+
+export const pillars = [
+  {
+    title: "Explore Egypt",
+    body: "Destinations, 27 governorates, heritage sites, museums and living culture.",
+    cta: "Start exploring",
+    href: "#explore",
+    image: cardGovernorates,
+  },
+  {
+    title: "Plan Your Journey",
+    body: "Build an itinerary day by day with the Egypt One trip planner and AI concierge.",
+    cta: "Plan a trip",
+    href: "#plan",
+    image: cardNileSea,
+  },
+  {
+    title: "Invest in Egypt",
+    body: "Sectors, projects and the business ecosystem behind a growing economy.",
+    cta: "See sectors",
+    href: "#invest",
+    image: sectorRealEstate,
+  },
+];
+
+export const investSectors = [
+  "Real Estate",
+  "Tourism & Hospitality",
+  "Technology",
+  "Healthcare",
+  "Creative Economy",
+  "Education",
+  "Industry",
+  "Entertainment",
+];
+
+export const programmes = [
+  { title: "Egypt One Pass", body: "One digital pass for attractions, rewards and benefits." },
+  { title: "Visit All 27", body: "A national challenge across every Egyptian governorate." },
+  { title: "Stopover Egypt", body: "Turn a transit stop into a curated short journey." },
+  { title: "One More Night", body: "Extend a stay and unlock added value with partners." },
 ];

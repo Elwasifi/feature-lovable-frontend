@@ -40,7 +40,7 @@ export function CurrencySwitcher({ compact = false }: { compact?: boolean }) {
       {open && (
         <ul
           role="listbox"
-          className="absolute end-0 z-50 mt-2 max-h-80 w-60 overflow-y-auto rounded-xl border border-border bg-popover p-1 shadow-[var(--shadow-card)]"
+          className="absolute end-0 z-50 mt-2 max-h-[70vh] w-60 max-w-[calc(100vw-1.5rem)] overflow-y-auto rounded-xl border border-border bg-popover p-1 shadow-[var(--shadow-card)]"
         >
           {CURRENCIES.map((c) => (
             <li key={c.code}>

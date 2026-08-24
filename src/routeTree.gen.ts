@@ -18,6 +18,7 @@ import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as LegalConsentRouteImport } from './routes/legal.consent'
+import { Route as LegalReviewChecklistRouteImport } from './routes/legal.review-checklist'
 import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketplace.egyptian-cotton'
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
@@ -68,6 +69,11 @@ const LegalConsentRoute = LegalConsentRouteImport.update({
   path: '/legal/consent',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalReviewChecklistRoute = LegalReviewChecklistRouteImport.update({
+  id: '/legal/review-checklist',
+  path: '/legal/review-checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MarketplaceEgyptianCottonRoute =
   MarketplaceEgyptianCottonRouteImport.update({
     id: '/marketplace/egyptian-cotton',
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
+  '/legal/review-checklist': typeof LegalReviewChecklistRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
+  '/legal/review-checklist': typeof LegalReviewChecklistRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
+  '/legal/review-checklist': typeof LegalReviewChecklistRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
+    | '/legal/review-checklist'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
+    | '/legal/review-checklist'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
+    | '/legal/review-checklist'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
   LegalConsentRoute: typeof LegalConsentRoute
+  LegalReviewChecklistRoute: typeof LegalReviewChecklistRoute
   MarketplaceEgyptianCottonRoute: typeof MarketplaceEgyptianCottonRoute
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LegalConsentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/review-checklist': {
+      id: '/legal/review-checklist'
+      path: '/legal/review-checklist'
+      fullPath: '/legal/review-checklist'
+      preLoaderRoute: typeof LegalReviewChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace/egyptian-cotton': {
       id: '/marketplace/egyptian-cotton'
       path: '/marketplace/egyptian-cotton'
@@ -307,6 +327,7 @@ const rootRouteChildren: RootRouteChildren = {
   GovernoratesIdRoute: GovernoratesIdRoute,
   LegalSlugRoute: LegalSlugRoute,
   LegalConsentRoute: LegalConsentRoute,
+  LegalReviewChecklistRoute: LegalReviewChecklistRoute,
   MarketplaceEgyptianCottonRoute: MarketplaceEgyptianCottonRoute,
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,

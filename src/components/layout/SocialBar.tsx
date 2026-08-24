@@ -57,37 +57,23 @@ export function SocialBar() {
             </p>
           </div>
 
-          <ul className="flex flex-wrap items-center justify-center gap-3">
+          <ul className="flex flex-nowrap items-center justify-center gap-2">
             {socials.map(({ label, handle, href, Icon }) => (
               <li key={label}>
                 <a
                   href={href}
                   target="_blank"
                   rel="noreferrer noopener"
+                  title={`${label} ${handle}`}
                   aria-label={`${label} — ${handle}`}
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-2xl border border-border/70 bg-card/70 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:shadow-[0_14px_36px_-18px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
+                  className="group grid size-9 place-items-center rounded-full border border-gold-line/60 bg-card/70 text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:bg-gold hover:text-background hover:shadow-[0_10px_24px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
                 >
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{
-                      background:
-                        "radial-gradient(120px 60px at 20% 0%, color-mix(in oklab, var(--gold) 16%, transparent), transparent 70%)",
-                    }}
-                  />
-                  <span className="relative grid size-10 place-items-center rounded-full border border-gold-line/60 bg-background/70 text-gold transition-colors duration-300 group-hover:bg-gold group-hover:text-background">
-                    <Icon className="size-[18px]" />
-                  </span>
-                  <span className="relative hidden leading-tight sm:block">
-                    <span className="block text-sm font-medium text-foreground">{label}</span>
-                    <span className="block text-[11px] text-muted-foreground" dir="ltr">
-                      {handle}
-                    </span>
-                  </span>
+                  <Icon className="size-[15px]" />
                 </a>
               </li>
             ))}
           </ul>
+
         </div>
       </Container>
     </section>

@@ -90,29 +90,31 @@ export function EgyptMap() {
     );
   }, [query, t]);
 
-  const zoomAt = useCallback((factor: number, px: number, py: number) => {
+  /** px -> svg(0..100) conversion for the viewBox with preserveAspectRatio="meet". */
+  const svgMetrics = useCallback(() => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    const w = rect?.width ?? 600;
+    const h = rect?.height ?? 520;
+    const s = Math.min(w, h) / 100;
+    return { w, h, s, ox: (w - 100 * s) / 2, oy: (h - 100 * s) / 2, left: rect?.left ?? 0, top: rect?.top ?? 0 };
+  }, []);
+
+  /** zoom anchored at a point given in svg units */
+  const zoomAt = useCallback((factor: number, sx: number, sy: number) => {
     setView((v) => {
       const next = clamp(v.z * factor, MIN_ZOOM, MAX_ZOOM);
       const k = next / v.z;
-      return { z: next, x: px - (px - v.x) * k, y: py - (py - v.y) * k };
+      return { z: next, x: sx - (sx - v.x) * k, y: sy - (sy - v.y) * k };
     });
   }, []);
 
-  const zoomButton = useCallback(
-    (factor: number) => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      zoomAt(factor, (rect?.width ?? 600) / 2, (rect?.height ?? 460) / 2);
-    },
-    [zoomAt],
-  );
+  const zoomButton = useCallback((factor: number) => zoomAt(factor, 50, 50), [zoomAt]);
 
-  const focusGovernorate = useCallback((g: Governorate, zoom = 2.8) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    const w = rect?.width ?? 600;
-    const h = rect?.height ?? 460;
-    const gx = (projectX(g.lon) / 100) * w;
-    const gy = (projectY(g.lat) / 100) * h;
-    setView({ z: zoom, x: w / 2 - gx * zoom, y: h / 2 - gy * zoom });
+  // composed transform: translate(v.x v.y) scale(z) translate(50 50) scale(0.9) translate(-50 -50)
+  const focusGovernorate = useCallback((g: Governorate, zoom = 3) => {
+    const gx = 50 + 0.9 * (projectX(g.lon) - 50);
+    const gy = 50 + 0.9 * (projectY(g.lat) - 50);
+    setView({ z: zoom, x: 50 - zoom * gx, y: 50 - zoom * gy });
   }, []);
 
   // Non-passive wheel listener (React's onWheel is passive).
@@ -122,12 +124,16 @@ export function EgyptMap() {
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
       const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
-      const rect = el.getBoundingClientRect();
-      zoomAt(Math.exp(-dy * 0.0018), e.clientX - rect.left, e.clientY - rect.top);
+      const m = svgMetrics();
+      zoomAt(
+        Math.exp(-dy * 0.0018),
+        (e.clientX - m.left - m.ox) / m.s,
+        (e.clientY - m.top - m.oy) / m.s,
+      );
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [zoomAt]);
+  }, [zoomAt, svgMetrics]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     (e.target as Element).setPointerCapture?.(e.pointerId);
@@ -137,11 +143,13 @@ export function EgyptMap() {
   const onPointerMove = (e: React.PointerEvent) => {
     const d = dragRef.current;
     if (!d) return;
-    setView((v) => ({ ...v, x: d.ox + (e.clientX - d.px), y: d.oy + (e.clientY - d.py) }));
+    const { s } = svgMetrics();
+    setView((v) => ({ ...v, x: d.ox + (e.clientX - d.px) / s, y: d.oy + (e.clientY - d.py) / s }));
   };
   const endDrag = () => {
     dragRef.current = null;
   };
+
 
   const pinScale = 1 / Math.sqrt(view.z);
 

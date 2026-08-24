@@ -29,7 +29,7 @@ export const Route = createFileRoute("/legal/consent")({
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/legal/consent` }],
   }),
-  component: ConsentCentre;
+  component: ConsentCentre,
 });
 
 type ConsentRow = {

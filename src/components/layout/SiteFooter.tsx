@@ -16,8 +16,9 @@ const socials = [
 export function SiteFooter() {
   const { t } = useI18n();
   return (
-    <footer className="border-t border-border bg-sidebar py-14">
-      <Container>
+    <footer className="border-t border-border bg-sidebar">
+      <SocialBar />
+      <Container className="py-14">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
           <div>
             <div className="flex items-center gap-3">

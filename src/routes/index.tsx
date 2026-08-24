@@ -471,44 +471,8 @@ function Governorates() {
       title="Explore all 27 governorates"
       action={<ViewAll href="#governorates" />}
     >
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <div className="relative overflow-hidden rounded-2xl border border-border/70">
-          <img
-            src={mapImage}
-            alt="Illustrative night map of Egypt"
-            loading="lazy"
-            width={900}
-            height={700}
-            className="h-[320px] w-full object-cover"
-          />
-          <SourceBadge status="DEMO" className="absolute start-3 top-3" />
-        </div>
-        <div className="grid content-start gap-3 rounded-2xl border border-border/70 bg-card p-5">
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {t(
-              "Every governorate gets its own profile: geography, heritage sites, museums, experiences and local partners — mapped into one national index.",
-            )}
-          </p>
-          <dl className="grid grid-cols-2 gap-3">
-            {[
-              { k: "Governorates", v: "27" },
-              { k: "Total area", v: "1M km²" },
-              { k: "Heritage sites", v: "2,400+" },
-              { k: "Museums", v: "80+" },
-            ].map((s) => (
-              <div key={s.k} className="rounded-xl border border-border/60 bg-surface-2 p-3">
-                <dt className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-                  {t(s.k)}
-                </dt>
-                <dd className="mt-1 font-display text-lg text-gold">{s.v}</dd>
-              </div>
-            ))}
-          </dl>
-          <GhostButton href="#explore" className="mt-1 w-full">
-            {t("Browse governorates")} <ArrowRight className="size-4" />
-          </GhostButton>
-        </div>
-      </div>
+      <EgyptMap />
+
     </Block>
   );
 }

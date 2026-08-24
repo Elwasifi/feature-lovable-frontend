@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
+import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketplace.egyptian-cotton'
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
@@ -48,6 +49,11 @@ const EncyclopediaRoute = EncyclopediaRouteImport.update({
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalIndexRoute = LegalIndexRouteImport.update({
+  id: '/legal/',
+  path: '/legal/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketplaceEgyptianCottonRoute =
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/legal/': typeof LegalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -97,6 +104,7 @@ export interface FileRoutesByTo {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/legal': typeof LegalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/legal/': typeof LegalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/legal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/legal'
   id:
     | '__root__'
     | '/'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/legal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -161,6 +173,7 @@ export interface RootRouteChildren {
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
   MarketplaceWearEgyptRoute: typeof MarketplaceWearEgyptRoute
+  LegalIndexRoute: typeof LegalIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernoratesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/': {
+      id: '/legal/'
+      path: '/legal'
+      fullPath: '/legal/'
+      preLoaderRoute: typeof LegalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/marketplace/egyptian-cotton': {
       id: '/marketplace/egyptian-cotton'
       path: '/marketplace/egyptian-cotton'
@@ -249,6 +269,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,
   MarketplaceWearEgyptRoute: MarketplaceWearEgyptRoute,
+  LegalIndexRoute: LegalIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -38,14 +38,15 @@ export const Route = createFileRoute("/legal/$slug")({
 });
 
 function LegalNotFound() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background">
       <TopUtilityBar />
       <SiteHeader />
       <Section>
-        <h1 className="font-display text-3xl text-foreground">Document not found</h1>
+        <h1 className="font-display text-3xl text-foreground">{t("Document not found")}</h1>
         <Link to="/legal" className="mt-4 inline-block text-sm text-gold">
-          Back to the Legal Center
+          {t("Back to the Legal Center")}
         </Link>
       </Section>
       <SiteFooter />

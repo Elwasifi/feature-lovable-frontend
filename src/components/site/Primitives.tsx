@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/i18n";
 
 export function Container({
   children,
@@ -38,20 +39,21 @@ export function SectionHeader({
   description?: string;
   action?: ReactNode;
 }) {
+  const { t } = useI18n();
   return (
     <div className="mb-8 flex flex-wrap items-end justify-between gap-4 lg:mb-12">
       <div className="max-w-2xl">
         {eyebrow && (
           <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-gold/80">
-            {eyebrow}
+            {t(eyebrow)}
           </p>
         )}
         <h2 className="font-display text-2xl leading-tight tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-          {title}
+          {t(title)}
         </h2>
         {description && (
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground lg:text-base">
-            {description}
+            {t(description)}
           </p>
         )}
       </div>

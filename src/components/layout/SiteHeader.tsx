@@ -53,7 +53,7 @@ export function SiteHeader() {
           <CurrencySwitcher />
           <a
             href="#search"
-            aria-label="Search Egypt One"
+            aria-label={t("Search Egypt One")}
             className="grid size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
           >
             <Search className="size-4" />

@@ -10,6 +10,8 @@ import {
   Crosshair,
   Search,
   Layers,
+  X,
+
 } from "lucide-react";
 import { useI18n } from "@/i18n";
 import {
@@ -64,6 +66,8 @@ export function EgyptMap() {
   const [hoverId, setHoverId] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [showLabels, setShowLabels] = useState(true);
+  const [cardOpen, setCardOpen] = useState(false);
+
 
   const [view, setView] = useState({ z: 1, x: 0, y: 0 });
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -88,29 +92,31 @@ export function EgyptMap() {
     );
   }, [query, t]);
 
-  const zoomAt = useCallback((factor: number, px: number, py: number) => {
+  /** px -> svg(0..100) conversion for the viewBox with preserveAspectRatio="meet". */
+  const svgMetrics = useCallback(() => {
+    const rect = containerRef.current?.getBoundingClientRect();
+    const w = rect?.width ?? 600;
+    const h = rect?.height ?? 520;
+    const s = Math.min(w, h) / 100;
+    return { w, h, s, ox: (w - 100 * s) / 2, oy: (h - 100 * s) / 2, left: rect?.left ?? 0, top: rect?.top ?? 0 };
+  }, []);
+
+  /** zoom anchored at a point given in svg units */
+  const zoomAt = useCallback((factor: number, sx: number, sy: number) => {
     setView((v) => {
       const next = clamp(v.z * factor, MIN_ZOOM, MAX_ZOOM);
       const k = next / v.z;
-      return { z: next, x: px - (px - v.x) * k, y: py - (py - v.y) * k };
+      return { z: next, x: sx - (sx - v.x) * k, y: sy - (sy - v.y) * k };
     });
   }, []);
 
-  const zoomButton = useCallback(
-    (factor: number) => {
-      const rect = containerRef.current?.getBoundingClientRect();
-      zoomAt(factor, (rect?.width ?? 600) / 2, (rect?.height ?? 460) / 2);
-    },
-    [zoomAt],
-  );
+  const zoomButton = useCallback((factor: number) => zoomAt(factor, 50, 50), [zoomAt]);
 
-  const focusGovernorate = useCallback((g: Governorate, zoom = 2.8) => {
-    const rect = containerRef.current?.getBoundingClientRect();
-    const w = rect?.width ?? 600;
-    const h = rect?.height ?? 460;
-    const gx = (projectX(g.lon) / 100) * w;
-    const gy = (projectY(g.lat) / 100) * h;
-    setView({ z: zoom, x: w / 2 - gx * zoom, y: h / 2 - gy * zoom });
+  // composed transform: translate(v.x v.y) scale(z) translate(50 50) scale(0.9) translate(-50 -50)
+  const focusGovernorate = useCallback((g: Governorate, zoom = 3) => {
+    const gx = 50 + 0.9 * (projectX(g.lon) - 50);
+    const gy = 50 + 0.9 * (projectY(g.lat) - 50);
+    setView({ z: zoom, x: 50 - zoom * gx, y: 50 - zoom * gy });
   }, []);
 
   // Non-passive wheel listener (React's onWheel is passive).
@@ -120,12 +126,16 @@ export function EgyptMap() {
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
       const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 100 : 1);
-      const rect = el.getBoundingClientRect();
-      zoomAt(Math.exp(-dy * 0.0018), e.clientX - rect.left, e.clientY - rect.top);
+      const m = svgMetrics();
+      zoomAt(
+        Math.exp(-dy * 0.0018),
+        (e.clientX - m.left - m.ox) / m.s,
+        (e.clientY - m.top - m.oy) / m.s,
+      );
     };
     el.addEventListener("wheel", onWheel, { passive: false });
     return () => el.removeEventListener("wheel", onWheel);
-  }, [zoomAt]);
+  }, [zoomAt, svgMetrics]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     (e.target as Element).setPointerCapture?.(e.pointerId);
@@ -135,11 +145,13 @@ export function EgyptMap() {
   const onPointerMove = (e: React.PointerEvent) => {
     const d = dragRef.current;
     if (!d) return;
-    setView((v) => ({ ...v, x: d.ox + (e.clientX - d.px), y: d.oy + (e.clientY - d.py) }));
+    const { s } = svgMetrics();
+    setView((v) => ({ ...v, x: d.ox + (e.clientX - d.px) / s, y: d.oy + (e.clientY - d.py) / s }));
   };
   const endDrag = () => {
     dragRef.current = null;
   };
+
 
   const pinScale = 1 / Math.sqrt(view.z);
 
@@ -204,10 +216,9 @@ export function EgyptMap() {
           <rect width="100" height="100" fill="url(#egGraticule)" opacity="0.55" />
 
           <g
-            transform={`translate(${(view.x / (containerRef.current?.clientWidth || 100)) * 100} ${
-              (view.y / (containerRef.current?.clientHeight || 100)) * 100
-            }) scale(${view.z}) translate(50 50) scale(0.9) translate(-50 -50)`}
+            transform={`translate(${view.x} ${view.y}) scale(${view.z}) translate(50 50) scale(0.9) translate(-50 -50)`}
           >
+
             {/* land */}
             <path d={outlinePath} fill="url(#egLand)" />
             <path d={outlinePath} fill="url(#egGraticule)" opacity="0.4" />
@@ -294,7 +305,11 @@ export function EgyptMap() {
                   className="cursor-pointer"
                   onMouseEnter={() => setHoverId(g.id)}
                   onMouseLeave={() => setHoverId((h) => (h === g.id ? null : h))}
-                  onClick={() => setActiveId(g.id)}
+                  onClick={() => {
+                    setActiveId(g.id);
+                    setCardOpen(true);
+                  }}
+
                 >
                   <ellipse cx={x} cy={y} rx={1.1 * s} ry={0.4 * s} fill="oklch(0 0 0 / 45%)" />
                   <g transform={`translate(${x} ${y}) scale(${s}) translate(${-x} ${-y})`}>
@@ -339,28 +354,51 @@ export function EgyptMap() {
         {/* zoom / view controls */}
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {[
-            { icon: Plus, label: t("Zoom in"), onClick: () => zoomButton(1.35) },
-            { icon: Minus, label: t("Zoom out"), onClick: () => zoomButton(1 / 1.35) },
-            { icon: Maximize2, label: t("Reset view"), onClick: () => setView({ z: 1, x: 0, y: 0 }) },
-            { icon: Crosshair, label: t("Focus"), onClick: () => focusGovernorate(active) },
+            { icon: Plus, label: t("Zoom in"), onClick: () => zoomButton(1.35), on: false },
+            { icon: Minus, label: t("Zoom out"), onClick: () => zoomButton(1 / 1.35), on: false },
+            {
+              icon: Maximize2,
+              label: t("Reset view"),
+              onClick: () => {
+                setView({ z: 1, x: 0, y: 0 });
+                setCardOpen(false);
+              },
+              on: false,
+            },
+            {
+              icon: Crosshair,
+              label: t("Focus"),
+              onClick: () => {
+                focusGovernorate(active);
+                setCardOpen(true);
+              },
+              on: false,
+            },
             {
               icon: Layers,
               label: t("Toggle labels"),
               onClick: () => setShowLabels((s) => !s),
+              on: showLabels,
             },
-          ].map(({ icon: Icon, label, onClick }) => (
+          ].map(({ icon: Icon, label, onClick, on }) => (
             <button
               key={label}
               type="button"
               aria-label={label}
               title={label}
+              aria-pressed={on}
               onClick={onClick}
               onPointerDown={(e) => e.stopPropagation()}
-              className="grid size-9 place-items-center rounded-xl border border-gold-line/60 bg-background/70 text-gold backdrop-blur transition-colors hover:bg-gold-soft"
+              className={`grid size-9 place-items-center rounded-xl border backdrop-blur transition-colors hover:bg-gold-soft ${
+                on
+                  ? "border-gold bg-gold-soft text-gold"
+                  : "border-gold-line/60 bg-background/70 text-gold"
+              }`}
             >
               <Icon className="size-4" />
             </button>
           ))}
+
         </div>
 
         {/* compass */}
@@ -398,11 +436,21 @@ export function EgyptMap() {
           </div>
         </div>
 
-        {/* floating detail card */}
+        {/* floating detail card — only after clicking a pin */}
+        {cardOpen && (
         <div
           className="absolute bottom-3 right-3 w-[248px] overflow-hidden rounded-2xl border border-gold-line/60 bg-background/85 shadow-2xl backdrop-blur-md"
           onPointerDown={(e) => e.stopPropagation()}
         >
+          <button
+            type="button"
+            aria-label={t("Close")}
+            title={t("Close")}
+            onClick={() => setCardOpen(false)}
+            className="absolute right-2 top-2 grid size-7 place-items-center rounded-full border border-gold-line/60 bg-background/80 text-gold backdrop-blur"
+          >
+            <X className="size-3.5" />
+          </button>
           {profile?.image && (
             <img
               src={profile.image}
@@ -443,6 +491,8 @@ export function EgyptMap() {
             </Link>
           </div>
         </div>
+        )}
+
 
         {/* hover chip */}
         {hoverId && hoverId !== activeId && (

@@ -110,16 +110,22 @@ export function SiteFooter() {
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
               {t("Download the app")}
             </h3>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {["App Store", "Google Play", "AppGallery"].map((store) => (
-                <span
-                  key={store}
-                  className="rounded-xl border border-border/70 bg-card px-4 py-2.5 text-xs text-muted-foreground"
-                >
-                  {t(store)}
-                </span>
+            <ul className="mt-4 flex flex-nowrap items-center gap-2">
+              {[
+                { label: "App Store", Icon: AppleIcon },
+                { label: "Google Play", Icon: GooglePlayIcon },
+              ].map(({ label, Icon }) => (
+                <li key={label}>
+                  <span
+                    title={t(label)}
+                    aria-label={t(label)}
+                    className="group grid size-9 place-items-center rounded-full border border-gold-line/60 bg-card/70 text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:bg-gold hover:text-background hover:shadow-[0_10px_24px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
+                  >
+                    <Icon className="size-[15px]" />
+                  </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </Container>

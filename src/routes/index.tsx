@@ -519,12 +519,25 @@ function ThroughTime() {
     <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
       <div className="flex gap-3 overflow-x-auto pb-2">
         {eras.map((era) => (
-          <div key={era.name} className="w-44 shrink-0 rounded-xl border border-border/70 bg-card p-4">
-            <p className="font-display text-sm text-foreground">{t(era.name)}</p>
-            <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
-              {era.years}
-            </p>
-          </div>
+          <figure
+            key={era.name}
+            className="group w-48 shrink-0 overflow-hidden rounded-xl border border-border/70 bg-card"
+          >
+            <img
+              src={era.image}
+              alt={`${era.name} era in Egypt`}
+              loading="lazy"
+              width={800}
+              height={600}
+              className="h-28 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <figcaption className="p-3">
+              <p className="truncate font-display text-sm text-foreground">{t(era.name)}</p>
+              <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
+                {era.years}
+              </p>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </Block>

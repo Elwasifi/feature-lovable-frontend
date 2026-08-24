@@ -1,3 +1,18 @@
+import eraPredynastic from "@/assets/era-predynastic.jpg";
+import eraOldKingdom from "@/assets/era-old-kingdom.jpg";
+import eraMiddleKingdom from "@/assets/era-middle-kingdom.jpg";
+import eraNewKingdom from "@/assets/era-new-kingdom.jpg";
+import eraPtolemaic from "@/assets/era-ptolemaic.jpg";
+import eraRoman from "@/assets/era-roman.jpg";
+import eraCoptic from "@/assets/era-coptic.jpg";
+import eraIslamic from "@/assets/era-islamic.jpg";
+import eraFatimid from "@/assets/era-fatimid.jpg";
+import eraAyyubid from "@/assets/era-ayyubid.jpg";
+import eraMamluk from "@/assets/era-mamluk.jpg";
+import eraOttoman from "@/assets/era-ottoman.jpg";
+import eraMuhammadAli from "@/assets/era-muhammad-ali.jpg";
+import eraRepublic from "@/assets/era-republic.jpg";
+import eraModern from "@/assets/era-modern.jpg";
 import cardGovernorates from "@/assets/card-governorates.jpg";
 import cardThroughTime from "@/assets/card-through-time.jpg";
 import cardHeritage from "@/assets/card-heritage.jpg";
@@ -109,21 +124,21 @@ export const discoverCards = [
 ];
 
 export const eras = [
-  { name: "Predynastic", years: "c. 6000 – 3100 BC" },
-  { name: "Old Kingdom", years: "2686 – 2181 BC" },
-  { name: "Middle Kingdom", years: "2055 – 1650 BC" },
-  { name: "New Kingdom", years: "1550 – 1069 BC" },
-  { name: "Ptolemaic", years: "332 – 30 BC" },
-  { name: "Roman Egypt", years: "30 BC – 395 AD" },
-  { name: "Coptic & Byzantine", years: "395 – 641 AD" },
-  { name: "Islamic Egypt", years: "641 – 969 AD" },
-  { name: "Fatimid", years: "969 – 1171" },
-  { name: "Ayyubid", years: "1171 – 1250" },
-  { name: "Mamluk", years: "1250 – 1517" },
-  { name: "Ottoman", years: "1517 – 1805" },
-  { name: "Muhammad Ali Era", years: "1805 – 1952" },
-  { name: "Republic", years: "1953 – 1970" },
-  { name: "Modern Egypt", years: "1970 – Now" },
+  { name: "Predynastic", years: "c. 6000 – 3100 BC", image: eraPredynastic },
+  { name: "Old Kingdom", years: "2686 – 2181 BC", image: eraOldKingdom },
+  { name: "Middle Kingdom", years: "2055 – 1650 BC", image: eraMiddleKingdom },
+  { name: "New Kingdom", years: "1550 – 1069 BC", image: eraNewKingdom },
+  { name: "Ptolemaic", years: "332 – 30 BC", image: eraPtolemaic },
+  { name: "Roman Egypt", years: "30 BC – 395 AD", image: eraRoman },
+  { name: "Coptic & Byzantine", years: "395 – 641 AD", image: eraCoptic },
+  { name: "Islamic Egypt", years: "641 – 969 AD", image: eraIslamic },
+  { name: "Fatimid", years: "969 – 1171", image: eraFatimid },
+  { name: "Ayyubid", years: "1171 – 1250", image: eraAyyubid },
+  { name: "Mamluk", years: "1250 – 1517", image: eraMamluk },
+  { name: "Ottoman", years: "1517 – 1805", image: eraOttoman },
+  { name: "Muhammad Ali Era", years: "1805 – 1952", image: eraMuhammadAli },
+  { name: "Republic", years: "1953 – 1970", image: eraRepublic },
+  { name: "Modern Egypt", years: "1970 – Now", image: eraModern },
 ];
 
 export const partners = [

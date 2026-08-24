@@ -38,7 +38,6 @@ import {
   eras,
   heroImages,
   investSectors,
-  marketplaceItems,
   offerCards,
   popularDestinations,
   programmes,

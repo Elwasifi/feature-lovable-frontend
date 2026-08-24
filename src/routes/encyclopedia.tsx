@@ -29,6 +29,8 @@ export const Route = createFileRoute("/encyclopedia")({
   component: EncyclopediaPage,
 });
 
+const heroChapter = encChapters[0]!;
+
 function EncyclopediaPage() {
   const { t } = useI18n();
 
@@ -39,7 +41,7 @@ function EncyclopediaPage() {
       <main>
         <section className="relative overflow-hidden border-b border-gold-line">
           <img
-            src={encChapters[0].cover}
+            src={heroChapter.cover}
             alt={t("Traditional Egyptian dress of all 27 governorates")}
             width={1600}
             height={900}

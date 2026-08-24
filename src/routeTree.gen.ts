@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketplace.egyptian-cotton'
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EncyclopediaRoute = EncyclopediaRouteImport.update({
+  id: '/encyclopedia',
+  path: '/encyclopedia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarketplaceEgyptianCottonRoute =
@@ -53,6 +59,7 @@ const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/encyclopedia': typeof EncyclopediaRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -61,6 +68,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/encyclopedia': typeof EncyclopediaRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
+  '/encyclopedia': typeof EncyclopediaRoute
   '/marketplace/egyptian-cotton': typeof MarketplaceEgyptianCottonRoute
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contact'
+    | '/encyclopedia'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/contact'
+    | '/encyclopedia'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/contact'
+    | '/encyclopedia'
     | '/marketplace/egyptian-cotton'
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
@@ -105,6 +117,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
+  EncyclopediaRoute: typeof EncyclopediaRoute
   MarketplaceEgyptianCottonRoute: typeof MarketplaceEgyptianCottonRoute
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/encyclopedia': {
+      id: '/encyclopedia'
+      path: '/encyclopedia'
+      fullPath: '/encyclopedia'
+      preLoaderRoute: typeof EncyclopediaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marketplace/egyptian-cotton': {
@@ -161,6 +181,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
+  EncyclopediaRoute: EncyclopediaRoute,
   MarketplaceEgyptianCottonRoute: MarketplaceEgyptianCottonRoute,
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,

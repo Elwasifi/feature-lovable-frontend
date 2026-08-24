@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader } from "@/components/site/Primitives";
@@ -34,7 +33,6 @@ function ReviewChecklist() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <Section>

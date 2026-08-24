@@ -12,7 +12,7 @@ import eraMamluk from "@/assets/era-mamluk.jpg";
 import eraOttoman from "@/assets/era-ottoman.jpg";
 import eraMuhammadAli from "@/assets/era-muhammad-ali.jpg";
 import eraRepublic from "@/assets/era-republic.jpg";
-import eraModern from "@/assets/era-modern.jpg";
+import eraModern from "@/assets/era-modern-gem.jpg";
 import cardGovernorates from "@/assets/card-governorates.jpg";
 import cardThroughTime from "@/assets/card-through-time.jpg";
 import cardHeritage from "@/assets/card-heritage.jpg";
@@ -138,7 +138,7 @@ export const eras = [
   { name: "Ottoman", years: "1517 – 1805", image: eraOttoman },
   { name: "Muhammad Ali Era", years: "1805 – 1952", image: eraMuhammadAli },
   { name: "Republic", years: "1953 – 1970", image: eraRepublic },
-  { name: "Modern Egypt", years: "1970 – Now", image: eraModern },
+  { name: "Modern Egypt (The New Republic)", years: "1970 – Now", image: eraModern },
 ];
 
 export const partners = [

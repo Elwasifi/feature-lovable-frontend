@@ -29,7 +29,6 @@ import heroImage from "@/assets/hero-egypt-one.jpg";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";
@@ -79,7 +78,6 @@ function Home() {
 
   return (
     <>
-      <TopUtilityBar />
       <div className="flex min-h-screen bg-background">
         <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
 
@@ -180,12 +178,12 @@ function Hero() {
         className="absolute inset-0 size-full object-cover"
       />
       {/* Legibility scrims: a full darkening wash plus a stronger bottom/leading fade. */}
-      <div className="absolute inset-0 bg-background/45" />
+      <div className="absolute inset-0 bg-background/15" />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, oklch(0.12 0.02 255 / 96%) 0%, oklch(0.12 0.02 255 / 72%) 45%, oklch(0.12 0.02 255 / 20%) 100%)",
+            "linear-gradient(to top, oklch(0.12 0.02 255 / 88%) 0%, oklch(0.12 0.02 255 / 45%) 45%, oklch(0.12 0.02 255 / 6%) 100%)",
         }}
       />
 

@@ -1,6 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section } from "@/components/site/Primitives";
@@ -41,7 +40,6 @@ function LegalNotFound() {
   const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <Section>
         <h1 className="font-display text-3xl text-foreground">{t("Document not found")}</h1>
@@ -61,7 +59,6 @@ function LegalDocumentPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <Section>

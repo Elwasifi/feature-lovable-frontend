@@ -1,6 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Landmark, MapPin, Sparkles } from "lucide-react";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton, GhostButton } from "@/components/site/Primitives";
@@ -43,7 +42,6 @@ function GovernorateNotFound() {
   const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <Section className="py-24 text-center">
         <h1 className="font-display text-3xl text-gold">{t("Governorate not found")}</h1>
@@ -69,7 +67,6 @@ function GovernoratePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <section className="relative">

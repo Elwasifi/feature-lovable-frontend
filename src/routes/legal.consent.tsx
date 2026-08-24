@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 import { ShieldCheck } from "lucide-react";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader } from "@/components/site/Primitives";
@@ -49,7 +48,6 @@ function ConsentCentre() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <Section>

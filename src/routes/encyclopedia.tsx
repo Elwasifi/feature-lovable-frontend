@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton, SourceBadge } from "@/components/site/Primitives";
@@ -36,7 +35,6 @@ function EncyclopediaPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <section className="relative overflow-hidden border-b border-gold-line">

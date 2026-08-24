@@ -40,7 +40,7 @@ export function LanguageSwitcher({ compact = false }: { compact?: boolean }) {
       {open && (
         <ul
           role="listbox"
-          className="absolute end-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border bg-popover p-1 shadow-[var(--shadow-card)]"
+          className="fixed inset-x-3 top-[4.5rem] z-50 max-h-[60vh] overflow-y-auto rounded-xl border border-border bg-popover p-1 shadow-[var(--shadow-card)] sm:absolute sm:inset-x-auto sm:end-0 sm:top-full sm:mt-2 sm:max-h-[70vh] sm:w-52"
         >
           {LANGUAGES.map((l) => (
             <li key={l.code}>

@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, MapPin, Sparkles } from "lucide-react";
-import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton, GhostButton } from "@/components/site/Primitives";
@@ -14,7 +13,6 @@ export function MarketplaceSection({ page }: { page: MarketplacePage }) {
 
   return (
     <div className="min-h-screen bg-background">
-      <TopUtilityBar />
       <SiteHeader />
       <main>
         <section className="relative">

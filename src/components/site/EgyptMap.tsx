@@ -303,7 +303,11 @@ export function EgyptMap() {
                   className="cursor-pointer"
                   onMouseEnter={() => setHoverId(g.id)}
                   onMouseLeave={() => setHoverId((h) => (h === g.id ? null : h))}
-                  onClick={() => setActiveId(g.id)}
+                  onClick={() => {
+                    setActiveId(g.id);
+                    setCardOpen(true);
+                  }}
+
                 >
                   <ellipse cx={x} cy={y} rx={1.1 * s} ry={0.4 * s} fill="oklch(0 0 0 / 45%)" />
                   <g transform={`translate(${x} ${y}) scale(${s}) translate(${-x} ${-y})`}>

@@ -11,10 +11,12 @@ export const SITE = {
   support: "info@egypt-one.com",
   locales: ["en", "ar"] as const,
   social: {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    youtube: "https://www.youtube.com/",
-    linkedin: "https://www.linkedin.com/",
+    facebook: "https://www.facebook.com/egyptone",
+    instagram: "https://www.instagram.com/egyptone",
+    tiktok: "https://www.tiktok.com/@egyptone",
+    x: "https://x.com/egyptone",
+    youtube: "https://www.youtube.com/@egyptone",
+    linkedin: "https://www.linkedin.com/company/egyptone",
   },
 } as const;
 

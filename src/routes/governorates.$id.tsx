@@ -40,15 +40,16 @@ export const Route = createFileRoute("/governorates/$id")({
 });
 
 function GovernorateNotFound() {
+  const { t } = useI18n();
   return (
     <div className="min-h-screen bg-background">
       <TopUtilityBar />
       <SiteHeader />
       <Section className="py-24 text-center">
-        <h1 className="font-display text-3xl text-gold">Governorate not found</h1>
+        <h1 className="font-display text-3xl text-gold">{t("Governorate not found")}</h1>
         <p className="mt-3 text-sm text-muted-foreground">
           <Link to="/" className="text-gold underline">
-            Back to the national gateway
+            {t("Back to the national gateway")}
           </Link>
         </p>
       </Section>

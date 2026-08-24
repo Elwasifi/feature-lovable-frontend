@@ -1,4 +1,4 @@
-export type LangCode = "en" | "ar" | "fr" | "de" | "es" | "it" | "ru" | "zh";
+export type LangCode = "en" | "ar" | "fr" | "de" | "es" | "it" | "ru" | "zh" | "hi";
 
 export type Language = {
   code: LangCode;
@@ -8,7 +8,7 @@ export type Language = {
   dir: "ltr" | "rtl";
 };
 
-/** The 8 primary global languages supported by Egypt One. */
+/** The 9 primary global languages supported by Egypt One. */
 export const LANGUAGES: Language[] = [
   { code: "en", label: "English", native: "English", flag: "🇬🇧", dir: "ltr" },
   { code: "ar", label: "Arabic", native: "العربية", flag: "🇪🇬", dir: "rtl" },
@@ -18,6 +18,7 @@ export const LANGUAGES: Language[] = [
   { code: "it", label: "Italian", native: "Italiano", flag: "🇮🇹", dir: "ltr" },
   { code: "ru", label: "Russian", native: "Русский", flag: "🇷🇺", dir: "ltr" },
   { code: "zh", label: "Chinese", native: "中文", flag: "🇨🇳", dir: "ltr" },
+  { code: "hi", label: "Hindi", native: "हिन्दी", flag: "🇮🇳", dir: "ltr" },
 ];
 
 export const DEFAULT_LANG: LangCode = "en";

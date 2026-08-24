@@ -29,6 +29,7 @@ import heroImage from "@/assets/hero-egypt-one.jpg";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
+import { TopUtilityBar } from "@/components/layout/TopUtilityBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";
@@ -77,11 +78,14 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
+    <>
+      <TopUtilityBar />
+      <div className="flex min-h-screen bg-background">
+        <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
 
-      <div className="min-w-0 flex-1">
-        <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+        <div className="min-w-0 flex-1">
+          <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+
 
         <main className="grid gap-6 px-4 py-5 lg:px-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="grid min-w-0 grid-cols-1 gap-8">
@@ -109,10 +113,12 @@ function Home() {
           </div>
         </main>
 
-        <SiteFooter />
+          <SiteFooter />
+        </div>
       </div>
-    </div>
+    </>
   );
+
 }
 
 function Block({

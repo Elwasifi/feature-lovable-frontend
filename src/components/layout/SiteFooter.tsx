@@ -9,10 +9,12 @@ import { SocialBar } from "@/components/layout/SocialBar";
 
 
 const legalLinks = [
-  { label: "Privacy Policy", href: mailto("Egypt One — Privacy Policy") },
-  { label: "Terms of Use", href: mailto("Egypt One — Terms of Use") },
-  { label: "Cookie Preferences", href: mailto("Egypt One — Cookie Preferences") },
-  { label: "Accessibility", href: mailto("Egypt One — Accessibility") },
+  { label: "Terms & Conditions", to: "/legal/terms" },
+  { label: "Privacy Policy", to: "/legal/privacy" },
+  { label: "Cookie Policy", to: "/legal/cookies" },
+  { label: "Data Protection", to: "/legal/data-protection" },
+  { label: "Accessibility", to: "/legal/accessibility" },
+  { label: "Legal Disclaimer", to: "/legal/disclaimer" },
 ];
 
 export function SiteFooter() {
@@ -20,7 +22,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-sidebar">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.5fr_repeat(4,1fr)] lg:gap-x-10">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)] lg:gap-x-10">
           <div>
 
             <div className="flex items-center gap-3">
@@ -134,19 +136,22 @@ export function SiteFooter() {
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
                 {legalLinks.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
+                    <Link
+                      to={l.to}
                       className="text-xs text-muted-foreground transition-colors hover:text-gold"
                     >
                       {t(l.label)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </nav>
           </div>
           <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
-            {t("Content shown on this preview is demonstration data unless labelled otherwise.")}
+            {t("Content shown on this preview is demonstration data unless labelled otherwise.")}{" "}
+            {t(
+              "All legal documents are drafts pending review by qualified Egyptian legal counsel and do not guarantee compliance with Egyptian or international law.",
+            )}
           </p>
         </Container>
       </div>

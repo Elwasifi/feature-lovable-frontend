@@ -275,8 +275,17 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Contact Us", to: "/contact" },
       { label: "Help Centre", to: "/contact" },
-      { label: "Report an Issue" },
-      { label: "Accessibility" },
+      { label: "Report an Issue", to: "/legal/incident-reporting" },
+      { label: "Complaints & Disputes", to: "/legal/complaints-disputes" },
+    ],
+  },
+  {
+    title: "Legal & Trust",
+    links: [
+      { label: "Legal Center", to: "/legal" },
+      { label: "Consent Centre", to: "/legal/consent" },
+      { label: "Safety Policy", to: "/legal/safety" },
+      { label: "AI Transparency", to: "/legal/ai-transparency" },
     ],
   },
 ];

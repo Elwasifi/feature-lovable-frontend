@@ -161,7 +161,11 @@ export function FloatingConcierge() {
               {t(
                 "You are talking to an AI system, not a human agent or a government official. Its answers are not legal, medical or investment advice and never replace official emergency services — for emergencies contact the official authorities.",
               )}{" "}
-              <Link to="/legal/ai-transparency" className="text-gold hover:underline">
+              <Link
+                to="/legal/$slug"
+                params={{ slug: "ai-transparency" }}
+                className="text-gold hover:underline"
+              >
                 {t("AI Transparency Policy")}
               </Link>
             </p>

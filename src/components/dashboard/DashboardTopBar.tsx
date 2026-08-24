@@ -13,32 +13,24 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:px-6">
-        <div className="flex shrink-0 items-center gap-2">
-          <button
-            onClick={onMenu}
-            aria-label={t("Open menu")}
-            className="grid size-10 shrink-0 place-items-center rounded-full border border-border text-muted-foreground xl:hidden"
-          >
-            <Menu className="size-4" />
-          </button>
-          <Link to="/" className="flex min-w-0 items-center gap-2.5">
-            <img
-              src={logo.url}
-              alt={`${SITE.name} logo`}
-              width={40}
-              height={40}
-              className="size-10 shrink-0 rounded-full ring-1 ring-gold-line"
-            />
-            <span className="hidden min-w-0 leading-tight sm:block">
-              <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
-                EGYPT <span className="text-gold">ONE</span>
-              </span>
-              <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
-                {t(SITE.tagline)}
-              </span>
+        <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
+          <img
+            src={logo.url}
+            alt={`${SITE.name} logo`}
+            width={40}
+            height={40}
+            className="size-10 shrink-0 rounded-full ring-1 ring-gold-line"
+          />
+          <span className="hidden min-w-0 leading-tight sm:block">
+            <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
+              EGYPT <span className="text-gold">ONE</span>
             </span>
-          </Link>
-        </div>
+            <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
+              {t(SITE.tagline)}
+            </span>
+          </span>
+        </Link>
+
 
         <label className="relative hidden min-w-0 items-center md:flex" id="search">
           <Search className="pointer-events-none absolute left-4 size-4 text-muted-foreground" />
@@ -78,6 +70,13 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
       </div>
 
       <div className="flex items-center gap-2 overflow-x-auto px-4 pb-3 lg:px-6 [scrollbar-width:none]">
+        <button
+          onClick={onMenu}
+          aria-label={t("Open menu")}
+          className="grid size-9 shrink-0 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-gold-line hover:text-gold xl:hidden"
+        >
+          <Menu className="size-4" />
+        </button>
         {topTabs.map((tab, i) => (
           <a
             key={tab}

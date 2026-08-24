@@ -109,12 +109,21 @@ export const discoverCards = [
 ];
 
 export const eras = [
-  { name: "Ancient Egypt", years: "3100 BC – 332 BC" },
-  { name: "Greek & Roman", years: "332 BC – 395 AD" },
-  { name: "Coptic & Christian", years: "395 – 641 AD" },
-  { name: "Islamic Egypt", years: "641 – 1517 AD" },
-  { name: "Ottoman Era", years: "1517 – 1805 AD" },
-  { name: "Modern Egypt", years: "1805 – Now" },
+  { name: "Predynastic", years: "c. 6000 – 3100 BC" },
+  { name: "Old Kingdom", years: "2686 – 2181 BC" },
+  { name: "Middle Kingdom", years: "2055 – 1650 BC" },
+  { name: "New Kingdom", years: "1550 – 1069 BC" },
+  { name: "Ptolemaic", years: "332 – 30 BC" },
+  { name: "Roman Egypt", years: "30 BC – 395 AD" },
+  { name: "Coptic & Byzantine", years: "395 – 641 AD" },
+  { name: "Islamic Egypt", years: "641 – 969 AD" },
+  { name: "Fatimid", years: "969 – 1171" },
+  { name: "Ayyubid", years: "1171 – 1250" },
+  { name: "Mamluk", years: "1250 – 1517" },
+  { name: "Ottoman", years: "1517 – 1805" },
+  { name: "Muhammad Ali Era", years: "1805 – 1952" },
+  { name: "Republic", years: "1953 – 1970" },
+  { name: "Modern Egypt", years: "1970 – Now" },
 ];
 
 export const partners = [

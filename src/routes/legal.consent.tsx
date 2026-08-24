@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "sonner";
 import { ShieldCheck } from "lucide-react";
 import { TopUtilityBar } from "@/components/layout/TopUtilityBar";

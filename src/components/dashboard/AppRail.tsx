@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import {
   Building2,
   CalendarDays,
@@ -14,8 +13,6 @@ import {
   Utensils,
   X,
 } from "lucide-react";
-import logo from "@/assets/egypt-one-logo.jpg.asset.json";
-import { SITE } from "@/config/site";
 import { sidebarGroups } from "@/data/site";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -60,23 +57,9 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
         )}
       >
         <div className="flex items-center gap-3 border-b border-sidebar-border px-4 py-4">
-          <Link to="/" className="flex min-w-0 items-center gap-3" onClick={onClose}>
-            <img
-              src={logo.url}
-              alt={`${SITE.name} logo`}
-              width={40}
-              height={40}
-              className="size-10 shrink-0 rounded-full ring-1 ring-gold-line"
-            />
-            <span className="min-w-0 leading-tight">
-              <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
-                EGYPT <span className="text-gold">ONE</span>
-              </span>
-              <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
-                {t(SITE.tagline)}
-              </span>
-            </span>
-          </Link>
+          <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-gold/70">
+            {t("Menu")}
+          </span>
           <button
             onClick={onClose}
             aria-label={t("Close menu")}

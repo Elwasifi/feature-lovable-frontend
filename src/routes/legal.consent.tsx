@@ -120,7 +120,7 @@ function ConsentCentre() {
                     ) : (
                       <button
                         type="button"
-                        disabled={!user || busy === c.key}
+                        disabled={busy === c.key}
                         onClick={() => setConsent(c.key, !granted)}
                         className="rounded-xl border border-gold-line bg-gold/10 px-4 py-2 text-xs text-gold transition-colors hover:bg-gold/20 disabled:cursor-not-allowed disabled:opacity-50"
                       >

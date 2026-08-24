@@ -61,20 +61,12 @@ function ConsentCentre() {
             )}
           />
 
-          {!user && !loading && (
-            <div className="rounded-2xl border border-gold-line bg-card p-6">
-              <ShieldCheck className="size-5 text-gold" />
-              <p className="mt-3 text-sm text-muted-foreground">
-                {t("Sign in to view and manage the consent records attached to your account.")}
-              </p>
-              <Link
-                to="/auth"
-                className="mt-4 inline-block rounded-xl border border-gold-line bg-gold/10 px-5 py-2.5 text-sm text-gold hover:bg-gold/20"
-              >
-                {t("Sign in")}
-              </Link>
-            </div>
-          )}
+          <div className="rounded-2xl border border-gold-line bg-card p-6">
+            <ShieldCheck className="size-5 text-gold" />
+            <p className="mt-3 text-sm text-muted-foreground">
+              {t("Preview — consent recording isn't connected to a backend yet")}
+            </p>
+          </div>
 
           <div className="mt-6 grid gap-4 lg:grid-cols-2">
             {consentTypes.map((c) => {

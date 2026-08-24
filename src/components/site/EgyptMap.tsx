@@ -205,7 +205,7 @@ export function EgyptMap() {
           <g
             transform={`translate(${(view.x / (containerRef.current?.clientWidth || 100)) * 100} ${
               (view.y / (containerRef.current?.clientHeight || 100)) * 100
-            }) scale(${view.z})`}
+            }) scale(${view.z}) translate(50 50) scale(0.9) translate(-50 -50)`}
           >
             {/* land */}
             <path d={outlinePath} fill="url(#egLand)" />

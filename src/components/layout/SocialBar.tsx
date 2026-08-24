@@ -65,14 +65,14 @@ export function SocialBar() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={`${label} — ${handle}`}
-                  className="group relative flex items-center gap-3 overflow-hidden rounded-2xl border border-border/70 bg-card/70 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:shadow-[0_14px_36px_-18px_hsl(var(--gold)/0.55)]"
+                  className="group relative flex items-center gap-3 overflow-hidden rounded-2xl border border-border/70 bg-card/70 px-4 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:shadow-[0_14px_36px_-18px_color-mix(in_oklab,var(--gold)_55%,transparent)]"
                 >
                   <span
                     aria-hidden
                     className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{
                       background:
-                        "radial-gradient(120px 60px at 20% 0%, hsl(var(--gold) / 0.16), transparent 70%)",
+                        "radial-gradient(120px 60px at 20% 0%, color-mix(in oklab, var(--gold) 16%, transparent), transparent 70%)",
                     }}
                   />
                   <span className="relative grid size-10 place-items-center rounded-full border border-gold-line/60 bg-background/70 text-gold transition-colors duration-300 group-hover:bg-gold group-hover:text-background">

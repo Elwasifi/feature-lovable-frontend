@@ -112,10 +112,12 @@ function Home() {
           </div>
         </main>
 
-        <SiteFooter />
+          <SiteFooter />
+        </div>
       </div>
-    </div>
+    </>
   );
+
 }
 
 function Block({

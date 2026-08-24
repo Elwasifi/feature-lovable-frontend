@@ -77,11 +77,14 @@ function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-background">
-      <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
+    <>
+      <TopUtilityBar />
+      <div className="flex min-h-screen bg-background">
+        <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
 
-      <div className="min-w-0 flex-1">
-        <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+        <div className="min-w-0 flex-1">
+          <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+
 
         <main className="grid gap-6 px-4 py-5 lg:px-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
           <div className="grid min-w-0 grid-cols-1 gap-8">

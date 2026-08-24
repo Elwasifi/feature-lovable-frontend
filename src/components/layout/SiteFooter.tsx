@@ -2,7 +2,8 @@ import { Facebook, Instagram, Linkedin, Mail, Youtube } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { Container } from "@/components/site/Primitives";
-import { footerColumns } from "@/data/site";
+import { footerColumns, govIntegrations } from "@/data/site";
+import { useI18n } from "@/i18n";
 import { SITE, mailto } from "@/config/site";
 
 const socials = [
@@ -13,6 +14,7 @@ const socials = [
 ];
 
 export function SiteFooter() {
+  const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-sidebar py-14">
       <Container>
@@ -31,13 +33,14 @@ export function SiteFooter() {
                   EGYPT <span className="text-gold">ONE</span>
                 </span>
                 <span className="block text-[10px] tracking-[0.12em] text-muted-foreground">
-                  {SITE.tagline}
+                  {t(SITE.tagline)}
                 </span>
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A unified digital gateway presenting Egypt&apos;s destinations, heritage, culture and
-              investment landscape through one platform.
+              {t(
+                "A unified digital gateway presenting Egypt's destinations, heritage, culture and investment landscape through one platform.",
+              )}
             </p>
             <a
               href={mailto("Egypt One — general enquiry")}
@@ -68,7 +71,7 @@ export function SiteFooter() {
           {footerColumns.map((col) => (
             <div key={col.title}>
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-                {col.title}
+                {t(col.title)}
               </h3>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((link) => (
@@ -78,14 +81,14 @@ export function SiteFooter() {
                         to={link.to}
                         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
-                        {link.label}
+                        {t(link.label)}
                       </Link>
                     ) : (
                       <a
                         href={link.href ?? mailto(`Egypt One — ${link.label}`)}
                         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
-                        {link.label}
+                        {t(link.label)}
                       </a>
                     )}
                   </li>
@@ -95,12 +98,45 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+        <div className="mt-10 grid gap-6 border-t border-border pt-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+              {t("Government integration")}
+            </h3>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {govIntegrations.map((g) => (
+                <li
+                  key={g}
+                  className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
+                >
+                  {t(g)}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+              {t("Download the app")}
+            </h3>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["App Store", "Google Play", "AppGallery"].map((store) => (
+                <span
+                  key={store}
+                  className="rounded-xl border border-border/70 bg-card px-4 py-2.5 text-xs text-muted-foreground"
+                >
+                  {t(store)}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+            © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
           </p>
           <p className="text-xs text-muted-foreground">
-            Content shown on this preview is demonstration data unless labelled otherwise.
+            {t("Content shown on this preview is demonstration data unless labelled otherwise.")}
           </p>
         </div>
       </Container>

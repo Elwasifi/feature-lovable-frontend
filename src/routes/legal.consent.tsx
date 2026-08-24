@@ -8,8 +8,6 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader } from "@/components/site/Primitives";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
-import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
 import { consentTypes, getLegalDocument } from "@/data/legal";
 
 const title = "Consent Centre — Egypt One";

@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n";
-import { mailto } from "@/config/site";
+import { SITE, mailto } from "@/config/site";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Container } from "@/components/site/Primitives";

@@ -14,6 +14,7 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
+import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
@@ -47,6 +48,11 @@ const ContactRoute = ContactRouteImport.update({
 const EncyclopediaRoute = EncyclopediaRouteImport.update({
   id: '/encyclopedia',
   path: '/encyclopedia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiConciergeRoute = ApiConciergeRouteImport.update({
+  id: '/api/concierge',
+  path: '/api/concierge',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
@@ -104,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -171,6 +181,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -187,6 +198,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -204,6 +216,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
+  ApiConciergeRoute: typeof ApiConciergeRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
   LegalConsentRoute: typeof LegalConsentRoute
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       path: '/encyclopedia'
       fullPath: '/encyclopedia'
       preLoaderRoute: typeof EncyclopediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/concierge': {
+      id: '/api/concierge'
+      path: '/api/concierge'
+      fullPath: '/api/concierge'
+      preLoaderRoute: typeof ApiConciergeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governorates/$id': {
@@ -324,6 +344,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   EncyclopediaRoute: EncyclopediaRoute,
+  ApiConciergeRoute: ApiConciergeRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   LegalSlugRoute: LegalSlugRoute,
   LegalConsentRoute: LegalConsentRoute,

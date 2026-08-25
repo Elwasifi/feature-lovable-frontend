@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Bell, Heart, Menu, Search } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
@@ -11,6 +12,7 @@ import { cn } from "@/lib/utils";
 
 export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
   const { t } = useI18n();
+  const [mobileSearch, setMobileSearch] = useState(false);
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4 lg:px-6">

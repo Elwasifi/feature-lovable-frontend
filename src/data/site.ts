@@ -26,57 +26,57 @@ import promoHotel from "@/assets/promo-hotel.jpg";
 
 export type SidebarGroup = {
   title: string;
-  items: { label: string; badge?: "New" | "Hot" | "AI" }[];
+  items: { label: string; href: string; badge?: "New" | "Hot" | "AI" }[];
 };
 
 export const sidebarGroups: SidebarGroup[] = [
   {
     title: "Plan your trip",
     items: [
-      { label: "Smart Trip Planner", badge: "AI" },
-      { label: "Hotels & Stays" },
-      { label: "Flights", badge: "New" },
-      { label: "Transport" },
-      { label: "Attractions & Tours" },
-      { label: "Nile & Sea Experiences" },
-      { label: "Guides & Assistants" },
-      { label: "Food & Restaurants" },
-      { label: "Events & Festivals" },
+      { label: "Smart Trip Planner", href: "/#ai-concierge", badge: "AI" },
+      { label: "Hotels & Stays", href: "/#offers" },
+      { label: "Flights", href: "/#offers", badge: "New" },
+      { label: "Transport", href: "/#offers" },
+      { label: "Attractions & Tours", href: "/#explore" },
+      { label: "Nile & Sea Experiences", href: "/#explore" },
+      { label: "Guides & Assistants", href: "/#ai-concierge" },
+      { label: "Food & Restaurants", href: "/encyclopedia" },
+      { label: "Events & Festivals", href: "/#programmes" },
     ],
   },
   {
     title: "Discover Egypt",
     items: [
-      { label: "27 Governorates" },
-      { label: "Egypt Through Time" },
-      { label: "Rulers of Egypt" },
-      { label: "Heritage Sites", badge: "New" },
-      { label: "Museums & Exhibitions" },
-      { label: "Hidden Heritage" },
-      { label: "Egyptian Heritage Worldwide" },
-      { label: "Ancient Egypt Academy" },
-      { label: "Document Center" },
+      { label: "27 Governorates", href: "/#governorates" },
+      { label: "Egypt Through Time", href: "/#through-time" },
+      { label: "Rulers of Egypt", href: "/encyclopedia" },
+      { label: "Heritage Sites", href: "/#explore", badge: "New" },
+      { label: "Museums & Exhibitions", href: "/#explore" },
+      { label: "Hidden Heritage", href: "/#explore" },
+      { label: "Egyptian Heritage Worldwide", href: "/encyclopedia" },
+      { label: "Ancient Egypt Academy", href: "/encyclopedia" },
+      { label: "Document Center", href: "/legal" },
     ],
   },
   {
     title: "Invest & Business",
     items: [
-      { label: "Invest in Egypt" },
-      { label: "Entertainment Investment", badge: "Hot" },
-      { label: "Real Estate & Live in Egypt" },
-      { label: "Business & Marketplace" },
-      { label: "Corporate & MICE" },
-      { label: "Projects & Opportunities" },
+      { label: "Invest in Egypt", href: "/#invest" },
+      { label: "Entertainment Investment", href: "/#sectors", badge: "Hot" },
+      { label: "Real Estate & Live in Egypt", href: "/#sectors" },
+      { label: "Business & Marketplace", href: "/#marketplace" },
+      { label: "Corporate & MICE", href: "/#invest" },
+      { label: "Projects & Opportunities", href: "/#invest" },
     ],
   },
   {
     title: "Services",
     items: [
-      { label: "Visa & Entry" },
-      { label: "Health & Medical Tourism" },
-      { label: "Safety Center" },
-      { label: "Egypt One Pass" },
-      { label: "Loyalty & Rewards" },
+      { label: "Visa & Entry", href: "/legal" },
+      { label: "Health & Medical Tourism", href: "/#sectors" },
+      { label: "Safety Center", href: "/legal" },
+      { label: "Egypt One Pass", href: "/#programmes" },
+      { label: "Loyalty & Rewards", href: "/account" },
     ],
   },
 ];

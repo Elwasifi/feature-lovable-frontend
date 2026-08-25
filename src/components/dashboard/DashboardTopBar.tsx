@@ -46,13 +46,18 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher compact />
           <CurrencySwitcher compact />
-          <a
-            href="#search"
+          <button
+            type="button"
             aria-label={t("Search")}
+            onClick={() => {
+              const el = document.getElementById("mobile-search") as HTMLInputElement | null;
+              el?.scrollIntoView({ block: "center", behavior: "smooth" });
+              el?.focus();
+            }}
             className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
           >
             <Search className="size-4" />
-          </a>
+          </button>
           <button
             aria-label={t("Wishlist")}
             className="hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
@@ -75,6 +80,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
       <label className="relative mx-3 mb-2 flex items-center md:hidden">
         <Search className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
         <input
+          id="mobile-search"
           type="search"
           placeholder={t("Search Egypt One")}
           className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
@@ -92,7 +98,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         {topTabs.map((tab, i) => (
           <a
             key={tab}
-            href="#explore"
+            href="/#explore"
             className={cn(
               "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
               i === 0

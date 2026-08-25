@@ -26,57 +26,57 @@ import promoHotel from "@/assets/promo-hotel.jpg";
 
 export type SidebarGroup = {
   title: string;
-  items: { label: string; badge?: "New" | "Hot" | "AI" }[];
+  items: { label: string; href: string; badge?: "New" | "Hot" | "AI" }[];
 };
 
 export const sidebarGroups: SidebarGroup[] = [
   {
     title: "Plan your trip",
     items: [
-      { label: "Smart Trip Planner", badge: "AI" },
-      { label: "Hotels & Stays" },
-      { label: "Flights", badge: "New" },
-      { label: "Transport" },
-      { label: "Attractions & Tours" },
-      { label: "Nile & Sea Experiences" },
-      { label: "Guides & Assistants" },
-      { label: "Food & Restaurants" },
-      { label: "Events & Festivals" },
+      { label: "Smart Trip Planner", href: "/#ai-concierge", badge: "AI" },
+      { label: "Hotels & Stays", href: "/#offers" },
+      { label: "Flights", href: "/#offers", badge: "New" },
+      { label: "Transport", href: "/#offers" },
+      { label: "Attractions & Tours", href: "/#explore" },
+      { label: "Nile & Sea Experiences", href: "/#explore" },
+      { label: "Guides & Assistants", href: "/#ai-concierge" },
+      { label: "Food & Restaurants", href: "/encyclopedia" },
+      { label: "Events & Festivals", href: "/#programmes" },
     ],
   },
   {
     title: "Discover Egypt",
     items: [
-      { label: "27 Governorates" },
-      { label: "Egypt Through Time" },
-      { label: "Rulers of Egypt" },
-      { label: "Heritage Sites", badge: "New" },
-      { label: "Museums & Exhibitions" },
-      { label: "Hidden Heritage" },
-      { label: "Egyptian Heritage Worldwide" },
-      { label: "Ancient Egypt Academy" },
-      { label: "Document Center" },
+      { label: "27 Governorates", href: "/#governorates" },
+      { label: "Egypt Through Time", href: "/#through-time" },
+      { label: "Rulers of Egypt", href: "/encyclopedia" },
+      { label: "Heritage Sites", href: "/#explore", badge: "New" },
+      { label: "Museums & Exhibitions", href: "/#explore" },
+      { label: "Hidden Heritage", href: "/#explore" },
+      { label: "Egyptian Heritage Worldwide", href: "/encyclopedia" },
+      { label: "Ancient Egypt Academy", href: "/encyclopedia" },
+      { label: "Document Center", href: "/legal" },
     ],
   },
   {
     title: "Invest & Business",
     items: [
-      { label: "Invest in Egypt" },
-      { label: "Entertainment Investment", badge: "Hot" },
-      { label: "Real Estate & Live in Egypt" },
-      { label: "Business & Marketplace" },
-      { label: "Corporate & MICE" },
-      { label: "Projects & Opportunities" },
+      { label: "Invest in Egypt", href: "/#invest" },
+      { label: "Entertainment Investment", href: "/#sectors", badge: "Hot" },
+      { label: "Real Estate & Live in Egypt", href: "/#sectors" },
+      { label: "Business & Marketplace", href: "/#marketplace" },
+      { label: "Corporate & MICE", href: "/#invest" },
+      { label: "Projects & Opportunities", href: "/#invest" },
     ],
   },
   {
     title: "Services",
     items: [
-      { label: "Visa & Entry" },
-      { label: "Health & Medical Tourism" },
-      { label: "Safety Center" },
-      { label: "Egypt One Pass" },
-      { label: "Loyalty & Rewards" },
+      { label: "Visa & Entry", href: "/legal" },
+      { label: "Health & Medical Tourism", href: "/#sectors" },
+      { label: "Safety Center", href: "/legal" },
+      { label: "Egypt One Pass", href: "/#programmes" },
+      { label: "Loyalty & Rewards", href: "/account" },
     ],
   },
 ];
@@ -231,12 +231,12 @@ export const topGovernorates = [
 ];
 
 export const primaryNav = [
-  { label: "Explore Egypt", href: "#explore" },
-  { label: "Governorates", href: "#governorates" },
-  { label: "Through Time", href: "#through-time" },
-  { label: "Plan Your Trip", href: "#plan" },
-  { label: "Invest", href: "#invest" },
-  { label: "Film & Culture", href: "#film" },
+  { label: "Explore Egypt", href: "/#explore" },
+  { label: "Governorates", href: "/#governorates" },
+  { label: "Through Time", href: "/#through-time" },
+  { label: "Plan Your Trip", href: "/#ai-concierge" },
+  { label: "Invest", href: "/#invest" },
+  { label: "Film & Culture", href: "/#film" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -246,26 +246,26 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Explore",
     links: [
-      { label: "Destinations", href: "#explore" },
-      { label: "27 Governorates", href: "#governorates" },
-      { label: "Heritage & Museums", href: "#explore" },
-      { label: "Egypt Through Time", href: "#through-time" },
+      { label: "Destinations", href: "/#explore" },
+      { label: "27 Governorates", href: "/#governorates" },
+      { label: "Heritage & Museums", href: "/#explore" },
+      { label: "Egypt Through Time", href: "/#through-time" },
     ],
   },
   {
     title: "Plan",
     links: [
-      { label: "Smart Trip Planner", href: "#plan" },
-      { label: "AI Concierge", href: "#ai-concierge" },
-      { label: "Programmes", href: "#programmes" },
-      { label: "Search Egypt One", href: "#search" },
+      { label: "Smart Trip Planner", href: "/#ai-concierge" },
+      { label: "AI Concierge", href: "/#ai-concierge" },
+      { label: "Programmes", href: "/#programmes" },
+      { label: "Search Egypt One", href: "/#explore" },
     ],
   },
   {
     title: "Invest",
     links: [
-      { label: "Investment Sectors", href: "#invest" },
-      { label: "Opportunities", href: "#invest" },
+      { label: "Investment Sectors", href: "/#invest" },
+      { label: "Opportunities", href: "/#invest" },
       { label: "Partner With Us" },
       { label: "Press & Media" },
     ],
@@ -295,21 +295,21 @@ export const pillars = [
     title: "Explore Egypt",
     body: "Destinations, 27 governorates, heritage sites, museums and living culture.",
     cta: "Start exploring",
-    href: "#explore",
+    href: "/#explore",
     image: cardGovernorates,
   },
   {
     title: "Plan Your Journey",
     body: "Build an itinerary day by day with the Egypt One trip planner and AI concierge.",
     cta: "Plan a trip",
-    href: "#plan",
+    href: "/#ai-concierge",
     image: cardNileSea,
   },
   {
     title: "Invest in Egypt",
     body: "Sectors, projects and the business ecosystem behind a growing economy.",
     cta: "See sectors",
-    href: "#invest",
+    href: "/#invest",
     image: sectorRealEstate,
   },
 ];

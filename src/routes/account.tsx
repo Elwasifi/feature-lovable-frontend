@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useI18n } from "@/i18n";
-import { mailto } from "@/config/site";
+import { SITE, mailto } from "@/config/site";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { Container } from "@/components/site/Primitives";
@@ -36,7 +36,14 @@ export const Route = createFileRoute("/account")({
         property: "og:description",
         content: "Live trip tracking, rewards balance, emergency assistance and traveller settings.",
       },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE.url}/account` },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: `${SITE.url}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE.url}/og-image.jpg` },
+      { name: "robots", content: "noindex" },
     ],
+    links: [{ rel: "canonical", href: `${SITE.url}/account` }],
   }),
   component: AccountPage,
 });

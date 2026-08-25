@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, MapPin, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { Section, SectionHeader, GoldButton, GhostButton } from "@/components/site/Primitives";
+import { Section, SectionHeader, GoldButton, GhostButton, SourceBadge } from "@/components/site/Primitives";
 import { useI18n } from "@/i18n";
 import { mailto } from "@/config/site";
 import { marketplacePages, type MarketplacePage } from "@/data/marketplace";
@@ -51,6 +51,7 @@ export function MarketplaceSection({ page }: { page: MarketplacePage }) {
         </section>
 
         <Section className="py-10 lg:py-14">
+          <SourceBadge status="DEMO" className="mb-3" />
           <div className="grid gap-3 sm:grid-cols-3">
             {page.stats.map((s) => (
               <div key={s.label} className="rounded-2xl border border-gold-line bg-card p-5">

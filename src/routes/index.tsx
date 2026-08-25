@@ -67,6 +67,8 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: SITE.url },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: `${SITE.url}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE.url}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/` }],
   }),
@@ -153,7 +155,7 @@ function Block({
   );
 }
 
-function ViewAll({ href = "#explore" }: { href?: string }) {
+function ViewAll({ href = "/#explore" }: { href?: string }) {
   const { t } = useI18n();
   return (
     <a
@@ -267,7 +269,8 @@ function WeatherStrip() {
   const { t } = useI18n();
   const { currency } = useCurrency();
   return (
-    <section className="grid gap-2 rounded-2xl border border-border/70 bg-card p-3 sm:grid-cols-2 lg:grid-cols-5">
+    <section className="relative grid gap-2 rounded-2xl border border-border/70 bg-card p-3 sm:grid-cols-2 lg:grid-cols-5">
+      <SourceBadge status="DEMO" className="absolute -top-2 end-3" />
       {weatherStrip.map((w) => (
         <div
           key={w.city}
@@ -317,7 +320,7 @@ function Categories() {
           return (
             <a
               key={c}
-              href="#explore"
+              href="/#explore"
               className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
             >
               <Icon className="size-5 text-gold" />
@@ -338,7 +341,7 @@ function Discover() {
         {discoverCards.map((card) => (
           <a
             key={card.title}
-            href="#governorates"
+            href="/#governorates"
             className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img
@@ -365,7 +368,16 @@ function Discover() {
 function Destinations() {
   const { t } = useI18n();
   return (
-    <Block eyebrow="Destinations" title="Popular destinations" action={<ViewAll />}>
+    <Block
+      eyebrow="Destinations"
+      title="Popular destinations"
+      action={
+        <span className="flex items-center gap-2">
+          <SourceBadge status="DEMO" />
+          <ViewAll />
+        </span>
+      }
+    >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {popularDestinations.map((d) => (
           <article
@@ -402,12 +414,12 @@ function Destinations() {
 function SectorStrip() {
   const { t } = useI18n();
   return (
-    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="#invest" />}>
+    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="/#invest" />}>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {egyptSectors.map((s) => (
           <a
             key={s.title}
-            href="#invest"
+            href="/#invest"
             className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img
@@ -433,7 +445,12 @@ function SectorStrip() {
 function Offers() {
   const { t } = useI18n();
   return (
-    <Block id="offers" eyebrow="Offers" title="Offers & programmes">
+    <Block
+      id="offers"
+      eyebrow="Offers"
+      title="Offers & programmes"
+      action={<SourceBadge status="DEMO" />}
+    >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {offerCards.map((o) => (
           <article key={o.title} className="relative overflow-hidden rounded-2xl border border-border/70">
@@ -473,7 +490,7 @@ function Governorates() {
       id="governorates"
       eyebrow="The map of Egypt"
       title="Explore all 27 governorates"
-      action={<ViewAll href="#governorates" />}
+      action={<ViewAll href="/#governorates" />}
     >
       <EgyptMap />
 

@@ -231,12 +231,12 @@ export const topGovernorates = [
 ];
 
 export const primaryNav = [
-  { label: "Explore Egypt", href: "#explore" },
-  { label: "Governorates", href: "#governorates" },
-  { label: "Through Time", href: "#through-time" },
-  { label: "Plan Your Trip", href: "#plan" },
-  { label: "Invest", href: "#invest" },
-  { label: "Film & Culture", href: "#film" },
+  { label: "Explore Egypt", href: "/#explore" },
+  { label: "Governorates", href: "/#governorates" },
+  { label: "Through Time", href: "/#through-time" },
+  { label: "Plan Your Trip", href: "/#ai-concierge" },
+  { label: "Invest", href: "/#invest" },
+  { label: "Film & Culture", href: "/#film" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -246,26 +246,26 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
   {
     title: "Explore",
     links: [
-      { label: "Destinations", href: "#explore" },
-      { label: "27 Governorates", href: "#governorates" },
-      { label: "Heritage & Museums", href: "#explore" },
-      { label: "Egypt Through Time", href: "#through-time" },
+      { label: "Destinations", href: "/#explore" },
+      { label: "27 Governorates", href: "/#governorates" },
+      { label: "Heritage & Museums", href: "/#explore" },
+      { label: "Egypt Through Time", href: "/#through-time" },
     ],
   },
   {
     title: "Plan",
     links: [
-      { label: "Smart Trip Planner", href: "#plan" },
-      { label: "AI Concierge", href: "#ai-concierge" },
-      { label: "Programmes", href: "#programmes" },
-      { label: "Search Egypt One", href: "#search" },
+      { label: "Smart Trip Planner", href: "/#ai-concierge" },
+      { label: "AI Concierge", href: "/#ai-concierge" },
+      { label: "Programmes", href: "/#programmes" },
+      { label: "Search Egypt One", href: "/#explore" },
     ],
   },
   {
     title: "Invest",
     links: [
-      { label: "Investment Sectors", href: "#invest" },
-      { label: "Opportunities", href: "#invest" },
+      { label: "Investment Sectors", href: "/#invest" },
+      { label: "Opportunities", href: "/#invest" },
       { label: "Partner With Us" },
       { label: "Press & Media" },
     ],
@@ -295,21 +295,21 @@ export const pillars = [
     title: "Explore Egypt",
     body: "Destinations, 27 governorates, heritage sites, museums and living culture.",
     cta: "Start exploring",
-    href: "#explore",
+    href: "/#explore",
     image: cardGovernorates,
   },
   {
     title: "Plan Your Journey",
     body: "Build an itinerary day by day with the Egypt One trip planner and AI concierge.",
     cta: "Plan a trip",
-    href: "#plan",
+    href: "/#ai-concierge",
     image: cardNileSea,
   },
   {
     title: "Invest in Egypt",
     body: "Sectors, projects and the business ecosystem behind a growing economy.",
     cta: "See sectors",
-    href: "#invest",
+    href: "/#invest",
     image: sectorRealEstate,
   },
 ];

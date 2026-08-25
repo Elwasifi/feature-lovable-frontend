@@ -92,7 +92,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         {topTabs.map((tab, i) => (
           <a
             key={tab}
-            href="#explore"
+            href="/#explore"
             className={cn(
               "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
               i === 0

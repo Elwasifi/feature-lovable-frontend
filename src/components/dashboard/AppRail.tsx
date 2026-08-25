@@ -78,7 +78,7 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
                     return (
                       <li key={item.label}>
                         <a
-                          href="#explore"
+                          href={item.href}
                           onClick={onClose}
                           className="group flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-foreground"
                         >
@@ -109,7 +109,7 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
               {t("One digital pass for attractions, rewards and partner benefits.")}
             </p>
             <a
-              href="#programmes"
+              href="/#programmes"
               onClick={onClose}
               className="mt-3 inline-flex w-full items-center justify-center rounded-lg bg-gold px-3 py-2 text-xs font-semibold text-primary-foreground"
             >

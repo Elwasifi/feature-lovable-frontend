@@ -153,7 +153,7 @@ function Block({
   );
 }
 
-function ViewAll({ href = "#explore" }: { href?: string }) {
+function ViewAll({ href = "/#explore" }: { href?: string }) {
   const { t } = useI18n();
   return (
     <a
@@ -317,7 +317,7 @@ function Categories() {
           return (
             <a
               key={c}
-              href="#explore"
+              href="/#explore"
               className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
             >
               <Icon className="size-5 text-gold" />
@@ -338,7 +338,7 @@ function Discover() {
         {discoverCards.map((card) => (
           <a
             key={card.title}
-            href="#governorates"
+            href="/#governorates"
             className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img
@@ -402,12 +402,12 @@ function Destinations() {
 function SectorStrip() {
   const { t } = useI18n();
   return (
-    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="#invest" />}>
+    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="/#invest" />}>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
         {egyptSectors.map((s) => (
           <a
             key={s.title}
-            href="#invest"
+            href="/#invest"
             className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img
@@ -473,7 +473,7 @@ function Governorates() {
       id="governorates"
       eyebrow="The map of Egypt"
       title="Explore all 27 governorates"
-      action={<ViewAll href="#governorates" />}
+      action={<ViewAll href="/#governorates" />}
     >
       <EgyptMap />
 

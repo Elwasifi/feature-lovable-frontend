@@ -4,8 +4,9 @@ declare global {
   }
 }
 
-export const GA_MEASUREMENT_ID = import.meta.env
-  .VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY as string | undefined;
+export const GA_MEASUREMENT_ID = import.meta.env[
+  "VITE_LOVABLE_CONNECTOR_GOOGLE_ANALYTICS_API_KEY"
+] as string | undefined;
 
 export function gtag(...args: unknown[]) {
   if (typeof window === "undefined") return;

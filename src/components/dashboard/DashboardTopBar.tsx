@@ -46,13 +46,15 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher compact />
           <CurrencySwitcher compact />
-          <a
-            href="#search"
+          <button
+            type="button"
             aria-label={t("Search")}
+            aria-expanded={mobileSearch}
+            onClick={() => setMobileSearch((v) => !v)}
             className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
           >
             <Search className="size-4" />
-          </a>
+          </button>
           <button
             aria-label={t("Wishlist")}
             className="hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"

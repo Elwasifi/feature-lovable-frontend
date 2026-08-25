@@ -107,6 +107,17 @@ export function DashboardTopBar({
         >
           <Menu className="size-4" />
         </button>
+        {showBack && (
+          <button
+            type="button"
+            onClick={goBack}
+            aria-label={t("Back")}
+            className="flex shrink-0 items-center gap-1.5 rounded-full border border-gold-line bg-gold-soft px-3 py-2 text-xs font-medium text-gold transition-colors hover:bg-gold-soft/80"
+          >
+            <BackIcon className="size-4" />
+            <span className="hidden sm:inline">{t("Back")}</span>
+          </button>
+        )}
         {topTabs.map((tab, i) => (
           <a
             key={tab}

@@ -28,7 +28,7 @@ export function SiteHeader() {
         </>
       )}
 
-      <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+      <DashboardTopBar onMenu={() => setMenuOpen(true)} showBack />
     </>
   );
 }

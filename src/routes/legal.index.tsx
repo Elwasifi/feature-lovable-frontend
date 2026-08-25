@@ -27,6 +27,8 @@ export const Route = createFileRoute("/legal/")({
       { property: "og:url", content: `${SITE.url}/legal` },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: `${SITE.url}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE.url}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/legal` }],
   }),

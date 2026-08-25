@@ -17,6 +17,8 @@ export const Route = createFileRoute("/marketplace/local-producers")({
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE.url}/marketplace/local-producers` },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: `${SITE.url}/og-image.jpg` },
+      { name: "twitter:image", content: `${SITE.url}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/marketplace/local-producers` }],
   }),

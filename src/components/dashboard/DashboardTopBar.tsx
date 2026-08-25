@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Bell, Heart, Menu, Search } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
@@ -12,7 +11,6 @@ import { cn } from "@/lib/utils";
 
 export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
   const { t } = useI18n();
-  const [mobileSearch, setMobileSearch] = useState(false);
   return (
     <header className="sticky top-0 z-30 border-b border-border/70 bg-background/90 backdrop-blur-xl">
       <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-3 py-3 sm:gap-3 sm:px-4 lg:px-6">
@@ -51,8 +49,11 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
           <button
             type="button"
             aria-label={t("Search")}
-            aria-expanded={mobileSearch}
-            onClick={() => setMobileSearch((v) => !v)}
+            onClick={() => {
+              const el = document.getElementById("mobile-search") as HTMLInputElement | null;
+              el?.scrollIntoView({ block: "center", behavior: "smooth" });
+              el?.focus();
+            }}
             className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
           >
             <Search className="size-4" />
@@ -79,6 +80,7 @@ export function DashboardTopBar({ onMenu }: { onMenu: () => void }) {
       <label className="relative mx-3 mb-2 flex items-center md:hidden">
         <Search className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
         <input
+          id="mobile-search"
           type="search"
           placeholder={t("Search Egypt One")}
           className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"

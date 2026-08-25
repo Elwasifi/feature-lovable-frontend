@@ -1,19 +1,25 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Send, Sparkles, X } from "lucide-react";
+import { Loader2, Send, Sparkles, X } from "lucide-react";
 import avatar from "@/assets/concierge-avatar.jpg";
-import { mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 
 type Pos = { x: number; y: number };
+type ChatMessage = { role: "user" | "assistant"; content: string };
 
 const STORAGE_KEY = "egypt-one:concierge-pos";
 const SIZE = 68;
 const MARGIN = 16;
 
+const SUGGESTIONS = [
+  "Plan 5 days in Cairo & Luxor",
+  "Best time for a Nile cruise",
+  "Family-friendly Red Sea stays",
+];
+
 /**
- * Floating, draggable AI Concierge launcher.
- * Sits bottom-end by default; the user can drag it anywhere on screen.
+ * Floating, draggable AI Concierge launcher with a live chat panel backed by
+ * the Lovable AI Gateway (`POST /api/concierge`, streamed plain text).
  */
 export function FloatingConcierge() {
   const { t } = useI18n();
@@ -22,6 +28,12 @@ export function FloatingConcierge() {
   const dragging = useRef(false);
   const moved = useRef(false);
   const offset = useRef<Pos>({ x: 0, y: 0 });
+
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   // Default placement (bottom-right) + restore any saved position.
   useEffect(() => {
@@ -45,6 +57,54 @@ export function FloatingConcierge() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
+  }, [messages, busy]);
+
+  const send = useCallback(
+    async (text: string) => {
+      const question = text.trim();
+      if (!question || busy) return;
+      setError(null);
+      setInput("");
+      const history: ChatMessage[] = [...messages, { role: "user", content: question }];
+      setMessages([...history, { role: "assistant", content: "" }]);
+      setBusy(true);
+
+      try {
+        const res = await fetch("/api/concierge", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ messages: history.slice(-12) }),
+        });
+
+        if (!res.ok || !res.body) {
+          const payload = (await res.json().catch(() => null)) as { error?: string } | null;
+          throw new Error(payload?.error ?? "The concierge could not answer right now.");
+        }
+
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let answer = "";
+        for (;;) {
+          const { value, done } = await reader.read();
+          if (done) break;
+          answer += decoder.decode(value, { stream: true });
+          setMessages([...history, { role: "assistant", content: answer }]);
+        }
+        if (!answer.trim()) {
+          throw new Error("The concierge could not answer right now.");
+        }
+      } catch (err) {
+        setMessages(history);
+        setError(err instanceof Error ? err.message : "Something went wrong.");
+      } finally {
+        setBusy(false);
+      }
+    },
+    [busy, messages],
+  );
 
   const onPointerDown = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
     dragging.current = true;
@@ -130,34 +190,82 @@ export function FloatingConcierge() {
             </button>
           </header>
 
-          <div className="grid gap-2 p-4">
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              {t(
-                "Ask for a 7-day itinerary, a Nile cruise window or a quiet heritage route — the concierge drafts it, you refine it.",
-              )}
-            </p>
-            <div className="mt-1 grid gap-1.5">
-              {[
-                "Plan 5 days in Cairo & Luxor",
-                "Best time for a Nile cruise",
-                "Family-friendly Red Sea stays",
-              ].map((q) => (
-                <a
-                  key={q}
-                  href={mailto(`Egypt One — AI Concierge: ${q}`)}
-                  className="rounded-lg border border-border/70 bg-card px-3 py-2 text-[11px] text-muted-foreground transition-colors hover:border-gold-line hover:text-foreground"
-                >
-                  {t(q)}
-                </a>
-              ))}
-            </div>
-            <a
-              href={mailto("Egypt One — AI Concierge access")}
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-xs font-semibold text-primary-foreground"
+          <div ref={scrollRef} className="max-h-[46vh] min-h-[132px] overflow-y-auto p-4">
+            {messages.length === 0 ? (
+              <div className="grid gap-2">
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  {t(
+                    "Ask for a 7-day itinerary, a Nile cruise window or a quiet heritage route — the concierge drafts it, you refine it.",
+                  )}
+                </p>
+                <div className="mt-1 grid gap-1.5">
+                  {SUGGESTIONS.map((q) => (
+                    <button
+                      key={q}
+                      type="button"
+                      onClick={() => void send(t(q))}
+                      className="rounded-lg border border-border/70 bg-card px-3 py-2 text-start text-[11px] text-muted-foreground transition-colors hover:border-gold-line hover:text-foreground"
+                    >
+                      {t(q)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="grid gap-2.5">
+                {messages.map((m, i) => (
+                  <div
+                    key={i}
+                    className={
+                      m.role === "user"
+                        ? "ms-auto max-w-[85%] rounded-xl rounded-ee-sm bg-gold px-3 py-2 text-[11px] leading-relaxed text-primary-foreground"
+                        : "me-auto max-w-[92%] whitespace-pre-wrap rounded-xl rounded-es-sm border border-border/70 bg-card px-3 py-2 text-[11px] leading-relaxed text-foreground"
+                    }
+                  >
+                    {m.content ||
+                      (busy && i === messages.length - 1 ? (
+                        <Loader2 className="size-3.5 animate-spin text-gold" />
+                      ) : null)}
+                  </div>
+                ))}
+              </div>
+            )}
+            {error && (
+              <p className="mt-2 text-[11px] text-destructive" role="alert">
+                {t(error)}
+              </p>
+            )}
+          </div>
+
+          <div className="grid gap-2 border-t border-border/70 p-3">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                void send(input);
+              }}
+              className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2"
             >
-              <Send className="size-3.5" /> {t("Open AI Concierge")}
-            </a>
-            <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground/80">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder={t("Ask the concierge…")}
+                aria-label={t("Ask the concierge…")}
+                className="h-10 w-full min-w-0 rounded-xl border border-border bg-card px-3 text-xs text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
+              />
+              <button
+                type="submit"
+                disabled={busy || !input.trim()}
+                aria-label={t("Send")}
+                className="grid size-10 shrink-0 place-items-center rounded-xl bg-gold text-primary-foreground transition-opacity disabled:opacity-50"
+              >
+                {busy ? (
+                  <Loader2 className="size-4 animate-spin" />
+                ) : (
+                  <Send className="size-4 rtl:-scale-x-100" />
+                )}
+              </button>
+            </form>
+            <p className="text-[10px] leading-relaxed text-muted-foreground/80">
               {t(
                 "You are talking to an AI system, not a human agent or a government official. Its answers are not legal, medical or investment advice and never replace official emergency services — for emergencies contact the official authorities.",
               )}{" "}

@@ -1,6 +1,7 @@
 declare global {
   interface Window {
     dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -14,23 +15,12 @@ export function gtag(...args: unknown[]) {
   window.dataLayer.push(args);
 }
 
-let initialized = false;
-
-export function initAnalytics() {
-  if (initialized || typeof window === "undefined") return;
-  if (!GA_MEASUREMENT_ID) return;
-  initialized = true;
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  document.head.appendChild(script);
-
-  gtag("js", new Date());
-  gtag("config", GA_MEASUREMENT_ID);
-}
+/** Inline bootstrap injected into <head> before the app mounts. */
+export const GA_INLINE_SNIPPET = GA_MEASUREMENT_ID
+  ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_MEASUREMENT_ID}');`
+  : "";
 
 export function trackPageView(path: string) {
-  if (!GA_MEASUREMENT_ID) return;
+  if (!GA_MEASUREMENT_ID || typeof window === "undefined") return;
   gtag("event", "page_view", { page_path: path, page_location: window.location.href });
 }

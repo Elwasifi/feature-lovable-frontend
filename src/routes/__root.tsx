@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { initAnalytics, trackPageView } from "../lib/analytics";
+import { GA_MEASUREMENT_ID, GA_INLINE_SNIPPET, trackPageView } from "../lib/analytics";
 import { SITE } from "../config/site";
 import { I18nProvider } from "../i18n";
 import { CurrencyProvider } from "../i18n/currency";
@@ -128,6 +128,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     scripts: [
+      ...(GA_MEASUREMENT_ID
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+              async: true,
+            },
+            { children: GA_INLINE_SNIPPET },
+          ]
+        : []),
       {
         type: "application/ld+json",
         children: JSON.stringify({
@@ -183,10 +192,6 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-
-  useEffect(() => {
-    initAnalytics();
-  }, []);
 
   useEffect(() => {
     trackPageView(pathname);

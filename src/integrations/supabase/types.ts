@@ -14,6 +14,652 @@ export type Database = {
   }
   public: {
     Tables: {
+      countries: {
+        Row: {
+          created_at: string | null
+          currency: string | null
+          data_class: string | null
+          direct_flights: string[] | null
+          governance_status: string
+          has_egyptian_mission: boolean | null
+          id: string
+          iso2: string | null
+          language: string | null
+          mission_note: string | null
+          name: string
+          region: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          suggested_routes: string[] | null
+          summary: string | null
+          travellers_to_egypt: number | null
+          updated_at: string | null
+          verified_at: string | null
+          visa_route: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          currency?: string | null
+          data_class?: string | null
+          direct_flights?: string[] | null
+          governance_status?: string
+          has_egyptian_mission?: boolean | null
+          id: string
+          iso2?: string | null
+          language?: string | null
+          mission_note?: string | null
+          name: string
+          region?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          suggested_routes?: string[] | null
+          summary?: string | null
+          travellers_to_egypt?: number | null
+          updated_at?: string | null
+          verified_at?: string | null
+          visa_route?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          currency?: string | null
+          data_class?: string | null
+          direct_flights?: string[] | null
+          governance_status?: string
+          has_egyptian_mission?: boolean | null
+          id?: string
+          iso2?: string | null
+          language?: string | null
+          mission_note?: string | null
+          name?: string
+          region?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          suggested_routes?: string[] | null
+          summary?: string | null
+          travellers_to_egypt?: number | null
+          updated_at?: string | null
+          verified_at?: string | null
+          visa_route?: string | null
+        }
+        Relationships: []
+      }
+      destinations: {
+        Row: {
+          best_season: string | null
+          category: string
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          lat: number | null
+          lng: number | null
+          name: string
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          best_season?: string | null
+          category: string
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name: string
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          best_season?: string | null
+          category?: string
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name?: string
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "destinations_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      eras: {
+        Row: {
+          colour: string | null
+          created_at: string | null
+          data_class: string | null
+          from_period: string | null
+          governance_status: string
+          key: string
+          monuments: string[] | null
+          museums: string[] | null
+          name: string
+          rulers: string[] | null
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          to_period: string | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          colour?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          from_period?: string | null
+          governance_status?: string
+          key: string
+          monuments?: string[] | null
+          museums?: string[] | null
+          name: string
+          rulers?: string[] | null
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          to_period?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          colour?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          from_period?: string | null
+          governance_status?: string
+          key?: string
+          monuments?: string[] | null
+          museums?: string[] | null
+          name?: string
+          rulers?: string[] | null
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          to_period?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
+      events: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          end_date: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          languages: string[] | null
+          name: string
+          organiser: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          start_date: string | null
+          summary: string | null
+          tags: string[] | null
+          ticketed: boolean | null
+          updated_at: string | null
+          venue: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          end_date?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          languages?: string[] | null
+          name: string
+          organiser?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          start_date?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          ticketed?: boolean | null
+          updated_at?: string | null
+          venue?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          end_date?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          languages?: string[] | null
+          name?: string
+          organiser?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          start_date?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          ticketed?: boolean | null
+          updated_at?: string | null
+          venue?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      governorates: {
+        Row: {
+          annual_visitors: number | null
+          area_km2: number | null
+          capital: string
+          cities: string[] | null
+          code: string
+          crafts: string[] | null
+          created_at: string | null
+          cuisine: string[] | null
+          data_class: string | null
+          governance_status: string
+          guides: number | null
+          has_coast: boolean | null
+          has_nile: boolean | null
+          heritage_eras: string[] | null
+          heritage_sites: number | null
+          highlights: string[] | null
+          hotels: number | null
+          id: string
+          investment_sectors: string[] | null
+          lat: number | null
+          lng: number | null
+          name: string
+          name_ar: string
+          nature: string[] | null
+          occupancy_pct: number | null
+          population_m: number | null
+          region: string
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          annual_visitors?: number | null
+          area_km2?: number | null
+          capital: string
+          cities?: string[] | null
+          code: string
+          crafts?: string[] | null
+          created_at?: string | null
+          cuisine?: string[] | null
+          data_class?: string | null
+          governance_status?: string
+          guides?: number | null
+          has_coast?: boolean | null
+          has_nile?: boolean | null
+          heritage_eras?: string[] | null
+          heritage_sites?: number | null
+          highlights?: string[] | null
+          hotels?: number | null
+          id: string
+          investment_sectors?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name: string
+          name_ar: string
+          nature?: string[] | null
+          occupancy_pct?: number | null
+          population_m?: number | null
+          region: string
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          annual_visitors?: number | null
+          area_km2?: number | null
+          capital?: string
+          cities?: string[] | null
+          code?: string
+          crafts?: string[] | null
+          created_at?: string | null
+          cuisine?: string[] | null
+          data_class?: string | null
+          governance_status?: string
+          guides?: number | null
+          has_coast?: boolean | null
+          has_nile?: boolean | null
+          heritage_eras?: string[] | null
+          heritage_sites?: number | null
+          highlights?: string[] | null
+          hotels?: number | null
+          id?: string
+          investment_sectors?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name?: string
+          name_ar?: string
+          nature?: string[] | null
+          occupancy_pct?: number | null
+          population_m?: number | null
+          region?: string
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
+      heritage_sites: {
+        Row: {
+          academic_references: string[] | null
+          access: string | null
+          accessibility: string[] | null
+          classification: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          era: string
+          governance_status: string
+          governorate_slug: string
+          hidden: boolean | null
+          id: string
+          images: string[] | null
+          lat: number | null
+          lng: number | null
+          name: string
+          related_figures: string[] | null
+          restoration_status: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          academic_references?: string[] | null
+          access?: string | null
+          accessibility?: string[] | null
+          classification?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          era: string
+          governance_status?: string
+          governorate_slug: string
+          hidden?: boolean | null
+          id: string
+          images?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name: string
+          related_figures?: string[] | null
+          restoration_status?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          academic_references?: string[] | null
+          access?: string | null
+          accessibility?: string[] | null
+          classification?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          era?: string
+          governance_status?: string
+          governorate_slug?: string
+          hidden?: boolean | null
+          id?: string
+          images?: string[] | null
+          lat?: number | null
+          lng?: number | null
+          name?: string
+          related_figures?: string[] | null
+          restoration_status?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "heritage_sites_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      heritage_worldwide: {
+        Row: {
+          country: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          era: string | null
+          governance_status: string
+          id: string
+          images: string[] | null
+          institution: string | null
+          name: string
+          object: string | null
+          provenance_note: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          era?: string | null
+          governance_status?: string
+          id: string
+          images?: string[] | null
+          institution?: string | null
+          name: string
+          object?: string | null
+          provenance_note?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          country?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          era?: string | null
+          governance_status?: string
+          id?: string
+          images?: string[] | null
+          institution?: string | null
+          name?: string
+          object?: string | null
+          provenance_note?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "heritage_worldwide_era_fkey"
+            columns: ["era"]
+            isOneToOne: false
+            referencedRelation: "eras"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      investment_opportunities: {
+        Row: {
+          competent_entity: string | null
+          created_at: string | null
+          data_class: string | null
+          demand_signals: string[] | null
+          description: string | null
+          documents: Json | null
+          governance_status: string
+          governorate_slug: string | null
+          id: string
+          investment_max_usd: number | null
+          investment_min_usd: number | null
+          land_requirement_ha: number | null
+          name: string
+          restrictions: string[] | null
+          risks: string[] | null
+          sector: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          stage: string | null
+          summary: string | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          competent_entity?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          demand_signals?: string[] | null
+          description?: string | null
+          documents?: Json | null
+          governance_status?: string
+          governorate_slug?: string | null
+          id: string
+          investment_max_usd?: number | null
+          investment_min_usd?: number | null
+          land_requirement_ha?: number | null
+          name: string
+          restrictions?: string[] | null
+          risks?: string[] | null
+          sector?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          stage?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          competent_entity?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          demand_signals?: string[] | null
+          description?: string | null
+          documents?: Json | null
+          governance_status?: string
+          governorate_slug?: string | null
+          id?: string
+          investment_max_usd?: number | null
+          investment_min_usd?: number | null
+          land_requirement_ha?: number | null
+          name?: string
+          restrictions?: string[] | null
+          risks?: string[] | null
+          sector?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          stage?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "investment_opportunities_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
       legal_document_versions: {
         Row: {
           approval_status: string
@@ -59,6 +705,134 @@ export type Database = {
         }
         Relationships: []
       }
+      museums: {
+        Row: {
+          access: string | null
+          collections_count: number | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          governorate_slug: string
+          highlights: string[] | null
+          id: string
+          images: string[] | null
+          name: string
+          opened: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          access?: string | null
+          collections_count?: number | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug: string
+          highlights?: string[] | null
+          id: string
+          images?: string[] | null
+          name: string
+          opened?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          access?: string | null
+          collections_count?: number | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          highlights?: string[] | null
+          id?: string
+          images?: string[] | null
+          name?: string
+          opened?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "museums_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      offers: {
+        Row: {
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          id: string
+          images: string[] | null
+          kind: string | null
+          name: string
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          id: string
+          images?: string[] | null
+          kind?: string | null
+          name: string
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          id?: string
+          images?: string[] | null
+          kind?: string | null
+          name?: string
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -101,6 +875,389 @@ export type Database = {
           tier?: string
           updated_at?: string
           whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      properties: {
+        Row: {
+          area_m2: number | null
+          city: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          name: string
+          price_usd: number | null
+          property_type: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          area_m2?: number | null
+          city?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          name: string
+          price_usd?: number | null
+          property_type?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          area_m2?: number | null
+          city?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          name?: string
+          price_usd?: number | null
+          property_type?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "properties_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      providers: {
+        Row: {
+          accessibility: string[] | null
+          amenities: string[] | null
+          availability: string[] | null
+          created_at: string | null
+          currency: string | null
+          data_class: string | null
+          demo_verification_label: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          languages: string[] | null
+          licence_ref: string | null
+          name: string
+          price_from: number | null
+          rating: number | null
+          review_count: number | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          specialties: string[] | null
+          summary: string | null
+          type: string
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          accessibility?: string[] | null
+          amenities?: string[] | null
+          availability?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          data_class?: string | null
+          demo_verification_label?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          languages?: string[] | null
+          licence_ref?: string | null
+          name: string
+          price_from?: number | null
+          rating?: number | null
+          review_count?: number | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          specialties?: string[] | null
+          summary?: string | null
+          type: string
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          accessibility?: string[] | null
+          amenities?: string[] | null
+          availability?: string[] | null
+          created_at?: string | null
+          currency?: string | null
+          data_class?: string | null
+          demo_verification_label?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          languages?: string[] | null
+          licence_ref?: string | null
+          name?: string
+          price_from?: number | null
+          rating?: number | null
+          review_count?: number | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          specialties?: string[] | null
+          summary?: string | null
+          type?: string
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "providers_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      research_programs: {
+        Row: {
+          created_at: string | null
+          data_class: string | null
+          degree: string | null
+          description: string | null
+          field: string | null
+          governance_status: string
+          governorate_slug: string | null
+          id: string
+          images: string[] | null
+          languages: string[] | null
+          name: string
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          university: string | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_class?: string | null
+          degree?: string | null
+          description?: string | null
+          field?: string | null
+          governance_status?: string
+          governorate_slug?: string | null
+          id: string
+          images?: string[] | null
+          languages?: string[] | null
+          name: string
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          university?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          data_class?: string | null
+          degree?: string | null
+          description?: string | null
+          field?: string | null
+          governance_status?: string
+          governorate_slug?: string | null
+          id?: string
+          images?: string[] | null
+          languages?: string[] | null
+          name?: string
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          university?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "research_programs_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      rulers: {
+        Row: {
+          achievements: string[] | null
+          created_at: string | null
+          data_class: string | null
+          dynasty: string | null
+          era: string | null
+          governance_status: string
+          id: string
+          monuments: string[] | null
+          name: string
+          reign: string | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          achievements?: string[] | null
+          created_at?: string | null
+          data_class?: string | null
+          dynasty?: string | null
+          era?: string | null
+          governance_status?: string
+          id: string
+          monuments?: string[] | null
+          name: string
+          reign?: string | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          achievements?: string[] | null
+          created_at?: string | null
+          data_class?: string | null
+          dynasty?: string | null
+          era?: string | null
+          governance_status?: string
+          id?: string
+          monuments?: string[] | null
+          name?: string
+          reign?: string | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rulers_era_fkey"
+            columns: ["era"]
+            isOneToOne: false
+            referencedRelation: "eras"
+            referencedColumns: ["key"]
+          },
+        ]
+      }
+      traveller_stories: {
+        Row: {
+          country: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          destinations: string[] | null
+          governance_status: string
+          group_type: string | null
+          id: string
+          images: string[] | null
+          media_type: string | null
+          moderation_state: string | null
+          name: string
+          negatives: string[] | null
+          positives: string[] | null
+          rating: number | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          suggestions: string[] | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          destinations?: string[] | null
+          governance_status?: string
+          group_type?: string | null
+          id: string
+          images?: string[] | null
+          media_type?: string | null
+          moderation_state?: string | null
+          name: string
+          negatives?: string[] | null
+          positives?: string[] | null
+          rating?: number | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          suggestions?: string[] | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          country?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          destinations?: string[] | null
+          governance_status?: string
+          group_type?: string | null
+          id?: string
+          images?: string[] | null
+          media_type?: string | null
+          moderation_state?: string | null
+          name?: string
+          negatives?: string[] | null
+          positives?: string[] | null
+          rating?: number | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          suggestions?: string[] | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
         }
         Relationships: []
       }

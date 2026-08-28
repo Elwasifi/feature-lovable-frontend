@@ -7,13 +7,46 @@ import { useI18n } from "@/i18n";
 import { mailto, SITE } from "@/config/site";
 import { governorates } from "@/data/governorates";
 import { governorateProfiles, type Bilingual } from "@/data/governorate-profiles";
+import { supabase } from "@/integrations/supabase/client";
+
+// Real place records for the "#places" section below, loaded from Supabase (public.destinations).
+// This is separate from `governorates.ts`'s own `sites` array, which stays as-is and keeps
+// powering the interactive map on the homepage (see src/components/site/EgyptMap.tsx) — that
+// map is untouched by this change.
+type GovernorateDestination = {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  summary: string | null;
+  lat: number | null;
+  lng: number | null;
+};
 
 export const Route = createFileRoute("/governorates/$id")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const gov = governorates.find((g) => g.id === params.id);
     const profile = governorateProfiles[params.id];
     if (!gov || !profile) throw notFound();
-    return { name: gov.name, tagline: profile.tagline.en, story: profile.story.en, id: gov.id };
+
+    const { data: destinations, error } = await supabase
+      .from("destinations")
+      .select("id, slug, name, category, summary, lat, lng")
+      .eq("governorate_slug", gov.id)
+      .order("name");
+
+    if (error) {
+      // Never fail the page render over this — fall back to an empty list and log for follow-up.
+      console.error(`[governorates.$id] failed to load destinations for ${gov.id}:`, error.message);
+    }
+
+    return {
+      name: gov.name,
+      tagline: profile.tagline.en,
+      story: profile.story.en,
+      id: gov.id,
+      destinations: (destinations ?? []) as GovernorateDestination[],
+    };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -58,6 +91,7 @@ function GovernorateNotFound() {
 
 function GovernoratePage() {
   const { id } = Route.useParams();
+  const { destinations } = Route.useLoaderData();
   const { t, lang } = useI18n();
   const gov = governorates.find((g) => g.id === id)!;
   const profile = governorateProfiles[id]!;
@@ -128,34 +162,44 @@ function GovernoratePage() {
             title={`${t("Famous places in")} ${t(gov.name)}`}
             description={t("Archaeological, touristic and leisure landmarks mapped for your itinerary.")}
           />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {gov.sites.map((s) => (
-              <article
-                key={s.name}
-                className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
-              >
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={profile.image}
-                    alt={s.name}
-                    loading="lazy"
-                    width={1280}
-                    height={720}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-transparent" />
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center gap-2 text-sm text-foreground">
-                    <Landmark className="size-4 shrink-0 text-gold" /> {t(s.name)}
+          {destinations.length > 0 ? (
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {destinations.map((dest) => (
+                <article
+                  key={dest.id}
+                  className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={profile.image}
+                      alt={dest.name}
+                      loading="lazy"
+                      width={1280}
+                      height={720}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-transparent" />
                   </div>
-                  <p className="mt-1 text-[11px] text-muted-foreground">
-                    {s.lat.toFixed(3)}°N · {s.lon.toFixed(3)}°E
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 text-sm text-foreground">
+                      <Landmark className="size-4 shrink-0 text-gold" /> {t(dest.name)}
+                    </div>
+                    {dest.summary ? (
+                      <p className="mt-1 text-[11px] text-muted-foreground">{t(dest.summary)}</p>
+                    ) : dest.lat != null && dest.lng != null ? (
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        {dest.lat.toFixed(3)}°N · {dest.lng.toFixed(3)}°E
+                      </p>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-sm text-muted-foreground">
+              {t("Places for this governorate are being added — check back soon.")}
+            </p>
+          )}
         </Section>
 
         <Section className="py-10 lg:py-16">

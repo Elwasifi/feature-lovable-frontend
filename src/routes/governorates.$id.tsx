@@ -162,34 +162,44 @@ function GovernoratePage() {
             title={`${t("Famous places in")} ${t(gov.name)}`}
             description={t("Archaeological, touristic and leisure landmarks mapped for your itinerary.")}
           />
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {gov.sites.map((s) => (
-              <article
-                key={s.name}
-                className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
-              >
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={profile.image}
-                    alt={s.name}
-                    loading="lazy"
-                    width={1280}
-                    height={720}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-transparent" />
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center gap-2 text-sm text-foreground">
-                    <Landmark className="size-4 shrink-0 text-gold" /> {t(s.name)}
+          {destinations.length > 0 ? (
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {destinations.map((dest) => (
+                <article
+                  key={dest.id}
+                  className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
+                >
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={profile.image}
+                      alt={dest.name}
+                      loading="lazy"
+                      width={1280}
+                      height={720}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/85 to-transparent" />
                   </div>
-                  <p className="mt-1 text-[11px] text-muted-foreground">
-                    {s.lat.toFixed(3)}°N · {s.lon.toFixed(3)}°E
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 text-sm text-foreground">
+                      <Landmark className="size-4 shrink-0 text-gold" /> {t(dest.name)}
+                    </div>
+                    {dest.summary ? (
+                      <p className="mt-1 text-[11px] text-muted-foreground">{t(dest.summary)}</p>
+                    ) : dest.lat != null && dest.lng != null ? (
+                      <p className="mt-1 text-[11px] text-muted-foreground">
+                        {dest.lat.toFixed(3)}°N · {dest.lng.toFixed(3)}°E
+                      </p>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="mt-6 text-sm text-muted-foreground">
+              {t("Places for this governorate are being added — check back soon.")}
+            </p>
+          )}
         </Section>
 
         <Section className="py-10 lg:py-16">

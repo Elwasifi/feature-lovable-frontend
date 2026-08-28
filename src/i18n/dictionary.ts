@@ -9,6 +9,24 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Registered heritage sites across all 27 governorates, spanning ancient, Coptic, Islamic and modern eras.":
+    "المواقع الأثرية المسجّلة في كل المحافظات الـ27، من العصر الفرعوني إلى القبطي والإسلامي والحديث.",
+  "All eras": "كل العصور",
+  "No heritage sites match this filter yet.": "لا توجد مواقع أثرية مطابقة لهذا الفلتر حاليًا.",
+  "Museums & exhibitions": "المتاحف والمعارض",
+  "Egypt's museums, from national institutions to regional collections.":
+    "متاحف مصر، من المؤسسات الوطنية الكبرى إلى المجموعات الإقليمية.",
+  "All governorates": "كل المحافظات",
+  Opened: "افتتح",
+  "No museums match this filter yet.": "لا توجد متاحف مطابقة لهذا الفلتر حاليًا.",
+  "Events & festivals": "الفعاليات والمهرجانات",
+  "Egypt's festival and events calendar across film, music, heritage and culture.":
+    "تقويم فعاليات ومهرجانات مصر في السينما والموسيقى والتراث والثقافة.",
+  "All categories": "كل الفئات",
+  Upcoming: "القادمة",
+  "Past events": "فعاليات سابقة",
+  Ticketed: "بتذاكر",
+  "No events match this filter yet.": "لا توجد فعاليات مطابقة لهذا الفلتر حاليًا.",
   "Pending approval from the competent authority and connection with the relevant entity. Figures shown here are indicative demo content, not a live offer.":
     "بانتظار الموافقة من الجهة المختصة والربط مع الجهة المعنية. الأرقام المعروضة هنا بيانات تجريبية استرشادية، وليست عرضًا فعليًا.",
   "Places for this governorate are being added — check back soon.":

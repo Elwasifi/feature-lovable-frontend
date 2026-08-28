@@ -341,7 +341,7 @@ function Discover() {
         {discoverCards.map((card) => (
           <a
             key={card.title}
-            href="/#governorates"
+            href={card.href}
             className="group relative overflow-hidden rounded-2xl border border-border/70"
           >
             <img

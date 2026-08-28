@@ -7,13 +7,46 @@ import { useI18n } from "@/i18n";
 import { mailto, SITE } from "@/config/site";
 import { governorates } from "@/data/governorates";
 import { governorateProfiles, type Bilingual } from "@/data/governorate-profiles";
+import { supabase } from "@/integrations/supabase/client";
+
+// Real place records for the "#places" section below, loaded from Supabase (public.destinations).
+// This is separate from `governorates.ts`'s own `sites` array, which stays as-is and keeps
+// powering the interactive map on the homepage (see src/components/site/EgyptMap.tsx) — that
+// map is untouched by this change.
+type GovernorateDestination = {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  summary: string | null;
+  lat: number | null;
+  lng: number | null;
+};
 
 export const Route = createFileRoute("/governorates/$id")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const gov = governorates.find((g) => g.id === params.id);
     const profile = governorateProfiles[params.id];
     if (!gov || !profile) throw notFound();
-    return { name: gov.name, tagline: profile.tagline.en, story: profile.story.en, id: gov.id };
+
+    const { data: destinations, error } = await supabase
+      .from("destinations")
+      .select("id, slug, name, category, summary, lat, lng")
+      .eq("governorate_slug", gov.id)
+      .order("name");
+
+    if (error) {
+      // Never fail the page render over this — fall back to an empty list and log for follow-up.
+      console.error(`[governorates.$id] failed to load destinations for ${gov.id}:`, error.message);
+    }
+
+    return {
+      name: gov.name,
+      tagline: profile.tagline.en,
+      story: profile.story.en,
+      id: gov.id,
+      destinations: (destinations ?? []) as GovernorateDestination[],
+    };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {

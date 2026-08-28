@@ -9,6 +9,10 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Pending approval from the competent authority and connection with the relevant entity. Figures shown here are indicative demo content, not a live offer.":
+    "بانتظار الموافقة من الجهة المختصة والربط مع الجهة المعنية. الأرقام المعروضة هنا بيانات تجريبية استرشادية، وليست عرضًا فعليًا.",
+  "Places for this governorate are being added — check back soon.":
+    "جارٍ إضافة الأماكن الخاصة بهذه المحافظة — تابعنا قريبًا.",
   "~17M": "~17 مليون",
   "🇩🇪": "🇩🇪",
   "🇫🇷": "🇫🇷",

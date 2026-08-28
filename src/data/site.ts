@@ -96,30 +96,49 @@ export const quickCategories = [
   "More",
 ] as const;
 
+// Each card's own destination. Previously every card in this list linked to the same
+// hardcoded "/#governorates" anchor regardless of its title (a leftover placeholder from
+// before these pages existed) — now that dedicated pages exist for heritage sites and
+// museums, they get their real routes; the rest keep the original anchor fallback until
+// they have dedicated pages of their own.
 export const discoverCards = [
   {
     title: "27 Governorates",
     subtitle: "Explore all regions",
     image: cardGovernorates,
+    href: "/#governorates",
   },
   {
     title: "Egypt Through Time",
     subtitle: "Journey across eras",
     image: cardThroughTime,
+    href: "/#through-time",
   },
   {
     title: "Heritage Sites",
     subtitle: "Thousands of sites",
     image: cardHeritage,
     badge: "New",
+    href: "/heritage-sites",
   },
-  { title: "Museums", subtitle: "Discover our treasures", image: cardMuseums },
-  { title: "Nile & Sea", subtitle: "Rivers, seas & yachts", image: cardNileSea },
+  {
+    title: "Museums",
+    subtitle: "Discover our treasures",
+    image: cardMuseums,
+    href: "/museums",
+  },
+  {
+    title: "Nile & Sea",
+    subtitle: "Rivers, seas & yachts",
+    image: cardNileSea,
+    href: "/#explore",
+  },
   {
     title: "Hidden Heritage",
     subtitle: "Beyond the crowds",
     image: cardHidden,
     badge: "New",
+    href: "/#explore",
   },
 ];
 

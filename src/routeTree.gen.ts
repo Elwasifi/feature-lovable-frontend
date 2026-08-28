@@ -14,6 +14,9 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
+import { Route as MuseumsRouteImport } from './routes/museums'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
@@ -48,6 +51,21 @@ const ContactRoute = ContactRouteImport.update({
 const EncyclopediaRoute = EncyclopediaRouteImport.update({
   id: '/encyclopedia',
   path: '/encyclopedia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeritageSitesRoute = HeritageSitesRouteImport.update({
+  id: '/heritage-sites',
+  path: '/heritage-sites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MuseumsRoute = MuseumsRouteImport.update({
+  id: '/museums',
+  path: '/museums',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiConciergeRoute = ApiConciergeRouteImport.update({
@@ -110,6 +128,9 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/events': typeof EventsRoute
+  '/heritage-sites': typeof HeritageSitesRoute
+  '/museums': typeof MuseumsRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -127,6 +148,9 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/events': typeof EventsRoute
+  '/heritage-sites': typeof HeritageSitesRoute
+  '/museums': typeof MuseumsRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -145,6 +169,9 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/encyclopedia': typeof EncyclopediaRoute
+  '/events': typeof EventsRoute
+  '/heritage-sites': typeof HeritageSitesRoute
+  '/museums': typeof MuseumsRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -164,6 +191,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/events'
+    | '/heritage-sites'
+    | '/museums'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -181,6 +211,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/events'
+    | '/heritage-sites'
+    | '/museums'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -198,6 +231,9 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/encyclopedia'
+    | '/events'
+    | '/heritage-sites'
+    | '/museums'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -216,6 +252,9 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
+  EventsRoute: typeof EventsRoute
+  HeritageSitesRoute: typeof HeritageSitesRoute
+  MuseumsRoute: typeof MuseumsRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
@@ -263,6 +302,27 @@ declare module '@tanstack/react-router' {
       path: '/encyclopedia'
       fullPath: '/encyclopedia'
       preLoaderRoute: typeof EncyclopediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heritage-sites': {
+      id: '/heritage-sites'
+      path: '/heritage-sites'
+      fullPath: '/heritage-sites'
+      preLoaderRoute: typeof HeritageSitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/museums': {
+      id: '/museums'
+      path: '/museums'
+      fullPath: '/museums'
+      preLoaderRoute: typeof MuseumsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/concierge': {
@@ -344,6 +404,9 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   EncyclopediaRoute: EncyclopediaRoute,
+  EventsRoute: EventsRoute,
+  HeritageSitesRoute: HeritageSitesRoute,
+  MuseumsRoute: MuseumsRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   LegalSlugRoute: LegalSlugRoute,

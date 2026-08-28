@@ -91,6 +91,7 @@ function GovernorateNotFound() {
 
 function GovernoratePage() {
   const { id } = Route.useParams();
+  const { destinations } = Route.useLoaderData();
   const { t, lang } = useI18n();
   const gov = governorates.find((g) => g.id === id)!;
   const profile = governorateProfiles[id]!;

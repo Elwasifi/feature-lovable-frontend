@@ -42,6 +42,7 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Guides & Assistants", href: "/#ai-concierge" },
       { label: "Food & Restaurants", href: "/encyclopedia" },
       { label: "Events & Festivals", href: "/events" },
+      { label: "Offers & Packages", href: "/offers", badge: "New" },
     ],
   },
   {
@@ -63,16 +64,16 @@ export const sidebarGroups: SidebarGroup[] = [
     items: [
       { label: "Invest in Egypt", href: "/#invest" },
       { label: "Entertainment Investment", href: "/#sectors", badge: "Hot" },
-      { label: "Real Estate & Live in Egypt", href: "/#sectors" },
-      { label: "Business & Marketplace", href: "/#marketplace" },
+      { label: "Real Estate & Live in Egypt", href: "/properties" },
+      { label: "Business & Marketplace", href: "/providers" },
       { label: "Corporate & MICE", href: "/#invest" },
-      { label: "Projects & Opportunities", href: "/#invest" },
+      { label: "Projects & Opportunities", href: "/investment-opportunities" },
     ],
   },
   {
     title: "Services",
     items: [
-      { label: "Visa & Entry", href: "/legal" },
+      { label: "Visa & Entry", href: "/countries" },
       { label: "Health & Medical Tourism", href: "/#sectors" },
       { label: "Safety Center", href: "/legal" },
       { label: "Egypt One Pass", href: "/#programmes" },

@@ -9,6 +9,36 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Invest & live": "استثمر وعيش",
+  "Real estate & live in Egypt": "العقارات والعيش في مصر",
+  "Residential, commercial and land listings across Egypt's governorates, for those looking to live or invest.":
+    "عقارات سكنية وتجارية وأراضٍ في محافظات مصر، لمن يريد العيش أو الاستثمار.",
+  "All types": "كل الأنواع",
+  "No properties match this filter yet.": "لا توجد عقارات مطابقة لهذا الفلتر حاليًا.",
+  "Offers & packages": "العروض والباقات",
+  "Curated travel offers and packages across Egypt's hotels, tours and experiences.":
+    "عروض وباقات سياحية مختارة في فنادق مصر وجولاتها وتجاربها.",
+  "All offers": "كل العروض",
+  "No offers match this filter yet.": "لا توجد عروض مطابقة لهذا الفلتر حاليًا.",
+  "Visa & entry by country": "التأشيرة والدخول حسب الدولة",
+  "Visa routes, Egyptian missions abroad and travel information to Egypt, by country of origin.":
+    "مسارات التأشيرات والبعثات المصرية بالخارج ومعلومات السفر لمصر، حسب دولة المنشأ.",
+  "All regions": "كل المناطق",
+  "No countries match this filter yet.": "لا توجد دول مطابقة لهذا الفلتر حاليًا.",
+  "Egyptian mission present": "يوجد بعثة مصرية",
+  "Travellers to Egypt": "المسافرون إلى مصر",
+  "Invest & business": "الاستثمار والأعمال",
+  "Investment opportunities": "فرص استثمارية",
+  "Sector-by-sector projects and opportunities across Egypt's governorates, open to investors.":
+    "مشروعات وفرص حسب القطاع في محافظات مصر، متاحة للمستثمرين.",
+  "All sectors": "كل القطاعات",
+  "No investment opportunities match this filter yet.":
+    "لا توجد فرص استثمارية مطابقة لهذا الفلتر حاليًا.",
+  "Competent entity": "الجهة المختصة",
+  "Service providers": "مقدمو الخدمات",
+  "Hotels, guides, tour operators and service providers across Egypt's governorates.":
+    "فنادق ومرشدون ومنظمو رحلات ومقدمو خدمات في محافظات مصر.",
+  "No providers match this filter yet.": "لا يوجد مقدمو خدمات مطابقون لهذا الفلتر حاليًا.",
   "Registered heritage sites across all 27 governorates, spanning ancient, Coptic, Islamic and modern eras.":
     "المواقع الأثرية المسجّلة في كل المحافظات الـ27، من العصر الفرعوني إلى القبطي والإسلامي والحديث.",
   "All eras": "كل العصور",

@@ -13,10 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CountriesRouteImport } from './routes/countries'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
+import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment-opportunities'
 import { Route as MuseumsRouteImport } from './routes/museums'
+import { Route as OffersRouteImport } from './routes/offers'
+import { Route as PropertiesRouteImport } from './routes/properties'
+import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
@@ -48,6 +53,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountriesRoute = CountriesRouteImport.update({
+  id: '/countries',
+  path: '/countries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EncyclopediaRoute = EncyclopediaRouteImport.update({
   id: '/encyclopedia',
   path: '/encyclopedia',
@@ -63,9 +73,29 @@ const HeritageSitesRoute = HeritageSitesRouteImport.update({
   path: '/heritage-sites',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestmentOpportunitiesRoute = InvestmentOpportunitiesRouteImport.update({
+  id: '/investment-opportunities',
+  path: '/investment-opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MuseumsRoute = MuseumsRouteImport.update({
   id: '/museums',
   path: '/museums',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OffersRoute = OffersRouteImport.update({
+  id: '/offers',
+  path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesRoute = PropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvidersRoute = ProvidersRouteImport.update({
+  id: '/providers',
+  path: '/providers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiConciergeRoute = ApiConciergeRouteImport.update({
@@ -127,10 +157,15 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/countries': typeof CountriesRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
+  '/offers': typeof OffersRoute
+  '/properties': typeof PropertiesRoute
+  '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -147,10 +182,15 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/countries': typeof CountriesRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
+  '/offers': typeof OffersRoute
+  '/properties': typeof PropertiesRoute
+  '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -168,10 +208,15 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/countries': typeof CountriesRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
+  '/offers': typeof OffersRoute
+  '/properties': typeof PropertiesRoute
+  '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -190,10 +235,15 @@ export interface FileRouteTypes {
     | '/account'
     | '/auth'
     | '/contact'
+    | '/countries'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
+    | '/investment-opportunities'
     | '/museums'
+    | '/offers'
+    | '/properties'
+    | '/providers'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -210,10 +260,15 @@ export interface FileRouteTypes {
     | '/account'
     | '/auth'
     | '/contact'
+    | '/countries'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
+    | '/investment-opportunities'
     | '/museums'
+    | '/offers'
+    | '/properties'
+    | '/providers'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -230,10 +285,15 @@ export interface FileRouteTypes {
     | '/account'
     | '/auth'
     | '/contact'
+    | '/countries'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
+    | '/investment-opportunities'
     | '/museums'
+    | '/offers'
+    | '/properties'
+    | '/providers'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -251,10 +311,15 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  CountriesRoute: typeof CountriesRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
+  InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
   MuseumsRoute: typeof MuseumsRoute
+  OffersRoute: typeof OffersRoute
+  PropertiesRoute: typeof PropertiesRoute
+  ProvidersRoute: typeof ProvidersRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
@@ -297,6 +362,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/countries': {
+      id: '/countries'
+      path: '/countries'
+      fullPath: '/countries'
+      preLoaderRoute: typeof CountriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/encyclopedia': {
       id: '/encyclopedia'
       path: '/encyclopedia'
@@ -318,11 +390,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeritageSitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/investment-opportunities': {
+      id: '/investment-opportunities'
+      path: '/investment-opportunities'
+      fullPath: '/investment-opportunities'
+      preLoaderRoute: typeof InvestmentOpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/museums': {
       id: '/museums'
       path: '/museums'
       fullPath: '/museums'
       preLoaderRoute: typeof MuseumsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offers': {
+      id: '/offers'
+      path: '/offers'
+      fullPath: '/offers'
+      preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties': {
+      id: '/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof PropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/providers': {
+      id: '/providers'
+      path: '/providers'
+      fullPath: '/providers'
+      preLoaderRoute: typeof ProvidersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/concierge': {
@@ -403,10 +503,15 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  CountriesRoute: CountriesRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
   HeritageSitesRoute: HeritageSitesRoute,
+  InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
   MuseumsRoute: MuseumsRoute,
+  OffersRoute: OffersRoute,
+  PropertiesRoute: PropertiesRoute,
+  ProvidersRoute: ProvidersRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   LegalSlugRoute: LegalSlugRoute,

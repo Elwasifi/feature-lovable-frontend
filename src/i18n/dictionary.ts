@@ -12,7 +12,6 @@ const ar: Dict = {
   "Crafts & products marketplace": "سوق الحرف والمنتجات",
   "Handmade crafts, textiles and local products from artisans across Egypt's 27 governorates.":
     "منتجات وحرف يدوية ومنسوجات محلية من حرفيين في محافظات مصر الـ27.",
-  "All categories": "كل الفئات",
   "No products match this filter yet.": "لا توجد منتجات مطابقة لهذا الفلتر حاليًا.",
   "Invest & live": "استثمر وعيش",
   "Real estate & live in Egypt": "العقارات والعيش في مصر",

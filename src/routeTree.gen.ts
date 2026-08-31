@@ -20,6 +20,7 @@ import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
 import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment-opportunities'
 import { Route as MuseumsRouteImport } from './routes/museums'
 import { Route as OffersRouteImport } from './routes/offers'
+import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
@@ -86,6 +87,11 @@ const MuseumsRoute = MuseumsRouteImport.update({
 const OffersRoute = OffersRouteImport.update({
   id: '/offers',
   path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsRoute = ProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PropertiesRoute = PropertiesRouteImport.update({
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/investment-opportunities'
     | '/museums'
     | '/offers'
+    | '/products'
     | '/properties'
     | '/providers'
     | '/api/concierge'
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/investment-opportunities'
     | '/museums'
     | '/offers'
+    | '/products'
     | '/properties'
     | '/providers'
     | '/api/concierge'
@@ -292,6 +303,7 @@ export interface FileRouteTypes {
     | '/investment-opportunities'
     | '/museums'
     | '/offers'
+    | '/products'
     | '/properties'
     | '/providers'
     | '/api/concierge'
@@ -318,6 +330,7 @@ export interface RootRouteChildren {
   InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
   MuseumsRoute: typeof MuseumsRoute
   OffersRoute: typeof OffersRoute
+  ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
@@ -409,6 +422,13 @@ declare module '@tanstack/react-router' {
       path: '/offers'
       fullPath: '/offers'
       preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products': {
+      id: '/products'
+      path: '/products'
+      fullPath: '/products'
+      preLoaderRoute: typeof ProductsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties': {
@@ -510,6 +530,7 @@ const rootRouteChildren: RootRouteChildren = {
   InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
   MuseumsRoute: MuseumsRoute,
   OffersRoute: OffersRoute,
+  ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
   ApiConciergeRoute: ApiConciergeRoute,

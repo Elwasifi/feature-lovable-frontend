@@ -68,6 +68,7 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Business & Marketplace", href: "/providers" },
       { label: "Corporate & MICE", href: "/#invest" },
       { label: "Projects & Opportunities", href: "/investment-opportunities" },
+      { label: "Crafts & Products Marketplace", href: "/products", badge: "New" },
     ],
   },
   {

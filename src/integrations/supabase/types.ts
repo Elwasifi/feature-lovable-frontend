@@ -833,6 +833,77 @@ export type Database = {
         }
         Relationships: []
       }
+      products: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          maker: string | null
+          name: string
+          price_egp: number | null
+          slug: string
+          source_owner: string | null
+          source_status: string | null
+          summary: string | null
+          tags: string[] | null
+          updated_at: string | null
+          verified_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          maker?: string | null
+          name: string
+          price_egp?: number | null
+          slug: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          maker?: string | null
+          name?: string
+          price_egp?: number | null
+          slug?: string
+          source_owner?: string | null
+          source_status?: string | null
+          summary?: string | null
+          tags?: string[] | null
+          updated_at?: string | null
+          verified_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           avatar_url: string | null

@@ -29,15 +29,27 @@ export const Route = createFileRoute("/governorates/$id")({
     const profile = governorateProfiles[params.id];
     if (!gov || !profile) throw notFound();
 
-    const { data: destinations, error } = await supabase
-      .from("destinations")
-      .select("id, slug, name, category, summary, lat, lng")
-      .eq("governorate_slug", gov.id)
-      .order("name");
+    // Wrapped in try/catch on purpose: never fail the page render over this — a thrown
+    // exception from the client (network failure, cold connection, lazy init) would
+    // otherwise crash the whole route to the generic error boundary.
+    let destinations: GovernorateDestination[] = [];
+    try {
+      const { data, error } = await supabase
+        .from("destinations")
+        .select("id, slug, name, category, summary, lat, lng")
+        .eq("governorate_slug", gov.id)
+        .order("name");
 
-    if (error) {
-      // Never fail the page render over this — fall back to an empty list and log for follow-up.
-      console.error(`[governorates.$id] failed to load destinations for ${gov.id}:`, error.message);
+      if (error) {
+        console.error(
+          `[governorates.$id] failed to load destinations for ${gov.id}:`,
+          error.message,
+        );
+      } else {
+        destinations = (data ?? []) as GovernorateDestination[];
+      }
+    } catch (err) {
+      console.error(`[governorates.$id] unexpected error loading destinations for ${gov.id}:`, err);
     }
 
     return {
@@ -45,7 +57,7 @@ export const Route = createFileRoute("/governorates/$id")({
       tagline: profile.tagline.en,
       story: profile.story.en,
       id: gov.id,
-      destinations: (destinations ?? []) as GovernorateDestination[],
+      destinations,
     };
   },
   head: ({ loaderData }) => {

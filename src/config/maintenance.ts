@@ -1,13 +1,14 @@
 /**
- * Maintenance Mode — single switch for the whole site.
+ * Maintenance Mode.
  *
- * true  = every visitor sees the "This Page Not Available" page.
- * false = the site works normally.
+ * The real switch now lives in the database and is controlled from the
+ * owner panel at /admin/maintenance — no code change or redeploy needed.
  *
- * Owner bypass: open the site with ?bypass=egyptone once. The bypass is stored
- * in the browser (localStorage key below) and a small "Maintenance Mode" badge
- * appears bottom-left so you know the site is still closed to the public.
- * Remove the bypass by opening the site with ?bypass=off.
+ * MAINTENANCE_MODE below is only a hard override: true = force the site
+ * closed regardless of the panel. Leave it false for normal operation.
+ *
+ * Owner bypass while closed: open the site once with ?bypass=egyptone
+ * (remove it with ?bypass=off).
  */
 export const MAINTENANCE_MODE = false;
 

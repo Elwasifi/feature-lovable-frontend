@@ -18,6 +18,7 @@ import { I18nProvider } from "../i18n";
 import { CurrencyProvider } from "../i18n/currency";
 import { FloatingConcierge } from "../components/site/FloatingConcierge";
 import { Toaster } from "../components/ui/sonner";
+import { MaintenanceGate } from "../components/site/MaintenanceGate";
 
 function NotFoundComponent() {
   return (
@@ -202,10 +203,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
         <CurrencyProvider>
-          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
-          <FloatingConcierge />
-          <Toaster position="top-center" richColors />
+          <MaintenanceGate>
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+            <FloatingConcierge />
+            <Toaster position="top-center" richColors />
+          </MaintenanceGate>
         </CurrencyProvider>
       </I18nProvider>
     </QueryClientProvider>

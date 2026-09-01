@@ -72,7 +72,7 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
   const maintenanceOn = MAINTENANCE_MODE || remoteOn === true;
 
   if (isControlPanel) return <>{children}</>;
-  if (!ready) return <>{children}</>;
+  if (!ready) return null;
   if (!maintenanceOn) return <>{children}</>;
   if (!bypass) return <MaintenancePage />;
 

@@ -23,6 +23,7 @@ import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
@@ -104,6 +105,11 @@ const ProvidersRoute = ProvidersRouteImport.update({
   path: '/providers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
+  id: '/admin/maintenance',
+  path: '/admin/maintenance',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiConciergeRoute = ApiConciergeRouteImport.update({
   id: '/api/concierge',
   path: '/api/concierge',
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -280,6 +290,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -306,6 +317,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
     | '/legal/$slug'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
+  AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
@@ -445,6 +458,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProvidersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/maintenance': {
+      id: '/admin/maintenance'
+      path: '/admin/maintenance'
+      fullPath: '/admin/maintenance'
+      preLoaderRoute: typeof AdminMaintenanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/concierge': {
       id: '/api/concierge'
       path: '/api/concierge'
@@ -533,6 +553,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
+  AdminMaintenanceRoute: AdminMaintenanceRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   LegalSlugRoute: LegalSlugRoute,

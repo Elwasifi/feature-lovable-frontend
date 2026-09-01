@@ -1,9 +1,12 @@
 import { useEffect, useState, type ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import {
   MAINTENANCE_MODE,
   MAINTENANCE_BYPASS_KEY,
   MAINTENANCE_BYPASS_TOKEN,
 } from "@/config/maintenance";
+import { getMaintenance } from "@/lib/maintenance.functions";
 import { SITE } from "@/config/site";
 
 function MaintenancePage() {
@@ -34,15 +37,21 @@ function MaintenancePage() {
 }
 
 /**
- * Renders the maintenance page for visitors while MAINTENANCE_MODE is on.
+ * Renders the maintenance page for visitors while maintenance mode is on.
+ * The switch lives in the database (control panel at /admin/maintenance);
+ * MAINTENANCE_MODE in config acts only as a hard override fallback.
  * Owners with the bypass flag keep browsing the real site.
  */
 export function MaintenanceGate({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isControlPanel = pathname.startsWith("/admin/maintenance");
+  const readStatus = useServerFn(getMaintenance);
+
+  const [remoteOn, setRemoteOn] = useState<boolean | null>(null);
   const [bypass, setBypass] = useState(false);
-  const [ready, setReady] = useState(!MAINTENANCE_MODE);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (!MAINTENANCE_MODE) return;
     try {
       const param = new URLSearchParams(window.location.search).get("bypass");
       if (param === MAINTENANCE_BYPASS_TOKEN) {
@@ -54,11 +63,17 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
     } catch {
       setBypass(false);
     }
-    setReady(true);
-  }, []);
+    readStatus()
+      .then((r) => setRemoteOn(r.enabled))
+      .catch(() => setRemoteOn(false))
+      .finally(() => setReady(true));
+  }, [readStatus]);
 
-  if (!MAINTENANCE_MODE) return <>{children}</>;
+  const maintenanceOn = MAINTENANCE_MODE || remoteOn === true;
+
+  if (isControlPanel) return <>{children}</>;
   if (!ready) return null;
+  if (!maintenanceOn) return <>{children}</>;
   if (!bypass) return <MaintenancePage />;
 
   return (

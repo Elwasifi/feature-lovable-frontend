@@ -27,15 +27,26 @@ const description =
 
 export const Route = createFileRoute("/heritage-sites")({
   loader: async () => {
-    const { data, error } = await supabase
-      .from("heritage_sites")
-      .select("id, slug, name, governorate_slug, era, classification, access, summary")
-      .order("name");
+    // Wrapped in try/catch on purpose: a *thrown* exception from the client (a network
+    // failure, a cold Supabase connection) is not caught by only checking `error`, and
+    // would crash the whole route to the generic "This page didn't load" error boundary
+    // instead of just rendering with an empty list.
+    let sites: HeritageSite[] = [];
+    try {
+  const { data, error } = await supabase
+        .from("heritage_sites")
+        .select("id, slug, name, governorate_slug, era, classification, access, summary")
+        .order("name");
 
-    if (error) {
-      console.error("[heritage-sites] failed to load heritage_sites:", error.message);
+      if (error) {
+        console.error("[heritage-sites] failed to load heritage_sites:", error.message);
+      } else {
+        sites = (data ?? []) as HeritageSite[];
+      }
+    } catch (err) {
+      console.error("[heritage-sites] unexpected error loading heritage_sites:", err);
     }
-    return { sites: (data ?? []) as HeritageSite[] };
+    return { sites };
   },
   head: () => ({
     meta: [

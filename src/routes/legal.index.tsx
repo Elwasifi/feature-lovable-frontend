@@ -63,6 +63,10 @@ function LegalCenter() {
                 "These drafts do not guarantee compliance with Egyptian or international law. A full legal review checklist is published below.",
               )}
             </p>
+            <p className="mt-2 text-xs text-muted-foreground/80">
+              {t("Egypt One is a brand operated by")} {SITE.parentCompany},{" "}
+              {t("the registered legal entity for this platform.")}
+            </p>
           </div>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

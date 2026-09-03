@@ -9,6 +9,9 @@ export const SITE = {
   domain: "www.egypt-one.com",
   email: "info@egypt-one.com",
   support: "info@egypt-one.com",
+  // Egypt One is the public brand; EGYPTORA is the registered legal/holding company
+  // operating it. Single source of truth for all "operated by" copy.
+  parentCompany: "EGYPTORA",
   locales: ["en", "ar"] as const,
   social: {
     facebook: "https://www.facebook.com/egyptone",

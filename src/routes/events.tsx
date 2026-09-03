@@ -29,17 +29,28 @@ const description =
 
 export const Route = createFileRoute("/events")({
   loader: async () => {
-    const { data, error } = await supabase
-      .from("events")
-      .select(
-        "id, slug, name, governorate_slug, category, start_date, end_date, venue, ticketed, summary",
-      )
-      .order("start_date");
+    // Wrapped in try/catch on purpose: a *thrown* exception from the client (a network
+    // failure, a cold Supabase connection) is not caught by only checking `error`, and
+    // would crash the whole route to the generic "This page didn't load" error boundary
+    // instead of just rendering with an empty list.
+    let events: EgyptEvent[] = [];
+    try {
+  const { data, error } = await supabase
+        .from("events")
+        .select(
+          "id, slug, name, governorate_slug, category, start_date, end_date, venue, ticketed, summary",
+        )
+        .order("start_date");
 
-    if (error) {
-      console.error("[events] failed to load events:", error.message);
+      if (error) {
+        console.error("[events] failed to load events:", error.message);
+      } else {
+        events = (data ?? []) as EgyptEvent[];
+      }
+    } catch (err) {
+      console.error("[events] unexpected error loading events:", err);
     }
-    return { events: (data ?? []) as EgyptEvent[] };
+    return { events };
   },
   head: () => ({
     meta: [

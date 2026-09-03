@@ -75,6 +75,9 @@ export function SiteFooter() {
             <p className="mt-1 text-xs text-muted-foreground" dir="ltr">
               {SITE.domain}
             </p>
+            <p className="mt-2 text-xs text-muted-foreground/80">
+              {t("Egypt One is a brand operated by")} {SITE.parentCompany}.
+            </p>
           </div>
 
 
@@ -155,7 +158,10 @@ export function SiteFooter() {
         <Container className="py-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
+              © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}{" "}
+              <span className="text-muted-foreground/80">
+                {t("Egypt One is a brand of")} {SITE.parentCompany}.
+              </span>
             </p>
             <nav aria-label={t("Legal")}>
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">

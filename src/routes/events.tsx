@@ -35,7 +35,7 @@ export const Route = createFileRoute("/events")({
     // instead of just rendering with an empty list.
     let events: EgyptEvent[] = [];
     try {
-  const { data, error } = await supabase
+      const { data, error } = await supabase
         .from("events")
         .select(
           "id, slug, name, governorate_slug, category, start_date, end_date, venue, ticketed, summary",

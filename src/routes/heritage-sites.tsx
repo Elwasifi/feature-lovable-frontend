@@ -33,7 +33,7 @@ export const Route = createFileRoute("/heritage-sites")({
     // instead of just rendering with an empty list.
     let sites: HeritageSite[] = [];
     try {
-  const { data, error } = await supabase
+      const { data, error } = await supabase
         .from("heritage_sites")
         .select("id, slug, name, governorate_slug, era, classification, access, summary")
         .order("name");

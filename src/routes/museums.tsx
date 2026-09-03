@@ -32,7 +32,7 @@ export const Route = createFileRoute("/museums")({
     // instead of just rendering with an empty list.
     let museums: Museum[] = [];
     try {
-  const { data, error } = await supabase
+      const { data, error } = await supabase
         .from("museums")
         .select("id, slug, name, governorate_slug, opened, highlights, summary")
         .order("name");

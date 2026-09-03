@@ -43,7 +43,7 @@ export const Route = createFileRoute("/providers")({
     // instead of just rendering with an empty list.
     let providers: Provider[] = [];
     try {
-  const { data, error } = await supabase
+      const { data, error } = await supabase
         .from("providers")
         .select(
           "id, slug, name, type, governorate_slug, rating, review_count, price_from, currency, specialties, summary, governance_status",
@@ -82,7 +82,10 @@ function ProvidersPage() {
   const { t } = useI18n();
   const [type, setType] = useState<string | null>(null);
 
-  const types = useMemo(() => Array.from(new Set(providers.map((p) => p.type))).sort(), [providers]);
+  const types = useMemo(
+    () => Array.from(new Set(providers.map((p) => p.type))).sort(),
+    [providers],
+  );
   const filtered = type ? providers.filter((p) => p.type === type) : providers;
 
   return (

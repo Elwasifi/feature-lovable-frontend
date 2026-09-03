@@ -71,7 +71,11 @@ function LegalCenter() {
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: FileText, label: t("Policy documents"), value: String(legalDocuments.length) },
+              {
+                icon: FileText,
+                label: t("Policy documents"),
+                value: String(legalDocuments.length),
+              },
               { icon: ShieldCheck, label: t("Consent types recorded separately"), value: "11" },
               { icon: Lock, label: t("Enhanced-control data categories"), value: "7" },
               { icon: ScrollText, label: t("Approval status"), value: t("DRAFT") },
@@ -122,7 +126,9 @@ function LegalCenter() {
                     <h3 className="mt-2 font-display text-base leading-snug text-foreground group-hover:text-gold">
                       {t(d.title)}
                     </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t(d.summary)}</p>
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                      {t(d.summary)}
+                    </p>
                     <p className="mt-3 text-[11px] text-muted-foreground/80">
                       v{d.version} · {t("Effective")} {d.effectiveDate} · {t(d.status)}
                     </p>
@@ -177,7 +183,10 @@ function LegalCenter() {
           </p>
           <ol className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {partnerOnboardingGates.map((gate, i) => (
-              <li key={gate} className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
+              <li
+                key={gate}
+                className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground"
+              >
                 <span className="mr-2 text-gold">{String(i + 1).padStart(2, "0")}</span>
                 {t(gate)}
               </li>

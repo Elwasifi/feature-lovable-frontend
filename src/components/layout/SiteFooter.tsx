@@ -25,7 +25,6 @@ import { useI18n } from "@/i18n";
 import { SITE, mailto } from "@/config/site";
 import { SocialBar } from "@/components/layout/SocialBar";
 
-
 const legalLinks = [
   { label: "Terms & Conditions", to: "/legal/terms" },
   { label: "Privacy Policy", to: "/legal/privacy" },
@@ -42,7 +41,6 @@ export function SiteFooter() {
       <Container className="py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)] lg:gap-x-10">
           <div>
-
             <div className="flex items-center gap-3">
               <img
                 src={logo.url}
@@ -75,8 +73,10 @@ export function SiteFooter() {
             <p className="mt-1 text-xs text-muted-foreground" dir="ltr">
               {SITE.domain}
             </p>
+            <p className="mt-2 text-xs text-muted-foreground/80">
+              {t("Egypt One is a brand operated by")} {SITE.parentCompany}.
+            </p>
           </div>
-
 
           {footerColumns.map((col) => (
             <div key={col.title}>
@@ -146,7 +146,6 @@ export function SiteFooter() {
             </ul>
           </div>
         </div>
-
       </Container>
 
       <SocialBar />
@@ -155,7 +154,10 @@ export function SiteFooter() {
         <Container className="py-6">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} {SITE.name}. {t("All rights reserved.")}
+              © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}{" "}
+              <span className="text-muted-foreground/80">
+                {t("Egypt One is a brand of")} {SITE.parentCompany}.
+              </span>
             </p>
             <nav aria-label={t("Legal")}>
               <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">

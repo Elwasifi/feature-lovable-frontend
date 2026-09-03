@@ -37,17 +37,28 @@ const description =
 
 export const Route = createFileRoute("/providers")({
   loader: async () => {
-    const { data, error } = await supabase
-      .from("providers")
-      .select(
-        "id, slug, name, type, governorate_slug, rating, review_count, price_from, currency, specialties, summary, governance_status",
-      )
-      .order("name");
+    // Wrapped in try/catch on purpose: a *thrown* exception from the client (a network
+    // failure, a cold Supabase connection) is not caught by only checking `error`, and
+    // would crash the whole route to the generic "This page didn't load" error boundary
+    // instead of just rendering with an empty list.
+    let providers: Provider[] = [];
+    try {
+      const { data, error } = await supabase
+        .from("providers")
+        .select(
+          "id, slug, name, type, governorate_slug, rating, review_count, price_from, currency, specialties, summary, governance_status",
+        )
+        .order("name");
 
-    if (error) {
-      console.error("[providers] failed to load providers:", error.message);
+      if (error) {
+        console.error("[providers] failed to load providers:", error.message);
+      } else {
+        providers = (data ?? []) as Provider[];
+      }
+    } catch (err) {
+      console.error("[providers] unexpected error loading providers:", err);
     }
-    return { providers: (data ?? []) as Provider[] };
+    return { providers };
   },
   head: () => ({
     meta: [
@@ -71,7 +82,10 @@ function ProvidersPage() {
   const { t } = useI18n();
   const [type, setType] = useState<string | null>(null);
 
-  const types = useMemo(() => Array.from(new Set(providers.map((p) => p.type))).sort(), [providers]);
+  const types = useMemo(
+    () => Array.from(new Set(providers.map((p) => p.type))).sort(),
+    [providers],
+  );
   const filtered = type ? providers.filter((p) => p.type === type) : providers;
 
   return (

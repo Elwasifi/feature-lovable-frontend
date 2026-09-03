@@ -9,6 +9,9 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Egypt One is a brand operated by": "إيجيبت وان علامة تجارية تديرها",
+  "Egypt One is a brand of": "إيجيبت وان علامة تجارية تابعة لـ",
+  "the registered legal entity for this platform.": "الكيان القانوني المسجل لهذه المنصة.",
   "Crafts & products marketplace": "سوق الحرف والمنتجات",
   "Handmade crafts, textiles and local products from artisans across Egypt's 27 governorates.":
     "منتجات وحرف يدوية ومنسوجات محلية من حرفيين في محافظات مصر الـ27.",

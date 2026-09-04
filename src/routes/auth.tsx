@@ -35,17 +35,69 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const { t } = useI18n();
+  const navigate = useNavigate();
+  const { user, loading: sessionLoading } = useAuth();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
   const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
-  const [notice, setNotice] = useState(false);
+  const [socialNotice, setSocialNotice] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [confirmEmailNotice, setConfirmEmailNotice] = useState(false);
 
-  function comingSoon() {
-    setNotice(true);
+  // Already signed in? Skip the form entirely — this page is only for signed-out visitors.
+  useEffect(() => {
+    if (!sessionLoading && user) {
+      void navigate({ to: "/account" });
+    }
+  }, [sessionLoading, user, navigate]);
+
+  function socialComingSoon() {
+    setSocialNotice(true);
   }
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    comingSoon();
+    setErrorMsg(null);
+    setConfirmEmailNotice(false);
+    setSubmitting(true);
+
+    try {
+      if (mode === "signup") {
+        const { data, error } = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            data: { full_name: form.name, whatsapp: form.whatsapp },
+            ...(typeof window !== "undefined"
+              ? { emailRedirectTo: `${window.location.origin}/account` }
+              : {}),
+          },
+        });
+        if (error) {
+          setErrorMsg(error.message);
+        } else if (data.session) {
+          await navigate({ to: "/account" });
+        } else {
+          // Email confirmation is required before a session is issued.
+          setConfirmEmailNotice(true);
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+        if (error) {
+          setErrorMsg(error.message);
+        } else {
+          await navigate({ to: "/account" });
+        }
+      }
+    } catch (err) {
+      console.error("[auth] unexpected error during", mode, err);
+      setErrorMsg(t("Something went wrong. Please try again."));
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (

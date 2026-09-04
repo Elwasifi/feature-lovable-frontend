@@ -130,17 +130,118 @@ const DEMO_REVIEWS: Review[] = [
 
 function AccountPage() {
   const { t } = useI18n();
+  const navigate = useNavigate();
+  const { user, loading: sessionLoading, signOut } = useAuth();
   const [tab, setTab] = useState<"live" | "past" | "settings">("live");
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [profileLoading, setProfileLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
 
-  const profile = DEMO_PROFILE;
   const trips = DEMO_TRIPS;
   const reviews = DEMO_REVIEWS;
 
   const live = useMemo(() => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"), [trips]);
   const past = useMemo(() => trips.filter((x) => x.status === "completed"), [trips]);
 
-  function notLive() {
-    toast.info(t("Preview — account system not yet connected"));
+  // This page is for signed-in travellers only — send anyone else to /auth.
+  useEffect(() => {
+    if (!sessionLoading && !user) {
+      void navigate({ to: "/auth" });
+    }
+  }, [sessionLoading, user, navigate]);
+
+  // Load the real `profiles` row for this account. If it doesn't exist yet — the
+  // database trigger that provisions it on sign-up hasn't run, or predates this
+  // account — create it here so the page never gets stuck.
+  useEffect(() => {
+    if (!user) {
+      setProfileLoading(false);
+      return;
+    }
+    let active = true;
+    setProfileLoading(true);
+
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("*")
+          .eq("id", user.id)
+          .maybeSingle();
+        if (error) throw error;
+
+        if (data) {
+          if (active) setProfile(data as Profile);
+          return;
+        }
+
+        const { data: created, error: insertError } = await supabase
+          .from("profiles")
+          .insert({
+            id: user.id,
+            email: user.email ?? null,
+            full_name: (user.user_metadata?.["full_name"] as string | undefined) ?? null,
+            whatsapp: (user.user_metadata?.["whatsapp"] as string | undefined) ?? null,
+          })
+          .select("*")
+          .single();
+        if (insertError) throw insertError;
+        if (active) setProfile(created as Profile);
+      } catch (err) {
+        console.error("[account] failed to load or create profile:", err);
+        if (active) {
+          toast.error(t("We couldn't load your profile. Please refresh the page."));
+        }
+      } finally {
+        if (active) setProfileLoading(false);
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
+  }, [user, t]);
+
+  async function saveSettings(patch: Partial<Profile>) {
+    if (!user) return;
+    setSaving(true);
+    try {
+      const { data, error } = await supabase
+        .from("profiles")
+        .update(patch)
+        .eq("id", user.id)
+        .select("*")
+        .single();
+      if (error) throw error;
+      setProfile(data as Profile);
+      toast.success(t("Account details saved."));
+    } catch (err) {
+      console.error("[account] failed to save profile:", err);
+      toast.error(t("Couldn't save your changes. Please try again."));
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  function tripActionNotLive() {
+    toast.info(t("Trip tracking is preview data — live booking isn't connected yet."));
+  }
+
+  async function handleSignOut() {
+    await signOut();
+    await navigate({ to: "/" });
+  }
+
+  if (sessionLoading || !user || profileLoading || !profile) {
+    return (
+      <div className="min-h-screen bg-background">
+        <SiteHeader />
+        <Container className="grid place-items-center py-24">
+          <Loader2 className="size-6 animate-spin text-gold" />
+        </Container>
+        <SiteFooter />
+      </div>
+    );
   }
 
   const name = profile.full_name || t("Traveller");
@@ -152,7 +253,7 @@ function AccountPage() {
       <Container className="py-8 lg:py-12">
         <div className="mb-5 flex items-center gap-2.5 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
           <Info className="size-4 shrink-0" />
-          {t("Preview — account system not yet connected")}
+          {t("Trip tracking and rewards below are preview data — live booking isn't connected yet.")}
         </div>
 
         {/* Identity header */}

@@ -332,7 +332,7 @@ function AccountPage() {
                   key={trip.id}
                   trip={trip}
                   review={reviews.find((r) => r.trip_id === trip.id)}
-                  onSave={notLive}
+                  onSave={tripActionNotLive}
                 />
               ))
             ) : (
@@ -340,7 +340,7 @@ function AccountPage() {
             ))}
 
           {tab === "settings" && (
-            <SettingsPanel profile={profile} saving={false} onSave={notLive} email={profile.email ?? ""} />
+            <SettingsPanel profile={profile} saving={saving} onSave={saveSettings} email={profile.email ?? ""} />
           )}
         </div>
       </Container>

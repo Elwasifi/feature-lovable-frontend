@@ -90,18 +90,8 @@ const LIVE_STAGES = [
   "Completed",
 ];
 
-/* ---- Static preview data (no backend connected) ---- */
-
-const DEMO_PROFILE: Profile = {
-  id: "demo-user",
-  full_name: "Sample Traveller",
-  email: "traveller@example.com",
-  whatsapp: "+20 10 0000 0000",
-  country: "Egypt",
-  emergency_contact: "+20 10 1111 1111",
-  points: 2450,
-  tier: "Explorer",
-};
+/* ---- Trips & reviews: still static preview data — there is no booking system yet.
+   Identity and profile below this point are real, backed by Supabase Auth + `profiles`. ---- */
 
 const DEMO_TRIPS: Trip[] = [
   {

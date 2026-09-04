@@ -239,17 +239,32 @@ function AuthPage() {
 
             <button
               type="submit"
-              title={t("Coming soon")}
+              disabled={submitting}
               className="mt-2 flex h-12 items-center justify-center gap-2 rounded-xl bg-gold text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
             >
+              {submitting && <Loader2 className="size-4 animate-spin" />}
               {t(mode === "signup" ? "Create account" : "Sign in")}
             </button>
           </form>
 
-          {notice && (
+          {errorMsg && (
+            <p className="mt-4 flex items-center gap-2 rounded-xl border border-hot/40 bg-hot/10 px-4 py-3 text-xs text-hot">
+              <Info className="size-4 shrink-0" />
+              {errorMsg}
+            </p>
+          )}
+
+          {confirmEmailNotice && (
             <p className="mt-4 flex items-center gap-2 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
               <Info className="size-4 shrink-0" />
-              {t("Account sign-in isn't live yet")}
+              {t("Check your inbox to confirm your email, then sign in.")}
+            </p>
+          )}
+
+          {socialNotice && (
+            <p className="mt-4 flex items-center gap-2 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
+              <Info className="size-4 shrink-0" />
+              {t("Social sign-in isn't live yet — please use email and password.")}
             </p>
           )}
 

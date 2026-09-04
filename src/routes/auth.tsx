@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Apple, Chrome, Info, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Apple, Chrome, Info, Loader2, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { SITE } from "@/config/site";
 import logo from "@/assets/egypt-one-logo.jpg.asset.json";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -33,17 +35,69 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const { t } = useI18n();
+  const navigate = useNavigate();
+  const { user, loading: sessionLoading } = useAuth();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
   const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
-  const [notice, setNotice] = useState(false);
+  const [socialNotice, setSocialNotice] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [confirmEmailNotice, setConfirmEmailNotice] = useState(false);
 
-  function comingSoon() {
-    setNotice(true);
+  // Already signed in? Skip the form entirely — this page is only for signed-out visitors.
+  useEffect(() => {
+    if (!sessionLoading && user) {
+      void navigate({ to: "/account" });
+    }
+  }, [sessionLoading, user, navigate]);
+
+  function socialComingSoon() {
+    setSocialNotice(true);
   }
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
-    comingSoon();
+    setErrorMsg(null);
+    setConfirmEmailNotice(false);
+    setSubmitting(true);
+
+    try {
+      if (mode === "signup") {
+        const { data, error } = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            data: { full_name: form.name, whatsapp: form.whatsapp },
+            ...(typeof window !== "undefined"
+              ? { emailRedirectTo: `${window.location.origin}/account` }
+              : {}),
+          },
+        });
+        if (error) {
+          setErrorMsg(error.message);
+        } else if (data.session) {
+          await navigate({ to: "/account" });
+        } else {
+          // Email confirmation is required before a session is issued.
+          setConfirmEmailNotice(true);
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({
+          email: form.email,
+          password: form.password,
+        });
+        if (error) {
+          setErrorMsg(error.message);
+        } else {
+          await navigate({ to: "/account" });
+        }
+      }
+    } catch (err) {
+      console.error("[auth] unexpected error during", mode, err);
+      setErrorMsg(t("Something went wrong. Please try again."));
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -115,14 +169,14 @@ function AuthPage() {
 
           <div className="mt-6 grid gap-2.5">
             <button
-              onClick={comingSoon}
+              onClick={socialComingSoon}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Chrome className="size-4 text-gold" />
               {t("Continue with Google")}
             </button>
             <button
-              onClick={comingSoon}
+              onClick={socialComingSoon}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Apple className="size-4 text-gold" />
@@ -185,17 +239,32 @@ function AuthPage() {
 
             <button
               type="submit"
-              title={t("Coming soon")}
+              disabled={submitting}
               className="mt-2 flex h-12 items-center justify-center gap-2 rounded-xl bg-gold text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-60"
             >
+              {submitting && <Loader2 className="size-4 animate-spin" />}
               {t(mode === "signup" ? "Create account" : "Sign in")}
             </button>
           </form>
 
-          {notice && (
+          {errorMsg && (
+            <p className="mt-4 flex items-center gap-2 rounded-xl border border-hot/40 bg-hot/10 px-4 py-3 text-xs text-hot">
+              <Info className="size-4 shrink-0" />
+              {errorMsg}
+            </p>
+          )}
+
+          {confirmEmailNotice && (
             <p className="mt-4 flex items-center gap-2 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
               <Info className="size-4 shrink-0" />
-              {t("Account sign-in isn't live yet")}
+              {t("Check your inbox to confirm your email, then sign in.")}
+            </p>
+          )}
+
+          {socialNotice && (
+            <p className="mt-4 flex items-center gap-2 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
+              <Info className="size-4 shrink-0" />
+              {t("Social sign-in isn't live yet — please use email and password.")}
             </p>
           )}
 

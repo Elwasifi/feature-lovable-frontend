@@ -9,6 +9,19 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Check your inbox to confirm your email, then sign in.":
+    "افتح بريدك الإلكتروني لتأكيد حسابك، وبعدها سجّل الدخول.",
+  "Social sign-in isn't live yet — please use email and password.":
+    "تسجيل الدخول عبر حسابات التواصل الاجتماعي غير متاح بعد — من فضلك استخدم البريد الإلكتروني وكلمة المرور.",
+  "Something went wrong. Please try again.": "حدث خطأ ما. من فضلك حاول مرة أخرى.",
+  "We couldn't load your profile. Please refresh the page.":
+    "تعذّر تحميل بيانات حسابك. من فضلك أعد تحميل الصفحة.",
+  "Account details saved.": "تم حفظ بيانات الحساب.",
+  "Couldn't save your changes. Please try again.": "تعذّر حفظ التغييرات. من فضلك حاول مرة أخرى.",
+  "Trip tracking and rewards below are preview data — live booking isn't connected yet.":
+    "بيانات الرحلات والمكافآت أدناه تجريبية — نظام الحجز الفعلي لسه مش متصل.",
+  "Trip tracking is preview data — live booking isn't connected yet.":
+    "بيانات تتبّع الرحلة تجريبية — نظام الحجز الفعلي لسه مش متصل.",
   "Egypt One is a brand operated by": "إيجيبت وان علامة تجارية تديرها",
   "Egypt One is a brand of": "إيجيبت وان علامة تجارية تابعة لـ",
   "the registered legal entity for this platform.": "الكيان القانوني المسجل لهذه المنصة.",

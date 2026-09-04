@@ -276,6 +276,14 @@ function AccountPage() {
               <LifeBuoy className="size-4" />
               {t("Emergency help")}
             </a>
+            <button
+              type="button"
+              onClick={() => void handleSignOut()}
+              className="flex items-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
+            >
+              <LogOut className="size-4" />
+              {t("Sign out")}
+            </button>
           </div>
         </div>
 

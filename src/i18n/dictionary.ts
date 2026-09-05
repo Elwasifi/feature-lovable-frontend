@@ -9,6 +9,23 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Eras and rulers, live from the archive": "العصور والحكام، مباشرة من الأرشيف",
+  "Egyptian heritage worldwide": "التراث المصري حول العالم",
+  "Egyptian antiquities and heritage objects held in museums and institutions around the world.":
+    "آثار وقطع تراثية مصرية محفوظة في متاحف ومؤسسات حول العالم.",
+  "All countries": "كل الدول",
+  "No heritage-worldwide objects match this filter yet.":
+    "لا توجد قطع تراثية مطابقة لهذا الفلتر حاليًا.",
+  "Research programs": "برامج البحث العلمي",
+  "Research programmes and degrees offered by Egyptian universities, by field of study and governorate.":
+    "برامج ودرجات بحثية تقدمها الجامعات المصرية، حسب مجال الدراسة والمحافظة.",
+  "All fields": "كل المجالات",
+  "No research programs match this filter yet.": "لا توجد برامج بحثية مطابقة لهذا الفلتر حاليًا.",
+  "Traveller stories": "قصص المسافرين",
+  "Traveller stories and reviews from real trips across Egypt.":
+    "قصص وتقييمات من مسافرين حقيقيين خلال رحلاتهم في مصر.",
+  "All travellers": "كل المسافرين",
+  "No traveller stories match this filter yet.": "لا توجد قصص مسافرين مطابقة لهذا الفلتر حاليًا.",
   "Check your inbox to confirm your email, then sign in.":
     "افتح بريدك الإلكتروني لتأكيد حسابك، وبعدها سجّل الدخول.",
   "Social sign-in isn't live yet — please use email and password.":

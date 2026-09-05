@@ -43,6 +43,7 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Food & Restaurants", href: "/encyclopedia" },
       { label: "Events & Festivals", href: "/events" },
       { label: "Offers & Packages", href: "/offers", badge: "New" },
+      { label: "Traveller Stories", href: "/traveler-stories", badge: "New" },
     ],
   },
   {
@@ -50,12 +51,13 @@ export const sidebarGroups: SidebarGroup[] = [
     items: [
       { label: "27 Governorates", href: "/#governorates" },
       { label: "Egypt Through Time", href: "/#through-time" },
-      { label: "Rulers of Egypt", href: "/encyclopedia" },
+      { label: "Rulers of Egypt", href: "/encyclopedia#epics" },
       { label: "Heritage Sites", href: "/heritage-sites", badge: "New" },
       { label: "Museums & Exhibitions", href: "/museums" },
       { label: "Hidden Heritage", href: "/#explore" },
-      { label: "Egyptian Heritage Worldwide", href: "/encyclopedia" },
+      { label: "Egyptian Heritage Worldwide", href: "/egyptian-heritage-worldwide", badge: "New" },
       { label: "Ancient Egypt Academy", href: "/encyclopedia" },
+      { label: "Research Programs", href: "/research-programs", badge: "New" },
       { label: "Document Center", href: "/legal" },
     ],
   },

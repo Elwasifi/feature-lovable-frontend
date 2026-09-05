@@ -14,6 +14,7 @@ import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as EgyptianHeritageWorldwideRouteImport } from './routes/egyptian-heritage-worldwide'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
@@ -23,6 +24,8 @@ import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
+import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
@@ -60,6 +63,12 @@ const CountriesRoute = CountriesRouteImport.update({
   path: '/countries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EgyptianHeritageWorldwideRoute =
+  EgyptianHeritageWorldwideRouteImport.update({
+    id: '/egyptian-heritage-worldwide',
+    path: '/egyptian-heritage-worldwide',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EncyclopediaRoute = EncyclopediaRouteImport.update({
   id: '/encyclopedia',
   path: '/encyclopedia',
@@ -103,6 +112,16 @@ const PropertiesRoute = PropertiesRouteImport.update({
 const ProvidersRoute = ProvidersRouteImport.update({
   id: '/providers',
   path: '/providers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchProgramsRoute = ResearchProgramsRouteImport.update({
+  id: '/research-programs',
+  path: '/research-programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TravelerStoriesRoute = TravelerStoriesRouteImport.update({
+  id: '/traveler-stories',
+  path: '/traveler-stories',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
@@ -170,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -179,6 +199,8 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/research-programs': typeof ResearchProgramsRoute
+  '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -197,6 +219,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -206,6 +229,8 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/research-programs': typeof ResearchProgramsRoute
+  '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -225,6 +250,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -234,6 +260,8 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/research-programs': typeof ResearchProgramsRoute
+  '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -254,6 +282,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
@@ -263,6 +292,8 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/research-programs'
+    | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
@@ -281,6 +312,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
@@ -290,6 +322,8 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/research-programs'
+    | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
@@ -308,6 +342,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
     | '/heritage-sites'
@@ -317,6 +352,8 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/research-programs'
+    | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/governorates/$id'
@@ -336,6 +373,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
+  EgyptianHeritageWorldwideRoute: typeof EgyptianHeritageWorldwideRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
@@ -345,6 +383,8 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
+  ResearchProgramsRoute: typeof ResearchProgramsRoute
+  TravelerStoriesRoute: typeof TravelerStoriesRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
@@ -393,6 +433,13 @@ declare module '@tanstack/react-router' {
       path: '/countries'
       fullPath: '/countries'
       preLoaderRoute: typeof CountriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/egyptian-heritage-worldwide': {
+      id: '/egyptian-heritage-worldwide'
+      path: '/egyptian-heritage-worldwide'
+      fullPath: '/egyptian-heritage-worldwide'
+      preLoaderRoute: typeof EgyptianHeritageWorldwideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/encyclopedia': {
@@ -456,6 +503,20 @@ declare module '@tanstack/react-router' {
       path: '/providers'
       fullPath: '/providers'
       preLoaderRoute: typeof ProvidersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-programs': {
+      id: '/research-programs'
+      path: '/research-programs'
+      fullPath: '/research-programs'
+      preLoaderRoute: typeof ResearchProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/traveler-stories': {
+      id: '/traveler-stories'
+      path: '/traveler-stories'
+      fullPath: '/traveler-stories'
+      preLoaderRoute: typeof TravelerStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/maintenance': {
@@ -544,6 +605,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
+  EgyptianHeritageWorldwideRoute: EgyptianHeritageWorldwideRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
   HeritageSitesRoute: HeritageSitesRoute,
@@ -553,6 +615,8 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
+  ResearchProgramsRoute: ResearchProgramsRoute,
+  TravelerStoriesRoute: TravelerStoriesRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,

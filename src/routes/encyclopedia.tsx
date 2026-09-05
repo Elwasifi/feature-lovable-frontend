@@ -1,18 +1,74 @@
+import type { ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Crown } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton, SourceBadge } from "@/components/site/Primitives";
+import { GovernanceBanner, type GovernanceStatus } from "@/components/site/GovernanceBanner";
 import { encChapters, type EncChapter } from "@/data/encyclopedia";
 import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
+import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+
+type Era = {
+  key: string;
+  name: string;
+  from_period: string | null;
+  to_period: string | null;
+  summary: string | null;
+  governance_status: GovernanceStatus;
+};
+
+type Ruler = {
+  id: string;
+  name: string;
+  dynasty: string | null;
+  era: string | null;
+  reign: string | null;
+  governance_status: GovernanceStatus;
+};
 
 const title = "Visual Encyclopedia of Egypt — dress, food, flags, epics & science | Egypt One";
 const description =
   "A visual encyclopedia of Egypt: traditional dress in all 27 governorates, the Egyptian table, flags and state symbols, epic battles, ancient provinces, crafts, the genetic map and Egyptian cinema.";
 
 export const Route = createFileRoute("/encyclopedia")({
+  loader: async () => {
+    // Wrapped in try/catch on purpose: a *thrown* exception from the client (a network
+    // failure, a cold Supabase connection) is not caught by only checking `error`, and
+    // would crash the whole route to the generic "This page didn't load" error boundary
+    // instead of just rendering with an empty list.
+    let eras: Era[] = [];
+    let rulers: Ruler[] = [];
+    try {
+      const [erasRes, rulersRes] = await Promise.all([
+        supabase
+          .from("eras")
+          .select("key, name, from_period, to_period, summary, governance_status")
+          .order("from_period"),
+        supabase
+          .from("rulers")
+          .select("id, name, dynasty, era, reign, governance_status")
+          .order("name"),
+      ]);
+
+      if (erasRes.error) {
+        console.error("[encyclopedia] failed to load eras:", erasRes.error.message);
+      } else {
+        eras = (erasRes.data ?? []) as Era[];
+      }
+
+      if (rulersRes.error) {
+        console.error("[encyclopedia] failed to load rulers:", rulersRes.error.message);
+      } else {
+        rulers = (rulersRes.data ?? []) as Ruler[];
+      }
+    } catch (err) {
+      console.error("[encyclopedia] unexpected error loading eras/rulers:", err);
+    }
+    return { eras, rulers };
+  },
   head: () => ({
     meta: [
       { title },
@@ -34,6 +90,15 @@ const heroChapter = encChapters[0]!;
 
 function EncyclopediaPage() {
   const { t } = useI18n();
+  const { eras, rulers } = Route.useLoaderData();
+
+  const rulersByEra = new Map<string, Ruler[]>();
+  for (const ruler of rulers) {
+    if (!ruler.era) continue;
+    const list = rulersByEra.get(ruler.era) ?? [];
+    list.push(ruler);
+    rulersByEra.set(ruler.era, list);
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -82,9 +147,26 @@ function EncyclopediaPage() {
           </div>
         </section>
 
-        {encChapters.map((chapter, i) => (
-          <Chapter key={chapter.id} chapter={chapter} index={i} />
-        ))}
+        {encChapters.map((chapter, i) => {
+          const isEpics = chapter.id === "epics";
+          const liveStats =
+            isEpics && eras.length > 0
+              ? chapter.stats.map((s) =>
+                  s.label === "Eras of rulers documented" ? { ...s, value: String(eras.length) } : s,
+                )
+              : chapter.stats;
+
+          return (
+            <Chapter
+              key={chapter.id}
+              chapter={{ ...chapter, stats: liveStats }}
+              index={i}
+              liveSection={
+                isEpics ? <EraRulerSection eras={eras} rulersByEra={rulersByEra} /> : undefined
+              }
+            />
+          );
+        })}
 
         <Section className="pb-20 pt-4">
           <div className="rounded-3xl border border-gold-line bg-card p-8 text-center lg:p-12">
@@ -109,7 +191,15 @@ function EncyclopediaPage() {
   );
 }
 
-function Chapter({ chapter, index }: { chapter: EncChapter; index: number }) {
+function Chapter({
+  chapter,
+  index,
+  liveSection,
+}: {
+  chapter: EncChapter;
+  index: number;
+  liveSection?: ReactNode;
+}) {
   const { t } = useI18n();
 
   return (
@@ -164,10 +254,67 @@ function Chapter({ chapter, index }: { chapter: EncChapter; index: number }) {
         ))}
       </div>
 
+      {liveSection}
+
       <div className="mt-4 flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
         <ArrowRight className="h-3.5 w-3.5 text-gold" aria-hidden />
         {chapter.api}
       </div>
     </Section>
+  );
+}
+
+function EraRulerSection({
+  eras,
+  rulersByEra,
+}: {
+  eras: Era[];
+  rulersByEra: Map<string, Ruler[]>;
+}) {
+  const { t } = useI18n();
+
+  if (eras.length === 0) return null;
+
+  return (
+    <div className="mt-8">
+      <h3 className="mb-4 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-gold/80">
+        <Crown className="size-3.5" aria-hidden />
+        {t("Eras and rulers, live from the archive")}
+      </h3>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {eras.map((era) => (
+          <article
+            key={era.key}
+            className="rounded-2xl border border-border/60 bg-card/60 p-5 transition-colors hover:border-gold-line"
+          >
+            <GovernanceBanner status={era.governance_status} className="mb-3" />
+            <div className="flex items-start justify-between gap-3">
+              <h4 className="font-display text-base text-foreground">{t(era.name)}</h4>
+              <SourceBadge status="VERIFIED" />
+            </div>
+            {(era.from_period || era.to_period) && (
+              <p className="mt-1 text-xs text-muted-foreground">
+                {[era.from_period, era.to_period].filter(Boolean).join(" – ")}
+              </p>
+            )}
+            {era.summary && (
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{t(era.summary)}</p>
+            )}
+
+            {(rulersByEra.get(era.key)?.length ?? 0) > 0 && (
+              <ul className="mt-3 grid gap-1.5 border-t border-border/60 pt-3">
+                {rulersByEra.get(era.key)!.map((ruler) => (
+                  <li key={ruler.id} className="flex flex-wrap items-baseline gap-x-1.5 text-xs">
+                    <span className="font-medium text-foreground">{t(ruler.name)}</span>
+                    {ruler.dynasty && <span className="text-muted-foreground">· {t(ruler.dynasty)}</span>}
+                    {ruler.reign && <span className="text-muted-foreground">· {ruler.reign}</span>}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
   );
 }

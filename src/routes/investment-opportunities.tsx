@@ -25,7 +25,7 @@ type InvestmentOpportunity = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Investment Opportunities in Egypt | Egypt One";
+const title = "Investment Opportunities in Egypt | Egyptora Hub";
 const description =
   "Sector-by-sector investment opportunities across Egypt's governorates — projects, land and partnerships open to investors.";
 

@@ -24,7 +24,7 @@ type ResearchProgram = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Research Programs in Egypt — universities & fields of study | Egypt One";
+const title = "Research Programs in Egypt — universities & fields of study | Egyptora Hub";
 const description =
   "Research programmes and degrees offered by Egyptian universities, by field of study and governorate.";
 

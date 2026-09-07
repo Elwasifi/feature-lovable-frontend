@@ -3,7 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { SITE } from "@/config/site";
 
-const title = "Local Producers — farms, spices & Nile harvests | Egypt One";
+const title = "Local Producers — farms, spices & Nile harvests | Egyptora Hub";
 const description =
   "Siwa dates, Aswan hibiscus, olive oil and desert honey straight from Egyptian farms: harvest calendar, tasting rooms and export-ready gift packs.";
 

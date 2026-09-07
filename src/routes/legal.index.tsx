@@ -13,9 +13,9 @@ import {
   partnerOnboardingGates,
 } from "@/data/legal";
 
-const title = "Legal & Compliance Center — Egypt One";
+const title = "Legal & Compliance Center — Egyptora Hub";
 const description =
-  "Egypt One's legal architecture: terms, privacy, data protection, security, AI transparency, partner and government integration policies, with version control and consent management.";
+  "Egyptora Hub's legal architecture: terms, privacy, data protection, security, AI transparency, partner and government integration policies, with version control and consent management.";
 
 export const Route = createFileRoute("/legal/")({
   head: () => ({
@@ -45,7 +45,7 @@ function LegalCenter() {
         <Section>
           <SectionHeader
             eyebrow={t("Legal & Compliance")}
-            title={t("Egypt One Legal Center")}
+            title={t("Egyptora Hub Legal Center")}
             description={t(
               "Every policy governing the platform, each with its own version, owner, effective date and change history.",
             )}
@@ -64,7 +64,7 @@ function LegalCenter() {
               )}
             </p>
             <p className="mt-2 text-xs text-muted-foreground/80">
-              {t("Egypt One is a brand operated by")} {SITE.parentCompany},{" "}
+              {t("Egyptora Hub is a brand operated by")} {SITE.parentCompany},{" "}
               {t("the registered legal entity for this platform.")}
             </p>
           </div>
@@ -145,7 +145,7 @@ function LegalCenter() {
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
             {t(
-              "Egypt One is an independent platform and does not represent the Egyptian Government. Every integration carries an explicit status; LIVE is enabled only after documented authorisation.",
+              "Egyptora Hub is an independent platform and does not represent the Egyptian Government. Every integration carries an explicit status; LIVE is enabled only after documented authorisation.",
             )}
           </p>
           <div className="mt-5 overflow-hidden rounded-2xl border border-border">
@@ -178,7 +178,7 @@ function LegalCenter() {
           </h2>
           <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
             {t(
-              'A partner cannot be marked ACTIVE until every gate is cleared. Claims such as "Official" or "Verified by Egypt One" are only displayed where retained evidence supports that exact claim.',
+              'A partner cannot be marked ACTIVE until every gate is cleared. Claims such as "Official" or "Verified by Egyptora Hub" are only displayed where retained evidence supports that exact claim.',
             )}
           </p>
           <ol className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">

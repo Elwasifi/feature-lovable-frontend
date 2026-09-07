@@ -24,7 +24,7 @@ type Product = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Egyptian Crafts & Products Marketplace | Egypt One";
+const title = "Egyptian Crafts & Products Marketplace | Egyptora Hub";
 const description =
   "Handmade crafts, textiles and local products from artisans across Egypt's 27 governorates.";
 

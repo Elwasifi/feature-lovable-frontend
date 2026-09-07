@@ -1,5 +1,5 @@
 /**
- * Egypt One — Legal & Compliance Center registry.
+ * Egyptora Hub — Legal & Compliance Center registry.
  *
  * Every document carries version-control metadata so the platform can render,
  * audit and (via the `legal_documents` tables) retain historical versions.
@@ -49,11 +49,11 @@ export type LegalDocument = {
 };
 
 const OWNERS = {
-  legal: "Egypt One — Legal & Compliance",
-  privacy: "Egypt One — Data Protection Officer",
-  security: "Egypt One — Information Security",
-  product: "Egypt One — Product & Platform",
-  ops: "Egypt One — Operations & Trust",
+  legal: "Egyptora Hub — Legal & Compliance",
+  privacy: "Egyptora Hub — Data Protection Officer",
+  security: "Egyptora Hub — Information Security",
+  product: "Egyptora Hub — Product & Platform",
+  ops: "Egyptora Hub — Operations & Trust",
 } as const;
 
 const LANGS_ALL = ["en", "ar"];
@@ -97,13 +97,13 @@ export const legalDocuments: LegalDocument[] = [
     "terms",
     "Terms & Conditions / Terms of Use",
     "Platform terms",
-    "The agreement governing access to and use of the Egypt One platform, its content and its services.",
+    "The agreement governing access to and use of the Egyptora Hub platform, its content and its services.",
     [
       {
         heading: "Scope of the agreement",
         body: [
-          "These terms govern any use of the Egypt One website, applications and services. By using the platform you accept them; if you do not accept them, do not use the platform.",
-          "Egypt One is an independent digital platform. It is not the Egyptian Government and does not act on its behalf unless a specific authorisation is published on this platform.",
+          "These terms govern any use of the Egyptora Hub website, applications and services. By using the platform you accept them; if you do not accept them, do not use the platform.",
+          "Egyptora Hub is an independent digital platform. It is not the Egyptian Government and does not act on its behalf unless a specific authorisation is published on this platform.",
         ],
       },
       {
@@ -123,7 +123,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Liability and governing law",
         body: [
-          "To the maximum extent permitted by applicable law, Egypt One is not liable for indirect or consequential loss arising from use of the platform.",
+          "To the maximum extent permitted by applicable law, Egyptora Hub is not liable for indirect or consequential loss arising from use of the platform.",
           "The governing law and competent courts clause is reserved pending confirmation by Egyptian counsel.",
         ],
       },
@@ -136,7 +136,7 @@ export const legalDocuments: LegalDocument[] = [
     "privacy",
     "Privacy Policy",
     "Privacy & data",
-    "What personal data Egypt One collects, why it is processed, how long it is kept and the rights available to users.",
+    "What personal data Egyptora Hub collects, why it is processed, how long it is kept and the rights available to users.",
     [
       {
         heading: "Data we process",
@@ -172,7 +172,7 @@ export const legalDocuments: LegalDocument[] = [
     "governance",
     "Company & Platform Governance Policy",
     "Platform terms",
-    "How decisions, approvals, escalation and accountability are organised across the Egypt One platform.",
+    "How decisions, approvals, escalation and accountability are organised across the Egyptora Hub platform.",
     [
       {
         heading: "Ownership of decisions",
@@ -206,7 +206,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Emergency services come first",
         body: [
-          "Egypt One is not an emergency service. In an emergency contact the official Egyptian emergency numbers or local authorities immediately.",
+          "Egyptora Hub is not an emergency service. In an emergency contact the official Egyptian emergency numbers or local authorities immediately.",
           "The in-app emergency button routes you to assistance channels; it does not replace official emergency response.",
         ],
       },
@@ -231,7 +231,7 @@ export const legalDocuments: LegalDocument[] = [
     "cookies",
     "Cookie Policy",
     "Privacy & data",
-    "The cookies and similar technologies used by Egypt One, and how to control the non-essential ones.",
+    "The cookies and similar technologies used by Egyptora Hub, and how to control the non-essential ones.",
     [
       {
         heading: "Essential cookies",
@@ -248,7 +248,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "No bundled consent",
         body: [
-          "Egypt One does not use a single checkbox to authorise multiple purposes. Each cookie category is consented to separately.",
+          "Egyptora Hub does not use a single checkbox to authorise multiple purposes. Each cookie category is consented to separately.",
         ],
       },
     ],
@@ -260,7 +260,7 @@ export const legalDocuments: LegalDocument[] = [
     "data-protection",
     "Data Protection Policy",
     "Privacy & data",
-    "Internal rules that implement privacy by design across Egypt One systems and teams.",
+    "Internal rules that implement privacy by design across Egyptora Hub systems and teams.",
     [
       {
         heading: "Privacy by design",
@@ -289,7 +289,7 @@ export const legalDocuments: LegalDocument[] = [
     "information-security",
     "Information Security Policy",
     "Security & resilience",
-    "The security controls Egypt One maintains across identity, data, applications and operations.",
+    "The security controls Egyptora Hub maintains across identity, data, applications and operations.",
     [
       {
         heading: "Controls",
@@ -318,12 +318,12 @@ export const legalDocuments: LegalDocument[] = [
     "ai-transparency",
     "AI Use & AI Transparency Policy",
     "Safety & trust",
-    "How the Egypt One AI Concierge works, what it may not be used for, and how humans stay in the loop.",
+    "How the Egyptora Hub AI Concierge works, what it may not be used for, and how humans stay in the loop.",
     [
       {
         heading: "Clear AI identification",
         body: [
-          "The Egypt One Concierge identifies itself as an AI system in every session. It is never presented as a government official, licensed professional or human agent.",
+          "The Egyptora Hub Concierge identifies itself as an AI system in every session. It is never presented as a government official, licensed professional or human agent.",
         ],
       },
       {
@@ -353,7 +353,7 @@ export const legalDocuments: LegalDocument[] = [
     "third-party-services",
     "Third-Party Services Policy",
     "Commerce & partners",
-    "The categories of third-party services Egypt One relies on and the conditions attached to them.",
+    "The categories of third-party services Egyptora Hub relies on and the conditions attached to them.",
     [
       {
         heading: "Categories",
@@ -382,7 +382,7 @@ export const legalDocuments: LegalDocument[] = [
     "booking-cancellation-refund",
     "Booking, Cancellation & Refund Policy",
     "Commerce & partners",
-    "How bookings are confirmed, changed, cancelled and refunded across Egypt One and its suppliers.",
+    "How bookings are confirmed, changed, cancelled and refunded across Egyptora Hub and its suppliers.",
     [
       {
         heading: "Confirmation",
@@ -405,7 +405,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Force majeure",
         body: [
-          "Where a service cannot be delivered for reasons outside reasonable control, Egypt One will seek a supplier refund or an alternative date; specific entitlements are reserved pending counsel review.",
+          "Where a service cannot be delivered for reasons outside reasonable control, Egyptora Hub will seek a supplier refund or an alternative date; specific entitlements are reserved pending counsel review.",
         ],
       },
     ],
@@ -417,12 +417,12 @@ export const legalDocuments: LegalDocument[] = [
     "payments",
     "Payments Policy",
     "Commerce & partners",
-    "How payments are taken, secured and reconciled on Egypt One.",
+    "How payments are taken, secured and reconciled on Egyptora Hub.",
     [
       {
         heading: "Processing",
         body: [
-          "Payments are handled by regulated payment processors. Egypt One does not store full card numbers or card security codes in its own systems.",
+          "Payments are handled by regulated payment processors. Egyptora Hub does not store full card numbers or card security codes in its own systems.",
         ],
       },
       {
@@ -446,7 +446,7 @@ export const legalDocuments: LegalDocument[] = [
     "partner-terms",
     "Partner / Supplier Terms",
     "Commerce & partners",
-    "Obligations for hotels, operators, artisans, guides and other suppliers listed on Egypt One.",
+    "Obligations for hotels, operators, artisans, guides and other suppliers listed on Egyptora Hub.",
     [
       {
         heading: "Onboarding gate",
@@ -457,7 +457,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "Truthful status labels",
         body: [
-          'Labels such as "Government Approved", "Official", "Licensed" or "Verified by Egypt One" may only be displayed where the underlying verification process and retained evidence support that exact claim.',
+          'Labels such as "Government Approved", "Official", "Licensed" or "Verified by Egyptora Hub" may only be displayed where the underlying verification process and retained evidence support that exact claim.',
         ],
       },
       {
@@ -509,7 +509,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "No implied endorsement",
         body: [
-          "Egypt One does not represent the Egyptian Government. Governmental logos, official seals, official data feeds and wording implying endorsement are not used without documented authorisation.",
+          "Egyptora Hub does not represent the Egyptian Government. Governmental logos, official seals, official data feeds and wording implying endorsement are not used without documented authorisation.",
         ],
       },
       {
@@ -534,18 +534,18 @@ export const legalDocuments: LegalDocument[] = [
     "intellectual-property",
     "Intellectual Property Policy",
     "Content & IP",
-    "Ownership of the Egypt One brand, platform and content, and the limits of permitted use.",
+    "Ownership of the Egyptora Hub brand, platform and content, and the limits of permitted use.",
     [
       {
         heading: "Platform rights",
         body: [
-          "The Egypt One name, logo, interface design, code, curated text, maps and imagery are protected. No scraping, redistribution or derivative commercial use without written permission.",
+          "The Egyptora Hub name, logo, interface design, code, curated text, maps and imagery are protected. No scraping, redistribution or derivative commercial use without written permission.",
         ],
       },
       {
         heading: "Partner and contributor material",
         body: [
-          "Partners and contributors retain their own rights and grant Egypt One a limited licence to display their material on the platform and in related promotion, where separately agreed.",
+          "Partners and contributors retain their own rights and grant Egyptora Hub a limited licence to display their material on the platform and in related promotion, where separately agreed.",
         ],
       },
       {
@@ -562,7 +562,7 @@ export const legalDocuments: LegalDocument[] = [
     "copyright-takedown",
     "Copyright & Content Takedown Policy",
     "Content & IP",
-    "How to report infringing content and how Egypt One responds.",
+    "How to report infringing content and how Egyptora Hub responds.",
     [
       {
         heading: "Submitting a notice",
@@ -706,12 +706,12 @@ export const legalDocuments: LegalDocument[] = [
     "medical-tourism-disclaimer",
     "Medical Tourism & Health Data Disclaimer",
     "Disclaimers",
-    "The limits of health-related information on Egypt One and the handling of health data.",
+    "The limits of health-related information on Egyptora Hub and the handling of health data.",
     [
       {
         heading: "Not medical advice",
         body: [
-          "Nothing on Egypt One, including AI responses, is a medical diagnosis, treatment recommendation or substitute for a licensed clinician.",
+          "Nothing on Egyptora Hub, including AI responses, is a medical diagnosis, treatment recommendation or substitute for a licensed clinician.",
         ],
       },
       {
@@ -735,7 +735,7 @@ export const legalDocuments: LegalDocument[] = [
     "investment-disclaimer",
     "Investment Disclaimer",
     "Disclaimers",
-    "Investment content on Egypt One is informational and is not a financial promotion or advice.",
+    "Investment content on Egyptora Hub is informational and is not a financial promotion or advice.",
     [
       {
         heading: "No advice, no guarantee",
@@ -787,7 +787,7 @@ export const legalDocuments: LegalDocument[] = [
     "genetic-scientific-disclaimer",
     "Genetic & Scientific Information Disclaimer",
     "Disclaimers",
-    "Limits on the genetic and scientific continuity content presented on Egypt One.",
+    "Limits on the genetic and scientific continuity content presented on Egyptora Hub.",
     [
       {
         heading: "Educational only",
@@ -798,7 +798,7 @@ export const legalDocuments: LegalDocument[] = [
       {
         heading: "No genetic data collection",
         body: [
-          "Egypt One does not collect, request or store users' genetic data. Any future feature involving genetic data would require explicit consent and a separate published policy.",
+          "Egyptora Hub does not collect, request or store users' genetic data. Any future feature involving genetic data would require explicit consent and a separate published policy.",
         ],
       },
       {
@@ -816,7 +816,7 @@ export const legalDocuments: LegalDocument[] = [
     "accessibility",
     "Accessibility Statement",
     "Safety & trust",
-    "Egypt One's accessibility commitment, known limitations and feedback route.",
+    "Egyptora Hub's accessibility commitment, known limitations and feedback route.",
     [
       {
         heading: "Commitment",
@@ -874,7 +874,7 @@ export const legalDocuments: LegalDocument[] = [
     "acceptable-use",
     "Acceptable Use Policy",
     "Platform terms",
-    "Conduct that is not permitted on the Egypt One platform.",
+    "Conduct that is not permitted on the Egyptora Hub platform.",
     [
       {
         heading: "Prohibited activity",
@@ -950,7 +950,7 @@ export const legalDocuments: LegalDocument[] = [
     "business-continuity",
     "Business Continuity & Disaster Recovery Policy",
     "Security & resilience",
-    "How Egypt One maintains and restores service during disruption.",
+    "How Egyptora Hub maintains and restores service during disruption.",
     [
       {
         heading: "Backups",
@@ -979,7 +979,7 @@ export const legalDocuments: LegalDocument[] = [
     "law-enforcement-requests",
     "Government / Law-Enforcement Request Policy",
     "Security & resilience",
-    "How Egypt One handles official requests for user data.",
+    "How Egyptora Hub handles official requests for user data.",
     [
       {
         heading: "Valid legal process required",
@@ -1008,7 +1008,7 @@ export const legalDocuments: LegalDocument[] = [
     "children-privacy",
     "Children & Minors Privacy Policy",
     "Privacy & data",
-    "Egypt One accounts are for adults; how minors' data is treated when travelling as part of a booking.",
+    "Egyptora Hub accounts are for adults; how minors' data is treated when travelling as part of a booking.",
     [
       {
         heading: "Age of account holders",
@@ -1043,7 +1043,7 @@ export const legalDocuments: LegalDocument[] = [
     "marketing-communications",
     "Marketing Communications Policy",
     "Privacy & data",
-    "How Egypt One sends marketing and how to stop it.",
+    "How Egyptora Hub sends marketing and how to stop it.",
     [
       {
         heading: "Consent first",
@@ -1072,7 +1072,7 @@ export const legalDocuments: LegalDocument[] = [
     "disclaimer",
     "General Legal Disclaimer",
     "Disclaimers",
-    "The overall status of information published on Egypt One.",
+    "The overall status of information published on Egyptora Hub.",
     [
       {
         heading: "Information status",
@@ -1176,14 +1176,14 @@ export const consentTypes: ConsentType[] = [
   {
     key: "media_storage",
     label: "Photo & video storage",
-    description: "Storing your trip photos and videos in your Egypt One account.",
+    description: "Storing your trip photos and videos in your Egyptora Hub account.",
     required: false,
     policySlug: "media-consent",
   },
   {
     key: "media_promotional",
     label: "Promotional media use",
-    description: "Allowing Egypt One to feature your trip media in promotion.",
+    description: "Allowing Egyptora Hub to feature your trip media in promotion.",
     required: false,
     policySlug: "media-consent",
   },

@@ -1,15 +1,15 @@
 /**
- * Single source of truth for Egypt One's public identity.
+ * Single source of truth for Egyptora Hub's public identity.
  * Nothing else in the app should hardcode the domain or contact address.
  */
 export const SITE = {
-  name: "Egypt One",
+  name: "Egyptora Hub",
   tagline: "One Egypt. One Journey. One Platform.",
-  url: "https://www.egypt-one.com",
-  domain: "www.egypt-one.com",
-  email: "info@egypt-one.com",
-  support: "info@egypt-one.com",
-  // Egypt One is the public brand; EGYPTORA is the registered legal/holding company
+  url: "https://www.egyptora-hub.com",
+  domain: "www.egyptora-hub.com",
+  email: "info@egyptora-hub.com",
+  support: "info@egyptora-hub.com",
+  // Egyptora Hub is the public brand; EGYPTORA is the registered legal/holding company
   // operating it. Single source of truth for all "operated by" copy.
   parentCompany: "EGYPTORA",
   locales: ["en", "ar"] as const,

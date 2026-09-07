@@ -9,10 +9,10 @@ export const Route = createFileRoute("/admin/maintenance")({
   head: () => ({
     meta: [
       { title: `Maintenance control — ${SITE.name}` },
-      { name: "description", content: "Owner control panel to open or close Egypt One to visitors." },
+      { name: "description", content: "Owner control panel to open or close Egyptora Hub to visitors." },
       { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: `Maintenance control — ${SITE.name}` },
-      { property: "og:description", content: "Owner-only maintenance switch for Egypt One." },
+      { property: "og:description", content: "Owner-only maintenance switch for Egyptora Hub." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

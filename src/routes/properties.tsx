@@ -25,7 +25,7 @@ type Property = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Real Estate in Egypt | Egypt One";
+const title = "Real Estate in Egypt | Egyptora Hub";
 const description =
   "Browse residential and commercial properties across Egypt's governorates — homes, apartments and land for those looking to live or invest in Egypt.";
 

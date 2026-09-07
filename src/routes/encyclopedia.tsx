@@ -29,7 +29,7 @@ type Ruler = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Visual Encyclopedia of Egypt — dress, food, flags, epics & science | Egypt One";
+const title = "Visual Encyclopedia of Egypt — dress, food, flags, epics & science | Egyptora Hub";
 const description =
   "A visual encyclopedia of Egypt: traditional dress in all 27 governorates, the Egyptian table, flags and state symbols, epic battles, ancient provinces, crafts, the genetic map and Egyptian cinema.";
 

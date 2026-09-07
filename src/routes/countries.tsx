@@ -26,7 +26,7 @@ type Country = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Visa & Entry by Country | Egypt One";
+const title = "Visa & Entry by Country | Egyptora Hub";
 const description =
   "Visa routes, Egyptian missions and travel information to Egypt, organised by country of origin.";
 

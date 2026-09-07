@@ -104,7 +104,7 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
           })}
 
           <div className="mt-2 rounded-xl border border-gold-line bg-gold-soft p-4">
-            <p className="font-display text-sm text-gold">{t("Egypt One Pass")}</p>
+            <p className="font-display text-sm text-gold">{t("Egyptora Hub Pass")}</p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
               {t("One digital pass for attractions, rewards and partner benefits.")}
             </p>

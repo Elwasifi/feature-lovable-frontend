@@ -8,7 +8,7 @@ export type Language = {
   dir: "ltr" | "rtl";
 };
 
-/** The 9 primary global languages supported by Egypt One. */
+/** The 9 primary global languages supported by Egyptora Hub. */
 export const LANGUAGES: Language[] = [
   { code: "en", label: "English", native: "English", flag: "🇬🇧", dir: "ltr" },
   { code: "ar", label: "Arabic", native: "العربية", flag: "🇪🇬", dir: "rtl" },

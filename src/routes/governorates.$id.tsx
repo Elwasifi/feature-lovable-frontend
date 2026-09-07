@@ -62,9 +62,9 @@ export const Route = createFileRoute("/governorates/$id")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Governorate unavailable | Egypt One" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Governorate unavailable | Egyptora Hub" }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${loaderData.name} — ${loaderData.tagline} | Egypt One`;
+    const title = `${loaderData.name} — ${loaderData.tagline} | Egyptora Hub`;
     const description = loaderData.story.slice(0, 155);
     return {
       meta: [

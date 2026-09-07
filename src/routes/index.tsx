@@ -53,9 +53,9 @@ import { useI18n } from "@/i18n";
 import { useCurrency } from "@/i18n/currency";
 import { cn } from "@/lib/utils";
 
-const title = "Egypt One — One Egypt. One Journey. One Platform.";
+const title = "Egyptora Hub — One Egypt. One Journey. One Platform.";
 const description =
-  "Egypt One is a unified digital gateway to Egypt: destinations, 27 governorates, heritage, culture, events and investment — presented through one intelligent platform.";
+  "Egyptora Hub is a unified digital gateway to Egypt: destinations, 27 governorates, heritage, culture, events and investment — presented through one intelligent platform.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -470,7 +470,7 @@ function Offers() {
               <p className="font-display text-base text-foreground">{t(o.title)}</p>
               <p className="mt-1 text-xs text-foreground/75">{t(o.body)}</p>
               <a
-                href={mailto(`Egypt One — ${o.title}`)}
+                href={mailto(`Egyptora Hub — ${o.title}`)}
                 className="mt-3 inline-flex rounded-lg bg-gold px-3 py-1.5 text-[11px] font-semibold text-primary-foreground"
               >
                 {t(o.cta)}
@@ -590,7 +590,7 @@ function Film() {
               "A dedicated track for productions: shooting locations, permits guidance and cultural advisers — turning screen exposure into visits.",
             )}
           </p>
-          <GhostButton href={mailto("Egypt One — Film & screen tourism")} className="w-fit">
+          <GhostButton href={mailto("Egyptora Hub — Film & screen tourism")} className="w-fit">
             {t("Contact the film desk")}
           </GhostButton>
         </div>
@@ -660,7 +660,7 @@ function Concierge() {
             )}
           </p>
         </div>
-        <GoldButton href={mailto("Egypt One — AI Concierge access")}>
+        <GoldButton href={mailto("Egyptora Hub — AI Concierge access")}>
           {t("Open AI Concierge")}
         </GoldButton>
       </div>
@@ -687,7 +687,7 @@ function Invest() {
               <p className="font-display text-base text-foreground">{t(s.title)}</p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t(s.body)}</p>
               <a
-                href={mailto(`Egypt One — ${s.title}`)}
+                href={mailto(`Egyptora Hub — ${s.title}`)}
                 className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
               >
                 {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
@@ -713,7 +713,7 @@ function Invest() {
 function Programmes() {
   const { t } = useI18n();
   return (
-    <Block id="programmes" eyebrow="National programmes" title="Egypt One initiatives">
+    <Block id="programmes" eyebrow="National programmes" title="Egyptora Hub initiatives">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {programmes.map((p) => (
           <article key={p.title} className="rounded-2xl border border-border/70 bg-card p-5">

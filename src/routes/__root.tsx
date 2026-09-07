@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Egypt One is a unified digital gateway to Egypt: destinations, heritage, culture, events and investment in one platform.",
+          "Egyptora Hub is a unified digital gateway to Egypt: destinations, heritage, culture, events and investment in one platform.",
       },
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },
@@ -120,7 +120,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/logo-512.png", type: "image/png", sizes: "512x512" },
+      { rel: "apple-touch-icon", href: "/logo-512.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

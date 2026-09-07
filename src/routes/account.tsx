@@ -28,13 +28,13 @@ import { useAuth } from "@/hooks/use-auth";
 export const Route = createFileRoute("/account")({
   head: () => ({
     meta: [
-      { title: "My Egypt One dashboard — trips, rewards & support" },
+      { title: "My Egyptora Hub dashboard — trips, rewards & support" },
       {
         name: "description",
         content:
-          "Track live booking status, review past journeys, manage account settings and follow your Egypt One Pass points and benefits.",
+          "Track live booking status, review past journeys, manage account settings and follow your Egyptora Hub Pass points and benefits.",
       },
-      { property: "og:title", content: "My Egypt One dashboard" },
+      { property: "og:title", content: "My Egyptora Hub dashboard" },
       {
         property: "og:description",
         content: "Live trip tracking, rewards balance, emergency assistance and traveller settings.",
@@ -270,7 +270,7 @@ function AccountPage() {
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
             <a
-              href={mailto("Egypt One — emergency assistance during my trip")}
+              href={mailto("Egyptora Hub — emergency assistance during my trip")}
               className="flex items-center gap-2 rounded-full bg-hot px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-hot/20"
             >
               <LifeBuoy className="size-4" />
@@ -289,7 +289,7 @@ function AccountPage() {
 
         {/* Stat cards */}
         <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <StatCard icon={Gem} label={t("Egypt One Pass points")} value={String(profile.points)} hint={t("1 point = 1 EGP of partner value")} />
+          <StatCard icon={Gem} label={t("Egyptora Hub Pass points")} value={String(profile.points)} hint={t("1 point = 1 EGP of partner value")} />
           <StatCard icon={BadgeCheck} label={t("Membership tier")} value={t(profile.tier)} hint={t("Unlock Gold at 5,000 points")} />
           <StatCard icon={Radio} label={t("Active bookings")} value={String(live.length)} hint={t("Live status updates in real time")} />
           <StatCard icon={Ticket} label={t("Completed journeys")} value={String(past.length)} hint={t("Rate them to earn bonus points")} />
@@ -565,7 +565,7 @@ function SettingsPanel({
       </div>
 
       <aside className="rounded-2xl border border-gold-line/50 bg-gold-soft p-5">
-        <p className="font-display text-lg text-gold">{t("Egypt One Pass")}</p>
+        <p className="font-display text-lg text-gold">{t("Egyptora Hub Pass")}</p>
         <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
           {t("One digital pass for attractions, rewards and partner benefits.")}
         </p>
@@ -580,7 +580,7 @@ function SettingsPanel({
           )}
         </ul>
         <a
-          href={mailto("Egypt One — 24/7 traveller support")}
+          href={mailto("Egyptora Hub — 24/7 traveller support")}
           className="mt-5 flex items-center justify-center gap-2 rounded-lg border border-gold-line py-2 text-sm text-gold"
         >
           <Phone className="size-4" />

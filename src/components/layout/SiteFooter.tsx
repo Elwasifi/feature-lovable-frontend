@@ -18,7 +18,7 @@ function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/egypt-one-logo.jpg.asset.json";
+import logo from "@/assets/egyptora-hub-logo.png.asset.json";
 import { Container } from "@/components/site/Primitives";
 import { footerColumns, govIntegrations } from "@/data/site";
 import { useI18n } from "@/i18n";
@@ -64,7 +64,7 @@ export function SiteFooter() {
               )}
             </p>
             <a
-              href={mailto("Egypt One — general enquiry")}
+              href={mailto("Egyptora Hub — general enquiry")}
               className="mt-4 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-foreground"
             >
               <Mail className="size-4" />
@@ -74,7 +74,7 @@ export function SiteFooter() {
               {SITE.domain}
             </p>
             <p className="mt-2 text-xs text-muted-foreground/80">
-              {t("Egypt One is a brand operated by")} {SITE.parentCompany}.
+              {t("Egyptora Hub is a brand operated by")} {SITE.parentCompany}.
             </p>
           </div>
 
@@ -95,7 +95,7 @@ export function SiteFooter() {
                       </Link>
                     ) : (
                       <a
-                        href={link.href ?? mailto(`Egypt One — ${link.label}`)}
+                        href={link.href ?? mailto(`Egyptora Hub — ${link.label}`)}
                         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {t(link.label)}
@@ -156,7 +156,7 @@ export function SiteFooter() {
             <p className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}{" "}
               <span className="text-muted-foreground/80">
-                {t("Egypt One is a brand of")} {SITE.parentCompany}.
+                {t("Egyptora Hub is a brand of")} {SITE.parentCompany}.
               </span>
             </p>
             <nav aria-label={t("Legal")}>

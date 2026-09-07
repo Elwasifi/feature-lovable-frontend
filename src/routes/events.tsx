@@ -23,7 +23,7 @@ type EgyptEvent = {
   summary: string | null;
 };
 
-const title = "Events & Festivals in Egypt | Egypt One";
+const title = "Events & Festivals in Egypt | Egyptora Hub";
 const description =
   "Egypt's festivals and events calendar — film, music, heritage and cultural events across the country's governorates.";
 
@@ -141,7 +141,7 @@ function EventsPage() {
       <SiteHeader />
       <Section>
         <SectionHeader
-          eyebrow="Egypt One"
+          eyebrow="Egyptora Hub"
           title="Events & festivals"
           description="Egypt's festival and events calendar across film, music, heritage and culture."
         />

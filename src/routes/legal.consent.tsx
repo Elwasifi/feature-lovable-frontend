@@ -9,9 +9,9 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { consentTypes, getLegalDocument } from "@/data/legal";
 
-const title = "Consent Centre — Egypt One";
+const title = "Consent Centre — Egyptora Hub";
 const description =
-  "Grant or withdraw each Egypt One consent separately: cookies, marketing, location, trip tracking, media use, AI processing and sensitive data.";
+  "Grant or withdraw each Egyptora Hub consent separately: cookies, marketing, location, trip tracking, media use, AI processing and sensitive data.";
 
 export const Route = createFileRoute("/legal/consent")({
   head: () => ({

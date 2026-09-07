@@ -3,7 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { SITE } from "@/config/site";
 
-const title = "Egyptian Cotton — certified mills, ateliers & visits | Egypt One";
+const title = "Egyptian Cotton — certified mills, ateliers & visits | Egyptora Hub";
 const description =
   "Discover Egyptian cotton: Giza long-staple varieties, certified mills, bespoke tailoring and Delta cotton trails you can book as a visitor.";
 

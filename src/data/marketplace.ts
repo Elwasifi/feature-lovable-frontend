@@ -72,7 +72,7 @@ export const marketplacePages: MarketplacePage[] = [
       { title: "Mahalla textile day", note: "Historic mills plus a tailoring session." },
       { title: "Cairo showroom crawl", note: "Curated retailers with export desks." },
     ],
-    buySubject: "Egypt One — Egyptian Cotton enquiry",
+    buySubject: "Egyptora Hub — Egyptian Cotton enquiry",
   },
   {
     slug: "handmade-crafts",
@@ -114,7 +114,7 @@ export const marketplacePages: MarketplacePage[] = [
       { title: "Tentmakers Street", note: "Khayamiya applique studios and stitching class." },
       { title: "Siwa & Nubia craft route", note: "Palm fibre, silver and desert embroidery." },
     ],
-    buySubject: "Egypt One — Handmade Crafts enquiry",
+    buySubject: "Egyptora Hub — Handmade Crafts enquiry",
   },
   {
     slug: "wear-egypt",
@@ -156,7 +156,7 @@ export const marketplacePages: MarketplacePage[] = [
       { title: "Museum-to-wardrobe", note: "Gallery visit then the collection it inspired." },
       { title: "Fashion week access", note: "Seasonal showcase passes for visitors." },
     ],
-    buySubject: "Egypt One — Wear Egypt enquiry",
+    buySubject: "Egyptora Hub — Wear Egypt enquiry",
   },
   {
     slug: "local-producers",
@@ -198,7 +198,7 @@ export const marketplacePages: MarketplacePage[] = [
       { title: "Delta food trail", note: "Cheese, citrus and herb farms near Cairo." },
       { title: "Nile market morning", note: "Shop with a chef then cook the haul." },
     ],
-    buySubject: "Egypt One — Local Producers enquiry",
+    buySubject: "Egyptora Hub — Local Producers enquiry",
   },
 ];
 

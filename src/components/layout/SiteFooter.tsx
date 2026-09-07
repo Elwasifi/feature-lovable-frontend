@@ -51,7 +51,7 @@ export function SiteFooter() {
               />
               <span>
                 <span className="block font-display text-base tracking-[0.2em] text-foreground">
-                  EGYPT <span className="text-gold">ONE</span>
+                  EGYPTORA <span className="text-gold">HUB</span>
                 </span>
                 <span className="block text-[10px] tracking-[0.12em] text-muted-foreground">
                   {t(SITE.tagline)}

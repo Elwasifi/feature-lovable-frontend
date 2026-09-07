@@ -108,7 +108,7 @@ function AuthPage() {
           <Link to="/" className="flex items-center gap-3">
             <img src={logo.url} alt={`${SITE.name} logo`} className="size-12 rounded-full ring-1 ring-gold-line" />
             <span className="font-display text-lg tracking-[0.22em] text-foreground">
-              EGYPT <span className="text-gold">ONE</span>
+              EGYPTORA <span className="text-gold">HUB</span>
             </span>
           </Link>
           <div className="max-w-md">
@@ -141,7 +141,7 @@ function AuthPage() {
           <Link to="/" className="mb-8 flex items-center gap-3 lg:hidden">
             <img src={logo.url} alt={`${SITE.name} logo`} className="size-10 rounded-full ring-1 ring-gold-line" />
             <span className="font-display text-base tracking-[0.2em] text-foreground">
-              EGYPT <span className="text-gold">ONE</span>
+              EGYPTORA <span className="text-gold">HUB</span>
             </span>
           </Link>
 

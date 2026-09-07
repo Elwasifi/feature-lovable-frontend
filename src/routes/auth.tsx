@@ -3,7 +3,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Apple, Chrome, Info, Loader2, Lock, Mail, Phone, ShieldCheck, User } from "lucide-react";
 import { useI18n } from "@/i18n";
 import { SITE } from "@/config/site";
-import logo from "@/assets/egypt-one-logo.jpg.asset.json";
+import logo from "@/assets/egyptora-hub-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";

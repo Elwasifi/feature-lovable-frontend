@@ -36,7 +36,7 @@ export function DashboardTopBar({
           />
           <span className="hidden min-w-0 leading-tight lg:block">
             <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
-              EGYPT <span className="text-gold">ONE</span>
+              EGYPTORA <span className="text-gold">HUB</span>
             </span>
             <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
               {t(SITE.tagline)}

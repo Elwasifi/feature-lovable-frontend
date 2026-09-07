@@ -3,7 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { SITE } from "@/config/site";
 
-const title = "Wear Egypt — modern Egyptian design, ancient roots | Egypt One";
+const title = "Wear Egypt — modern Egyptian design, ancient roots | Egyptora Hub";
 const description =
   "Contemporary Egyptian fashion labels reworking pharaonic and Coptic motifs: designer directory, concept stores and made-to-order tailoring.";
 

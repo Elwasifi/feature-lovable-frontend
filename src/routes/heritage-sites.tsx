@@ -21,7 +21,7 @@ type HeritageSite = {
   summary: string | null;
 };
 
-const title = "Heritage Sites of Egypt — 74 registered sites | Egypt One";
+const title = "Heritage Sites of Egypt — 74 registered sites | Egyptora Hub";
 const description =
   "Browse Egypt's registered heritage sites by governorate and historical era, from Pharaonic temples to Islamic, Coptic and Ottoman monuments.";
 
@@ -84,7 +84,7 @@ function HeritageSitesPage() {
       <SiteHeader />
       <Section>
         <SectionHeader
-          eyebrow="Egypt One"
+          eyebrow="Egyptora Hub"
           title="Heritage sites"
           description="Registered heritage sites across all 27 governorates, spanning ancient, Coptic, Islamic and modern eras."
         />

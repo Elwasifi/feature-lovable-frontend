@@ -47,7 +47,7 @@ export function SocialBar() {
         <div className="flex flex-col items-center gap-7 lg:flex-row lg:justify-between">
           <div className="text-center lg:text-start">
             <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold/80">
-              {t("Follow Egypt One")}
+              {t("Follow Egyptora Hub")}
             </p>
             <h2 className="mt-2 font-display text-xl text-foreground">
               {t("One nation, every channel")}

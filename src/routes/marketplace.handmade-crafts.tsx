@@ -3,7 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { SITE } from "@/config/site";
 
-const title = "Handmade Crafts — artisans across 27 governorates | Egypt One";
+const title = "Handmade Crafts — artisans across 27 governorates | Egyptora Hub";
 const description =
   "Copper, pottery, glass, kilim and khayamiya: meet Egyptian artisans, book workshop visits and buy handmade crafts at fair, published prices.";
 

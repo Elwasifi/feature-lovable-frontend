@@ -1,5 +1,5 @@
 /**
- * Frontend → backend endpoint map for Egypt One.
+ * Frontend → backend endpoint map for Egyptora Hub.
  *
  * Every data-driven section on the site declares the endpoint it will consume
  * once the backend exposes it. `status` documents integration honesty:

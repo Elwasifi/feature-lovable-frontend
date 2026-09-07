@@ -25,7 +25,7 @@ type HeritageWorldwideItem = {
 
 type EraLookup = { key: string; name: string };
 
-const title = "Egyptian Heritage Worldwide — objects held abroad | Egypt One";
+const title = "Egyptian Heritage Worldwide — objects held abroad | Egyptora Hub";
 const description =
   "Egyptian antiquities and heritage objects held in museums and institutions around the world, documented by country, institution and era.";
 

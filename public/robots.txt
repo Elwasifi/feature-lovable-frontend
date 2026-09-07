@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.egypt-one.com/sitemap.xml
+Sitemap: https://www.egyptora-hub.com/sitemap.xml

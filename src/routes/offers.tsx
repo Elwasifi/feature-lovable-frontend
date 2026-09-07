@@ -20,7 +20,7 @@ type Offer = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Offers & Packages in Egypt | Egypt One";
+const title = "Offers & Packages in Egypt | Egyptora Hub";
 const description =
   "Travel offers and packages across Egypt — hotels, tours and experiences bundled for visitors.";
 
@@ -67,7 +67,7 @@ function OffersPage() {
       <SiteHeader />
       <Section>
         <SectionHeader
-          eyebrow="Egypt One"
+          eyebrow="Egyptora Hub"
           title="Offers & packages"
           description="Curated travel offers and packages across Egypt's hotels, tours and experiences."
         />

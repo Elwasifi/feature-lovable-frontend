@@ -15,10 +15,10 @@ export const Route = createFileRoute("/legal/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Document not found — Egypt One" }, { name: "robots", content: "noindex" }] };
+      return { meta: [{ title: "Document not found — Egyptora Hub" }, { name: "robots", content: "noindex" }] };
     }
     const d = loaderData.document;
-    const title = `${d.title} — Egypt One Legal Center`;
+    const title = `${d.title} — Egyptora Hub Legal Center`;
     return {
       meta: [
         { title },

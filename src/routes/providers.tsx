@@ -31,7 +31,7 @@ type Provider = {
   governance_status: GovernanceStatus;
 };
 
-const title = "Service Providers in Egypt | Egypt One";
+const title = "Service Providers in Egypt | Egyptora Hub";
 const description =
   "Hotels, guides, tour operators and service providers across Egypt's governorates.";
 

@@ -6,9 +6,9 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { LEGAL_DRAFT_NOTICE, legalDocuments } from "@/data/legal";
 
-const title = "Legal Review Checklist — Egypt One";
+const title = "Legal Review Checklist — Egyptora Hub";
 const description =
-  "Pre-launch checklist identifying which Egypt One policies require confirmation by Egyptian counsel and which third-party integrations require separate contractual or regulatory review.";
+  "Pre-launch checklist identifying which Egyptora Hub policies require confirmation by Egyptian counsel and which third-party integrations require separate contractual or regulatory review.";
 
 export const Route = createFileRoute("/legal/review-checklist")({
   head: () => ({

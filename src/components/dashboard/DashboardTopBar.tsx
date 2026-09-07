@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Bell, Heart, Menu, Search } from "lucide-react";
 import { Link, useRouter } from "@tanstack/react-router";
-import logo from "@/assets/egypt-one-logo.jpg.asset.json";
+import logo from "@/assets/egyptora-hub-logo.png.asset.json";
 import { SITE } from "@/config/site";
 import { AuthButtons } from "@/components/site/AuthButtons";
 import { CurrencySwitcher } from "@/components/site/CurrencySwitcher";
@@ -94,7 +94,7 @@ export function DashboardTopBar({
         <input
           id="mobile-search"
           type="search"
-          placeholder={t("Search Egypt One")}
+          placeholder={t("Search Egyptora Hub")}
           className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
         />
       </label>

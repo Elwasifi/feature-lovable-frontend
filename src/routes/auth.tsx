@@ -11,13 +11,13 @@ import { useAuth } from "@/hooks/use-auth";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Create your Egypt One account — Sign up or sign in" },
+      { title: "Create your Egyptora Hub account — Sign up or sign in" },
       {
         name: "description",
         content:
-          "Join Egypt One with Google, Apple, or your email and WhatsApp number to manage trips, live booking status and Egypt One Pass rewards.",
+          "Join Egyptora Hub with Google, Apple, or your email and WhatsApp number to manage trips, live booking status and Egyptora Hub Pass rewards.",
       },
-      { property: "og:title", content: "Create your Egypt One account" },
+      { property: "og:title", content: "Create your Egyptora Hub account" },
       {
         property: "og:description",
         content: "One account for trips, live status, rewards and 24/7 traveller support in Egypt.",
@@ -121,7 +121,7 @@ function AuthPage() {
             <ul className="mt-8 grid gap-3 text-sm text-muted-foreground">
               {[
                 "Live status for every booking",
-                "Egypt One Pass points and partner benefits",
+                "Egyptora Hub Pass points and partner benefits",
                 "24/7 emergency assistance during your trip",
                 "Rate past journeys and unlock member pricing",
               ].map((line) => (
@@ -161,7 +161,7 @@ function AuthPage() {
           </div>
 
           <h2 className="font-display text-2xl text-foreground">
-            {t(mode === "signup" ? "Create your Egypt One account" : "Welcome back")}
+            {t(mode === "signup" ? "Create your Egyptora Hub account" : "Welcome back")}
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
             {t("Continue with a social account or use your email and WhatsApp number.")}
@@ -269,7 +269,7 @@ function AuthPage() {
           )}
 
           <p className="mt-5 text-center text-xs leading-relaxed text-muted-foreground">
-            {t("By continuing you agree to the Egypt One terms and privacy policy.")}
+            {t("By continuing you agree to the Egyptora Hub terms and privacy policy.")}
           </p>
           <p className="mt-4 text-center text-sm">
             <Link to="/" className="text-gold underline">

@@ -322,7 +322,7 @@ export const encChapters: EncChapter[] = [
     title: "Egypt through the ages, told to the world",
     tagline: "Inspiring cinema, living history, thriving tourism",
     story:
-      "Every era in this encyclopedia is a script waiting for a camera. Egypt One's film desk exists to turn documented history into world-class Egyptian films, series and animation — shot in Egypt, produced by Egyptian talent, distributed globally. For investors it is a pipeline: studios, locations, post-production, training and film tourism. For visitors it is a reason to stand where the scene was shot.",
+      "Every era in this encyclopedia is a script waiting for a camera. Egyptora Hub's film desk exists to turn documented history into world-class Egyptian films, series and animation — shot in Egypt, produced by Egyptian talent, distributed globally. For investors it is a pipeline: studios, locations, post-production, training and film tourism. For visitors it is a reason to stand where the scene was shot.",
     cover: filmVision,
     stats: [
       { value: "11", label: "Eras ready for production" },

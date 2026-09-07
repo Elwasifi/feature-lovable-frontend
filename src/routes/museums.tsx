@@ -20,7 +20,7 @@ type Museum = {
   summary: string | null;
 };
 
-const title = "Museums of Egypt — 27 museums to explore | Egypt One";
+const title = "Museums of Egypt — 27 museums to explore | Egyptora Hub";
 const description =
   "Explore Egypt's museums by governorate, from the Grand Egyptian Museum to regional collections across the country.";
 
@@ -80,7 +80,7 @@ function MuseumsPage() {
       <SiteHeader />
       <Section>
         <SectionHeader
-          eyebrow="Egypt One"
+          eyebrow="Egyptora Hub"
           title="Museums & exhibitions"
           description="Egypt's museums, from national institutions to regional collections."
         />

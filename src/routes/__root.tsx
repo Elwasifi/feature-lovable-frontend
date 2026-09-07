@@ -110,7 +110,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Egypt One is a unified digital gateway to Egypt: destinations, heritage, culture, events and investment in one platform.",
+          "Egyptora Hub is a unified digital gateway to Egypt: destinations, heritage, culture, events and investment in one platform.",
       },
       { name: "author", content: SITE.name },
       { property: "og:site_name", content: SITE.name },

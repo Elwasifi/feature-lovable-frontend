@@ -79,7 +79,7 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Visa & Entry", href: "/countries" },
       { label: "Health & Medical Tourism", href: "/#sectors" },
       { label: "Safety Center", href: "/legal" },
-      { label: "Egypt One Pass", href: "/#programmes" },
+      { label: "Egyptora Hub Pass", href: "/#programmes" },
       { label: "Loyalty & Rewards", href: "/account" },
     ],
   },
@@ -221,7 +221,7 @@ export const promoCards = [
     cta: "Start Challenge",
   },
   {
-    title: "Egypt One Pass",
+    title: "Egyptora Hub Pass",
     body: "Unlock rewards, discounts & exclusive benefits.",
     cta: "Join Now",
   },
@@ -281,7 +281,7 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
       { label: "Smart Trip Planner", href: "/#ai-concierge" },
       { label: "AI Concierge", href: "/#ai-concierge" },
       { label: "Programmes", href: "/#programmes" },
-      { label: "Search Egypt One", href: "/#explore" },
+      { label: "Search Egyptora Hub", href: "/#explore" },
     ],
   },
   {
@@ -323,7 +323,7 @@ export const pillars = [
   },
   {
     title: "Plan Your Journey",
-    body: "Build an itinerary day by day with the Egypt One trip planner and AI concierge.",
+    body: "Build an itinerary day by day with the Egyptora Hub trip planner and AI concierge.",
     cta: "Plan a trip",
     href: "/#ai-concierge",
     image: cardNileSea,
@@ -349,14 +349,14 @@ export const investSectors = [
 ];
 
 export const programmes = [
-  { title: "Egypt One Pass", body: "One digital pass for attractions, rewards and benefits." },
+  { title: "Egyptora Hub Pass", body: "One digital pass for attractions, rewards and benefits." },
   { title: "Visit All 27", body: "A national challenge across every Egyptian governorate." },
   { title: "Stopover Egypt", body: "Turn a transit stop into a curated short journey." },
   { title: "One More Night", body: "Extend a stay and unlock added value with partners." },
 ];
 
 // ---------------------------------------------------------------------------
-// Dashboard shell data (matches the Egypt One reference layout)
+// Dashboard shell data (matches the Egyptora Hub reference layout)
 // ---------------------------------------------------------------------------
 
 import destCairo from "@/assets/dest-cairo.jpg";

@@ -6,9 +6,9 @@ import { Section, SectionHeader } from "@/components/site/Primitives";
 import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 
-const title = "Contact Egypt One — Talk to the platform team";
+const title = "Contact Egyptora Hub — Talk to the platform team";
 const description =
-  "Reach the Egypt One team about travel, heritage content, partnerships, investment enquiries and press. Email info@egypt-one.com.";
+  "Reach the Egyptora Hub team about travel, heritage content, partnerships, investment enquiries and press. Email info@egyptora-hub.com.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -29,12 +29,12 @@ export const Route = createFileRoute("/contact")({
 });
 
 const topics = [
-  { label: "General enquiry", subject: "Egypt One — general enquiry" },
-  { label: "Partnerships", subject: "Egypt One — partnership enquiry" },
-  { label: "Investment", subject: "Egypt One — investment enquiry" },
-  { label: "Press & media", subject: "Egypt One — press enquiry" },
-  { label: "Content correction", subject: "Egypt One — content correction" },
-  { label: "Report an issue", subject: "Egypt One — report an issue" },
+  { label: "General enquiry", subject: "Egyptora Hub — general enquiry" },
+  { label: "Partnerships", subject: "Egyptora Hub — partnership enquiry" },
+  { label: "Investment", subject: "Egyptora Hub — investment enquiry" },
+  { label: "Press & media", subject: "Egyptora Hub — press enquiry" },
+  { label: "Content correction", subject: "Egyptora Hub — content correction" },
+  { label: "Report an issue", subject: "Egyptora Hub — report an issue" },
 ];
 
 function Contact() {
@@ -46,14 +46,14 @@ function Contact() {
         <Section>
           <SectionHeader
             eyebrow={t("Contact")}
-            title={t("Talk to the Egypt One team")}
+            title={t("Talk to the Egyptora Hub team")}
             description={t("One address handles every enquiry while the platform is in build. We reply from the same team that maintains the content.")}
           />
           <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr]">
             <div className="rounded-2xl border border-gold-line bg-card p-7">
               <Mail className="size-5 text-gold" />
               <a
-                href={mailto("Egypt One — general enquiry")}
+                href={mailto("Egyptora Hub — general enquiry")}
                 className="mt-4 block font-display text-2xl text-foreground hover:text-gold"
                 dir="ltr"
               >

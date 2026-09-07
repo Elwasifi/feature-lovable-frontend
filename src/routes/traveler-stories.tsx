@@ -31,7 +31,7 @@ type TravellerStory = {
 const isPublished = (state: string | null) =>
   typeof state === "string" && /publish|approved/i.test(state);
 
-const title = "Traveller Stories — real trips across Egypt | Egypt One";
+const title = "Traveller Stories — real trips across Egypt | Egyptora Hub";
 const description =
   "Traveller stories and reviews from real trips across Egypt, by country of origin and traveller group.";
 

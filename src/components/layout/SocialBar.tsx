@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { Container } from "@/components/site/Primitives";
 import { SITE } from "@/config/site";

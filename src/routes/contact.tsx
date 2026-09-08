@@ -28,7 +28,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const topics = [
+const topics: { label: string; subject: string; address?: string }[] = [
   { label: "General enquiry", subject: "Egyptora Hub — general enquiry" },
   { label: "Partnerships", subject: "Egyptora Hub — partnership enquiry" },
   { label: "Investment", subject: "Egyptora Hub — investment enquiry" },

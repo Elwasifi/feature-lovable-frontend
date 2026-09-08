@@ -49,8 +49,10 @@ export const sidebarGroups: SidebarGroup[] = [
   {
     title: "Discover Egypt",
     items: [
+      { label: "Visual Encyclopedia", href: "/encyclopedia", badge: "New" },
       { label: "27 Governorates", href: "/#governorates" },
       { label: "Egypt Through Time", href: "/#through-time" },
+
       { label: "Rulers of Egypt", href: "/encyclopedia#epics" },
       { label: "Heritage Sites", href: "/heritage-sites", badge: "New" },
       { label: "Museums & Exhibitions", href: "/museums" },
@@ -256,12 +258,14 @@ export const topGovernorates = [
 export const primaryNav = [
   { label: "Explore Egypt", href: "/#explore" },
   { label: "Governorates", href: "/#governorates" },
+  { label: "Visual Encyclopedia", href: "/encyclopedia" },
   { label: "Through Time", href: "/#through-time" },
   { label: "Plan Your Trip", href: "/#ai-concierge" },
   { label: "Invest", href: "/#invest" },
   { label: "Film & Culture", href: "/#film" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 export type FooterLink = { label: string; to?: string; href?: string };
 
@@ -271,8 +275,10 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Destinations", href: "/#explore" },
       { label: "27 Governorates", href: "/#governorates" },
+      { label: "Visual Encyclopedia", to: "/encyclopedia" },
       { label: "Heritage & Museums", href: "/#explore" },
       { label: "Egypt Through Time", href: "/#through-time" },
+
     ],
   },
   {

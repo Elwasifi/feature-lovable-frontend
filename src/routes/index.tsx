@@ -194,8 +194,7 @@ function Hero() {
           <Sparkles className="size-3" /> {t("The official gateway to Egypt")}
         </p>
         <h1 className="max-w-3xl font-display text-3xl leading-tight text-foreground drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-5xl">
-          {t("One Egypt.")} <span className="text-gold">{t("One Journey.")}</span>{" "}
-          {t("One Platform.")}
+          {t("Everything Egypt.")} <span className="text-gold">{t("One Hub.")}</span>
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/85 drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)] sm:text-base">
           {t(

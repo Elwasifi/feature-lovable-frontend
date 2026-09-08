@@ -28,12 +28,12 @@ type Social = {
 };
 
 const socials: Social[] = [
-  { label: "Facebook", handle: "@egyptone", href: SITE.social.facebook, Icon: Facebook },
-  { label: "TikTok", handle: "@egyptone", href: SITE.social.tiktok, Icon: TikTokIcon },
-  { label: "Instagram", handle: "@egyptone", href: SITE.social.instagram, Icon: Instagram },
-  { label: "X", handle: "@egyptone", href: SITE.social.x, Icon: XIcon },
-  { label: "YouTube", handle: "@egyptone", href: SITE.social.youtube, Icon: Youtube },
+  { label: "Facebook", handle: "@EgyptoraHub", href: SITE.social.facebook, Icon: Facebook },
+  { label: "TikTok", handle: "@user6696191367181", href: SITE.social.tiktok, Icon: TikTokIcon },
+  { label: "Instagram", handle: "@egyptorahub", href: SITE.social.instagram, Icon: Instagram },
+  { label: "X", handle: "@EgyptoraHub", href: SITE.social.x, Icon: XIcon },
 ];
+
 
 export function SocialBar() {
   const { t } = useI18n();

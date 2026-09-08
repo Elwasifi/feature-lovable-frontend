@@ -270,10 +270,10 @@ export function EgyptMap() {
               <text x="70" y="96">{t("SUDAN")}</text>
               <text x="86" y="30">{t("SAUDI ARABIA")}</text>
               <text x="34" y="6" fill="oklch(0.78 0.05 220 / 70%)">
-                Mediterranean Sea
+                {t("Mediterranean Sea")}
               </text>
               <text x="80" y="62" fill="oklch(0.78 0.05 220 / 70%)">
-                Red Sea
+                {t("Red Sea")}
               </text>
             </g>
 

@@ -14,13 +14,14 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { GA_MEASUREMENT_ID, GA_INLINE_SNIPPET, trackPageView } from "../lib/analytics";
 import { SITE } from "../config/site";
-import { I18nProvider } from "../i18n";
+import { I18nProvider, useI18n } from "../i18n";
 import { CurrencyProvider } from "../i18n/currency";
 import { FloatingConcierge } from "../components/site/FloatingConcierge";
 import { Toaster } from "../components/ui/sonner";
 import { MaintenanceGate } from "../components/site/MaintenanceGate";
 
 function NotFoundComponent() {
+  const { t } = useI18n();
   return (
     <div className="grid min-h-screen place-items-center bg-background px-5 py-16">
       <div className="w-full max-w-xl rounded-3xl border border-gold-line bg-card/60 p-8 text-center backdrop-blur sm:p-12">
@@ -28,30 +29,31 @@ function NotFoundComponent() {
           {SITE.name} — 404
         </p>
         <h1 className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl">
-          This page is off the map
+          {t("This page is off the map")}
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          The page you are looking for does not exist, has moved, or is not part of this phase of
-          the platform yet.
+          {t(
+            "The page you are looking for does not exist, has moved, or is not part of this phase of the platform yet.",
+          )}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
           >
-            Back to the gateway
+            {t("Back to the gateway")}
           </Link>
           <Link
             to="/encyclopedia"
             className="inline-flex items-center justify-center rounded-full border border-gold-line px-6 py-3 text-sm font-semibold text-gold transition-colors hover:bg-gold-soft"
           >
-            Explore Egypt
+            {t("Explore Egypt")}
           </Link>
           <Link
             to="/contact"
             className="inline-flex items-center justify-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
           >
-            Contact us
+            {t("Contact us")}
           </Link>
         </div>
         <p className="mt-8 text-[11px] text-muted-foreground/70" dir="ltr">
@@ -66,6 +68,7 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const { t } = useI18n();
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -74,10 +77,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          {t("This page didn't load")}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          {t("Something went wrong on our end. You can try refreshing or head back home.")}
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -87,13 +90,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            {t("Try again")}
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            {t("Go home")}
           </a>
         </div>
       </div>
@@ -185,7 +188,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <I18nProvider>{children}</I18nProvider>
         <Scripts />
       </body>
     </html>
@@ -203,16 +206,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider>
-        <CurrencyProvider>
+      <CurrencyProvider>
           <MaintenanceGate>
             {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
             <Outlet />
             <FloatingConcierge />
             <Toaster position="top-center" richColors />
           </MaintenanceGate>
-        </CurrencyProvider>
-      </I18nProvider>
+      </CurrencyProvider>
     </QueryClientProvider>
   );
 }

@@ -32,10 +32,20 @@ const topics = [
   { label: "General enquiry", subject: "Egyptora Hub — general enquiry" },
   { label: "Partnerships", subject: "Egyptora Hub — partnership enquiry" },
   { label: "Investment", subject: "Egyptora Hub — investment enquiry" },
-  { label: "Press & media", subject: "Egyptora Hub — press enquiry" },
+  {
+    label: "Press & media",
+    subject: "Egyptora Hub — press enquiry",
+    address: SITE.marketingEmail,
+  },
+  {
+    label: "Marketing & advertising",
+    subject: "Egyptora Hub — marketing enquiry",
+    address: SITE.marketingEmail,
+  },
   { label: "Content correction", subject: "Egyptora Hub — content correction" },
   { label: "Report an issue", subject: "Egyptora Hub — report an issue" },
 ];
+
 
 function Contact() {
   const { t } = useI18n();

@@ -212,7 +212,7 @@ export const encChapters: EncChapter[] = [
         wide: true,
       },
     ],
-    api: "REAL · Supabase eras + rulers",
+    api: "REAL · live eras + rulers",
   },
   {
     id: "provinces",

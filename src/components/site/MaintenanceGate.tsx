@@ -8,8 +8,10 @@ import {
 } from "@/config/maintenance";
 import { getMaintenance } from "@/lib/maintenance.functions";
 import { SITE } from "@/config/site";
+import { useI18n } from "@/i18n";
 
 function MaintenancePage() {
+  const { t } = useI18n();
   return (
     <div className="grid min-h-screen place-items-center bg-background px-5 py-16">
       <div className="w-full max-w-xl rounded-3xl border border-gold-line bg-card/60 p-8 text-center backdrop-blur sm:p-12">
@@ -17,10 +19,10 @@ function MaintenancePage() {
           {SITE.name}
         </p>
         <h1 className="mt-4 font-display text-4xl leading-tight text-foreground sm:text-5xl">
-          This Page Not Available
+          {t("This Page Not Available")}
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
-          We are performing scheduled maintenance. The platform will be back shortly.
+          {t("We are performing scheduled maintenance. The platform will be back shortly.")}
         </p>
         <a
           href={`mailto:${SITE.email}`}

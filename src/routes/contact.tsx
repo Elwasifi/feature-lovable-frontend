@@ -28,14 +28,24 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 
-const topics = [
+const topics: { label: string; subject: string; address?: string }[] = [
   { label: "General enquiry", subject: "Egyptora Hub — general enquiry" },
   { label: "Partnerships", subject: "Egyptora Hub — partnership enquiry" },
   { label: "Investment", subject: "Egyptora Hub — investment enquiry" },
-  { label: "Press & media", subject: "Egyptora Hub — press enquiry" },
+  {
+    label: "Press & media",
+    subject: "Egyptora Hub — press enquiry",
+    address: SITE.marketingEmail,
+  },
+  {
+    label: "Marketing & advertising",
+    subject: "Egyptora Hub — marketing enquiry",
+    address: SITE.marketingEmail,
+  },
   { label: "Content correction", subject: "Egyptora Hub — content correction" },
   { label: "Report an issue", subject: "Egyptora Hub — report an issue" },
 ];
+
 
 function Contact() {
   const { t } = useI18n();
@@ -59,6 +69,16 @@ function Contact() {
               >
                 {SITE.email}
               </a>
+              <p className="mt-3 text-sm text-muted-foreground">
+                {t("Marketing & press")}:{" "}
+                <a
+                  href={mailto("Egyptora Hub — marketing enquiry", SITE.marketingEmail)}
+                  className="text-gold hover:text-foreground"
+                  dir="ltr"
+                >
+                  {SITE.marketingEmail}
+                </a>
+              </p>
               <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
                 <Globe className="size-4 text-gold" />
                 <span dir="ltr">{SITE.domain}</span>
@@ -72,15 +92,16 @@ function Contact() {
               {topics.map((topic) => (
                 <a
                   key={topic.label}
-                  href={mailto(topic.subject)}
+                  href={mailto(topic.subject, topic.address ?? SITE.email)}
                   className="rounded-2xl border border-border bg-card p-5 transition-colors hover:border-gold-line"
                 >
                   <div className="text-sm font-semibold text-foreground">{t(topic.label)}</div>
-                  <div className="mt-1 text-xs text-muted-foreground">
-                    {t("Opens an email to our team")}
+                  <div className="mt-1 text-xs text-muted-foreground" dir="ltr">
+                    {topic.address ?? SITE.email}
                   </div>
                 </a>
               ))}
+
             </div>
           </div>
         </Section>

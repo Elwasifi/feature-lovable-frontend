@@ -53,7 +53,7 @@ import { useI18n } from "@/i18n";
 import { useCurrency } from "@/i18n/currency";
 import { cn } from "@/lib/utils";
 
-const title = "Egyptora Hub — One Egypt. One Journey. One Platform.";
+const title = "Egyptora Hub — Everything Egypt. One Hub.";
 const description =
   "Egyptora Hub is a unified digital gateway to Egypt: destinations, 27 governorates, heritage, culture, events and investment — presented through one intelligent platform.";
 

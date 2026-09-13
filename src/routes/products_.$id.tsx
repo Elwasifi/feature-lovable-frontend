@@ -31,7 +31,7 @@ type Product = {
   governance_status: GovernanceStatus;
 };
 
-export const Route = createFileRoute("/products/$id")({
+export const Route = createFileRoute("/products_/$id")({
   loader: async ({ params }) => {
     let product: Product | null = null;
     try {

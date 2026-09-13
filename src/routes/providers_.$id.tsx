@@ -39,7 +39,7 @@ type Provider = {
   governance_status: GovernanceStatus;
 };
 
-export const Route = createFileRoute("/providers/$id")({
+export const Route = createFileRoute("/providers_/$id")({
   loader: async ({ params }) => {
     let provider: Provider | null = null;
     try {

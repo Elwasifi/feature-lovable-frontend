@@ -32,7 +32,7 @@ type Property = {
   governance_status: GovernanceStatus;
 };
 
-export const Route = createFileRoute("/properties/$id")({
+export const Route = createFileRoute("/properties_/$id")({
   loader: async ({ params }) => {
     // Wrapped in try/catch on purpose: a thrown exception (network failure, cold
     // connection) would otherwise crash the route to the generic error boundary.

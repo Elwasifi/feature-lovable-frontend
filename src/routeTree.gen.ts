@@ -28,7 +28,9 @@ import { Route as ResearchProgramsRouteImport } from './routes/research-programs
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
+import { Route as CountriesIdRouteImport } from './routes/countries.$id'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
+import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as LegalConsentRouteImport } from './routes/legal.consent'
@@ -37,6 +39,10 @@ import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketpl
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
 import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.wear-egypt'
+import { Route as OffersIdRouteImport } from './routes/offers.$id'
+import { Route as ProductsIdRouteImport } from './routes/products.$id'
+import { Route as PropertiesIdRouteImport } from './routes/properties.$id'
+import { Route as ProvidersIdRouteImport } from './routes/providers.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -134,11 +140,22 @@ const ApiConciergeRoute = ApiConciergeRouteImport.update({
   path: '/api/concierge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountriesIdRoute = CountriesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => CountriesRoute,
+} as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestmentOpportunitiesIdRoute =
+  InvestmentOpportunitiesIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => InvestmentOpportunitiesRoute,
+  } as any)
 const LegalIndexRoute = LegalIndexRouteImport.update({
   id: '/legal/',
   path: '/legal/',
@@ -182,28 +199,50 @@ const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
   path: '/marketplace/wear-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OffersIdRoute = OffersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => OffersRoute,
+} as any)
+const ProductsIdRoute = ProductsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const PropertiesIdRoute = PropertiesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PropertiesRoute,
+} as any)
+const ProvidersIdRoute = ProvidersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ProvidersRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/countries': typeof CountriesRoute
+  '/countries': typeof CountriesRouteWithChildren
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
-  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRouteWithChildren
   '/museums': typeof MuseumsRoute
-  '/offers': typeof OffersRoute
-  '/products': typeof ProductsRoute
-  '/properties': typeof PropertiesRoute
-  '/providers': typeof ProvidersRoute
+  '/offers': typeof OffersRouteWithChildren
+  '/products': typeof ProductsRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/providers': typeof ProvidersRouteWithChildren
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -211,6 +250,10 @@ export interface FileRoutesByFullPath {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers/$id': typeof OffersIdRoute
+  '/products/$id': typeof ProductsIdRoute
+  '/properties/$id': typeof PropertiesIdRoute
+  '/providers/$id': typeof ProvidersIdRoute
   '/legal/': typeof LegalIndexRoute
 }
 export interface FileRoutesByTo {
@@ -218,22 +261,24 @@ export interface FileRoutesByTo {
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/countries': typeof CountriesRoute
+  '/countries': typeof CountriesRouteWithChildren
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
-  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRouteWithChildren
   '/museums': typeof MuseumsRoute
-  '/offers': typeof OffersRoute
-  '/products': typeof ProductsRoute
-  '/properties': typeof PropertiesRoute
-  '/providers': typeof ProvidersRoute
+  '/offers': typeof OffersRouteWithChildren
+  '/products': typeof ProductsRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/providers': typeof ProvidersRouteWithChildren
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -241,6 +286,10 @@ export interface FileRoutesByTo {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers/$id': typeof OffersIdRoute
+  '/products/$id': typeof ProductsIdRoute
+  '/properties/$id': typeof PropertiesIdRoute
+  '/providers/$id': typeof ProvidersIdRoute
   '/legal': typeof LegalIndexRoute
 }
 export interface FileRoutesById {
@@ -249,22 +298,24 @@ export interface FileRoutesById {
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/countries': typeof CountriesRoute
+  '/countries': typeof CountriesRouteWithChildren
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/heritage-sites': typeof HeritageSitesRoute
-  '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/investment-opportunities': typeof InvestmentOpportunitiesRouteWithChildren
   '/museums': typeof MuseumsRoute
-  '/offers': typeof OffersRoute
-  '/products': typeof ProductsRoute
-  '/properties': typeof PropertiesRoute
-  '/providers': typeof ProvidersRoute
+  '/offers': typeof OffersRouteWithChildren
+  '/products': typeof ProductsRouteWithChildren
+  '/properties': typeof PropertiesRouteWithChildren
+  '/providers': typeof ProvidersRouteWithChildren
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -272,6 +323,10 @@ export interface FileRoutesById {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers/$id': typeof OffersIdRoute
+  '/products/$id': typeof ProductsIdRoute
+  '/properties/$id': typeof PropertiesIdRoute
+  '/providers/$id': typeof ProvidersIdRoute
   '/legal/': typeof LegalIndexRoute
 }
 export interface FileRouteTypes {
@@ -296,7 +351,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries/$id'
     | '/governorates/$id'
+    | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -304,6 +361,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers/$id'
+    | '/products/$id'
+    | '/properties/$id'
+    | '/providers/$id'
     | '/legal/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -326,7 +387,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries/$id'
     | '/governorates/$id'
+    | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -334,6 +397,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers/$id'
+    | '/products/$id'
+    | '/properties/$id'
+    | '/providers/$id'
     | '/legal'
   id:
     | '__root__'
@@ -356,7 +423,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries/$id'
     | '/governorates/$id'
+    | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -364,6 +433,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers/$id'
+    | '/products/$id'
+    | '/properties/$id'
+    | '/providers/$id'
     | '/legal/'
   fileRoutesById: FileRoutesById
 }
@@ -372,17 +445,17 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
-  CountriesRoute: typeof CountriesRoute
+  CountriesRoute: typeof CountriesRouteWithChildren
   EgyptianHeritageWorldwideRoute: typeof EgyptianHeritageWorldwideRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
-  InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
+  InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRouteWithChildren
   MuseumsRoute: typeof MuseumsRoute
-  OffersRoute: typeof OffersRoute
-  ProductsRoute: typeof ProductsRoute
-  PropertiesRoute: typeof PropertiesRoute
-  ProvidersRoute: typeof ProvidersRoute
+  OffersRoute: typeof OffersRouteWithChildren
+  ProductsRoute: typeof ProductsRouteWithChildren
+  PropertiesRoute: typeof PropertiesRouteWithChildren
+  ProvidersRoute: typeof ProvidersRouteWithChildren
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
@@ -533,12 +606,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiConciergeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/countries/$id': {
+      id: '/countries/$id'
+      path: '/$id'
+      fullPath: '/countries/$id'
+      preLoaderRoute: typeof CountriesIdRouteImport
+      parentRoute: typeof CountriesRoute
+    }
     '/governorates/$id': {
       id: '/governorates/$id'
       path: '/governorates/$id'
       fullPath: '/governorates/$id'
       preLoaderRoute: typeof GovernoratesIdRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/investment-opportunities/$id': {
+      id: '/investment-opportunities/$id'
+      path: '/$id'
+      fullPath: '/investment-opportunities/$id'
+      preLoaderRoute: typeof InvestmentOpportunitiesIdRouteImport
+      parentRoute: typeof InvestmentOpportunitiesRoute
     }
     '/legal/': {
       id: '/legal/'
@@ -596,25 +683,126 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceWearEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offers/$id': {
+      id: '/offers/$id'
+      path: '/$id'
+      fullPath: '/offers/$id'
+      preLoaderRoute: typeof OffersIdRouteImport
+      parentRoute: typeof OffersRoute
+    }
+    '/products/$id': {
+      id: '/products/$id'
+      path: '/$id'
+      fullPath: '/products/$id'
+      preLoaderRoute: typeof ProductsIdRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/properties/$id': {
+      id: '/properties/$id'
+      path: '/$id'
+      fullPath: '/properties/$id'
+      preLoaderRoute: typeof PropertiesIdRouteImport
+      parentRoute: typeof PropertiesRoute
+    }
+    '/providers/$id': {
+      id: '/providers/$id'
+      path: '/$id'
+      fullPath: '/providers/$id'
+      preLoaderRoute: typeof ProvidersIdRouteImport
+      parentRoute: typeof ProvidersRoute
+    }
   }
 }
+
+interface CountriesRouteChildren {
+  CountriesIdRoute: typeof CountriesIdRoute
+}
+
+const CountriesRouteChildren: CountriesRouteChildren = {
+  CountriesIdRoute: CountriesIdRoute,
+}
+
+const CountriesRouteWithChildren = CountriesRoute._addFileChildren(
+  CountriesRouteChildren,
+)
+
+interface InvestmentOpportunitiesRouteChildren {
+  InvestmentOpportunitiesIdRoute: typeof InvestmentOpportunitiesIdRoute
+}
+
+const InvestmentOpportunitiesRouteChildren: InvestmentOpportunitiesRouteChildren =
+  {
+    InvestmentOpportunitiesIdRoute: InvestmentOpportunitiesIdRoute,
+  }
+
+const InvestmentOpportunitiesRouteWithChildren =
+  InvestmentOpportunitiesRoute._addFileChildren(
+    InvestmentOpportunitiesRouteChildren,
+  )
+
+interface OffersRouteChildren {
+  OffersIdRoute: typeof OffersIdRoute
+}
+
+const OffersRouteChildren: OffersRouteChildren = {
+  OffersIdRoute: OffersIdRoute,
+}
+
+const OffersRouteWithChildren =
+  OffersRoute._addFileChildren(OffersRouteChildren)
+
+interface ProductsRouteChildren {
+  ProductsIdRoute: typeof ProductsIdRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsIdRoute: ProductsIdRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
+
+interface PropertiesRouteChildren {
+  PropertiesIdRoute: typeof PropertiesIdRoute
+}
+
+const PropertiesRouteChildren: PropertiesRouteChildren = {
+  PropertiesIdRoute: PropertiesIdRoute,
+}
+
+const PropertiesRouteWithChildren = PropertiesRoute._addFileChildren(
+  PropertiesRouteChildren,
+)
+
+interface ProvidersRouteChildren {
+  ProvidersIdRoute: typeof ProvidersIdRoute
+}
+
+const ProvidersRouteChildren: ProvidersRouteChildren = {
+  ProvidersIdRoute: ProvidersIdRoute,
+}
+
+const ProvidersRouteWithChildren = ProvidersRoute._addFileChildren(
+  ProvidersRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
-  CountriesRoute: CountriesRoute,
+  CountriesRoute: CountriesRouteWithChildren,
   EgyptianHeritageWorldwideRoute: EgyptianHeritageWorldwideRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
   HeritageSitesRoute: HeritageSitesRoute,
-  InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
+  InvestmentOpportunitiesRoute: InvestmentOpportunitiesRouteWithChildren,
   MuseumsRoute: MuseumsRoute,
-  OffersRoute: OffersRoute,
-  ProductsRoute: ProductsRoute,
-  PropertiesRoute: PropertiesRoute,
-  ProvidersRoute: ProvidersRoute,
+  OffersRoute: OffersRouteWithChildren,
+  ProductsRoute: ProductsRouteWithChildren,
+  PropertiesRoute: PropertiesRouteWithChildren,
+  ProvidersRoute: ProvidersRouteWithChildren,
   ResearchProgramsRoute: ResearchProgramsRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,

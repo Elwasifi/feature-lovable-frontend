@@ -32,7 +32,7 @@ type Country = {
   governance_status: GovernanceStatus;
 };
 
-export const Route = createFileRoute("/countries/$id")({
+export const Route = createFileRoute("/countries_/$id")({
   loader: async ({ params }) => {
     let country: Country | null = null;
     try {

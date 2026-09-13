@@ -27,7 +27,7 @@ type Offer = {
   governance_status: GovernanceStatus;
 };
 
-export const Route = createFileRoute("/offers/$id")({
+export const Route = createFileRoute("/offers_/$id")({
   loader: async ({ params }) => {
     let offer: Offer | null = null;
     try {

@@ -9,6 +9,11 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "From the catalogue": "من الكتالوج",
+  "Products in this collection": "منتجات في هذه المجموعة",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "صناع وورش معتمدون ومسجلون في كتالوج محور إيجيبتورا.",
+  "No products are listed in this collection yet.": "لم تُدرج أي منتجات في هذه المجموعة بعد.",
+  "EGP": "ج.م.",
   "We couldn't find this record": "لم نتمكن من العثور على هذا السجل",
   "It may have been removed, or the link you followed is incorrect.": "ربما تم حذفه، أو أن الرابط الذي اتبعته غير صحيح.",
   "Back to real estate": "العودة إلى العقارات",
@@ -1579,6 +1584,11 @@ const ar: Dict = {
 };
 
 const fr: Dict = {
+  "From the catalogue": "Du catalogue",
+  "Products in this collection": "Produits de cette collection",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Créateurs et ateliers vérifiés listés dans le catalogue Egyptora Hub.",
+  "No products are listed in this collection yet.": "Aucun produit n'est encore listé dans cette collection.",
+  "EGP": "EGP",
   "We couldn't find this record": "Enregistrement introuvable",
   "It may have been removed, or the link you followed is incorrect.": "Il a peut-être été supprimé, ou le lien que vous avez suivi est incorrect.",
   "Back to real estate": "Retour à l'immobilier",
@@ -3128,6 +3138,11 @@ const fr: Dict = {
 };
 
 const de: Dict = {
+  "From the catalogue": "Aus dem Katalog",
+  "Products in this collection": "Produkte in dieser Kollektion",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Verifizierte Hersteller und Werkstätten, gelistet im Egyptora Hub Katalog.",
+  "No products are listed in this collection yet.": "Noch keine Produkte in dieser Kollektion.",
+  "EGP": "EGP",
   "We couldn't find this record": "Eintrag nicht gefunden",
   "It may have been removed, or the link you followed is incorrect.": "Er wurde möglicherweise entfernt oder der Link ist ungültig.",
   "Back to real estate": "Zurück zu Immobilien",
@@ -4677,6 +4692,11 @@ const de: Dict = {
 };
 
 const es: Dict = {
+  "From the catalogue": "Del catálogo",
+  "Products in this collection": "Productos en esta colección",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Fabricantes y talleres verificados listados en el catálogo de Egyptora Hub.",
+  "No products are listed in this collection yet.": "Aún no hay productos listados en esta colección.",
+  "EGP": "EGP",
   "We couldn't find this record": "No se encontró este registro",
   "It may have been removed, or the link you followed is incorrect.": "Puede que haya sido eliminado o que el enlace que seguiste sea incorrecto.",
   "Back to real estate": "Volver a bienes raíces",
@@ -6226,6 +6246,11 @@ const es: Dict = {
 };
 
 const it: Dict = {
+  "From the catalogue": "Dal catalogo",
+  "Products in this collection": "Prodotti in questa collezione",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Creatori e laboratori verificati presenti nel catalogo Egyptora Hub.",
+  "No products are listed in this collection yet.": "Nessun prodotto è ancora elencato in questa collezione.",
+  "EGP": "EGP",
   "We couldn't find this record": "Record non trovato",
   "It may have been removed, or the link you followed is incorrect.": "Potrebbe essere stato rimosso, o il link che hai seguito non è corretto.",
   "Back to real estate": "Torna agli immobili",
@@ -7775,6 +7800,11 @@ const it: Dict = {
 };
 
 const ru: Dict = {
+  "From the catalogue": "Из каталога",
+  "Products in this collection": "Товары в этой коллекции",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Проверенные мастера и мастерские, представленные в каталоге Egyptora Hub.",
+  "No products are listed in this collection yet.": "В этой коллекции пока нет товаров.",
+  "EGP": "EGP",
   "We couldn't find this record": "Запись не найдена",
   "It may have been removed, or the link you followed is incorrect.": "Возможно, она была удалена, или ссылка, по которой вы перешли, неверна.",
   "Back to real estate": "Вернуться к недвижимости",
@@ -9324,6 +9354,11 @@ const ru: Dict = {
 };
 
 const zh: Dict = {
+  "From the catalogue": "选自目录",
+  "Products in this collection": "此合集中的商品",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "埃及古拉中心目录中列出的认证工匠和作坊。",
+  "No products are listed in this collection yet.": "此合集中暂无商品。",
+  "EGP": "埃镑",
   "We couldn't find this record": "未找到该记录",
   "It may have been removed, or the link you followed is incorrect.": "该记录可能已被删除，或您访问的链接不正确。",
   "Back to real estate": "返回房地产",
@@ -10873,6 +10908,11 @@ const zh: Dict = {
 };
 
 const hi: Dict = {
+  "From the catalogue": "कैटलॉग से",
+  "Products in this collection": "इस संग्रह में उत्पाद",
+  "Verified makers and workshops listed in the Egyptora Hub catalogue.": "Egyptora हब कैटलॉग में सूचीबद्ध सत्यापित निर्माता और कार्यशालाएँ।",
+  "No products are listed in this collection yet.": "इस संग्रह में अभी तक कोई उत्पाद सूचीबद्ध नहीं है।",
+  "EGP": "ईजीपी",
   "We couldn't find this record": "यह रिकॉर्ड नहीं मिला",
   "It may have been removed, or the link you followed is incorrect.": "हो सकता है इसे हटा दिया गया हो, या आपके द्वारा खोला गया लिंक गलत हो।",
   "Back to real estate": "रियल एस्टेट पर वापस जाएँ",

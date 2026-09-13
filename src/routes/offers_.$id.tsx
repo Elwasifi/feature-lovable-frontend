@@ -14,6 +14,7 @@ import {
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { ItemActions } from "@/lib/trip-actions";
 
 type Offer = {
   id: string;
@@ -115,6 +116,14 @@ function OfferDetailPage() {
         <FactGrid>
           <Fact label={t("Offer type")} value={offer.kind ? t(offer.kind) : null} />
         </FactGrid>
+
+        <ItemActions
+          className="mt-8"
+          itemType="offer"
+          itemId={offer.id}
+          itemName={offer.name}
+          itemImage={offer.images?.[0] ?? null}
+        />
 
         <ChipList label={t("Tags")} items={offer.tags} />
       </Section>

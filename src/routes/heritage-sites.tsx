@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { ItemActions } from "@/lib/trip-actions";
 
 type HeritageSite = {
   id: string;
@@ -162,6 +163,12 @@ function HeritageSitesPage() {
                     {t(site.access)}
                   </span>
                 )}
+                <ItemActions
+                  className="mt-4"
+                  itemType="heritage_site"
+                  itemId={site.id}
+                  itemName={site.name}
+                />
               </article>
             ))}
           </div>

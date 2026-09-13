@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { ItemActions } from "@/lib/trip-actions";
 
 type Museum = {
   id: string;
@@ -165,6 +166,12 @@ function MuseumsPage() {
                     ))}
                   </div>
                 )}
+                <ItemActions
+                  className="mt-4"
+                  itemType="museum"
+                  itemId={museum.id}
+                  itemName={museum.name}
+                />
               </article>
             ))}
           </div>

@@ -1,7 +1,7 @@
 # Roadmap
 
-## In progress
-- [ ] Add six detail pages: properties/$id, providers/$id, offers/$id, investment-opportunities/$id, countries/$id, products/$id. Pattern: governorates.$id.tsx (try/catch loader, graceful not-found, SEO meta, i18n). Link from each list page. Test real + invalid ids.
+## Done
+- [x] Six detail pages (properties, providers, offers, investment opportunities, countries, products): hardened loaders, graceful not-found, SEO meta, fully translated labels, linked from each list page. Verified with real and invalid ids.
 
 ## Pending
 - [ ] Machine-translate database content (all content tables) into the 9 supported languages, stored so the switcher swaps content text too. Report summary before publishing.

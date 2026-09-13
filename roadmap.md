@@ -8,3 +8,9 @@
 
 ## Blocked
 - [ ] Custom email sending domain (notify.egyptora-hub.com) — DNS records pending; after verification, switch auth emails to own domain and re-enable email confirmation.
+
+## Payments (Trip Builder bookings)
+- [x] Price-column audit: only providers (price_from/currency USD), properties (price_usd) and investment_opportunities (min/max USD) hold real prices.
+- [x] bookings table extended: amount, currency, stripe_session_id, stripe_payment_intent_id, paid_at.
+- [x] "Request booking" action on provider detail page; records provider price_from as amount in USD.
+- [ ] BLOCKED: Stripe test checkout + webhook — Lovable built-in payments unavailable for seller country EG; needs the user's own Stripe test key (BYO) or a non-EG seller entity.

@@ -134,7 +134,13 @@ function ProductsPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <ShoppingBag className="size-4 shrink-0 text-gold" />
-                    {t(product.name)}
+                    <Link
+                      to="/products/$id"
+                      params={{ id: product.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(product.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

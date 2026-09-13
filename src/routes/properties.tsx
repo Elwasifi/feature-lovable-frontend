@@ -130,7 +130,13 @@ function PropertiesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Building className="size-4 shrink-0 text-gold" />
-                    {t(property.name)}
+                    <Link
+                      to="/properties/$id"
+                      params={{ id: property.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(property.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

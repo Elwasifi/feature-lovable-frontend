@@ -137,7 +137,15 @@ function ProvidersPage() {
               >
                 <GovernanceBanner status={provider.governance_status} className="mb-3" />
                 <div className="flex items-start justify-between gap-3">
-                  <h2 className="font-display text-base text-foreground">{t(provider.name)}</h2>
+                  <h2 className="font-display text-base text-foreground">
+                    <Link
+                      to="/providers/$id"
+                      params={{ id: provider.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(provider.name)}
+                    </Link>
+                  </h2>
                   <SourceBadge status="DEMO" />
                 </div>
 

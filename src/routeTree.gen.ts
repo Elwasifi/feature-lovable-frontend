@@ -26,6 +26,7 @@ import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
+import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
@@ -39,10 +40,13 @@ import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketpl
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
 import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.wear-egypt'
+import { Route as MyTripsIndexRouteImport } from './routes/my-trips.index'
+import { Route as MyTripsNewRouteImport } from './routes/my-trips.new'
 import { Route as OffersIdRouteImport } from './routes/offers_.$id'
 import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 import { Route as PropertiesIdRouteImport } from './routes/properties_.$id'
 import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
+import { Route as TripsIdRouteImport } from './routes/trips.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -130,6 +134,11 @@ const TravelerStoriesRoute = TravelerStoriesRouteImport.update({
   path: '/traveler-stories',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountBookingsRoute = AccountBookingsRouteImport.update({
+  id: '/account_/bookings',
+  path: '/account/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
   id: '/admin/maintenance',
   path: '/admin/maintenance',
@@ -199,6 +208,16 @@ const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
   path: '/marketplace/wear-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MyTripsIndexRoute = MyTripsIndexRouteImport.update({
+  id: '/my-trips/',
+  path: '/my-trips/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MyTripsNewRoute = MyTripsNewRouteImport.update({
+  id: '/my-trips/new',
+  path: '/my-trips/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OffersIdRoute = OffersIdRouteImport.update({
   id: '/offers_/$id',
   path: '/offers/$id',
@@ -217,6 +236,11 @@ const PropertiesIdRoute = PropertiesIdRouteImport.update({
 const ProvidersIdRoute = ProvidersIdRouteImport.update({
   id: '/providers_/$id',
   path: '/providers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TripsIdRoute = TripsIdRouteImport.update({
+  id: '/trips/$id',
+  path: '/trips/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -238,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/account/bookings': typeof AccountBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -250,11 +275,14 @@ export interface FileRoutesByFullPath {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
+  '/trips/$id': typeof TripsIdRoute
   '/legal/': typeof LegalIndexRoute
+  '/my-trips/': typeof MyTripsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -274,6 +302,7 @@ export interface FileRoutesByTo {
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/account/bookings': typeof AccountBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -286,11 +315,14 @@ export interface FileRoutesByTo {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
+  '/trips/$id': typeof TripsIdRoute
   '/legal': typeof LegalIndexRoute
+  '/my-trips': typeof MyTripsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -311,6 +343,7 @@ export interface FileRoutesById {
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/account_/bookings': typeof AccountBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries_/$id': typeof CountriesIdRoute
@@ -323,11 +356,14 @@ export interface FileRoutesById {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/my-trips/new': typeof MyTripsNewRoute
   '/offers_/$id': typeof OffersIdRoute
   '/products_/$id': typeof ProductsIdRoute
   '/properties_/$id': typeof PropertiesIdRoute
   '/providers_/$id': typeof ProvidersIdRoute
+  '/trips/$id': typeof TripsIdRoute
   '/legal/': typeof LegalIndexRoute
+  '/my-trips/': typeof MyTripsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -349,6 +385,7 @@ export interface FileRouteTypes {
     | '/providers'
     | '/research-programs'
     | '/traveler-stories'
+    | '/account/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries/$id'
@@ -361,11 +398,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/my-trips/new'
     | '/offers/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
+    | '/trips/$id'
     | '/legal/'
+    | '/my-trips/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -385,6 +425,7 @@ export interface FileRouteTypes {
     | '/providers'
     | '/research-programs'
     | '/traveler-stories'
+    | '/account/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries/$id'
@@ -397,11 +438,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/my-trips/new'
     | '/offers/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
+    | '/trips/$id'
     | '/legal'
+    | '/my-trips'
   id:
     | '__root__'
     | '/'
@@ -421,6 +465,7 @@ export interface FileRouteTypes {
     | '/providers'
     | '/research-programs'
     | '/traveler-stories'
+    | '/account_/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries_/$id'
@@ -433,11 +478,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/my-trips/new'
     | '/offers_/$id'
     | '/products_/$id'
     | '/properties_/$id'
     | '/providers_/$id'
+    | '/trips/$id'
     | '/legal/'
+    | '/my-trips/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -458,6 +506,7 @@ export interface RootRouteChildren {
   ProvidersRoute: typeof ProvidersRoute
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
+  AccountBookingsRoute: typeof AccountBookingsRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
@@ -470,11 +519,14 @@ export interface RootRouteChildren {
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
   MarketplaceWearEgyptRoute: typeof MarketplaceWearEgyptRoute
+  MyTripsNewRoute: typeof MyTripsNewRoute
   OffersIdRoute: typeof OffersIdRoute
   ProductsIdRoute: typeof ProductsIdRoute
   PropertiesIdRoute: typeof PropertiesIdRoute
   ProvidersIdRoute: typeof ProvidersIdRoute
+  TripsIdRoute: typeof TripsIdRoute
   LegalIndexRoute: typeof LegalIndexRoute
+  MyTripsIndexRoute: typeof MyTripsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -598,6 +650,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TravelerStoriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account_/bookings': {
+      id: '/account_/bookings'
+      path: '/account/bookings'
+      fullPath: '/account/bookings'
+      preLoaderRoute: typeof AccountBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/maintenance': {
       id: '/admin/maintenance'
       path: '/admin/maintenance'
@@ -689,6 +748,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceWearEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/my-trips/': {
+      id: '/my-trips/'
+      path: '/my-trips'
+      fullPath: '/my-trips/'
+      preLoaderRoute: typeof MyTripsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-trips/new': {
+      id: '/my-trips/new'
+      path: '/my-trips/new'
+      fullPath: '/my-trips/new'
+      preLoaderRoute: typeof MyTripsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/offers_/$id': {
       id: '/offers_/$id'
       path: '/offers/$id'
@@ -717,6 +790,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProvidersIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/trips/$id': {
+      id: '/trips/$id'
+      path: '/trips/$id'
+      fullPath: '/trips/$id'
+      preLoaderRoute: typeof TripsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -738,6 +818,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProvidersRoute: ProvidersRoute,
   ResearchProgramsRoute: ResearchProgramsRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
+  AccountBookingsRoute: AccountBookingsRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
@@ -750,11 +831,14 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,
   MarketplaceWearEgyptRoute: MarketplaceWearEgyptRoute,
+  MyTripsNewRoute: MyTripsNewRoute,
   OffersIdRoute: OffersIdRoute,
   ProductsIdRoute: ProductsIdRoute,
   PropertiesIdRoute: PropertiesIdRoute,
   ProvidersIdRoute: ProvidersIdRoute,
+  TripsIdRoute: TripsIdRoute,
   LegalIndexRoute: LegalIndexRoute,
+  MyTripsIndexRoute: MyTripsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

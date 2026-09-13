@@ -7,6 +7,7 @@ import logo from "@/assets/egyptora-hub-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { consumeAfterAuth } from "@/lib/after-auth";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -47,7 +48,9 @@ function AuthPage() {
   // Already signed in? Skip the form entirely — this page is only for signed-out visitors.
   useEffect(() => {
     if (!sessionLoading && user) {
-      void navigate({ to: "/account" });
+      const back = consumeAfterAuth();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- runtime path saved before sign-in
+      void navigate({ to: (back ?? "/account") as any });
     }
   }, [sessionLoading, user, navigate]);
 
@@ -76,7 +79,8 @@ function AuthPage() {
         if (error) {
           setErrorMsg(error.message);
         } else if (data.session) {
-          await navigate({ to: "/account" });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- runtime path saved before sign-in
+          await navigate({ to: (consumeAfterAuth() ?? "/account") as any });
         } else {
           // Email confirmation is required before a session is issued.
           setConfirmEmailNotice(true);
@@ -89,7 +93,8 @@ function AuthPage() {
         if (error) {
           setErrorMsg(error.message);
         } else {
-          await navigate({ to: "/account" });
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- runtime path saved before sign-in
+          await navigate({ to: (consumeAfterAuth() ?? "/account") as any });
         }
       }
     } catch (err) {

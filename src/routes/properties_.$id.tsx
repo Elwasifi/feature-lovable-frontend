@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { ItemActions } from "@/lib/trip-actions";
 
 type Property = {
   id: string;
@@ -165,6 +166,14 @@ function PropertyDetailPage() {
           <Fact label={t("City")} value={property.city ? t(property.city) : null} />
           <Fact label={t("Governorate")} value={t(govName(property.governorate_slug))} />
         </FactGrid>
+
+        <ItemActions
+          className="mt-8"
+          itemType="property"
+          itemId={property.id}
+          itemName={property.name}
+          itemImage={property.images?.[0] ?? null}
+        />
 
         <ChipList label={t("Tags")} items={property.tags} />
       </Section>

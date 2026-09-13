@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { ItemActions } from "@/lib/trip-actions";
 
 type EgyptEvent = {
   id: string;
@@ -133,6 +134,7 @@ function EventsPage() {
           <Ticket className="size-3" /> {t("Ticketed")}
         </span>
       )}
+      <ItemActions className="mt-4" itemType="event" itemId={event.id} itemName={event.name} />
     </article>
   );
 

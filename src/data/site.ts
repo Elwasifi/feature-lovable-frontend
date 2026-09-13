@@ -83,6 +83,9 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Safety Center", href: "/legal" },
       { label: "Egyptora Hub Pass", href: "/#programmes" },
       { label: "Loyalty & Rewards", href: "/account" },
+      { label: "My Trips", href: "/my-trips", badge: "New" },
+      { label: "My Booking Requests", href: "/account/bookings", badge: "New" },
+
     ],
   },
 ];

@@ -21,6 +21,7 @@ export type Database = {
           contact_phone: string | null
           id: string
           item_id: string
+          item_name: string | null
           item_type: string
           requested_at: string
           status: string
@@ -34,6 +35,7 @@ export type Database = {
           contact_phone?: string | null
           id?: string
           item_id: string
+          item_name?: string | null
           item_type: string
           requested_at?: string
           status?: string
@@ -47,6 +49,7 @@ export type Database = {
           contact_phone?: string | null
           id?: string
           item_id?: string
+          item_name?: string | null
           item_type?: string
           requested_at?: string
           status?: string
@@ -1453,6 +1456,8 @@ export type Database = {
           created_at: string
           id: string
           item_id: string
+          item_image: string | null
+          item_name: string | null
           item_type: string
           notes: string | null
           position: number
@@ -1463,6 +1468,8 @@ export type Database = {
           created_at?: string
           id?: string
           item_id: string
+          item_image?: string | null
+          item_name?: string | null
           item_type: string
           notes?: string | null
           position?: number
@@ -1473,6 +1480,8 @@ export type Database = {
           created_at?: string
           id?: string
           item_id?: string
+          item_image?: string | null
+          item_name?: string | null
           item_type?: string
           notes?: string | null
           position?: number

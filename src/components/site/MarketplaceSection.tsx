@@ -1,14 +1,22 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, Check, MapPin, ShoppingBag, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton, GhostButton, SourceBadge } from "@/components/site/Primitives";
+import { GovernanceBanner } from "@/components/site/GovernanceBanner";
 import { useI18n } from "@/i18n";
 import { mailto } from "@/config/site";
 import { marketplacePages, type MarketplacePage } from "@/data/marketplace";
+import type { MarketplaceProduct } from "@/lib/marketplace-products";
 
-export function MarketplaceSection({ page }: { page: MarketplacePage }) {
-  const { t } = useI18n();
+export function MarketplaceSection({
+  page,
+  products = [],
+}: {
+  page: MarketplacePage;
+  products?: MarketplaceProduct[];
+}) {
+  const { t, lang } = useI18n();
   const others = marketplacePages.filter((p) => p.slug !== page.slug);
 
   return (

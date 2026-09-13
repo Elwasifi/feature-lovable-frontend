@@ -28,7 +28,9 @@ import { Route as ResearchProgramsRouteImport } from './routes/research-programs
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
+import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
+import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities_.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
 import { Route as LegalConsentRouteImport } from './routes/legal.consent'
@@ -37,6 +39,10 @@ import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketpl
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
 import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.wear-egypt'
+import { Route as OffersIdRouteImport } from './routes/offers_.$id'
+import { Route as ProductsIdRouteImport } from './routes/products_.$id'
+import { Route as PropertiesIdRouteImport } from './routes/properties_.$id'
+import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -134,11 +140,22 @@ const ApiConciergeRoute = ApiConciergeRouteImport.update({
   path: '/api/concierge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountriesIdRoute = CountriesIdRouteImport.update({
+  id: '/countries_/$id',
+  path: '/countries/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestmentOpportunitiesIdRoute =
+  InvestmentOpportunitiesIdRouteImport.update({
+    id: '/investment-opportunities_/$id',
+    path: '/investment-opportunities/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LegalIndexRoute = LegalIndexRouteImport.update({
   id: '/legal/',
   path: '/legal/',
@@ -182,6 +199,26 @@ const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
   path: '/marketplace/wear-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OffersIdRoute = OffersIdRouteImport.update({
+  id: '/offers_/$id',
+  path: '/offers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsIdRoute = ProductsIdRouteImport.update({
+  id: '/products_/$id',
+  path: '/products/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesIdRoute = PropertiesIdRouteImport.update({
+  id: '/properties_/$id',
+  path: '/properties/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProvidersIdRoute = ProvidersIdRouteImport.update({
+  id: '/providers_/$id',
+  path: '/providers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -203,7 +240,9 @@ export interface FileRoutesByFullPath {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -211,6 +250,10 @@ export interface FileRoutesByFullPath {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers/$id': typeof OffersIdRoute
+  '/products/$id': typeof ProductsIdRoute
+  '/properties/$id': typeof PropertiesIdRoute
+  '/providers/$id': typeof ProvidersIdRoute
   '/legal/': typeof LegalIndexRoute
 }
 export interface FileRoutesByTo {
@@ -233,7 +276,9 @@ export interface FileRoutesByTo {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -241,6 +286,10 @@ export interface FileRoutesByTo {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers/$id': typeof OffersIdRoute
+  '/products/$id': typeof ProductsIdRoute
+  '/properties/$id': typeof PropertiesIdRoute
+  '/providers/$id': typeof ProvidersIdRoute
   '/legal': typeof LegalIndexRoute
 }
 export interface FileRoutesById {
@@ -264,7 +313,9 @@ export interface FileRoutesById {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
+  '/countries_/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/investment-opportunities_/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
   '/legal/review-checklist': typeof LegalReviewChecklistRoute
@@ -272,6 +323,10 @@ export interface FileRoutesById {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/offers_/$id': typeof OffersIdRoute
+  '/products_/$id': typeof ProductsIdRoute
+  '/properties_/$id': typeof PropertiesIdRoute
+  '/providers_/$id': typeof ProvidersIdRoute
   '/legal/': typeof LegalIndexRoute
 }
 export interface FileRouteTypes {
@@ -296,7 +351,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries/$id'
     | '/governorates/$id'
+    | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -304,6 +361,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers/$id'
+    | '/products/$id'
+    | '/properties/$id'
+    | '/providers/$id'
     | '/legal/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -326,7 +387,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries/$id'
     | '/governorates/$id'
+    | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -334,6 +397,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers/$id'
+    | '/products/$id'
+    | '/properties/$id'
+    | '/providers/$id'
     | '/legal'
   id:
     | '__root__'
@@ -356,7 +423,9 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/admin/maintenance'
     | '/api/concierge'
+    | '/countries_/$id'
     | '/governorates/$id'
+    | '/investment-opportunities_/$id'
     | '/legal/$slug'
     | '/legal/consent'
     | '/legal/review-checklist'
@@ -364,6 +433,10 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/offers_/$id'
+    | '/products_/$id'
+    | '/properties_/$id'
+    | '/providers_/$id'
     | '/legal/'
   fileRoutesById: FileRoutesById
 }
@@ -387,7 +460,9 @@ export interface RootRouteChildren {
   TravelerStoriesRoute: typeof TravelerStoriesRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
+  CountriesIdRoute: typeof CountriesIdRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
+  InvestmentOpportunitiesIdRoute: typeof InvestmentOpportunitiesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
   LegalConsentRoute: typeof LegalConsentRoute
   LegalReviewChecklistRoute: typeof LegalReviewChecklistRoute
@@ -395,6 +470,10 @@ export interface RootRouteChildren {
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
   MarketplaceWearEgyptRoute: typeof MarketplaceWearEgyptRoute
+  OffersIdRoute: typeof OffersIdRoute
+  ProductsIdRoute: typeof ProductsIdRoute
+  PropertiesIdRoute: typeof PropertiesIdRoute
+  ProvidersIdRoute: typeof ProvidersIdRoute
   LegalIndexRoute: typeof LegalIndexRoute
 }
 
@@ -533,11 +612,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiConciergeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/countries_/$id': {
+      id: '/countries_/$id'
+      path: '/countries/$id'
+      fullPath: '/countries/$id'
+      preLoaderRoute: typeof CountriesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/governorates/$id': {
       id: '/governorates/$id'
       path: '/governorates/$id'
       fullPath: '/governorates/$id'
       preLoaderRoute: typeof GovernoratesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment-opportunities_/$id': {
+      id: '/investment-opportunities_/$id'
+      path: '/investment-opportunities/$id'
+      fullPath: '/investment-opportunities/$id'
+      preLoaderRoute: typeof InvestmentOpportunitiesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal/': {
@@ -596,6 +689,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceWearEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offers_/$id': {
+      id: '/offers_/$id'
+      path: '/offers/$id'
+      fullPath: '/offers/$id'
+      preLoaderRoute: typeof OffersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products_/$id': {
+      id: '/products_/$id'
+      path: '/products/$id'
+      fullPath: '/products/$id'
+      preLoaderRoute: typeof ProductsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties_/$id': {
+      id: '/properties_/$id'
+      path: '/properties/$id'
+      fullPath: '/properties/$id'
+      preLoaderRoute: typeof PropertiesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/providers_/$id': {
+      id: '/providers_/$id'
+      path: '/providers/$id'
+      fullPath: '/providers/$id'
+      preLoaderRoute: typeof ProvidersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -619,7 +740,9 @@ const rootRouteChildren: RootRouteChildren = {
   TravelerStoriesRoute: TravelerStoriesRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
   ApiConciergeRoute: ApiConciergeRoute,
+  CountriesIdRoute: CountriesIdRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
+  InvestmentOpportunitiesIdRoute: InvestmentOpportunitiesIdRoute,
   LegalSlugRoute: LegalSlugRoute,
   LegalConsentRoute: LegalConsentRoute,
   LegalReviewChecklistRoute: LegalReviewChecklistRoute,
@@ -627,6 +750,10 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,
   MarketplaceWearEgyptRoute: MarketplaceWearEgyptRoute,
+  OffersIdRoute: OffersIdRoute,
+  ProductsIdRoute: ProductsIdRoute,
+  PropertiesIdRoute: PropertiesIdRoute,
+  ProvidersIdRoute: ProvidersIdRoute,
   LegalIndexRoute: LegalIndexRoute,
 }
 export const routeTree = rootRouteImport

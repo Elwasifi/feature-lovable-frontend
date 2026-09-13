@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Globe2, Plane, ShieldCheck } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -122,7 +122,13 @@ function CountriesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Globe2 className="size-4 shrink-0 text-gold" />
-                    {t(country.name)}
+                    <Link
+                      to="/countries/$id"
+                      params={{ id: country.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(country.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

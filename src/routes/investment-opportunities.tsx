@@ -137,7 +137,13 @@ function InvestmentOpportunitiesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Landmark className="size-4 shrink-0 text-gold" />
-                    {t(opp.name)}
+                    <Link
+                      to="/investment-opportunities/$id"
+                      params={{ id: opp.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(opp.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

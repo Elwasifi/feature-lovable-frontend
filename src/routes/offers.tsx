@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Tag } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -115,7 +115,13 @@ function OffersPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Tag className="size-4 shrink-0 text-gold" />
-                    {t(offer.name)}
+                    <Link
+                      to="/offers/$id"
+                      params={{ id: offer.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(offer.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

@@ -16,43 +16,58 @@ export type Database = {
     Tables: {
       bookings: {
         Row: {
+          amount: number | null
           contact_email: string | null
           contact_name: string | null
           contact_phone: string | null
+          currency: string | null
           id: string
           item_id: string
           item_name: string | null
           item_type: string
+          paid_at: string | null
           requested_at: string
           status: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
           trip_id: string | null
           trip_item_id: string | null
           user_id: string
         }
         Insert: {
+          amount?: number | null
           contact_email?: string | null
           contact_name?: string | null
           contact_phone?: string | null
+          currency?: string | null
           id?: string
           item_id: string
           item_name?: string | null
           item_type: string
+          paid_at?: string | null
           requested_at?: string
           status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
           trip_id?: string | null
           trip_item_id?: string | null
           user_id: string
         }
         Update: {
+          amount?: number | null
           contact_email?: string | null
           contact_name?: string | null
           contact_phone?: string | null
+          currency?: string | null
           id?: string
           item_id?: string
           item_name?: string | null
           item_type?: string
+          paid_at?: string | null
           requested_at?: string
           status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
           trip_id?: string | null
           trip_item_id?: string | null
           user_id?: string

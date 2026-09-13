@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
+import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
 
-const title = "Local Producers — farms, spices & Nile harvests | Egyptora Hub";
+const title = "Local Producers — cooperatives, farms & workshops | Egyptora Hub";
 const description =
-  "Siwa dates, Aswan hibiscus, olive oil and desert honey straight from Egyptian farms: harvest calendar, tasting rooms and export-ready gift packs.";
+  "Meet Egypt's local producers: palm and reed workshops, boat builders, furniture makers and cooperatives across the governorates.";
 
 export const Route = createFileRoute("/marketplace/local-producers")({
+  loader: async () => ({ products: await loadCollectionProducts("local-producers") }),
   head: () => ({
     meta: [
       { title },
@@ -22,5 +24,10 @@ export const Route = createFileRoute("/marketplace/local-producers")({
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/marketplace/local-producers` }],
   }),
-  component: () => <MarketplaceSection page={marketplacePageBySlug["local-producers"]} />,
+  component: LocalProducersPage,
 });
+
+function LocalProducersPage() {
+  const { products } = Route.useLoaderData();
+  return <MarketplaceSection page={marketplacePageBySlug["local-producers"]} products={products} />;
+}

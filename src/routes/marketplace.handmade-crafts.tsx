@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
+import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
 
-const title = "Handmade Crafts — artisans across 27 governorates | Egyptora Hub";
+const title = "Handmade Crafts — artisans, workshops & studios | Egyptora Hub";
 const description =
-  "Copper, pottery, glass, kilim and khayamiya: meet Egyptian artisans, book workshop visits and buy handmade crafts at fair, published prices.";
+  "Egyptian handmade crafts: pottery, alabaster, copper, papyrus and woodwork from verified artisans and workshops you can visit.";
 
 export const Route = createFileRoute("/marketplace/handmade-crafts")({
+  loader: async () => ({ products: await loadCollectionProducts("handmade-crafts") }),
   head: () => ({
     meta: [
       { title },
@@ -22,5 +24,10 @@ export const Route = createFileRoute("/marketplace/handmade-crafts")({
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/marketplace/handmade-crafts` }],
   }),
-  component: () => <MarketplaceSection page={marketplacePageBySlug["handmade-crafts"]} />,
+  component: HandmadeCraftsPage,
 });
+
+function HandmadeCraftsPage() {
+  const { products } = Route.useLoaderData();
+  return <MarketplaceSection page={marketplacePageBySlug["handmade-crafts"]} products={products} />;
+}

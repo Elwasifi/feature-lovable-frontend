@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
+import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
 
 const title = "Egyptian Cotton — certified mills, ateliers & visits | Egyptora Hub";
@@ -8,6 +9,7 @@ const description =
   "Discover Egyptian cotton: Giza long-staple varieties, certified mills, bespoke tailoring and Delta cotton trails you can book as a visitor.";
 
 export const Route = createFileRoute("/marketplace/egyptian-cotton")({
+  loader: async () => ({ products: await loadCollectionProducts("egyptian-cotton") }),
   head: () => ({
     meta: [
       { title },
@@ -22,5 +24,10 @@ export const Route = createFileRoute("/marketplace/egyptian-cotton")({
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/marketplace/egyptian-cotton` }],
   }),
-  component: () => <MarketplaceSection page={marketplacePageBySlug["egyptian-cotton"]} />,
+  component: EgyptianCottonPage,
 });
+
+function EgyptianCottonPage() {
+  const { products } = Route.useLoaderData();
+  return <MarketplaceSection page={marketplacePageBySlug["egyptian-cotton"]} products={products} />;
+}

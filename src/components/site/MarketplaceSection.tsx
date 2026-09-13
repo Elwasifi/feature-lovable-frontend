@@ -148,6 +148,59 @@ export function MarketplaceSection({
           </div>
         </Section>
 
+        <Section className="py-6 lg:py-10">
+          <SectionHeader
+            eyebrow={t("From the catalogue")}
+            title={t("Products in this collection")}
+            description={t("Verified makers and workshops listed in the Egyptora Hub catalogue.")}
+          />
+          {products.length > 0 ? (
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product) => (
+                <article
+                  key={product.id}
+                  className="rounded-2xl border border-border/60 bg-card/60 p-5 transition-colors hover:border-gold-line"
+                >
+                  <GovernanceBanner status={product.governance_status} className="mb-3" />
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="flex items-center gap-2 font-display text-base text-foreground">
+                      <ShoppingBag className="size-4 shrink-0 text-gold" />
+                      <Link
+                        to="/products/$id"
+                        params={{ id: product.id }}
+                        className="transition-colors hover:text-gold"
+                      >
+                        {t(product.name)}
+                      </Link>
+                    </h3>
+                    <SourceBadge status="DEMO" />
+                  </div>
+                  {product.maker && (
+                    <p className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
+                      <MapPin className="size-3.5 text-gold/70" />
+                      {t(product.maker)}
+                    </p>
+                  )}
+                  {product.summary && (
+                    <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                      {t(product.summary)}
+                    </p>
+                  )}
+                  {product.price_egp != null && (
+                    <p className="mt-3 text-sm text-gold">
+                      {product.price_egp.toLocaleString(lang)} {t("EGP")}
+                    </p>
+                  )}
+                </article>
+              ))}
+            </div>
+          ) : (
+            <p className="rounded-2xl border border-border/60 bg-card/60 p-6 text-sm text-muted-foreground">
+              {t("No products are listed in this collection yet.")}
+            </p>
+          )}
+        </Section>
+
         <Section className="py-6 lg:py-16">
           <SectionHeader eyebrow={t("Marketplace & crafts")} title={t("More from Made in Egypt")} />
           <div className="grid gap-3 sm:grid-cols-3">

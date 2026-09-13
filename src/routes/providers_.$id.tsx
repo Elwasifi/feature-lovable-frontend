@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { RequestBookingButton } from "@/lib/trip-actions";
 
 // As on the list page, the source dataset's "demo_verification_label" is deliberately
 // not surfaced — it would misrepresent real verification status.
@@ -169,6 +170,15 @@ function ProviderDetailPage() {
             }
           />
         </FactGrid>
+
+        <RequestBookingButton
+          className="mt-8"
+          itemType="provider"
+          itemId={provider.id}
+          itemName={provider.name}
+          amount={provider.price_from}
+          currency={provider.currency}
+        />
 
         <ChipList label={t("Specialties")} items={provider.specialties} />
         <ChipList label={t("Amenities")} items={provider.amenities} />

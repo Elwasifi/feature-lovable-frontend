@@ -33,6 +33,78 @@ const FIELD =
 const BUTTON_BASE =
   "inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors disabled:opacity-60";
 
+/**
+ * Standalone booking request for items that are not trip-day items (service providers).
+ * Records the item's real price on the booking when one exists.
+ */
+export function RequestBookingButton({
+  itemType,
+  itemId,
+  itemName,
+  amount,
+  currency,
+  className,
+}: {
+  itemType: string;
+  itemId: string;
+  itemName: string;
+  amount?: number | null;
+  currency?: string | null;
+  className?: string;
+}) {
+  const { t } = useI18n();
+  const navigate = useNavigate();
+  const { user, loading } = useAuth();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [busy, setBusy] = useState(false);
+
+  const submit = async () => {
+    if (loading) return;
+    if (!user) {
+      rememberAfterAuth(pathname);
+      toast.info(t("Please sign in to continue — we'll bring you back here."));
+      void navigate({ to: "/auth" });
+      return;
+    }
+    setBusy(true);
+    try {
+      const { error } = await supabase.from("bookings").insert({
+        user_id: user.id,
+        item_type: itemType,
+        item_id: itemId,
+        item_name: itemName,
+        status: "pending",
+        contact_email: user.email ?? null,
+        amount: amount ?? null,
+        currency: amount != null ? (currency ?? "usd").toLowerCase() : null,
+      });
+      if (error) throw error;
+      toast.success(t("Your request has been received, we'll be in touch."));
+    } catch (err) {
+      console.error("[trip-actions] failed to create booking:", err);
+      toast.error(t("Something went wrong. Please try again."));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={() => void submit()}
+      disabled={busy}
+      className={cn(
+        BUTTON_BASE,
+        "border border-gold-line bg-gold-soft text-gold hover:bg-gold hover:text-primary-foreground",
+        className,
+      )}
+    >
+      {busy ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+      {t("Request booking")}
+    </button>
+  );
+}
+
 export function ItemActions({
   itemType,
   itemId,

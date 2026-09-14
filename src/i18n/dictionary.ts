@@ -9,6 +9,11 @@ import type { LangCode } from "./languages";
 export type Dict = Record<string, string>;
 
 const ar: Dict = {
+  "Account type": "نوع الحساب",
+  "Individual traveller": "مسافر فردي",
+  "Government entity": "جهة حكومية",
+  "Investor": "مستثمر",
+  "Service provider": "مزود خدمة",
   "Bookings management": "إدارة الحجوزات",
   "Review booking requests and update their status.": "راجع طلبات الحجز وحدث حالتها.",
   "All statuses": "جميع الحالات",
@@ -1674,6 +1679,11 @@ const ar: Dict = {
 };
 
 const fr: Dict = {
+  "Account type": "Type de compte",
+  "Individual traveller": "Voyageur individuel",
+  "Government entity": "Entité gouvernementale",
+  "Investor": "Investisseur",
+  "Service provider": "Prestataire de services",
   "Bookings management": "Gestion des réservations",
   "Review booking requests and update their status.": "Examinez les demandes de réservation et mettez à jour leur statut.",
   "All statuses": "Tous les statuts",
@@ -3318,6 +3328,11 @@ const fr: Dict = {
 };
 
 const de: Dict = {
+  "Account type": "Kontotyp",
+  "Individual traveller": "Einzelreisender",
+  "Government entity": "Regierungsbehörde",
+  "Investor": "Investor",
+  "Service provider": "Dienstleister",
   "Bookings management": "Buchungsverwaltung",
   "Review booking requests and update their status.": "Buchungsanfragen prüfen und ihren Status aktualisieren.",
   "All statuses": "Alle Status",
@@ -4962,6 +4977,11 @@ const de: Dict = {
 };
 
 const es: Dict = {
+  "Account type": "Tipo de cuenta",
+  "Individual traveller": "Viajero individual",
+  "Government entity": "Entidad gubernamental",
+  "Investor": "Inversor",
+  "Service provider": "Proveedor de servicios",
   "Bookings management": "Gestión de reservas",
   "Review booking requests and update their status.": "Revisa las solicitudes de reserva y actualiza su estado.",
   "All statuses": "Todos los estados",
@@ -6606,6 +6626,11 @@ const es: Dict = {
 };
 
 const it: Dict = {
+  "Account type": "Tipo di account",
+  "Individual traveller": "Viaggiatore individuale",
+  "Government entity": "Ente governativo",
+  "Investor": "Investitore",
+  "Service provider": "Fornitore di servizi",
   "Bookings management": "Gestione prenotazioni",
   "Review booking requests and update their status.": "Esamina le richieste di prenotazione e aggiorna il loro stato.",
   "All statuses": "Tutti gli stati",
@@ -8250,6 +8275,11 @@ const it: Dict = {
 };
 
 const ru: Dict = {
+  "Account type": "Тип аккаунта",
+  "Individual traveller": "Индивидуальный путешественник",
+  "Government entity": "Государственное учреждение",
+  "Investor": "Инвестор",
+  "Service provider": "Поставщик услуг",
   "Bookings management": "Управление бронированиями",
   "Review booking requests and update their status.": "Просматривайте запросы на бронирование и обновляйте их статус.",
   "All statuses": "Все статусы",
@@ -9894,6 +9924,11 @@ const ru: Dict = {
 };
 
 const zh: Dict = {
+  "Account type": "账户类型",
+  "Individual traveller": "个人旅行者",
+  "Government entity": "政府机构",
+  "Investor": "投资者",
+  "Service provider": "服务提供商",
   "Bookings management": "预订管理",
   "Review booking requests and update their status.": "查看预订请求并更新其状态。",
   "All statuses": "所有状态",
@@ -11538,6 +11573,11 @@ const zh: Dict = {
 };
 
 const hi: Dict = {
+  "Account type": "खाता प्रकार",
+  "Individual traveller": "व्यक्तिगत यात्री",
+  "Government entity": "सरकारी संस्था",
+  "Investor": "निवेशक",
+  "Service provider": "सेवा प्रदाता",
   "Bookings management": "बुकिंग प्रबंधन",
   "Review booking requests and update their status.": "बुकिंग अनुरोधों की समीक्षा करें और उनकी स्थिति अपडेट करें।",
   "All statuses": "सभी स्थितियाँ",

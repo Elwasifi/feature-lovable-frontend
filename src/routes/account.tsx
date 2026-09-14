@@ -24,6 +24,7 @@ import { Container } from "@/components/site/Primitives";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { ACCOUNT_TYPES, ACCOUNT_TYPE_LABEL, toAccountType } from "@/lib/account-types";
 
 export const Route = createFileRoute("/account")({
   head: () => ({
@@ -58,6 +59,7 @@ type Profile = {
   whatsapp: string | null;
   country: string | null;
   emergency_contact: string | null;
+  account_type: string;
   points: number;
   tier: string;
 };
@@ -183,6 +185,7 @@ function AccountPage() {
             email: user.email ?? null,
             full_name: (user.user_metadata?.["full_name"] as string | undefined) ?? null,
             whatsapp: (user.user_metadata?.["whatsapp"] as string | undefined) ?? null,
+            account_type: toAccountType(user.user_metadata?.["account_type"]),
           })
           .select("*")
           .single();
@@ -291,6 +294,9 @@ function AccountPage() {
             <h1 className="truncate font-display text-2xl text-foreground lg:text-3xl">{name}</h1>
             <p className="truncate text-sm text-muted-foreground" dir="ltr">
               {profile.email}
+            </p>
+            <p className="mt-1 inline-flex rounded-full border border-gold-line/60 px-2.5 py-0.5 text-[11px] text-gold">
+              {t(ACCOUNT_TYPE_LABEL[toAccountType(profile.account_type)])}
             </p>
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
@@ -535,6 +541,7 @@ function SettingsPanel({
     whatsapp: profile?.whatsapp ?? "",
     country: profile?.country ?? "",
     emergency_contact: profile?.emergency_contact ?? "",
+    account_type: toAccountType(profile?.account_type),
   });
 
   useEffect(() => {
@@ -543,6 +550,7 @@ function SettingsPanel({
       whatsapp: profile?.whatsapp ?? "",
       country: profile?.country ?? "",
       emergency_contact: profile?.emergency_contact ?? "",
+      account_type: toAccountType(profile?.account_type),
     });
   }, [profile]);
 
@@ -586,6 +594,19 @@ function SettingsPanel({
               onChange={(e) => setForm({ ...form, emergency_contact: e.target.value })}
               className={INPUT}
             />
+          </Labelled>
+          <Labelled label={t("Account type")}>
+            <select
+              value={form.account_type}
+              onChange={(e) => setForm({ ...form, account_type: toAccountType(e.target.value) })}
+              className={INPUT}
+            >
+              {ACCOUNT_TYPES.map((value) => (
+                <option key={value} value={value}>
+                  {t(ACCOUNT_TYPE_LABEL[value])}
+                </option>
+              ))}
+            </select>
           </Labelled>
         </div>
         <button

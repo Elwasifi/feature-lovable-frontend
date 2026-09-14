@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { consumeAfterAuth } from "@/lib/after-auth";
+import { ACCOUNT_TYPES, ACCOUNT_TYPE_LABEL } from "@/lib/account-types";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -39,7 +40,13 @@ function AuthPage() {
   const navigate = useNavigate();
   const { user, loading: sessionLoading } = useAuth();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
-  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    whatsapp: "",
+    password: "",
+    accountType: "individual",
+  });
   const [socialNotice, setSocialNotice] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -70,7 +77,11 @@ function AuthPage() {
           email: form.email,
           password: form.password,
           options: {
-            data: { full_name: form.name, whatsapp: form.whatsapp },
+            data: {
+              full_name: form.name,
+              whatsapp: form.whatsapp,
+              account_type: form.accountType,
+            },
             ...(typeof window !== "undefined"
               ? { emailRedirectTo: `${window.location.origin}/account` }
               : {}),
@@ -206,6 +217,31 @@ function AuthPage() {
                   className="h-12 w-full bg-transparent pe-4 ps-11 text-sm text-foreground outline-none placeholder:text-muted-foreground"
                 />
               </Field>
+            )}
+            {mode === "signup" && (
+              <fieldset className="grid gap-2">
+                <legend className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {t("Account type")}
+                </legend>
+                <div className="grid grid-cols-2 gap-2">
+                  {ACCOUNT_TYPES.map((value) => (
+                    <button
+                      key={value}
+                      type="button"
+                      aria-pressed={form.accountType === value}
+                      onClick={() => setForm({ ...form, accountType: value })}
+                      className={cn(
+                        "rounded-xl border px-3 py-3 text-xs font-medium transition-colors",
+                        form.accountType === value
+                          ? "border-gold-line bg-gold-soft text-gold"
+                          : "border-border bg-card/60 text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      {t(ACCOUNT_TYPE_LABEL[value])}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
             )}
             <Field icon={Mail} label={t("Email address")}>
               <input

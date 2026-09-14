@@ -36,6 +36,7 @@ export const Route = createFileRoute("/investment-opportunities")({
       .select(
         "id, slug, name, sector, governorate_slug, stage, investment_min_usd, investment_max_usd, competent_entity, summary, governance_status",
       )
+      .eq("moderation_state", "PUBLISHED")
       .order("name");
 
     if (error) {

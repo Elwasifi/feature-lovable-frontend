@@ -36,6 +36,7 @@ export const Route = createFileRoute("/properties")({
       .select(
         "id, slug, name, governorate_slug, property_type, price_usd, area_m2, city, summary, tags, governance_status",
       )
+      .eq("moderation_state", "PUBLISHED")
       .order("name");
 
     if (error) {

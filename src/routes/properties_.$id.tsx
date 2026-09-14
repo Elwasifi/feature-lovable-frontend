@@ -45,6 +45,7 @@ export const Route = createFileRoute("/properties_/$id")({
           "id, slug, name, governorate_slug, property_type, price_usd, area_m2, city, summary, description, images, tags, governance_status",
         )
         .eq("id", params.id)
+        .eq("moderation_state", "PUBLISHED")
         .maybeSingle();
 
       if (error) {

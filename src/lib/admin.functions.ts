@@ -21,15 +21,19 @@ export type AdminStats = {
   content: { table: string; count: number }[];
 };
 
-/** Admin-only dashboard counts. Throws "Not authorized" for non-admins. */
+export type AdminStatsResult =
+  | { authorized: false }
+  | { authorized: true; stats: AdminStats };
+
+/** Admin-only dashboard counts. Returns { authorized: false } for non-admins. */
 export const getAdminStats = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
-  .handler(async ({ context }): Promise<AdminStats> => {
+  .handler(async ({ context }): Promise<AdminStatsResult> => {
     const { data: isAdmin, error } = await context.supabase.rpc("has_role", {
       check_user_id: context.userId,
       check_role: "admin",
     });
-    if (error || isAdmin !== true) throw new Error("Not authorized");
+    if (error || isAdmin !== true) return { authorized: false };
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
@@ -61,15 +65,18 @@ export const getAdminStats = createServerFn({ method: "GET" })
     }
 
     return {
-      users,
-      trips,
-      bookings: {
-        pending,
-        confirmed,
-        cancelled,
-        other: Math.max(totalBookings - pending - confirmed - cancelled, 0),
-        total: totalBookings,
+      authorized: true,
+      stats: {
+        users,
+        trips,
+        bookings: {
+          pending,
+          confirmed,
+          cancelled,
+          other: Math.max(totalBookings - pending - confirmed - cancelled, 0),
+          total: totalBookings,
+        },
+        content,
       },
-      content,
     };
   });

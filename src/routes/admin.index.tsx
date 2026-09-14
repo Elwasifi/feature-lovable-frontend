@@ -39,9 +39,13 @@ function AdminDashboard() {
   useEffect(() => {
     let active = true;
     load()
-      .then((data) => {
+      .then((result) => {
         if (!active) return;
-        setStats(data);
+        if (!result.authorized) {
+          setState("denied");
+          return;
+        }
+        setStats(result.stats);
         setState("ready");
       })
       .catch(() => active && setState("denied"));

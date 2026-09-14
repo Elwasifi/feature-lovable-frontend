@@ -136,6 +136,7 @@ function AccountPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [profileLoading, setProfileLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const trips = DEMO_TRIPS;
   const reviews = DEMO_REVIEWS;
@@ -293,7 +294,16 @@ function AccountPage() {
             </p>
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
-            <a
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-2 rounded-full border border-gold-line bg-gold-soft px-4 py-2.5 text-sm font-semibold text-gold transition-colors hover:bg-gold/15"
+              >
+                <Settings className="size-4" />
+                {t("Admin Dashboard")}
+              </Link>
+            )}
+            <
               href={mailto("Egyptora Hub — emergency assistance during my trip")}
               className="flex items-center gap-2 rounded-full bg-hot px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-hot/20"
             >

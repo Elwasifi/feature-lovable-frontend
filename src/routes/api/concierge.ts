@@ -97,7 +97,13 @@ export const Route = createFileRoute("/api/concierge")({
                 }),
                 execute: async ({ query, category }) => {
                   const matches = await searchSiteContent(query, category);
-                  console.log("[concierge] tool", query, category ?? "-", matches.length);
+                  for (const m of matches) {
+                    grounded.set(`${m.type}:${m.slug}`, {
+                      name: m.name,
+                      slug: m.slug,
+                      type: m.type,
+                    });
+                  }
                   return { matches };
                 },
               }),

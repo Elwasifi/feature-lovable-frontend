@@ -28,6 +28,7 @@ import { Route as ResearchProgramsRouteImport } from './routes/research-programs
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
@@ -143,6 +144,11 @@ const AccountBookingsRoute = AccountBookingsRouteImport.update({
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/admin/',
   path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBookingsRoute = AdminBookingsRouteImport.update({
+  id: '/admin/bookings',
+  path: '/admin/bookings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
@@ -269,6 +275,7 @@ export interface FileRoutesByFullPath {
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -310,6 +317,7 @@ export interface FileRoutesByTo {
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -352,6 +360,7 @@ export interface FileRoutesById {
   '/research-programs': typeof ResearchProgramsRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account_/bookings': typeof AccountBookingsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries_/$id': typeof CountriesIdRoute
@@ -395,6 +404,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/traveler-stories'
     | '/account/bookings'
+    | '/admin/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries/$id'
@@ -436,6 +446,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/traveler-stories'
     | '/account/bookings'
+    | '/admin/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries/$id'
@@ -477,6 +488,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/traveler-stories'
     | '/account_/bookings'
+    | '/admin/bookings'
     | '/admin/maintenance'
     | '/api/concierge'
     | '/countries_/$id'
@@ -519,6 +531,7 @@ export interface RootRouteChildren {
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
   AccountBookingsRoute: typeof AccountBookingsRoute
+  AdminBookingsRoute: typeof AdminBookingsRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
@@ -675,6 +688,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/bookings': {
+      id: '/admin/bookings'
+      path: '/admin/bookings'
+      fullPath: '/admin/bookings'
+      preLoaderRoute: typeof AdminBookingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/maintenance': {
@@ -839,6 +859,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchProgramsRoute: ResearchProgramsRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
   AccountBookingsRoute: AccountBookingsRoute,
+  AdminBookingsRoute: AdminBookingsRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,

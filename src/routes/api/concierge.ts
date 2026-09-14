@@ -136,7 +136,6 @@ export const Route = createFileRoute("/api/concierge")({
                   if (emit) controller.enqueue(encoder.encode(emit));
                 }
 
-                if (!inBlock) console.log("[concierge] no block, grounded", grounded.size);
                 if (!inBlock) {
                   if (buffer) controller.enqueue(encoder.encode(buffer));
                 } else {
@@ -172,7 +171,6 @@ export const Route = createFileRoute("/api/concierge")({
                     })
                     .filter((item): item is NonNullable<typeof item> => item !== null);
 
-                  console.log("[concierge] block", raw.length, "grounded", grounded.size, "kept", items.length);
                   if (items.length > 0) {
                     controller.enqueue(
                       encoder.encode(`\n\`\`\`itinerary\n${JSON.stringify(items)}\n\`\`\``),

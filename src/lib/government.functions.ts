@@ -148,7 +148,7 @@ export const getGovernmentDashboard = createServerFn({ method: "POST" })
         summary.push({
           table,
           counts,
-          total: (data ?? []).length,
+          total: rows.length,
         });
       } catch (err) {
         console.error(`[government] failed to read ${table}:`, err);

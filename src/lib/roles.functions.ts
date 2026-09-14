@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
-export type AppRole = "admin" | "crm_properties" | "crm_investment";
+export type AppRole = "admin" | "crm_properties" | "crm_investment" | "government_viewer";
 
 export type MyRoles = {
   admin: boolean;

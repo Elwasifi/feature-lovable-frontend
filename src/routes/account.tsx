@@ -136,6 +136,7 @@ function AccountPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [profileLoading, setProfileLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const trips = DEMO_TRIPS;
   const reviews = DEMO_REVIEWS;
@@ -201,6 +202,30 @@ function AccountPage() {
       active = false;
     };
   }, [user, t]);
+
+  // Show the admin entry point only for accounts that actually hold the admin
+  // role — same `has_role` check the /admin pages enforce server-side.
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    let active = true;
+    supabase
+      .rpc("has_role", { check_user_id: user.id, check_role: "admin" })
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error) {
+          console.error("[account] failed to check admin role:", error.message);
+          setIsAdmin(false);
+          return;
+        }
+        setIsAdmin(data === true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   async function saveSettings(patch: Partial<Profile>) {
     if (!user) return;
@@ -269,6 +294,15 @@ function AccountPage() {
             </p>
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="flex items-center gap-2 rounded-full border border-gold-line bg-gold-soft px-4 py-2.5 text-sm font-semibold text-gold transition-colors hover:bg-gold/15"
+              >
+                <Settings className="size-4" />
+                {t("Admin Dashboard")}
+              </Link>
+            )}
             <a
               href={mailto("Egyptora Hub — emergency assistance during my trip")}
               className="flex items-center gap-2 rounded-full bg-hot px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-hot/20"

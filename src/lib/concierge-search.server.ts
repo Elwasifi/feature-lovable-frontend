@@ -61,7 +61,7 @@ export async function searchSiteContent(
           .select("name, slug, summary")
           .or(`name.ilike.%${term}%,summary.ilike.%${term}%`);
         // Never surface content that is still awaiting review.
-        if (table === "properties") q = q.eq("moderation_state", "PUBLISHED");
+        if (table === "properties") q = (q as any).eq("moderation_state", "PUBLISHED");
         const { data, error } = await q.limit(perTable);
         if (error) throw error;
         return (data ?? []).map((row) => ({

@@ -32,6 +32,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
 import { Route as AdminIntegrationsRouteImport } from './routes/admin.integrations'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
+import { Route as AdminPartnersRouteImport } from './routes/admin.partners'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
@@ -171,6 +172,11 @@ const AdminIntegrationsRoute = AdminIntegrationsRouteImport.update({
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
   id: '/maintenance',
   path: '/maintenance',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminPartnersRoute = AdminPartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
@@ -321,6 +327,7 @@ export interface FileRoutesByFullPath {
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/partners': typeof AdminPartnersRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -369,6 +376,7 @@ export interface FileRoutesByTo {
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/partners': typeof AdminPartnersRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
@@ -419,6 +427,7 @@ export interface FileRoutesById {
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/partners': typeof AdminPartnersRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries_/$id': typeof CountriesIdRoute
@@ -470,6 +479,7 @@ export interface FileRouteTypes {
     | '/admin/bookings'
     | '/admin/integrations'
     | '/admin/maintenance'
+    | '/admin/partners'
     | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
@@ -518,6 +528,7 @@ export interface FileRouteTypes {
     | '/admin/bookings'
     | '/admin/integrations'
     | '/admin/maintenance'
+    | '/admin/partners'
     | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
@@ -567,6 +578,7 @@ export interface FileRouteTypes {
     | '/admin/bookings'
     | '/admin/integrations'
     | '/admin/maintenance'
+    | '/admin/partners'
     | '/admin/users'
     | '/api/concierge'
     | '/countries_/$id'
@@ -798,6 +810,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMaintenanceRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/partners': {
+      id: '/admin/partners'
+      path: '/partners'
+      fullPath: '/admin/partners'
+      preLoaderRoute: typeof AdminPartnersRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/users': {
       id: '/admin/users'
       path: '/users'
@@ -973,6 +992,7 @@ interface AdminRouteChildren {
   AdminBookingsRoute: typeof AdminBookingsRoute
   AdminIntegrationsRoute: typeof AdminIntegrationsRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
+  AdminPartnersRoute: typeof AdminPartnersRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminContentTableRoute: typeof AdminContentTableRoute
@@ -985,6 +1005,7 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminBookingsRoute: AdminBookingsRoute,
   AdminIntegrationsRoute: AdminIntegrationsRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
+  AdminPartnersRoute: AdminPartnersRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminContentTableRoute: AdminContentTableRoute,

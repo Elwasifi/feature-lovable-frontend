@@ -1,21 +1,62 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { ExternalLink } from "lucide-react";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
+import { getMyRoles, type MyRoles } from "@/lib/roles.functions";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/admin")({
   component: AdminLayout,
 });
 
-const LINKS = [
-  { to: "/admin", label: "Dashboard", exact: true },
-  { to: "/admin/bookings", label: "Bookings", exact: false },
-  { to: "/admin/content", label: "Content", exact: false },
-  { to: "/admin/users", label: "Users", exact: false },
-] as const;
+type NavLink = { to: string; label: string; exact: boolean; show: (roles: MyRoles | null) => boolean };
+
+const ADMIN_ONLY = (roles: MyRoles | null) => roles?.admin === true;
+
+const LINKS: NavLink[] = [
+  { to: "/admin", label: "Dashboard", exact: true, show: ADMIN_ONLY },
+  { to: "/admin/bookings", label: "Bookings", exact: false, show: ADMIN_ONLY },
+  { to: "/admin/content", label: "Content", exact: false, show: ADMIN_ONLY },
+  { to: "/admin/users", label: "Users", exact: false, show: ADMIN_ONLY },
+  { to: "/admin/partners", label: "Partners", exact: false, show: ADMIN_ONLY },
+  { to: "/admin/integrations", label: "Integrations", exact: false, show: ADMIN_ONLY },
+  {
+    to: "/admin/crm/properties",
+    label: "Properties CRM",
+    exact: false,
+    show: (roles) => roles?.crmProperties === true,
+  },
+  {
+    to: "/admin/crm/investment",
+    label: "Investment CRM",
+    exact: false,
+    show: (roles) => roles?.crmInvestment === true,
+  },
+];
 
 function AdminLayout() {
   const { t } = useI18n();
+  const loadRoles = useServerFn(getMyRoles);
+  const [roles, setRoles] = useState<MyRoles | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      const { data: sessionData } = await supabase.auth.getSession();
+      if (!sessionData.session) return;
+      const result = await loadRoles({ data: {} as never });
+      if (active) setRoles(result);
+    })().catch(() => {
+      /* nav simply stays minimal; page-level checks still apply */
+    });
+    return () => {
+      active = false;
+    };
+  }, [loadRoles]);
+
+  const visible = LINKS.filter((link) => link.show(roles));
 
   return (
     <div className="min-h-screen bg-background">
@@ -25,7 +66,7 @@ function AdminLayout() {
             {SITE.name} · {t("Admin")}
           </span>
           <nav className="flex flex-wrap items-center gap-1">
-            {LINKS.map((link) => (
+            {visible.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}

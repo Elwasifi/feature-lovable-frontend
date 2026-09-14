@@ -38,7 +38,12 @@ function AdminDashboard() {
 
   useEffect(() => {
     let active = true;
-    load()
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        if (!data.session) throw new Error("no session");
+        return load();
+      })
       .then((result) => {
         if (!active) return;
         if (!result.authorized) {

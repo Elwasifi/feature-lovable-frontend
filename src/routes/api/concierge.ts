@@ -110,7 +110,85 @@ export const Route = createFileRoute("/api/concierge")({
             },
             onError: ({ error }) => console.error("[concierge] stream error", error),
           });
-          return result.toTextStreamResponse();
+          const encoder = new TextEncoder();
+          const stream = new ReadableStream<Uint8Array>({
+            async start(controller) {
+              let buffer = "";
+              let inBlock = false;
+              try {
+                for await (const chunk of result.textStream) {
+                  buffer += chunk;
+                  if (inBlock) continue;
+                  const idx = buffer.indexOf("```itinerary");
+                  if (idx !== -1) {
+                    const prose = buffer.slice(0, idx);
+                    if (prose) controller.enqueue(encoder.encode(prose));
+                    buffer = buffer.slice(idx);
+                    inBlock = true;
+                    continue;
+                  }
+                  // Hold back a short tail that could be a partial fence marker.
+                  const keep = Math.min(buffer.length, 12);
+                  const emit = buffer.slice(0, buffer.length - keep);
+                  buffer = buffer.slice(buffer.length - keep);
+                  if (emit) controller.enqueue(encoder.encode(emit));
+                }
+
+                if (!inBlock) {
+                  if (buffer) controller.enqueue(encoder.encode(buffer));
+                } else {
+                  const match = /```itinerary\s*([\s\S]*?)```/.exec(buffer);
+                  let raw: unknown[] = [];
+                  try {
+                    const parsedBlock: unknown = JSON.parse((match?.[1] ?? "").trim());
+                    if (Array.isArray(parsedBlock)) raw = parsedBlock;
+                  } catch {
+                    raw = [];
+                  }
+                  // Only keep items the read-only search actually returned.
+                  const items = raw
+                    .map((entry) => {
+                      const row = entry as {
+                        day?: unknown;
+                        slug?: unknown;
+                        type?: unknown;
+                        summary?: unknown;
+                      };
+                      const slug = typeof row.slug === "string" ? row.slug : "";
+                      const hit =
+                        grounded.get(`${String(row.type)}:${slug}`) ??
+                        [...grounded.values()].find((g) => g.slug === slug);
+                      if (!hit) return null;
+                      return {
+                        ...(typeof row.day === "number" ? { day: row.day } : {}),
+                        name: hit.name,
+                        slug: hit.slug,
+                        type: hit.type,
+                        summary: typeof row.summary === "string" ? row.summary : "",
+                      };
+                    })
+                    .filter((item): item is NonNullable<typeof item> => item !== null);
+
+                  if (items.length > 0) {
+                    controller.enqueue(
+                      encoder.encode(`\n\`\`\`itinerary\n${JSON.stringify(items)}\n\`\`\``),
+                    );
+                  }
+                }
+              } catch (streamError) {
+                console.error("[concierge] stream failed", streamError);
+              } finally {
+                controller.close();
+              }
+            },
+          });
+
+          return new Response(stream, {
+            headers: {
+              "content-type": "text/plain; charset=utf-8",
+              "cache-control": "no-store",
+            },
+          });
         } catch (error) {
           const status =
             typeof error === "object" && error !== null && "statusCode" in error

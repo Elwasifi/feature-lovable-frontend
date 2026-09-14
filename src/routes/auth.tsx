@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { consumeAfterAuth } from "@/lib/after-auth";
+import { ACCOUNT_TYPES, ACCOUNT_TYPE_LABEL } from "@/lib/account-types";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({

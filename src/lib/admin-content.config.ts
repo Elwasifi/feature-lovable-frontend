@@ -427,3 +427,46 @@ export function slugify(value: string): string {
     .replace(/-+/g, "-")
     .slice(0, 64);
 }
+
+/**
+ * Coerce one submitted value to the shape the column expects.
+ * Shared with the partner portal so both paths validate identically.
+ */
+export function coerceFieldValue(field: FieldConfig, raw: unknown): unknown {
+  if (raw === undefined) return undefined;
+  switch (field.type) {
+    case "number":
+    case "integer": {
+      if (raw === "" || raw === null) return null;
+      const n = Number(raw);
+      if (!Number.isFinite(n)) throw new Error(`${field.name}: not a number`);
+      return field.type === "integer" ? Math.trunc(n) : n;
+    }
+    case "boolean":
+      return raw === true || raw === "true";
+    case "date":
+      return raw === "" || raw === null ? null : String(raw);
+    case "tags":
+    case "images": {
+      if (raw === null) return null;
+      if (!Array.isArray(raw)) throw new Error(`${field.name}: expected a list`);
+      return raw.map((v) => String(v)).filter((v) => v.trim() !== "");
+    }
+    case "json": {
+      if (raw === null || raw === "" || raw === undefined) return null;
+      if (typeof raw === "string") {
+        try {
+          return JSON.parse(raw);
+        } catch {
+          throw new Error(`${field.name}: not valid JSON`);
+        }
+      }
+      return raw;
+    }
+    default: {
+      if (raw === null) return null;
+      const s = String(raw);
+      return s === "" ? null : s;
+    }
+  }
+}

@@ -30,6 +30,7 @@ import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
@@ -156,6 +157,11 @@ const AdminBookingsRoute = AdminBookingsRouteImport.update({
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
   id: '/admin/maintenance',
   path: '/admin/maintenance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiConciergeRoute = ApiConciergeRouteImport.update({
@@ -289,6 +295,7 @@ export interface FileRoutesByFullPath {
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -333,6 +340,7 @@ export interface FileRoutesByTo {
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -378,6 +386,7 @@ export interface FileRoutesById {
   '/account_/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
+  '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries_/$id': typeof CountriesIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
@@ -424,6 +433,7 @@ export interface FileRouteTypes {
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/maintenance'
+    | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
     | '/governorates/$id'
@@ -468,6 +478,7 @@ export interface FileRouteTypes {
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/maintenance'
+    | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
     | '/governorates/$id'
@@ -512,6 +523,7 @@ export interface FileRouteTypes {
     | '/account_/bookings'
     | '/admin/bookings'
     | '/admin/maintenance'
+    | '/admin/users'
     | '/api/concierge'
     | '/countries_/$id'
     | '/governorates/$id'
@@ -557,6 +569,7 @@ export interface RootRouteChildren {
   AccountBookingsRoute: typeof AccountBookingsRoute
   AdminBookingsRoute: typeof AdminBookingsRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
@@ -730,6 +743,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMaintenanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/concierge': {
       id: '/api/concierge'
       path: '/api/concierge'
@@ -901,6 +921,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountBookingsRoute: AccountBookingsRoute,
   AdminBookingsRoute: AdminBookingsRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
+  AdminUsersRoute: AdminUsersRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,

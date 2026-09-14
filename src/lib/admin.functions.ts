@@ -65,15 +65,18 @@ export const getAdminStats = createServerFn({ method: "GET" })
     }
 
     return {
-      users,
-      trips,
-      bookings: {
-        pending,
-        confirmed,
-        cancelled,
-        other: Math.max(totalBookings - pending - confirmed - cancelled, 0),
-        total: totalBookings,
+      authorized: true,
+      stats: {
+        users,
+        trips,
+        bookings: {
+          pending,
+          confirmed,
+          cancelled,
+          other: Math.max(totalBookings - pending - confirmed - cancelled, 0),
+          total: totalBookings,
+        },
+        content,
       },
-      content,
     };
   });

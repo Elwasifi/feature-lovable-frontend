@@ -39,7 +39,13 @@ function AuthPage() {
   const navigate = useNavigate();
   const { user, loading: sessionLoading } = useAuth();
   const [mode, setMode] = useState<"signup" | "signin">("signup");
-  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", password: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    whatsapp: "",
+    password: "",
+    accountType: "individual",
+  });
   const [socialNotice, setSocialNotice] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -70,7 +76,11 @@ function AuthPage() {
           email: form.email,
           password: form.password,
           options: {
-            data: { full_name: form.name, whatsapp: form.whatsapp },
+            data: {
+              full_name: form.name,
+              whatsapp: form.whatsapp,
+              account_type: form.accountType,
+            },
             ...(typeof window !== "undefined"
               ? { emailRedirectTo: `${window.location.origin}/account` }
               : {}),

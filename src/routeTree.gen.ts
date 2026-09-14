@@ -49,6 +49,7 @@ import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.w
 import { Route as MyTripsIndexRouteImport } from './routes/my-trips.index'
 import { Route as MyTripsNewRouteImport } from './routes/my-trips.new'
 import { Route as OffersIdRouteImport } from './routes/offers_.$id'
+import { Route as PartnersIndexRouteImport } from './routes/partners.index'
 import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 import { Route as PropertiesIdRouteImport } from './routes/properties_.$id'
 import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
@@ -57,6 +58,7 @@ import { Route as AdminContentIndexRouteImport } from './routes/admin.content.in
 import { Route as AdminContentTableRouteImport } from './routes/admin.content.$table'
 import { Route as AdminCrmInvestmentRouteImport } from './routes/admin.crm.investment'
 import { Route as AdminCrmPropertiesRouteImport } from './routes/admin.crm.properties'
+import { Route as PartnersTypeIdRouteImport } from './routes/partners.$type.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -263,6 +265,11 @@ const OffersIdRoute = OffersIdRouteImport.update({
   path: '/offers/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnersIndexRoute = PartnersIndexRouteImport.update({
+  id: '/partners/',
+  path: '/partners/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsIdRoute = ProductsIdRouteImport.update({
   id: '/products_/$id',
   path: '/products/$id',
@@ -302,6 +309,11 @@ const AdminCrmPropertiesRoute = AdminCrmPropertiesRouteImport.update({
   id: '/crm/properties',
   path: '/crm/properties',
   getParentRoute: () => AdminRoute,
+} as any)
+const PartnersTypeIdRoute = PartnersTypeIdRouteImport.update({
+  id: '/partners/$type/$id',
+  path: '/partners/$type/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -349,9 +361,11 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
+  '/partners/': typeof PartnersIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
   '/admin/crm/investment': typeof AdminCrmInvestmentRoute
   '/admin/crm/properties': typeof AdminCrmPropertiesRoute
+  '/partners/$type/$id': typeof PartnersTypeIdRoute
   '/admin/content/': typeof AdminContentIndexRoute
 }
 export interface FileRoutesByTo {
@@ -398,9 +412,11 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/legal': typeof LegalIndexRoute
   '/my-trips': typeof MyTripsIndexRoute
+  '/partners': typeof PartnersIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
   '/admin/crm/investment': typeof AdminCrmInvestmentRoute
   '/admin/crm/properties': typeof AdminCrmPropertiesRoute
+  '/partners/$type/$id': typeof PartnersTypeIdRoute
   '/admin/content': typeof AdminContentIndexRoute
 }
 export interface FileRoutesById {
@@ -449,9 +465,11 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
+  '/partners/': typeof PartnersIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
   '/admin/crm/investment': typeof AdminCrmInvestmentRoute
   '/admin/crm/properties': typeof AdminCrmPropertiesRoute
+  '/partners/$type/$id': typeof PartnersTypeIdRoute
   '/admin/content/': typeof AdminContentIndexRoute
 }
 export interface FileRouteTypes {
@@ -501,9 +519,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
+    | '/partners/'
     | '/admin/content/$table'
     | '/admin/crm/investment'
     | '/admin/crm/properties'
+    | '/partners/$type/$id'
     | '/admin/content/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -550,9 +570,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/legal'
     | '/my-trips'
+    | '/partners'
     | '/admin/content/$table'
     | '/admin/crm/investment'
     | '/admin/crm/properties'
+    | '/partners/$type/$id'
     | '/admin/content'
   id:
     | '__root__'
@@ -600,9 +622,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
+    | '/partners/'
     | '/admin/content/$table'
     | '/admin/crm/investment'
     | '/admin/crm/properties'
+    | '/partners/$type/$id'
     | '/admin/content/'
   fileRoutesById: FileRoutesById
 }
@@ -645,6 +669,8 @@ export interface RootRouteChildren {
   TripsIdRoute: typeof TripsIdRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
+  PartnersIndexRoute: typeof PartnersIndexRoute
+  PartnersTypeIdRoute: typeof PartnersTypeIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -929,6 +955,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OffersIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partners/': {
+      id: '/partners/'
+      path: '/partners'
+      fullPath: '/partners/'
+      preLoaderRoute: typeof PartnersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products_/$id': {
       id: '/products_/$id'
       path: '/products/$id'
@@ -984,6 +1017,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/crm/properties'
       preLoaderRoute: typeof AdminCrmPropertiesRouteImport
       parentRoute: typeof AdminRoute
+    }
+    '/partners/$type/$id': {
+      id: '/partners/$type/$id'
+      path: '/partners/$type/$id'
+      fullPath: '/partners/$type/$id'
+      preLoaderRoute: typeof PartnersTypeIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -1055,6 +1095,8 @@ const rootRouteChildren: RootRouteChildren = {
   TripsIdRoute: TripsIdRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,
+  PartnersIndexRoute: PartnersIndexRoute,
+  PartnersTypeIdRoute: PartnersTypeIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

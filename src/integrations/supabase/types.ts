@@ -1115,6 +1115,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          account_type: string
           avatar_url: string | null
           country: string | null
           created_at: string
@@ -1129,6 +1130,7 @@ export type Database = {
           whatsapp: string | null
         }
         Insert: {
+          account_type?: string
           avatar_url?: string | null
           country?: string | null
           created_at?: string
@@ -1143,6 +1145,7 @@ export type Database = {
           whatsapp?: string | null
         }
         Update: {
+          account_type?: string
           avatar_url?: string | null
           country?: string | null
           created_at?: string

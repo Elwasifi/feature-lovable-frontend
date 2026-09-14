@@ -158,5 +158,6 @@ export const updateBookingStatus = createServerFn({ method: "POST" })
       .maybeSingle();
 
     if (error) return { authorized: true, ok: false, error: error.message };
-    return { authorized: true, ok: true, booking: (row ?? undefined) as AdminBooking | undefined };
+    if (!row) return { authorized: true, ok: true };
+    return { authorized: true, ok: true, booking: row as AdminBooking };
   });

@@ -93,6 +93,7 @@ export const Route = createFileRoute("/api/concierge")({
                 }),
                 execute: async ({ query, category }) => {
                   const matches = await searchSiteContent(query, category);
+                  console.log("[concierge] tool", query, category ?? "-", matches.length);
                   return { matches };
                 },
               }),

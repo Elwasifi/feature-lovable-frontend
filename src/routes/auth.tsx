@@ -217,6 +217,31 @@ function AuthPage() {
                 />
               </Field>
             )}
+            {mode === "signup" && (
+              <fieldset className="grid gap-2">
+                <legend className="mb-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  {t("Account type")}
+                </legend>
+                <div className="grid grid-cols-2 gap-2">
+                  {ACCOUNT_TYPES.map((value) => (
+                    <button
+                      key={value}
+                      type="button"
+                      aria-pressed={form.accountType === value}
+                      onClick={() => setForm({ ...form, accountType: value })}
+                      className={cn(
+                        "rounded-xl border px-3 py-3 text-xs font-medium transition-colors",
+                        form.accountType === value
+                          ? "border-gold-line bg-gold-soft text-gold"
+                          : "border-border bg-card/60 text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      {t(ACCOUNT_TYPE_LABEL[value])}
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+            )}
             <Field icon={Mail} label={t("Email address")}>
               <input
                 required

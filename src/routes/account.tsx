@@ -303,7 +303,7 @@ function AccountPage() {
                 {t("Admin Dashboard")}
               </Link>
             )}
-            <
+            <a
               href={mailto("Egyptora Hub — emergency assistance during my trip")}
               className="flex items-center gap-2 rounded-full bg-hot px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-hot/20"
             >

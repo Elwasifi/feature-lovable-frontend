@@ -202,6 +202,30 @@ function AccountPage() {
     };
   }, [user, t]);
 
+  // Show the admin entry point only for accounts that actually hold the admin
+  // role — same `has_role` check the /admin pages enforce server-side.
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    let active = true;
+    supabase
+      .rpc("has_role", { check_user_id: user.id, check_role: "admin" })
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error) {
+          console.error("[account] failed to check admin role:", error.message);
+          setIsAdmin(false);
+          return;
+        }
+        setIsAdmin(data === true);
+      });
+    return () => {
+      active = false;
+    };
+  }, [user]);
+
   async function saveSettings(patch: Partial<Profile>) {
     if (!user) return;
     setSaving(true);

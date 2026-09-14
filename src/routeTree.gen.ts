@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
@@ -61,6 +62,11 @@ const IndexRoute = IndexRouteImport.update({
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -145,24 +151,24 @@ const AccountBookingsRoute = AccountBookingsRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/admin/',
-  path: '/admin/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AdminBookingsRoute = AdminBookingsRouteImport.update({
-  id: '/admin/bookings',
-  path: '/admin/bookings',
-  getParentRoute: () => rootRouteImport,
+  id: '/bookings',
+  path: '/bookings',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
-  id: '/admin/maintenance',
-  path: '/admin/maintenance',
-  getParentRoute: () => rootRouteImport,
+  id: '/maintenance',
+  path: '/maintenance',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
-  id: '/admin/users',
-  path: '/admin/users',
-  getParentRoute: () => rootRouteImport,
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
 } as any)
 const ApiConciergeRoute = ApiConciergeRouteImport.update({
   id: '/api/concierge',
@@ -264,19 +270,20 @@ const TripsIdRoute = TripsIdRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminContentIndexRoute = AdminContentIndexRouteImport.update({
-  id: '/admin/content/',
-  path: '/admin/content/',
-  getParentRoute: () => rootRouteImport,
+  id: '/content/',
+  path: '/content/',
+  getParentRoute: () => AdminRoute,
 } as any)
 const AdminContentTableRoute = AdminContentTableRouteImport.update({
-  id: '/admin/content/$table',
-  path: '/admin/content/$table',
-  getParentRoute: () => rootRouteImport,
+  id: '/content/$table',
+  path: '/content/$table',
+  getParentRoute: () => AdminRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRouteWithChildren
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
@@ -368,6 +375,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRouteWithChildren
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
@@ -415,6 +423,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/account'
+    | '/admin'
     | '/auth'
     | '/contact'
     | '/countries'
@@ -505,6 +514,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/account'
+    | '/admin'
     | '/auth'
     | '/contact'
     | '/countries'
@@ -551,6 +561,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccountRoute: typeof AccountRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
@@ -567,9 +578,6 @@ export interface RootRouteChildren {
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
   AccountBookingsRoute: typeof AccountBookingsRoute
-  AdminBookingsRoute: typeof AdminBookingsRoute
-  AdminMaintenanceRoute: typeof AdminMaintenanceRoute
-  AdminUsersRoute: typeof AdminUsersRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
@@ -587,11 +595,8 @@ export interface RootRouteChildren {
   PropertiesIdRoute: typeof PropertiesIdRoute
   ProvidersIdRoute: typeof ProvidersIdRoute
   TripsIdRoute: typeof TripsIdRoute
-  AdminIndexRoute: typeof AdminIndexRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
-  AdminContentTableRoute: typeof AdminContentTableRoute
-  AdminContentIndexRoute: typeof AdminContentIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -608,6 +613,13 @@ declare module '@tanstack/react-router' {
       path: '/account'
       fullPath: '/account'
       preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -724,31 +736,31 @@ declare module '@tanstack/react-router' {
     }
     '/admin/': {
       id: '/admin/'
-      path: '/admin'
+      path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/admin/bookings': {
       id: '/admin/bookings'
-      path: '/admin/bookings'
+      path: '/bookings'
       fullPath: '/admin/bookings'
       preLoaderRoute: typeof AdminBookingsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/admin/maintenance': {
       id: '/admin/maintenance'
-      path: '/admin/maintenance'
+      path: '/maintenance'
       fullPath: '/admin/maintenance'
       preLoaderRoute: typeof AdminMaintenanceRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/admin/users': {
       id: '/admin/users'
-      path: '/admin/users'
+      path: '/users'
       fullPath: '/admin/users'
       preLoaderRoute: typeof AdminUsersRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/api/concierge': {
       id: '/api/concierge'
@@ -885,24 +897,45 @@ declare module '@tanstack/react-router' {
     }
     '/admin/content/': {
       id: '/admin/content/'
-      path: '/admin/content'
+      path: '/content'
       fullPath: '/admin/content/'
       preLoaderRoute: typeof AdminContentIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
     '/admin/content/$table': {
       id: '/admin/content/$table'
-      path: '/admin/content/$table'
+      path: '/content/$table'
       fullPath: '/admin/content/$table'
       preLoaderRoute: typeof AdminContentTableRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof AdminRoute
     }
   }
 }
 
+interface AdminRouteChildren {
+  AdminBookingsRoute: typeof AdminBookingsRoute
+  AdminMaintenanceRoute: typeof AdminMaintenanceRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  AdminContentTableRoute: typeof AdminContentTableRoute
+  AdminContentIndexRoute: typeof AdminContentIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminBookingsRoute: AdminBookingsRoute,
+  AdminMaintenanceRoute: AdminMaintenanceRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  AdminContentTableRoute: AdminContentTableRoute,
+  AdminContentIndexRoute: AdminContentIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccountRoute: AccountRoute,
+  AdminRoute: AdminRouteWithChildren,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
@@ -919,9 +952,6 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchProgramsRoute: ResearchProgramsRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
   AccountBookingsRoute: AccountBookingsRoute,
-  AdminBookingsRoute: AdminBookingsRoute,
-  AdminMaintenanceRoute: AdminMaintenanceRoute,
-  AdminUsersRoute: AdminUsersRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
@@ -939,11 +969,8 @@ const rootRouteChildren: RootRouteChildren = {
   PropertiesIdRoute: PropertiesIdRoute,
   ProvidersIdRoute: ProvidersIdRoute,
   TripsIdRoute: TripsIdRoute,
-  AdminIndexRoute: AdminIndexRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,
-  AdminContentTableRoute: AdminContentTableRoute,
-  AdminContentIndexRoute: AdminContentIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

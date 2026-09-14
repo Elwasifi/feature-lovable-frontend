@@ -30,6 +30,7 @@ import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
+import { Route as AdminIntegrationsRouteImport } from './routes/admin.integrations'
 import { Route as AdminMaintenanceRouteImport } from './routes/admin.maintenance'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
@@ -53,6 +54,8 @@ import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
 import { Route as TripsIdRouteImport } from './routes/trips.$id'
 import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
 import { Route as AdminContentTableRouteImport } from './routes/admin.content.$table'
+import { Route as AdminCrmInvestmentRouteImport } from './routes/admin.crm.investment'
+import { Route as AdminCrmPropertiesRouteImport } from './routes/admin.crm.properties'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -158,6 +161,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 const AdminBookingsRoute = AdminBookingsRouteImport.update({
   id: '/bookings',
   path: '/bookings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminIntegrationsRoute = AdminIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminMaintenanceRoute = AdminMaintenanceRouteImport.update({
@@ -279,6 +287,16 @@ const AdminContentTableRoute = AdminContentTableRouteImport.update({
   path: '/content/$table',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCrmInvestmentRoute = AdminCrmInvestmentRouteImport.update({
+  id: '/crm/investment',
+  path: '/crm/investment',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCrmPropertiesRoute = AdminCrmPropertiesRouteImport.update({
+  id: '/crm/properties',
+  path: '/crm/properties',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -301,6 +319,7 @@ export interface FileRoutesByFullPath {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -324,6 +343,8 @@ export interface FileRoutesByFullPath {
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
+  '/admin/crm/investment': typeof AdminCrmInvestmentRoute
+  '/admin/crm/properties': typeof AdminCrmPropertiesRoute
   '/admin/content/': typeof AdminContentIndexRoute
 }
 export interface FileRoutesByTo {
@@ -346,6 +367,7 @@ export interface FileRoutesByTo {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -369,6 +391,8 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalIndexRoute
   '/my-trips': typeof MyTripsIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
+  '/admin/crm/investment': typeof AdminCrmInvestmentRoute
+  '/admin/crm/properties': typeof AdminCrmPropertiesRoute
   '/admin/content': typeof AdminContentIndexRoute
 }
 export interface FileRoutesById {
@@ -393,6 +417,7 @@ export interface FileRoutesById {
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account_/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/integrations': typeof AdminIntegrationsRoute
   '/admin/maintenance': typeof AdminMaintenanceRoute
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
@@ -416,6 +441,8 @@ export interface FileRoutesById {
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
   '/admin/content/$table': typeof AdminContentTableRoute
+  '/admin/crm/investment': typeof AdminCrmInvestmentRoute
+  '/admin/crm/properties': typeof AdminCrmPropertiesRoute
   '/admin/content/': typeof AdminContentIndexRoute
 }
 export interface FileRouteTypes {
@@ -441,6 +468,7 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/account/bookings'
     | '/admin/bookings'
+    | '/admin/integrations'
     | '/admin/maintenance'
     | '/admin/users'
     | '/api/concierge'
@@ -464,6 +492,8 @@ export interface FileRouteTypes {
     | '/legal/'
     | '/my-trips/'
     | '/admin/content/$table'
+    | '/admin/crm/investment'
+    | '/admin/crm/properties'
     | '/admin/content/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -486,6 +516,7 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/account/bookings'
     | '/admin/bookings'
+    | '/admin/integrations'
     | '/admin/maintenance'
     | '/admin/users'
     | '/api/concierge'
@@ -509,6 +540,8 @@ export interface FileRouteTypes {
     | '/legal'
     | '/my-trips'
     | '/admin/content/$table'
+    | '/admin/crm/investment'
+    | '/admin/crm/properties'
     | '/admin/content'
   id:
     | '__root__'
@@ -532,6 +565,7 @@ export interface FileRouteTypes {
     | '/traveler-stories'
     | '/account_/bookings'
     | '/admin/bookings'
+    | '/admin/integrations'
     | '/admin/maintenance'
     | '/admin/users'
     | '/api/concierge'
@@ -555,6 +589,8 @@ export interface FileRouteTypes {
     | '/legal/'
     | '/my-trips/'
     | '/admin/content/$table'
+    | '/admin/crm/investment'
+    | '/admin/crm/properties'
     | '/admin/content/'
   fileRoutesById: FileRoutesById
 }
@@ -748,6 +784,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminBookingsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/integrations': {
+      id: '/admin/integrations'
+      path: '/integrations'
+      fullPath: '/admin/integrations'
+      preLoaderRoute: typeof AdminIntegrationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/maintenance': {
       id: '/admin/maintenance'
       path: '/maintenance'
@@ -909,24 +952,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContentTableRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/crm/investment': {
+      id: '/admin/crm/investment'
+      path: '/crm/investment'
+      fullPath: '/admin/crm/investment'
+      preLoaderRoute: typeof AdminCrmInvestmentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/crm/properties': {
+      id: '/admin/crm/properties'
+      path: '/crm/properties'
+      fullPath: '/admin/crm/properties'
+      preLoaderRoute: typeof AdminCrmPropertiesRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
   AdminBookingsRoute: typeof AdminBookingsRoute
+  AdminIntegrationsRoute: typeof AdminIntegrationsRoute
   AdminMaintenanceRoute: typeof AdminMaintenanceRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
   AdminContentTableRoute: typeof AdminContentTableRoute
+  AdminCrmInvestmentRoute: typeof AdminCrmInvestmentRoute
+  AdminCrmPropertiesRoute: typeof AdminCrmPropertiesRoute
   AdminContentIndexRoute: typeof AdminContentIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminBookingsRoute: AdminBookingsRoute,
+  AdminIntegrationsRoute: AdminIntegrationsRoute,
   AdminMaintenanceRoute: AdminMaintenanceRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
   AdminContentTableRoute: AdminContentTableRoute,
+  AdminCrmInvestmentRoute: AdminCrmInvestmentRoute,
+  AdminCrmPropertiesRoute: AdminCrmPropertiesRoute,
   AdminContentIndexRoute: AdminContentIndexRoute,
 }
 

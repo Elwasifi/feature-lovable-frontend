@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
 import avatar from "@/assets/concierge-avatar.jpg";
+import { ItineraryCards, parseItinerary } from "@/components/site/ConciergeItinerary";
 import { useI18n } from "@/i18n";
 
 type Pos = { x: number; y: number };

@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { streamText } from "ai";
+import { stepCountIs, streamText, tool } from "ai";
 import { z } from "zod";
 
 import {
   createLovableAiGatewayProvider,
   getLovableAiGatewayRunId,
 } from "@/lib/ai-gateway.server";
+import { CONCIERGE_TABLES, searchSiteContent } from "@/lib/concierge-search.server";
 
 const MODEL = "google/gemini-2.5-flash";
 

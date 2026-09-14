@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
-import { getAdminStats, type AdminStats } from "@/lib/admin.functions";
+import { getAdminStats, type AdminStats, type AdminStatsResult } from "@/lib/admin.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 

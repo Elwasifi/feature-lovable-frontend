@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
 import avatar from "@/assets/concierge-avatar.jpg";
+import { ItineraryCards, parseItinerary } from "@/components/site/ConciergeItinerary";
 import { useI18n } from "@/i18n";
 
 type Pos = { x: number; y: number };
@@ -213,21 +214,32 @@ export function FloatingConcierge() {
               </div>
             ) : (
               <div className="grid gap-2.5">
-                {messages.map((m, i) => (
-                  <div
-                    key={i}
-                    className={
-                      m.role === "user"
-                        ? "ms-auto max-w-[85%] rounded-xl rounded-ee-sm bg-gold px-3 py-2 text-[11px] leading-relaxed text-primary-foreground"
-                        : "me-auto max-w-[92%] whitespace-pre-wrap rounded-xl rounded-es-sm border border-border/70 bg-card px-3 py-2 text-[11px] leading-relaxed text-foreground"
-                    }
-                  >
-                    {m.content ||
-                      (busy && i === messages.length - 1 ? (
-                        <Loader2 className="size-3.5 animate-spin text-gold" />
-                      ) : null)}
-                  </div>
-                ))}
+                {messages.map((m, i) => {
+                  if (m.role === "user") {
+                    return (
+                      <div
+                        key={i}
+                        className="ms-auto max-w-[85%] rounded-xl rounded-ee-sm bg-gold px-3 py-2 text-[11px] leading-relaxed text-primary-foreground"
+                      >
+                        {m.content}
+                      </div>
+                    );
+                  }
+                  const { text, items } = parseItinerary(m.content);
+                  return (
+                    <div key={i} className="grid gap-2">
+                      {(text || items.length === 0) && (
+                        <div className="me-auto max-w-[92%] whitespace-pre-wrap rounded-xl rounded-es-sm border border-border/70 bg-card px-3 py-2 text-[11px] leading-relaxed text-foreground">
+                          {text ||
+                            (busy && i === messages.length - 1 ? (
+                              <Loader2 className="size-3.5 animate-spin text-gold" />
+                            ) : null)}
+                        </div>
+                      )}
+                      <ItineraryCards items={items} />
+                    </div>
+                  );
+                })}
               </div>
             )}
             {error && (

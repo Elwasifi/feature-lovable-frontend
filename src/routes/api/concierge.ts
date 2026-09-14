@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { streamText } from "ai";
+import { stepCountIs, streamText, tool } from "ai";
 import { z } from "zod";
 
 import {
   createLovableAiGatewayProvider,
   getLovableAiGatewayRunId,
 } from "@/lib/ai-gateway.server";
+import { CONCIERGE_TABLES, searchSiteContent } from "@/lib/concierge-search.server";
 
 const MODEL = "google/gemini-2.5-flash";
 
@@ -33,7 +34,23 @@ Hard rules:
 - Never give legal, medical, visa-eligibility, or investment advice, and never present yourself as an official source. Point users to the official authorities for visa, entry, health and emergency matters.
 - For emergencies, tell the user to contact the official emergency services immediately.
 - Do not invent prices, availability, bookings or opening hours as facts; say they must be confirmed with the provider or official site.
-- Politely decline anything outside travel and culture in Egypt.`;
+- Politely decline anything outside travel and culture in Egypt.
+
+Grounding in real site content:
+- You have no reliable memory of what exists on Egyptora Hub. The ONLY way to know is the search_site_content tool.
+- Before naming any specific place, hotel, museum, heritage site, event or offer — and ALWAYS before writing an itinerary — call search_site_content. For a multi-city or multi-day plan, call it once per city/category (e.g. "Luxor" with category heritage_sites, then "Cairo" with category museums) before you write anything.
+- Never name a place you did not see in a tool result in this conversation, even if you are sure it exists.
+- Only recommend entries the tool actually returned. Do not invent place names, slugs or entries that are not in the results.
+- If the tool returns nothing relevant, say plainly that the hub has no matching entry yet, and answer with general guidance instead of inventing a name.
+- General questions (weather, seasons, culture, packing, transport in general) do not need a tool call — answer them directly.
+
+Itinerary format:
+- When you propose a day-by-day plan, append a single fenced block at the very end of your reply, exactly in this form:
+\`\`\`itinerary
+[{"day":1,"name":"...","slug":"...","type":"museum","summary":"one short line"}]
+\`\`\`
+- "type" must be one of: ${CONCIERGE_TABLES.join(", ")}. "name" and "slug" must be copied verbatim from the tool results — never invented.
+- Keep the prose around it short: a one or two line intro before the block, and optionally a brief closing line. Do not repeat the same items as a long bullet list in the prose.`;
 
 export const Route = createFileRoute("/api/concierge")({
   server: {
@@ -59,14 +76,121 @@ export const Route = createFileRoute("/api/concierge")({
           getLovableAiGatewayRunId(request),
         );
 
+        // Everything the read-only search actually returned this request, so the
+        // itinerary block can be filtered down to genuinely existing entries.
+        const grounded = new Map<string, { name: string; slug: string; type: string }>();
+
         try {
           const result = streamText({
             model: gateway(MODEL),
             system: SYSTEM_PROMPT,
             messages: parsed.messages,
+            stopWhen: stepCountIs(6),
+            tools: {
+              search_site_content: tool({
+                description:
+                  "Search Egyptora Hub's real published content (governorates, destinations, heritage sites, museums, events, properties, offers). Returns only name, slug, type and a one-line summary. Read-only.",
+                inputSchema: z.object({
+                  query: z.string().min(2).max(120).describe("Free-text search, e.g. 'Luxor temple'"),
+                  category: z
+                    .enum(CONCIERGE_TABLES)
+                    .optional()
+                    .describe("Optional catalogue to restrict the search to"),
+                }),
+                execute: async ({ query, category }) => {
+                  const matches = await searchSiteContent(query, category);
+                  for (const m of matches) {
+                    grounded.set(`${m.type}:${m.slug}`, {
+                      name: m.name,
+                      slug: m.slug,
+                      type: m.type,
+                    });
+                  }
+                  return { matches };
+                },
+              }),
+            },
             onError: ({ error }) => console.error("[concierge] stream error", error),
           });
-          return result.toTextStreamResponse();
+          const encoder = new TextEncoder();
+          const stream = new ReadableStream<Uint8Array>({
+            async start(controller) {
+              let buffer = "";
+              let inBlock = false;
+              try {
+                for await (const chunk of result.textStream) {
+                  buffer += chunk;
+                  if (inBlock) continue;
+                  const idx = buffer.indexOf("```itinerary");
+                  if (idx !== -1) {
+                    const prose = buffer.slice(0, idx);
+                    if (prose) controller.enqueue(encoder.encode(prose));
+                    buffer = buffer.slice(idx);
+                    inBlock = true;
+                    continue;
+                  }
+                  // Hold back a short tail that could be a partial fence marker.
+                  const keep = Math.min(buffer.length, 12);
+                  const emit = buffer.slice(0, buffer.length - keep);
+                  buffer = buffer.slice(buffer.length - keep);
+                  if (emit) controller.enqueue(encoder.encode(emit));
+                }
+
+                if (!inBlock) {
+                  if (buffer) controller.enqueue(encoder.encode(buffer));
+                } else {
+                  const match = /```itinerary\s*([\s\S]*?)```/.exec(buffer);
+                  let raw: unknown[] = [];
+                  try {
+                    const parsedBlock: unknown = JSON.parse((match?.[1] ?? "").trim());
+                    if (Array.isArray(parsedBlock)) raw = parsedBlock;
+                  } catch {
+                    raw = [];
+                  }
+                  // Only keep items the read-only search actually returned.
+                  const items = raw
+                    .map((entry) => {
+                      const row = entry as {
+                        day?: unknown;
+                        slug?: unknown;
+                        type?: unknown;
+                        summary?: unknown;
+                      };
+                      const slug = typeof row.slug === "string" ? row.slug : "";
+                      const hit =
+                        grounded.get(`${String(row.type)}:${slug}`) ??
+                        [...grounded.values()].find((g) => g.slug === slug);
+                      if (!hit) return null;
+                      return {
+                        ...(typeof row.day === "number" ? { day: row.day } : {}),
+                        name: hit.name,
+                        slug: hit.slug,
+                        type: hit.type,
+                        summary: typeof row.summary === "string" ? row.summary : "",
+                      };
+                    })
+                    .filter((item): item is NonNullable<typeof item> => item !== null);
+
+                  if (items.length > 0) {
+                    controller.enqueue(
+                      encoder.encode(`\n\`\`\`itinerary\n${JSON.stringify(items)}\n\`\`\``),
+                    );
+                  }
+                }
+              } catch (streamError) {
+                console.error("[concierge] stream failed", streamError);
+              } finally {
+                controller.close();
+              }
+            },
+          });
+
+          return new Response(stream, {
+            headers: {
+              "content-type": "text/plain; charset=utf-8",
+              "cache-control": "no-store",
+            },
+          });
         } catch (error) {
           const status =
             typeof error === "object" && error !== null && "statusCode" in error

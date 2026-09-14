@@ -112,7 +112,7 @@ export const getGovernmentDashboard = createServerFn({ method: "POST" })
   .handler(async ({ context }): Promise<GovernmentDashboard> => {
     const [admin, viewer] = await Promise.all([
       checkRole(context, "admin"),
-      checkRole(context, "government_viewer" as never),
+      checkRole(context, "government_viewer"),
     ]);
     if (!admin && !viewer) return { authorized: false };
 

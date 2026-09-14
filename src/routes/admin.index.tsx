@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
-import { getAdminStats, type AdminStats } from "@/lib/admin.functions";
+import { getAdminStats, type AdminStats, type AdminStatsResult } from "@/lib/admin.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 
@@ -38,8 +39,13 @@ function AdminDashboard() {
 
   useEffect(() => {
     let active = true;
-    load()
-      .then((result) => {
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        if (!data.session) throw new Error("no session");
+        return load();
+      })
+      .then((result: AdminStatsResult) => {
         if (!active) return;
         if (!result.authorized) {
           setState("denied");

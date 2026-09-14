@@ -7,6 +7,7 @@ import {
   type AdminBooking,
   type AdminBookingsPage,
 } from "@/lib/admin-bookings.functions";
+import { supabase } from "@/integrations/supabase/client";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 
@@ -72,6 +73,11 @@ function AdminBookings() {
   const [notice, setNotice] = useState<string | null>(null);
 
   const fetchPage = useCallback(async () => {
+    const { data: sessionData } = await supabase.auth.getSession();
+    if (!sessionData.session) {
+      setState("denied");
+      return;
+    }
     const result = await load({ data: { status, itemType, page } });
     if (!result.authorized) {
       setState("denied");

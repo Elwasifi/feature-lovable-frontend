@@ -56,11 +56,13 @@ export async function searchSiteContent(
   const results = await Promise.all(
     tables.map(async (table) => {
       try {
-        const { data, error } = await supabaseAdmin
+        let q = supabaseAdmin
           .from(table)
           .select("name, slug, summary")
-          .or(`name.ilike.%${term}%,summary.ilike.%${term}%`)
-          .limit(perTable);
+          .or(`name.ilike.%${term}%,summary.ilike.%${term}%`);
+        // Never surface content that is still awaiting review.
+        if (table === "properties") q = (q as any).eq("moderation_state", "PUBLISHED");
+        const { data, error } = await q.limit(perTable);
         if (error) throw error;
         return (data ?? []).map((row) => ({
           name: String((row as { name?: string }).name ?? ""),

@@ -161,6 +161,66 @@ export type Database = {
         }
         Relationships: []
       }
+      crm_activity_log: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          item_id: string
+          item_type: string
+          note: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          item_id: string
+          item_type: string
+          note: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          item_id?: string
+          item_type?: string
+          note?: string
+        }
+        Relationships: []
+      }
+      crm_pipeline: {
+        Row: {
+          assigned_to: string | null
+          created_at: string
+          id: string
+          item_id: string
+          item_type: string
+          priority: string
+          stage: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          created_at?: string
+          id?: string
+          item_id: string
+          item_type: string
+          priority?: string
+          stage?: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          created_at?: string
+          id?: string
+          item_id?: string
+          item_type?: string
+          priority?: string
+          stage?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       destinations: {
         Row: {
           best_season: string | null
@@ -663,6 +723,8 @@ export type Database = {
           investment_max_usd: number | null
           investment_min_usd: number | null
           land_requirement_ha: number | null
+          last_submitted_at: string | null
+          moderation_state: string
           name: string
           restrictions: string[] | null
           risks: string[] | null
@@ -688,6 +750,8 @@ export type Database = {
           investment_max_usd?: number | null
           investment_min_usd?: number | null
           land_requirement_ha?: number | null
+          last_submitted_at?: string | null
+          moderation_state?: string
           name: string
           restrictions?: string[] | null
           risks?: string[] | null
@@ -713,6 +777,8 @@ export type Database = {
           investment_max_usd?: number | null
           investment_min_usd?: number | null
           land_requirement_ha?: number | null
+          last_submitted_at?: string | null
+          moderation_state?: string
           name?: string
           restrictions?: string[] | null
           risks?: string[] | null
@@ -908,6 +974,71 @@ export type Database = {
         }
         Relationships: []
       }
+      partner_assignments: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string
+          item_type: string
+          partner_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id: string
+          item_type: string
+          partner_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string
+          item_type?: string
+          partner_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "partner_assignments_partner_id_fkey"
+            columns: ["partner_id"]
+            isOneToOne: false
+            referencedRelation: "partners"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      partners: {
+        Row: {
+          active: boolean
+          contact_email: string | null
+          created_at: string
+          id: string
+          org_name: string
+          partner_type: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          active?: boolean
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          org_name: string
+          partner_type: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          active?: boolean
+          contact_email?: string | null
+          created_at?: string
+          id?: string
+          org_name?: string
+          partner_type?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       products: {
         Row: {
           category: string | null
@@ -1038,6 +1169,8 @@ export type Database = {
           governorate_slug: string
           id: string
           images: string[] | null
+          last_submitted_at: string | null
+          moderation_state: string
           name: string
           price_usd: number | null
           property_type: string | null
@@ -1059,6 +1192,8 @@ export type Database = {
           governorate_slug: string
           id: string
           images?: string[] | null
+          last_submitted_at?: string | null
+          moderation_state?: string
           name: string
           price_usd?: number | null
           property_type?: string | null
@@ -1080,6 +1215,8 @@ export type Database = {
           governorate_slug?: string
           id?: string
           images?: string[] | null
+          last_submitted_at?: string | null
+          moderation_state?: string
           name?: string
           price_usd?: number | null
           property_type?: string | null

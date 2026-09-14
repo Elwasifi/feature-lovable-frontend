@@ -79,6 +79,24 @@ export const Route = createFileRoute("/api/concierge")({
             model: gateway(MODEL),
             system: SYSTEM_PROMPT,
             messages: parsed.messages,
+            stopWhen: stepCountIs(6),
+            tools: {
+              search_site_content: tool({
+                description:
+                  "Search Egyptora Hub's real published content (governorates, destinations, heritage sites, museums, events, properties, offers). Returns only name, slug, type and a one-line summary. Read-only.",
+                inputSchema: z.object({
+                  query: z.string().min(2).max(120).describe("Free-text search, e.g. 'Luxor temple'"),
+                  category: z
+                    .enum(CONCIERGE_TABLES)
+                    .optional()
+                    .describe("Optional catalogue to restrict the search to"),
+                }),
+                execute: async ({ query, category }) => {
+                  const matches = await searchSiteContent(query, category);
+                  return { matches };
+                },
+              }),
+            },
             onError: ({ error }) => console.error("[concierge] stream error", error),
           });
           return result.toTextStreamResponse();

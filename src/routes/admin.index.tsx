@@ -45,7 +45,7 @@ function AdminDashboard() {
         if (!data.session) throw new Error("no session");
         return load();
       })
-      .then((result) => {
+      .then((result: AdminStatsResult) => {
         if (!active) return;
         if (!result.authorized) {
           setState("denied");

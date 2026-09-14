@@ -74,6 +74,10 @@ export const Route = createFileRoute("/api/concierge")({
           getLovableAiGatewayRunId(request),
         );
 
+        // Everything the read-only search actually returned this request, so the
+        // itinerary block can be filtered down to genuinely existing entries.
+        const grounded = new Map<string, { name: string; slug: string; type: string }>();
+
         try {
           const result = streamText({
             model: gateway(MODEL),

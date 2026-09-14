@@ -141,20 +141,20 @@ export const getContentRow = createServerFn({ method: "POST" })
       data,
       context,
     }): Promise<
-      Denied | Ok<{ row: Record<string, unknown> | null; governorates: string[]; eras: string[] }>
+      Denied | Ok<{ row: Record<string, any> | null; governorates: string[]; eras: string[] }>
     > => {
       if (!(await isAdmin(context))) return { authorized: false };
       const cfg = getTableConfig(data.table)!;
       const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-      let row: Record<string, unknown> | null = null;
+      let row: Record<string, any> | null = null;
       if (data.pk) {
         const { data: found } = await supabaseAdmin
           .from(cfg.table as any)
           .select("*")
           .eq(cfg.pk, data.pk)
           .maybeSingle();
-        row = (found as Record<string, unknown> | null) ?? null;
+        row = (found as Record<string, any> | null) ?? null;
       }
 
       const needsGov = cfg.fields.some((f) => f.fk === "governorates");
@@ -184,7 +184,7 @@ export const saveContentRow = createServerFn({ method: "POST" })
       mode: "create" | "update";
       pk: string;
       slug?: string;
-      values: Record<string, unknown>;
+      values: Record<string, any>;
     }) => {
       if (!getTableConfig(input?.table)) throw new Error("Unknown table");
       if (input.mode !== "create" && input.mode !== "update") throw new Error("Invalid mode");
@@ -198,7 +198,7 @@ export const saveContentRow = createServerFn({ method: "POST" })
       const cfg = getTableConfig(data.table)!;
       const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-      const payload: Record<string, unknown> = {};
+      const payload: Record<string, any> = {};
       try {
         for (const field of cfg.fields) {
           const value = coerce(field, data.values?.[field.name]);

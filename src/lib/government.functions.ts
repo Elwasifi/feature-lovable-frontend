@@ -124,14 +124,14 @@ export const getGovernmentDashboard = createServerFn({ method: "POST" })
     for (const table of GOVERNANCE_TABLES) {
       const pk = pkColumn(table);
       try {
-        const { data, error } = await supabaseAdmin
-          .from(table)
+        const { data, error } = await (supabaseAdmin.from(table) as any)
           .select(`${pk}, name, governance_status`)
           .limit(5000);
         if (error) throw error;
 
+        const rows = (data ?? []) as Array<Record<string, unknown>>;
         const counts: Record<string, number> = {};
-        for (const raw of (data ?? []) as Array<Record<string, unknown>>) {
+        for (const raw of rows) {
           const status = String(raw["governance_status"] ?? "PUBLIC_CONTENT");
           counts[status] = (counts[status] ?? 0) + 1;
           if (status === "PENDING_GOVERNMENT_LINK") {

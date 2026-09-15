@@ -120,3 +120,129 @@ function Contact() {
     </div>
   );
 }
+
+const FIELD =
+  "w-full rounded-lg border border-border bg-background/60 px-3 py-2.5 text-sm text-foreground outline-none focus:border-gold-line";
+
+function ContactForm() {
+  const { t } = useI18n();
+  const send = useServerFn(submitContactMessage);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    topic: topics[0]?.label ?? "General enquiry",
+    message: "",
+  });
+  const [error, setError] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const submit = async () => {
+    setError(null);
+    setSending(true);
+    try {
+      const result = await send({ data: form });
+      if (!result.ok) {
+        setError(t(result.error ?? "We couldn't send your message. Please try again."));
+        return;
+      }
+      setSent(true);
+      setForm({ ...form, name: "", email: "", message: "" });
+      toast.success(t("Thanks — your message has reached us."));
+    } catch (err) {
+      console.error("[contact] submit failed:", err);
+      setError(t("We couldn't send your message. Please try again."));
+    } finally {
+      setSending(false);
+    }
+  };
+
+  if (sent) {
+    return (
+      <div className="mb-8 flex items-start gap-3 rounded-2xl border border-gold-line bg-gold-soft p-7">
+        <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-gold" />
+        <div>
+          <p className="font-display text-xl text-foreground">{t("Message sent")}</p>
+          <p className="mt-1.5 text-sm text-muted-foreground">
+            {t("Thanks for getting in touch — our team will reply to you by email.")}
+          </p>
+          <button
+            type="button"
+            onClick={() => setSent(false)}
+            className="mt-4 rounded-full border border-gold-line px-4 py-2 text-xs font-semibold text-gold"
+          >
+            {t("Send another message")}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      className="mb-8 grid gap-4 rounded-2xl border border-border bg-card p-7"
+      onSubmit={(e) => {
+        e.preventDefault();
+        void submit();
+      }}
+    >
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="grid gap-1.5">
+          <span className="text-xs text-muted-foreground">{t("Your name")}</span>
+          <input
+            className={FIELD}
+            value={form.name}
+            maxLength={120}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
+          />
+        </label>
+        <label className="grid gap-1.5">
+          <span className="text-xs text-muted-foreground">{t("Email address")}</span>
+          <input
+            className={FIELD}
+            dir="ltr"
+            type="email"
+            value={form.email}
+            maxLength={255}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+          />
+        </label>
+      </div>
+      <label className="grid gap-1.5">
+        <span className="text-xs text-muted-foreground">{t("Topic")}</span>
+        <select
+          className={FIELD}
+          value={form.topic}
+          onChange={(e) => setForm({ ...form, topic: e.target.value })}
+        >
+          {topics.map((topic) => (
+            <option key={topic.label} value={topic.label}>
+              {t(topic.label)}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="grid gap-1.5">
+        <span className="text-xs text-muted-foreground">{t("Message")}</span>
+        <textarea
+          className={FIELD}
+          rows={5}
+          maxLength={4000}
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+        />
+      </label>
+
+      {error && <p className="text-sm text-hot">{error}</p>}
+
+      <button
+        type="submit"
+        disabled={sending}
+        className="inline-flex w-fit items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-primary-foreground disabled:opacity-60"
+      >
+        {sending ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+        {t("Send message")}
+      </button>
+    </form>
+  );
+}

@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { RequestBookingButton } from "@/lib/trip-actions";
 
 type Product = {
   id: string;
@@ -151,6 +152,15 @@ function ProductDetailPage() {
           <Fact label={t("Maker")} value={product.maker ? t(product.maker) : null} />
           <Fact label={t("Governorate")} value={t(govName(product.governorate_slug))} />
         </FactGrid>
+
+        <RequestBookingButton
+          className="mt-8"
+          itemType="product"
+          itemId={product.id}
+          itemName={product.name}
+          amount={product.price_egp}
+          currency="egp"
+        />
 
         <ChipList label={t("Tags")} items={product.tags} />
       </Section>

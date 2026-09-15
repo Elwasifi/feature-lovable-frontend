@@ -39,6 +39,7 @@ function NewTripPage() {
   const [endDate, setEndDate] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [saving, setSaving] = useState(false);
+  const [dateError, setDateError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!sessionLoading && !user) void navigate({ to: "/auth" });
@@ -50,6 +51,11 @@ function NewTripPage() {
       toast.error(t("Please add a trip title."));
       return;
     }
+    if (startDate && endDate && endDate < startDate) {
+      setDateError(t("The end date can't be before the start date."));
+      return;
+    }
+    setDateError(null);
     setSaving(true);
     try {
       const { data, error } = await supabase
@@ -114,10 +120,14 @@ function NewTripPage() {
                 type="date"
                 className={FIELD}
                 value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                  setDateError(null);
+                }}
               />
             </div>
           </div>
+          {dateError && <p className="text-sm text-hot">{dateError}</p>}
           <div>
             <label className="mb-1.5 block text-xs text-muted-foreground">
               {t("Cover image link (optional)")}

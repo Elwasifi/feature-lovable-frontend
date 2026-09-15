@@ -13,6 +13,7 @@ import {
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { RequestBookingButton } from "@/lib/trip-actions";
 
 type Country = {
   id: string;
@@ -158,6 +159,13 @@ function CountryDetailPage() {
             }
           />
         </FactGrid>
+
+        <RequestBookingButton
+          className="mt-8"
+          itemType="country"
+          itemId={country.id}
+          itemName={country.name}
+        />
 
         <ChipList label={t("Suggested routes")} items={country.suggested_routes} />
       </Section>

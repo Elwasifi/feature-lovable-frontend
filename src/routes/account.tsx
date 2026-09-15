@@ -92,44 +92,6 @@ const LIVE_STAGES = [
   "Completed",
 ];
 
-/* ---- Trips & reviews: still static preview data — there is no booking system yet.
-   Identity and profile below this point are real, backed by Supabase Auth + `profiles`. ---- */
-
-const DEMO_TRIPS: Trip[] = [
-  {
-    id: "demo-trip-1",
-    reference: "EO-DEMO-1042",
-    title: "Nile Heritage Journey",
-    destination: "Luxor & Aswan",
-    start_date: "2026-09-04",
-    end_date: "2026-09-09",
-    status: "in_progress",
-    live_stage: "Guide assigned",
-    progress: 40,
-    travellers: 2,
-    price_usd: 1480,
-    points_earned: 740,
-  },
-  {
-    id: "demo-trip-2",
-    reference: "EO-DEMO-0871",
-    title: "Red Sea Escape",
-    destination: "Hurghada",
-    start_date: "2026-05-12",
-    end_date: "2026-05-16",
-    status: "completed",
-    live_stage: "Completed",
-    progress: 100,
-    travellers: 3,
-    price_usd: 990,
-    points_earned: 495,
-  },
-];
-
-const DEMO_REVIEWS: Review[] = [
-  { id: "demo-review-1", trip_id: "demo-trip-2", rating: 5, comment: "Sample review — preview content." },
-];
-
 function AccountPage() {
   const { t } = useI18n();
   const navigate = useNavigate();
@@ -140,11 +102,47 @@ function AccountPage() {
   const [saving, setSaving] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const trips = DEMO_TRIPS;
-  const reviews = DEMO_REVIEWS;
+  const [trips, setTrips] = useState<Trip[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
 
-  const live = useMemo(() => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"), [trips]);
+  const live = useMemo(
+    () => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"),
+    [trips],
+  );
   const past = useMemo(() => trips.filter((x) => x.status === "completed"), [trips]);
+
+  // Real trips and reviews for this traveller — same rows /my-trips shows.
+  useEffect(() => {
+    if (!user) {
+      setTrips([]);
+      setReviews([]);
+      return;
+    }
+    let active = true;
+    (async () => {
+      try {
+        const [tripRes, reviewRes] = await Promise.all([
+          supabase
+            .from("trips")
+            .select(
+              "id, reference, title, destination, start_date, end_date, status, live_stage, progress, travellers, price_usd, points_earned",
+            )
+            .order("created_at", { ascending: false }),
+          supabase.from("trip_reviews").select("id, trip_id, rating, comment"),
+        ]);
+        if (tripRes.error) throw tripRes.error;
+        if (reviewRes.error) throw reviewRes.error;
+        if (!active) return;
+        setTrips((tripRes.data ?? []) as Trip[]);
+        setReviews((reviewRes.data ?? []) as Review[]);
+      } catch (err) {
+        console.error("[account] failed to load trips or reviews:", err);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   // This page is for signed-in travellers only — send anyone else to /auth.
   useEffect(() => {
@@ -251,8 +249,34 @@ function AccountPage() {
     }
   }
 
-  function tripActionNotLive() {
-    toast.info(t("Trip tracking is preview data — live booking isn't connected yet."));
+  // Reviews are real rows in `trip_reviews`, owned by the traveller.
+  async function saveReview(tripId: string, rating: number, comment: string) {
+    if (!user) return;
+    try {
+      const existing = reviews.find((r) => r.trip_id === tripId);
+      if (existing) {
+        const { data, error } = await supabase
+          .from("trip_reviews")
+          .update({ rating, comment: comment.trim() || null })
+          .eq("id", existing.id)
+          .select("id, trip_id, rating, comment")
+          .single();
+        if (error) throw error;
+        setReviews((prev) => prev.map((r) => (r.id === existing.id ? (data as Review) : r)));
+      } else {
+        const { data, error } = await supabase
+          .from("trip_reviews")
+          .insert({ trip_id: tripId, user_id: user.id, rating, comment: comment.trim() || null })
+          .select("id, trip_id, rating, comment")
+          .single();
+        if (error) throw error;
+        setReviews((prev) => [...prev, data as Review]);
+      }
+      toast.success(t("Thanks — your review has been saved."));
+    } catch (err) {
+      console.error("[account] failed to save review:", err);
+      toast.error(t("Couldn't save your review. Please try again."));
+    }
   }
 
   async function handleSignOut() {
@@ -281,7 +305,7 @@ function AccountPage() {
       <Container className="py-8 lg:py-12">
         <div className="mb-5 flex items-center gap-2.5 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
           <Info className="size-4 shrink-0" />
-          {t("Trip tracking and rewards below are preview data — live booking isn't connected yet.")}
+          {t("Rewards points and membership tiers are still preview values — your trips and reviews below are real.")}
         </div>
 
         {/* Identity header */}
@@ -369,10 +393,10 @@ function AccountPage() {
             (past.length ? (
               past.map((trip) => (
                 <PastTripCard
-                  key={trip.id}
+                  key={`${trip.id}:${reviews.find((r) => r.trip_id === trip.id)?.id ?? "new"}`}
                   trip={trip}
                   review={reviews.find((r) => r.trip_id === trip.id)}
-                  onSave={tripActionNotLive}
+                  onSave={(tripId, rating, comment) => void saveReview(tripId, rating, comment)}
                 />
               ))
             ) : (

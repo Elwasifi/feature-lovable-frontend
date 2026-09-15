@@ -63,6 +63,12 @@ function Contact() {
             title={t("Talk to the Egyptora Hub team")}
             description={t("One address handles every enquiry while the platform is in build. We reply from the same team that maintains the content.")}
           />
+          <ContactForm />
+
+          <p className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            {t("Or email us directly")}
+          </p>
+
           <div className="grid gap-5 lg:grid-cols-[1fr_1.2fr]">
             <div className="rounded-2xl border border-gold-line bg-card p-7">
               <Mail className="size-5 text-gold" />

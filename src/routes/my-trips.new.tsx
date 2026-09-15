@@ -39,6 +39,7 @@ function NewTripPage() {
   const [endDate, setEndDate] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [saving, setSaving] = useState(false);
+  const [dateError, setDateError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!sessionLoading && !user) void navigate({ to: "/auth" });

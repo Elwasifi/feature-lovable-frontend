@@ -178,7 +178,7 @@ const TP_FLIGHTS_SRC =
   `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=7879&campaign_id=100`;
 
 const TP_HOTELS_SRC =
-  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&locale=en&powered_by=true&searchUrl=search.hotellook.com&primary=%23D4AF37&special=%23C4C4C4&promo_id=4038&campaign_id=101`;
+  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&locale=en&powered_by=true&searchUrl=search.hotellook.com&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=4132&campaign_id=101`;
 
 function TravelpayoutsWidget({ src }: { src: string }) {
   const ref = useRef<HTMLDivElement>(null);

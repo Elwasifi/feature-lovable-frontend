@@ -265,7 +265,7 @@ export const saveContentRow = createServerFn({ method: "POST" })
         if (cfg.slugColumn) payload[cfg.slugColumn] = String(data.slug || pk).trim();
 
         const { error } = await supabaseAdmin.from(cfg.table as any).insert(payload as any);
-        if (error) return { authorized: true, ok: false, error: error.message };
+        if (error) return { authorized: true, ok: false, error: friendlyDbError(error) };
         return { authorized: true, ok: true, pk };
       }
 
@@ -273,7 +273,7 @@ export const saveContentRow = createServerFn({ method: "POST" })
         .from(cfg.table as any)
         .update(payload as any)
         .eq(cfg.pk, data.pk);
-      if (error) return { authorized: true, ok: false, error: error.message };
+      if (error) return { authorized: true, ok: false, error: friendlyDbError(error) };
       return { authorized: true, ok: true, pk: data.pk };
     },
   );
@@ -295,6 +295,6 @@ export const deleteContentRow = createServerFn({ method: "POST" })
       .from(cfg.table as any)
       .delete()
       .eq(cfg.pk, data.pk);
-    if (error) return { authorized: true, ok: false, error: error.message };
+    if (error) return { authorized: true, ok: false, error: friendlyDbError(error) };
     return { authorized: true, ok: true };
   });

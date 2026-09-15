@@ -324,6 +324,13 @@ function AccountPage() {
             </p>
           </div>
           <div className="ms-auto flex flex-wrap items-center gap-2">
+            <Link
+              to="/saved"
+              className="flex items-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-semibold text-muted-foreground transition-colors hover:border-gold-line hover:text-gold"
+            >
+              <Star className="size-4" />
+              {t("Saved items")}
+            </Link>
             {isAdmin && (
               <Link
                 to="/admin"

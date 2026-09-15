@@ -51,6 +51,11 @@ function NewTripPage() {
       toast.error(t("Please add a trip title."));
       return;
     }
+    if (startDate && endDate && endDate < startDate) {
+      setDateError(t("The end date can't be before the start date."));
+      return;
+    }
+    setDateError(null);
     setSaving(true);
     try {
       const { data, error } = await supabase

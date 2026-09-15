@@ -533,9 +533,11 @@ function AdminContentTable() {
       }
       if (!result.ok) {
         setNotice(result.error ?? t("Something went wrong. Please try again."));
+        toast.error(result.error ?? t("Something went wrong. Please try again."));
         return;
       }
       setNotice(t("Entry deleted."));
+      toast.success(t("Entry deleted."));
       setConfirmDelete(null);
       await fetchPage();
     } catch {
@@ -564,9 +566,12 @@ function AdminContentTable() {
           <ContentForm
             cfg={cfg}
             pk={editing.pk}
-            onDone={() => {
+            onDone={(saved) => {
               setEditing(null);
-              setNotice(t("Saved."));
+              if (saved) {
+                setNotice(t("Saved."));
+                toast.success(t("Saved — your changes are live."));
+              }
               void fetchPage();
             }}
             onDenied={() => setState("denied")}

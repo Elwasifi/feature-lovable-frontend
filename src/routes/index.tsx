@@ -167,18 +167,10 @@ function ViewAll({ href = "/#explore" }: { href?: string }) {
   );
 }
 
-// Travelpayouts affiliate marker for all widget embeds on this site.
-const TRAVELPAYOUTS_MARKER = "777434";
-
-// Official Travelpayouts embeds: the Aviasales-powered flight search form
-// (promo_id 7879 / campaign_id 100) and the Hotellook-powered hotel search form
-// (promo_id 4038 / campaign_id 101). Both scripts inject their own iframe next
-// to the <script> tag, so we append them into a container ref after mount.
-const TP_FLIGHTS_SRC =
-  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=7879&campaign_id=100`;
-
-const TP_HOTELS_SRC =
-  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&locale=en&powered_by=true&searchUrl=search.hotellook.com&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=4131&campaign_id=101`;
+// Official Travelpayouts widget script, generated from our Travelpayouts
+// account (marker 777434). Used for both the Flights and Hotels tabs.
+const TP_WIDGET_SRC =
+  "https://tpwgts.com/content?currency=usd&trs=574096&shmarker=777434&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D9B15B&color_button=%23D9B15B&color_icons=%23D9B15B&dark=%23F3F2ED&light=%230F1721&secondary=%230F1721&special=%23303944&color_focused=%23D9B15B&border_radius=12&plain=true&promo_id=7879&campaign_id=100";
 
 function TravelpayoutsWidget({ src }: { src: string }) {
   const ref = useRef<HTMLDivElement>(null);

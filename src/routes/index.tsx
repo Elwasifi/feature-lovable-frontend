@@ -250,9 +250,9 @@ function Hero() {
           </div>
 
           {activeTab === "Flights" ? (
-            <TravelpayoutsWidget key="tp-flights" src={TP_FLIGHTS_SRC} />
+            <TravelpayoutsWidget key="tp-flights" src={TP_WIDGET_SRC} />
           ) : activeTab === "Hotels" ? (
-            <TravelpayoutsWidget key="tp-hotels" src={TP_HOTELS_SRC} />
+            <TravelpayoutsWidget key="tp-hotels" src={TP_WIDGET_SRC} />
           ) : (
             <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
               <Field

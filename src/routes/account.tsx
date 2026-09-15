@@ -305,7 +305,7 @@ function AccountPage() {
       <Container className="py-8 lg:py-12">
         <div className="mb-5 flex items-center gap-2.5 rounded-xl border border-gold-line/50 bg-gold-soft px-4 py-3 text-xs text-gold">
           <Info className="size-4 shrink-0" />
-          {t("Trip tracking and rewards below are preview data — live booking isn't connected yet.")}
+          {t("Rewards points and membership tiers are still preview values — your trips and reviews below are real.")}
         </div>
 
         {/* Identity header */}
@@ -393,7 +393,7 @@ function AccountPage() {
             (past.length ? (
               past.map((trip) => (
                 <PastTripCard
-                  key={trip.id}
+                  key={`${trip.id}:${reviews.find((r) => r.trip_id === trip.id)?.id ?? "new"}`}
                   trip={trip}
                   review={reviews.find((r) => r.trip_id === trip.id)}
                   onSave={(tripId, rating, comment) => void saveReview(tripId, rating, comment)}

@@ -250,7 +250,7 @@ function ContentForm({
 }: {
   cfg: TableConfig;
   pk: string | null;
-  onDone: () => void;
+  onDone: (saved?: boolean) => void;
   onDenied: () => void;
 }) {
   const { t } = useI18n();
@@ -348,7 +348,7 @@ function ContentForm({
         setError(result.error ?? t("Something went wrong. Please try again."));
         return;
       }
-      onDone();
+      onDone(true);
     } catch {
       setError(t("Something went wrong. Please try again."));
     } finally {
@@ -430,7 +430,7 @@ function ContentForm({
       <div className="mt-6 flex gap-3">
         <button
           type="button"
-          onClick={onDone}
+          onClick={() => onDone(false)}
           className="rounded-full border border-border px-4 py-2 text-sm text-foreground"
         >
           {t("Cancel")}

@@ -206,14 +206,18 @@ function AuthPage() {
 
           <div className="mt-6 grid gap-2.5">
             <button
-              onClick={socialComingSoon}
+              type="button"
+              disabled={submitting}
+              onClick={() => void signInWithProvider("google")}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Chrome className="size-4 text-gold" />
               {t("Continue with Google")}
             </button>
             <button
-              onClick={socialComingSoon}
+              type="button"
+              disabled={submitting}
+              onClick={() => void signInWithProvider("apple")}
               className="flex h-12 items-center justify-center gap-3 rounded-xl border border-border bg-card/70 text-sm font-medium text-foreground transition-colors hover:border-gold-line disabled:opacity-60"
             >
               <Apple className="size-4 text-gold" />

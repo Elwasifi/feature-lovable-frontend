@@ -223,9 +223,10 @@ function TravelpayoutsWidget({ src }: { src: string }) {
     host.appendChild(script);
 
     let attached: ShadowRoot | null = null;
+    let bypass = false;
     const onCapture = (event: Event) => {
       const root = attached;
-      if (!root) return;
+      if (!root || bypass) return;
       const path = (event as MouseEvent).composedPath();
       const submit = path.find(
         (n) =>
@@ -240,11 +241,22 @@ function TravelpayoutsWidget({ src }: { src: string }) {
       if (!checkbox || !checkbox.checked) return;
       const url = buildHotelDeeplink(root);
       if (!url) return;
-      checkbox.click(); // widget skips its own same-tab hotel redirect
+
+      // Hold this submit, untick "Show hotels" so the widget performs only the
+      // flight search (its own new-tab behaviour), open the hotel deeplink in a
+      // new tab while we still have the click gesture, then replay the submit.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      checkbox.click();
       window.open(url, "_blank", "noopener,noreferrer");
       window.setTimeout(() => {
-        if (!checkbox.checked) checkbox.click();
-      }, 1500);
+        bypass = true;
+        submit.click();
+        window.setTimeout(() => {
+          bypass = false;
+          if (!checkbox.checked) checkbox.click();
+        }, 600);
+      }, 200);
     };
 
     const timer = window.setInterval(() => {

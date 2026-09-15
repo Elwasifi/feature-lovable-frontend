@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egyptora-hub.jpg";
+import { SaveButton } from "@/components/site/SaveButton";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
@@ -543,6 +544,13 @@ function Destinations() {
                 width={800}
                 height={600}
                 className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <SaveButton
+                variant="icon"
+                className="absolute end-2 top-2"
+                itemType="destination"
+                itemId={d.name.toLowerCase().replace(/\s+/g, "-")}
+                itemName={d.name}
               />
             </div>
             <div className="p-3">

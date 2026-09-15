@@ -110,12 +110,17 @@ export function ItemActions({
   itemId,
   itemName,
   itemImage,
+  amount,
+  currency,
   className,
 }: {
   itemType: TripItemType;
   itemId: string;
   itemName: string;
   itemImage?: string | null;
+  /** Real per-booking price, when the item type has one (e.g. properties). */
+  amount?: number | null;
+  currency?: string | null;
   className?: string;
 }) {
   const { t } = useI18n();

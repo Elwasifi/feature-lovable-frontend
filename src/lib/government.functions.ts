@@ -121,39 +121,39 @@ export const getGovernmentDashboard = createServerFn({ method: "POST" })
     const summary: GovernanceSummaryRow[] = [];
     const pending: GovernanceRow[] = [];
 
-    for (const table of GOVERNANCE_TABLES) {
-      const pk = pkColumn(table);
-      try {
-        const { data, error } = await (supabaseAdmin.from(table) as any)
-          .select(`${pk}, name, governance_status`)
-          .limit(5000);
-        if (error) throw error;
-
-        const rows = (data ?? []) as Array<Record<string, unknown>>;
-        const counts: Record<string, number> = {};
-        for (const raw of rows) {
-          const status = String(raw["governance_status"] ?? "PUBLIC_CONTENT");
-          counts[status] = (counts[status] ?? 0) + 1;
-          if (status === "PENDING_GOVERNMENT_LINK") {
-            const id = String(raw[pk] ?? "");
-            pending.push({
-              table,
-              id,
-              name: String(raw["name"] ?? id),
-              status,
-              href: id ? publicHref(table, id) : null,
-            });
-          }
+    const results = await Promise.all(
+      GOVERNANCE_TABLES.map(async (table) => {
+        const pk = pkColumn(table);
+        try {
+          const { data, error } = await (supabaseAdmin.from(table) as any)
+            .select(`${pk}, name, governance_status`)
+            .limit(5000);
+          if (error) throw error;
+          return { table, pk, rows: (data ?? []) as Array<Record<string, unknown>> };
+        } catch (err) {
+          console.error(`[government] failed to read ${table}:`, err);
+          return { table, pk, rows: [] as Array<Record<string, unknown>> };
         }
-        summary.push({
-          table,
-          counts,
-          total: rows.length,
-        });
-      } catch (err) {
-        console.error(`[government] failed to read ${table}:`, err);
-        summary.push({ table, counts: {}, total: 0 });
+      }),
+    );
+
+    for (const { table, pk, rows } of results) {
+      const counts: Record<string, number> = {};
+      for (const raw of rows) {
+        const status = String(raw["governance_status"] ?? "PUBLIC_CONTENT");
+        counts[status] = (counts[status] ?? 0) + 1;
+        if (status === "PENDING_GOVERNMENT_LINK") {
+          const id = String(raw[pk] ?? "");
+          pending.push({
+            table,
+            id,
+            name: String(raw["name"] ?? id),
+            status,
+            href: id ? publicHref(table, id) : null,
+          });
+        }
       }
+      summary.push({ table, counts, total: rows.length });
     }
 
     pending.sort((a, b) => a.table.localeCompare(b.table) || a.name.localeCompare(b.name));

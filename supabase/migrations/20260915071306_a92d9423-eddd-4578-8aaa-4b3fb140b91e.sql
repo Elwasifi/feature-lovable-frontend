@@ -1,0 +1,1 @@
+INSERT INTO public.user_roles (user_id, role) VALUES ('052717da-d89e-41c8-90f8-6196f0c19b51', 'government_viewer') ON CONFLICT DO NOTHING;

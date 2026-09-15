@@ -172,6 +172,43 @@ function ViewAll({ href = "/#explore" }: { href?: string }) {
 const TP_WIDGET_SRC =
   "https://tpwgts.com/content?currency=usd&trs=574096&shmarker=777434&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D9B15B&color_button=%23D9B15B&color_icons=%23D9B15B&dark=%23F3F2ED&light=%230F1721&secondary=%230F1721&special=%23303944&color_focused=%23D9B15B&border_radius=12&plain=true&promo_id=7879&campaign_id=100";
 
+// The widget's flight search already opens in a new tab (its form targets
+// _blank). Its "Show hotels" option, however, sends the *current* tab to the
+// Hotellook deeplink. The widget renders into an open shadow root on our own
+// page (no cross-origin iframe), so we intercept that one interaction: on
+// submit with "Show hotels" ticked we untick it (widget then only runs the
+// flight search), open the identical Hotellook deeplink in a new tab, and
+// restore the tick. Marker/tracking parameters are copied from the widget's
+// own hidden fields, never altered.
+function buildHotelDeeplink(root: ShadowRoot): string | null {
+  const val = (name: string) =>
+    (root.querySelector(`input[name="${name}"]`) as HTMLInputElement | null)?.value?.trim() ?? "";
+  const destination = val("destination_slug");
+  const checkIn = val("DateRange_from_name");
+  const checkOut = val("DateRange_to_name");
+  const marker = val("marker");
+  const promo = val("p");
+  if (!destination || !checkIn || !marker) return null;
+
+  const params = new URLSearchParams({
+    gateId: "2",
+    skipRulerCheck: "skip",
+    utm_campaign: "checkbox",
+    "flags[utm]": `tp_cascoon_${promo}`,
+    utm_source: "tp_cascoon",
+    utm_medium: `campaign_${promo}`,
+    destination,
+    selectedHotelId: destination,
+    language: val("locale") || "en",
+    currency: val("currency") || "usd",
+    marker,
+    adults: val("passengers_adults") || "1",
+    checkIn,
+  });
+  if (checkOut) params.set("checkOut", checkOut);
+  return `https://yasen.hotellook.com/adaptors/location_deeplink?${params.toString()}`;
+}
+
 function TravelpayoutsWidget({ src }: { src: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -184,7 +221,55 @@ function TravelpayoutsWidget({ src }: { src: string }) {
     script.async = true;
     script.charset = "utf-8";
     host.appendChild(script);
+
+    let attached: ShadowRoot | null = null;
+    let bypass = false;
+    const onCapture = (event: Event) => {
+      const root = attached;
+      if (!root || bypass) return;
+      const path = (event as MouseEvent).composedPath();
+      const submit = path.find(
+        (n) =>
+          n instanceof HTMLElement &&
+          (n.tagName === "BUTTON" || n.tagName === "INPUT") &&
+          (n as HTMLButtonElement).type === "submit",
+      ) as HTMLElement | undefined;
+      if (!submit) return;
+      const checkbox = root.querySelector(
+        'input[name="Show_hotels"]',
+      ) as HTMLInputElement | null;
+      if (!checkbox || !checkbox.checked) return;
+      const url = buildHotelDeeplink(root);
+      if (!url) return;
+
+      // Hold this submit, untick "Show hotels" so the widget performs only the
+      // flight search (its own new-tab behaviour), open the hotel deeplink in a
+      // new tab while we still have the click gesture, then replay the submit.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      checkbox.click();
+      window.open(url, "_blank", "noopener,noreferrer");
+      window.setTimeout(() => {
+        bypass = true;
+        submit.click();
+        window.setTimeout(() => {
+          bypass = false;
+          if (!checkbox.checked) checkbox.click();
+        }, 600);
+      }, 200);
+    };
+
+    const timer = window.setInterval(() => {
+      const el = host.querySelector("tp-cascoon");
+      const root = el?.shadowRoot ?? null;
+      if (!root || attached) return;
+      attached = root;
+      root.addEventListener("click", onCapture, true);
+    }, 400);
+
     return () => {
+      window.clearInterval(timer);
+      attached?.removeEventListener("click", onCapture, true);
       host.innerHTML = "";
     };
   }, [src]);

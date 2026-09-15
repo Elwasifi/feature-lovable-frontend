@@ -19,6 +19,7 @@ export function DashboardTopBar({
   showBack?: boolean;
 }) {
   const { t, lang } = useI18n();
+  const { user } = useAuth();
   const router = useRouter();
   const BackIcon = lang === "ar" ? ArrowRight : ArrowLeft;
   const goBack = () => {

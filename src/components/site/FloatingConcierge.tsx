@@ -8,7 +8,7 @@ import { useI18n } from "@/i18n";
 type Pos = { x: number; y: number };
 type ChatMessage = { role: "user" | "assistant"; content: string };
 
-const STORAGE_KEY = "egypt-one:concierge-pos";
+const STORAGE_KEY = "egyptora-hub:concierge-pos";
 const SIZE = 68;
 const MARGIN = 16;
 

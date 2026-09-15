@@ -1,4 +1,6 @@
-import { ArrowLeft, ArrowRight, Bell, Heart, Menu, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Menu, Search } from "lucide-react";
+import { NotificationsBell } from "@/components/site/NotificationsBell";
+import { useAuth } from "@/hooks/use-auth";
 import { Link, useRouter } from "@tanstack/react-router";
 import logo from "@/assets/egyptora-hub-logo.png.asset.json";
 import { SITE } from "@/config/site";
@@ -17,6 +19,7 @@ export function DashboardTopBar({
   showBack?: boolean;
 }) {
   const { t, lang } = useI18n();
+  const { user } = useAuth();
   const router = useRouter();
   const BackIcon = lang === "ar" ? ArrowRight : ArrowLeft;
   const goBack = () => {
@@ -70,21 +73,16 @@ export function DashboardTopBar({
           >
             <Search className="size-4" />
           </button>
-          <button
-            aria-label={t("Wishlist")}
-            className="hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
-          >
-            <Heart className="size-4" />
-          </button>
-          <button
-            aria-label={t("Notifications")}
-            className="relative hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
-          >
-            <Bell className="size-4" />
-            <span className="absolute -right-0.5 -top-0.5 grid size-4 place-items-center rounded-full bg-gold text-[9px] font-bold text-primary-foreground">
-              3
-            </span>
-          </button>
+          {user && (
+            <Link
+              to="/saved"
+              aria-label={t("Saved items")}
+              className="hidden size-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold sm:grid"
+            >
+              <Heart className="size-4" />
+            </Link>
+          )}
+          <NotificationsBell className="hidden sm:block" />
           <AuthButtons />
         </div>
       </div>

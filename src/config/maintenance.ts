@@ -7,10 +7,10 @@
  * MAINTENANCE_MODE below is only a hard override: true = force the site
  * closed regardless of the panel. Leave it false for normal operation.
  *
- * Owner bypass while closed: open the site once with ?bypass=egyptone
+ * Owner bypass while closed: open the site once with ?bypass=egyptorahub
  * (remove it with ?bypass=off).
  */
 export const MAINTENANCE_MODE = false;
 
-export const MAINTENANCE_BYPASS_KEY = "egypt-one:maintenance-bypass";
-export const MAINTENANCE_BYPASS_TOKEN = "egyptone";
+export const MAINTENANCE_BYPASS_KEY = "egyptora-hub:maintenance-bypass";
+export const MAINTENANCE_BYPASS_TOKEN = "egyptorahub";

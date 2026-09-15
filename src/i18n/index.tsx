@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { DEFAULT_LANG, LANGUAGES, type LangCode } from "./languages";
 import { dictionaries } from "./dictionary";
 
-const STORAGE_KEY = "egypt-one:lang";
+const STORAGE_KEY = "egyptora-hub:lang";
 
 type I18nValue = {
   lang: LangCode;

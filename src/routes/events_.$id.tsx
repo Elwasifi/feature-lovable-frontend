@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type EgyptEvent = {
@@ -177,13 +178,20 @@ function EventDetailPage() {
           />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="event"
-          itemId={event.id}
-          itemName={event.name}
-          itemImage={event.images?.[0] ?? null}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="event"
+            itemId={event.id}
+            itemName={event.name}
+            itemImage={event.images?.[0] ?? null}
+          />
+          <SaveButton
+            itemType="event"
+            itemId={event.id}
+            itemName={event.name}
+            itemImage={event.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Languages")} items={event.languages} />
         <ChipList label={t("Tags")} items={event.tags} />

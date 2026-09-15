@@ -13,6 +13,7 @@ import {
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { RequestBookingButton } from "@/lib/trip-actions";
 
 type Country = {
@@ -160,12 +161,18 @@ function CountryDetailPage() {
           />
         </FactGrid>
 
-        <RequestBookingButton
-          className="mt-8"
-          itemType="country"
-          itemId={country.id}
-          itemName={country.name}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <RequestBookingButton
+            itemType="country"
+            itemId={country.id}
+            itemName={country.name}
+          />
+          <SaveButton
+            itemType="country"
+            itemId={country.id}
+            itemName={country.name}
+          />
+        </div>
 
         <ChipList label={t("Suggested routes")} items={country.suggested_routes} />
       </Section>

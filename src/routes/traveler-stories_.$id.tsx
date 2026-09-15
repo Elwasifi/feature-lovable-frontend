@@ -11,6 +11,7 @@ import {
   FactGrid,
   ImageStrip,
 } from "@/components/site/DetailPrimitives";
+import { SaveButton } from "@/components/site/SaveButton";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
@@ -148,6 +149,14 @@ function StoryDetailPage() {
         </p>
 
         <ImageStrip images={story.images} alt={story.name} />
+
+        <SaveButton
+          className="mt-6"
+          itemType="traveller_story"
+          itemId={story.id}
+          itemName={story.name}
+          itemImage={story.images?.[0] ?? null}
+        />
 
         {story.summary && (
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground/85">

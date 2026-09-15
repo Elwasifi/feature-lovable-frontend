@@ -23,7 +23,7 @@ export const CURRENCIES: Currency[] = [
   { code: "JPY", symbol: "¥", label: "Japanese Yen", flag: "🇯🇵", perUsd: 152 },
 ];
 
-const STORAGE_KEY = "egypt-one:currency";
+const STORAGE_KEY = "egyptora-hub:currency";
 
 type CurrencyValue = {
   currency: Currency;

@@ -27,6 +27,7 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
+import { Route as SavedRouteImport } from './routes/saved'
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
 import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
@@ -156,6 +157,11 @@ const ProvidersRoute = ProvidersRouteImport.update({
 const ResearchProgramsRoute = ResearchProgramsRouteImport.update({
   id: '/research-programs',
   path: '/research-programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TravelerStoriesRoute = TravelerStoriesRouteImport.update({
@@ -378,6 +384,7 @@ export interface FileRoutesByFullPath {
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
+  '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
@@ -436,6 +443,7 @@ export interface FileRoutesByTo {
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
+  '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
@@ -496,6 +504,7 @@ export interface FileRoutesById {
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
   '/research-programs': typeof ResearchProgramsRoute
+  '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
   '/account_/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
@@ -557,6 +566,7 @@ export interface FileRouteTypes {
     | '/properties'
     | '/providers'
     | '/research-programs'
+    | '/saved'
     | '/traveler-stories'
     | '/account/bookings'
     | '/admin/bookings'
@@ -615,6 +625,7 @@ export interface FileRouteTypes {
     | '/properties'
     | '/providers'
     | '/research-programs'
+    | '/saved'
     | '/traveler-stories'
     | '/account/bookings'
     | '/admin/bookings'
@@ -674,6 +685,7 @@ export interface FileRouteTypes {
     | '/properties'
     | '/providers'
     | '/research-programs'
+    | '/saved'
     | '/traveler-stories'
     | '/account_/bookings'
     | '/admin/bookings'
@@ -734,6 +746,7 @@ export interface RootRouteChildren {
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
   ResearchProgramsRoute: typeof ResearchProgramsRoute
+  SavedRoute: typeof SavedRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
   AccountBookingsRoute: typeof AccountBookingsRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
@@ -891,6 +904,13 @@ declare module '@tanstack/react-router' {
       path: '/research-programs'
       fullPath: '/research-programs'
       preLoaderRoute: typeof ResearchProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/traveler-stories': {
@@ -1216,6 +1236,7 @@ const rootRouteChildren: RootRouteChildren = {
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
   ResearchProgramsRoute: ResearchProgramsRoute,
+  SavedRoute: SavedRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
   AccountBookingsRoute: AccountBookingsRoute,
   ApiConciergeRoute: ApiConciergeRoute,

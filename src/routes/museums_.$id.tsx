@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type Museum = {
@@ -159,13 +160,20 @@ function MuseumDetailPage() {
           />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="museum"
-          itemId={museum.id}
-          itemName={museum.name}
-          itemImage={museum.images?.[0] ?? null}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="museum"
+            itemId={museum.id}
+            itemName={museum.name}
+            itemImage={museum.images?.[0] ?? null}
+          />
+          <SaveButton
+            itemType="museum"
+            itemId={museum.id}
+            itemName={museum.name}
+            itemImage={museum.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Highlights")} items={museum.highlights} />
         <ChipList label={t("Tags")} items={museum.tags} />

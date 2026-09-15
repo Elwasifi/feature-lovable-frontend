@@ -396,7 +396,7 @@ function AccountPage() {
                   key={trip.id}
                   trip={trip}
                   review={reviews.find((r) => r.trip_id === trip.id)}
-                  onSave={tripActionNotLive}
+                  onSave={(tripId, rating, comment) => void saveReview(tripId, rating, comment)}
                 />
               ))
             ) : (

@@ -2,9 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { getMaintenance, setMaintenance } from "@/lib/maintenance.functions";
+import { getMyRoles } from "@/lib/roles.functions";
+import { supabase } from "@/integrations/supabase/client";
+import { AdminChecking, AdminDenied } from "@/components/admin/AdminStates";
 import { SITE } from "@/config/site";
 
 export const Route = createFileRoute("/admin/maintenance")({
+  ssr: false,
   component: MaintenanceAdmin,
   head: () => ({
     meta: [
@@ -22,13 +26,44 @@ export const Route = createFileRoute("/admin/maintenance")({
 function MaintenanceAdmin() {
   const read = useServerFn(getMaintenance);
   const write = useServerFn(setMaintenance);
+  const roles = useServerFn(getMyRoles);
+  const [access, setAccess] = useState<"loading" | "denied" | "ready">("loading");
   const [password, setPassword] = useState("");
   const [enabled, setEnabled] = useState<boolean | null>(null);
   const [status, setStatus] = useState<"idle" | "saving" | "error" | "saved">("idle");
 
+  // Page-level guard: a valid session AND the admin role (has_role) are required
+  // before anything is rendered. The password below stays as a second layer.
   useEffect(() => {
+    let active = true;
+    supabase.auth
+      .getSession()
+      .then(({ data }) => {
+        if (!data.session) throw new Error("no session");
+        return roles();
+      })
+      .then((result) => {
+        if (!active) return;
+        if (!result.admin) {
+          setAccess("denied");
+          return;
+        }
+        setAccess("ready");
+      })
+      .catch(() => active && setAccess("denied"));
+    return () => {
+      active = false;
+    };
+  }, [roles]);
+
+  useEffect(() => {
+    if (access !== "ready") return;
     read().then((r) => setEnabled(r.enabled)).catch(() => setEnabled(false));
-  }, [read]);
+  }, [read, access]);
+
+  if (access === "loading") return <AdminChecking />;
+  if (access === "denied") return <AdminDenied />;
+
 
   const apply = async (next: boolean) => {
     setStatus("saving");

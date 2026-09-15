@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
 import {
   deleteContentRow,
   getContentRow,
@@ -249,7 +250,7 @@ function ContentForm({
 }: {
   cfg: TableConfig;
   pk: string | null;
-  onDone: () => void;
+  onDone: (saved?: boolean) => void;
   onDenied: () => void;
 }) {
   const { t } = useI18n();
@@ -347,7 +348,7 @@ function ContentForm({
         setError(result.error ?? t("Something went wrong. Please try again."));
         return;
       }
-      onDone();
+      onDone(true);
     } catch {
       setError(t("Something went wrong. Please try again."));
     } finally {
@@ -429,7 +430,7 @@ function ContentForm({
       <div className="mt-6 flex gap-3">
         <button
           type="button"
-          onClick={onDone}
+          onClick={() => onDone(false)}
           className="rounded-full border border-border px-4 py-2 text-sm text-foreground"
         >
           {t("Cancel")}
@@ -532,9 +533,11 @@ function AdminContentTable() {
       }
       if (!result.ok) {
         setNotice(result.error ?? t("Something went wrong. Please try again."));
+        toast.error(result.error ?? t("Something went wrong. Please try again."));
         return;
       }
       setNotice(t("Entry deleted."));
+      toast.success(t("Entry deleted."));
       setConfirmDelete(null);
       await fetchPage();
     } catch {
@@ -563,9 +566,12 @@ function AdminContentTable() {
           <ContentForm
             cfg={cfg}
             pk={editing.pk}
-            onDone={() => {
+            onDone={(saved) => {
               setEditing(null);
-              setNotice(t("Saved."));
+              if (saved) {
+                setNotice(t("Saved."));
+                toast.success(t("Saved — your changes are live."));
+              }
               void fetchPage();
             }}
             onDenied={() => setState("denied")}

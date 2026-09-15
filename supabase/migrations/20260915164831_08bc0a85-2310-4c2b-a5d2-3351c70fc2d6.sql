@@ -1,0 +1,1 @@
+REVOKE ALL ON FUNCTION public.notify_booking_event() FROM PUBLIC, anon, authenticated;

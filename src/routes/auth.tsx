@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { consumeAfterAuth } from "@/lib/after-auth";
 import { ACCOUNT_TYPES, ACCOUNT_TYPE_LABEL } from "@/lib/account-types";
+import { lovable } from "@/integrations/lovable/index";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -61,8 +62,28 @@ function AuthPage() {
     }
   }, [sessionLoading, user, navigate]);
 
-  function socialComingSoon() {
-    setSocialNotice(true);
+  async function signInWithProvider(provider: "google" | "apple") {
+    setErrorMsg(null);
+    setSocialNotice(false);
+    setSubmitting(true);
+    try {
+      const result = await lovable.auth.signInWithOAuth(provider, {
+        redirect_uri: window.location.origin,
+      });
+      if (result.error) {
+        setErrorMsg(result.error.message ?? t("Something went wrong. Please try again."));
+        return;
+      }
+      if (result.redirected) return;
+      // Tokens received and the session is set — continue into the app.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- runtime path saved before sign-in
+      await navigate({ to: (consumeAfterAuth() ?? "/account") as any });
+    } catch (err) {
+      console.error("[auth] social sign-in failed", provider, err);
+      setErrorMsg(t("Something went wrong. Please try again."));
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   async function submit(e: React.FormEvent) {

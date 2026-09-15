@@ -31,6 +31,47 @@ async function isAdmin(context: { supabase: any; userId: string }) {
   return !error && data === true;
 }
 
+const prettyField = (name: string) =>
+  name
+    .replace(/_(slug|key|id)$/, "")
+    .replace(/_/g, " ")
+    .trim();
+
+/**
+ * Turn a database error into plain language for the admin.
+ * Raw driver/Postgres text is never surfaced.
+ */
+export function friendlyDbError(raw: unknown): string {
+  const message = typeof raw === "string" ? raw : ((raw as any)?.message ?? "");
+
+  const notNull = message.match(/null value in column "([^"]+)"/i);
+  if (notNull) return `Please fill in "${prettyField(notNull[1]!)}" — it can't be left empty.`;
+
+  if (/violates foreign key constraint/i.test(message)) {
+    const col = message.match(/Key \(([^)]+)\)=/i);
+    return col
+      ? `The "${prettyField(col[1]!)}" you chose doesn't exist. Please pick one from the list.`
+      : "One of the linked entries you chose doesn't exist. Please pick a value from the list.";
+  }
+
+  if (/duplicate key value|violates unique constraint/i.test(message)) {
+    const col = message.match(/Key \(([^)]+)\)=\(([^)]*)\)/i);
+    return col
+      ? `"${col[2]}" is already used by another entry — please choose a different ${prettyField(col[1]!)}.`
+      : "An entry with these details already exists. Please use different values.";
+  }
+
+  if (/violates check constraint/i.test(message)) {
+    return "One of the values isn't allowed here. Please review the fields and try again.";
+  }
+
+  if (/invalid input syntax|invalid input value/i.test(message)) {
+    return "One of the values is in the wrong format. Please review the fields and try again.";
+  }
+
+  return "That couldn't be saved. Please review the fields and try again.";
+}
+
 /** Coerce one submitted value to the shape the column expects. Unknown fields are dropped upstream. */
 function coerce(field: FieldConfig, raw: unknown): unknown {
   if (raw === undefined) return undefined;

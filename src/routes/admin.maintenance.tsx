@@ -2,9 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useState } from "react";
 import { getMaintenance, setMaintenance } from "@/lib/maintenance.functions";
+import { getMyRoles } from "@/lib/roles.functions";
+import { supabase } from "@/integrations/supabase/client";
+import { AdminChecking, AdminDenied } from "@/components/admin/AdminStates";
 import { SITE } from "@/config/site";
 
 export const Route = createFileRoute("/admin/maintenance")({
+  ssr: false,
   component: MaintenanceAdmin,
   head: () => ({
     meta: [

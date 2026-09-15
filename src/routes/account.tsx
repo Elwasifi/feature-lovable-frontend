@@ -102,11 +102,47 @@ function AccountPage() {
   const [saving, setSaving] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const trips = DEMO_TRIPS;
-  const reviews = DEMO_REVIEWS;
+  const [trips, setTrips] = useState<Trip[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
 
-  const live = useMemo(() => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"), [trips]);
+  const live = useMemo(
+    () => trips.filter((x) => x.status !== "completed" && x.status !== "cancelled"),
+    [trips],
+  );
   const past = useMemo(() => trips.filter((x) => x.status === "completed"), [trips]);
+
+  // Real trips and reviews for this traveller — same rows /my-trips shows.
+  useEffect(() => {
+    if (!user) {
+      setTrips([]);
+      setReviews([]);
+      return;
+    }
+    let active = true;
+    (async () => {
+      try {
+        const [tripRes, reviewRes] = await Promise.all([
+          supabase
+            .from("trips")
+            .select(
+              "id, reference, title, destination, start_date, end_date, status, live_stage, progress, travellers, price_usd, points_earned",
+            )
+            .order("created_at", { ascending: false }),
+          supabase.from("trip_reviews").select("id, trip_id, rating, comment"),
+        ]);
+        if (tripRes.error) throw tripRes.error;
+        if (reviewRes.error) throw reviewRes.error;
+        if (!active) return;
+        setTrips((tripRes.data ?? []) as Trip[]);
+        setReviews((reviewRes.data ?? []) as Review[]);
+      } catch (err) {
+        console.error("[account] failed to load trips or reviews:", err);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, [user]);
 
   // This page is for signed-in travellers only — send anyone else to /auth.
   useEffect(() => {

@@ -159,6 +159,13 @@ function CountryDetailPage() {
           />
         </FactGrid>
 
+        <RequestBookingButton
+          className="mt-8"
+          itemType="country"
+          itemId={country.id}
+          itemName={country.name}
+        />
+
         <ChipList label={t("Suggested routes")} items={country.suggested_routes} />
       </Section>
     </DetailShell>

@@ -152,6 +152,15 @@ function ProductDetailPage() {
           <Fact label={t("Governorate")} value={t(govName(product.governorate_slug))} />
         </FactGrid>
 
+        <RequestBookingButton
+          className="mt-8"
+          itemType="product"
+          itemId={product.id}
+          itemName={product.name}
+          amount={product.price_egp}
+          currency="egp"
+        />
+
         <ChipList label={t("Tags")} items={product.tags} />
       </Section>
     </DetailShell>

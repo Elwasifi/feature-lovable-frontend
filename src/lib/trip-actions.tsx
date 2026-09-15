@@ -242,6 +242,8 @@ export function ItemActions({
         item_name: itemName,
         status: "pending",
         contact_email: user.email ?? null,
+        amount: amount ?? null,
+        currency: amount != null ? (currency ?? "usd").toLowerCase() : null,
       });
       if (error) throw error;
       toast.success(t("Your request has been received, we'll be in touch."));

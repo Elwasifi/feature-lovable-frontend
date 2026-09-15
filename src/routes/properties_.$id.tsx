@@ -174,6 +174,8 @@ function PropertyDetailPage() {
           itemId={property.id}
           itemName={property.name}
           itemImage={property.images?.[0] ?? null}
+          amount={property.price_usd}
+          currency="usd"
         />
 
         <ChipList label={t("Tags")} items={property.tags} />

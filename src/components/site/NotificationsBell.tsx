@@ -75,7 +75,7 @@ export function NotificationsBell({ className }: { className?: string }) {
   const openItem = async (row: NotificationRow) => {
     if (!row.read) await markRead([row.id]);
     setOpen(false);
-    if (row.link) void navigate({ to: row.link });
+    if (row.link) void navigate({ to: row.link as never });
   };
 
   return (

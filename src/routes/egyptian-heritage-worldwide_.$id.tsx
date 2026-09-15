@@ -11,6 +11,7 @@ import {
   FactGrid,
   ImageStrip,
 } from "@/components/site/DetailPrimitives";
+import { SaveButton } from "@/components/site/SaveButton";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
@@ -148,6 +149,14 @@ function HeritageWorldwideDetailPage() {
         </p>
 
         <ImageStrip images={item.images} alt={item.name} />
+
+        <SaveButton
+          className="mt-6"
+          itemType="heritage_worldwide"
+          itemId={item.id}
+          itemName={item.name}
+          itemImage={item.images?.[0] ?? null}
+        />
 
         {item.summary && (
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground/85">

@@ -12,6 +12,7 @@ import {
   ImageStrip,
 } from "@/components/site/DetailPrimitives";
 import { governorates } from "@/data/governorates";
+import { SaveButton } from "@/components/site/SaveButton";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
@@ -131,6 +132,14 @@ function ResearchProgramDetailPage() {
         </p>
 
         <ImageStrip images={program.images} alt={program.name} />
+
+        <SaveButton
+          className="mt-6"
+          itemType="research_program"
+          itemId={program.id}
+          itemName={program.name}
+          itemImage={program.images?.[0] ?? null}
+        />
 
         {program.summary && (
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-foreground/85">

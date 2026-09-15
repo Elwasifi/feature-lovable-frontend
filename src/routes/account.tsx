@@ -92,44 +92,6 @@ const LIVE_STAGES = [
   "Completed",
 ];
 
-/* ---- Trips & reviews: still static preview data — there is no booking system yet.
-   Identity and profile below this point are real, backed by Supabase Auth + `profiles`. ---- */
-
-const DEMO_TRIPS: Trip[] = [
-  {
-    id: "demo-trip-1",
-    reference: "EO-DEMO-1042",
-    title: "Nile Heritage Journey",
-    destination: "Luxor & Aswan",
-    start_date: "2026-09-04",
-    end_date: "2026-09-09",
-    status: "in_progress",
-    live_stage: "Guide assigned",
-    progress: 40,
-    travellers: 2,
-    price_usd: 1480,
-    points_earned: 740,
-  },
-  {
-    id: "demo-trip-2",
-    reference: "EO-DEMO-0871",
-    title: "Red Sea Escape",
-    destination: "Hurghada",
-    start_date: "2026-05-12",
-    end_date: "2026-05-16",
-    status: "completed",
-    live_stage: "Completed",
-    progress: 100,
-    travellers: 3,
-    price_usd: 990,
-    points_earned: 495,
-  },
-];
-
-const DEMO_REVIEWS: Review[] = [
-  { id: "demo-review-1", trip_id: "demo-trip-2", rating: 5, comment: "Sample review — preview content." },
-];
-
 function AccountPage() {
   const { t } = useI18n();
   const navigate = useNavigate();

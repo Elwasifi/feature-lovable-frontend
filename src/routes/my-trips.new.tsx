@@ -120,10 +120,14 @@ function NewTripPage() {
                 type="date"
                 className={FIELD}
                 value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                  setDateError(null);
+                }}
               />
             </div>
           </div>
+          {dateError && <p className="text-sm text-hot">{dateError}</p>}
           <div>
             <label className="mb-1.5 block text-xs text-muted-foreground">
               {t("Cover image link (optional)")}

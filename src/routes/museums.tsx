@@ -126,7 +126,13 @@ function MuseumsPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Building2 className="size-4 shrink-0 text-gold" />
-                    {t(museum.name)}
+                    <Link
+                      to="/museums/$id"
+                      params={{ id: museum.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(museum.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="VERIFIED" />
                 </div>

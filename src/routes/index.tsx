@@ -16,7 +16,6 @@ import {
   Sun,
   TrendingUp,
   Utensils,
-  Heart,
   Landmark,
   MapPin,
   Search,
@@ -280,6 +279,9 @@ function TravelpayoutsWidget({ src }: { src: string }) {
 function Hero() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
+  // The Experiences / Packages / Attractions tabs are still decorative — there is no
+  // search backend for them yet, so the button says so instead of doing nothing.
+  const [comingSoon, setComingSoon] = useState(false);
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border/70">
@@ -320,7 +322,10 @@ function Hero() {
               <button
                 key={tab}
                 type="button"
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab);
+                  setComingSoon(false);
+                }}
                 aria-pressed={activeTab === tab}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
@@ -355,9 +360,22 @@ function Hero() {
                 label={t("Travellers")}
                 value={t("2 adults, 0 children")}
               />
-              <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
+              <button
+                type="button"
+                onClick={() => setComingSoon(true)}
+                title={t("This search is coming soon")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
                 <Search className="size-4" /> {t("Search")}
               </button>
+              {comingSoon && (
+                <p
+                  role="status"
+                  className="text-xs text-muted-foreground lg:col-span-4"
+                >
+                  {t("This search is coming soon — try the Flights or Hotels tabs meanwhile.")}
+                </p>
+              )}
             </div>
           )}
         </div>
@@ -461,12 +479,21 @@ function Discover() {
   return (
     <Block id="explore" eyebrow="Discovery" title="Discover Egypt in depth" action={<ViewAll />}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {discoverCards.map((card) => (
-          <a
-            key={card.title}
-            href={card.href}
-            className="group relative overflow-hidden rounded-2xl border border-border/70"
-          >
+        {discoverCards.map((card) => {
+          // Cards that point at a real route navigate client-side; the remaining ones are
+          // in-page anchors on this same page, which stay plain anchors so they still scroll.
+          const isRoute = !card.href.includes("#");
+          const Wrapper = isRoute ? Link : "a";
+          const wrapperProps = isRoute
+            ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+              ({ to: card.href as any } as const)
+            : ({ href: card.href } as const);
+          return (
+            <Wrapper
+              key={card.title}
+              {...wrapperProps}
+              className="group relative overflow-hidden rounded-2xl border border-border/70"
+            >
             <img
               src={card.image}
               alt={card.title}
@@ -481,8 +508,9 @@ function Discover() {
               <p className="font-display text-base text-foreground">{t(card.title)}</p>
               <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
             </div>
-          </a>
-        ))}
+            </Wrapper>
+          );
+        })}
       </div>
     </Block>
   );
@@ -516,9 +544,6 @@ function Destinations() {
                 height={600}
                 className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <span className="absolute end-2 top-2 grid size-8 place-items-center rounded-full border border-border/70 bg-background/70 text-muted-foreground backdrop-blur">
-                <Heart className="size-3.5" />
-              </span>
             </div>
             <div className="p-3">
               <p className="truncate font-display text-sm text-foreground">{t(d.name)}</p>

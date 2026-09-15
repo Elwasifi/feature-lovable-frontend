@@ -130,7 +130,13 @@ function HeritageSitesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Landmark className="size-4 shrink-0 text-gold" />
-                    {t(site.name)}
+                    <Link
+                      to="/heritage-sites/$id"
+                      params={{ id: site.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(site.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="VERIFIED" />
                 </div>

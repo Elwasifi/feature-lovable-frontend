@@ -13,6 +13,7 @@ import {
   Utensils,
   X,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { sidebarGroups } from "@/data/site";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -75,10 +76,19 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
                 <ul className="grid gap-0.5">
                   {group.items.map((item, ii) => {
                     const Icon = itemIcons[(gi * 3 + ii) % itemIcons.length]!;
+                    // Entries pointing at a real route navigate client-side; the
+                    // remaining ones are in-page anchors and stay plain anchors so
+                    // they still scroll to their section.
+                    const isRoute = !item.href.includes("#");
+                    const Wrapper = isRoute ? Link : "a";
+                    const wrapperProps = isRoute
+                      ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+                        ({ to: item.href as any } as const)
+                      : ({ href: item.href } as const);
                     return (
                       <li key={item.label}>
-                        <a
-                          href={item.href}
+                        <Wrapper
+                          {...wrapperProps}
                           onClick={onClose}
                           className="group flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-foreground"
                         >
@@ -94,7 +104,7 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
                               {item.badge}
                             </span>
                           )}
-                        </a>
+                        </Wrapper>
                       </li>
                     );
                   })}

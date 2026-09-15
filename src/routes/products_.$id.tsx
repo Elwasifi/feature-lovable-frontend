@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { RequestBookingButton } from "@/lib/trip-actions";
 
 type Product = {
   id: string;

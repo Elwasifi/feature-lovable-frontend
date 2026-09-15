@@ -100,7 +100,9 @@ function EventsPage() {
       <div className="flex items-start justify-between gap-3">
         <h3 className="flex items-center gap-2 font-display text-base text-foreground">
           <CalendarDays className="size-4 shrink-0 text-gold" />
-          {t(event.name)}
+          <Link to="/events/$id" params={{ id: event.id }} className="transition-colors hover:text-gold">
+            {t(event.name)}
+          </Link>
         </h3>
         <SourceBadge status="VERIFIED" />
       </div>

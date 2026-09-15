@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Quote, Star } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -153,7 +153,13 @@ function TravelerStoriesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <Quote className="size-4 shrink-0 text-gold" />
-                    {t(story.name)}
+                    <Link
+                      to="/traveler-stories/$id"
+                      params={{ id: story.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(story.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

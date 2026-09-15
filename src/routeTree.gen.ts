@@ -37,7 +37,10 @@ import { Route as AdminPartnersRouteImport } from './routes/admin.partners'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
+import { Route as EgyptianHeritageWorldwideIdRouteImport } from './routes/egyptian-heritage-worldwide_.$id'
+import { Route as EventsIdRouteImport } from './routes/events_.$id'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
+import { Route as HeritageSitesIdRouteImport } from './routes/heritage-sites_.$id'
 import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities_.$id'
 import { Route as LegalIndexRouteImport } from './routes/legal.index'
 import { Route as LegalSlugRouteImport } from './routes/legal.$slug'
@@ -47,6 +50,7 @@ import { Route as MarketplaceEgyptianCottonRouteImport } from './routes/marketpl
 import { Route as MarketplaceHandmadeCraftsRouteImport } from './routes/marketplace.handmade-crafts'
 import { Route as MarketplaceLocalProducersRouteImport } from './routes/marketplace.local-producers'
 import { Route as MarketplaceWearEgyptRouteImport } from './routes/marketplace.wear-egypt'
+import { Route as MuseumsIdRouteImport } from './routes/museums_.$id'
 import { Route as MyTripsIndexRouteImport } from './routes/my-trips.index'
 import { Route as MyTripsNewRouteImport } from './routes/my-trips.new'
 import { Route as OffersIdRouteImport } from './routes/offers_.$id'
@@ -54,6 +58,8 @@ import { Route as PartnersIndexRouteImport } from './routes/partners.index'
 import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 import { Route as PropertiesIdRouteImport } from './routes/properties_.$id'
 import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
+import { Route as ResearchProgramsIdRouteImport } from './routes/research-programs_.$id'
+import { Route as TravelerStoriesIdRouteImport } from './routes/traveler-stories_.$id'
 import { Route as TripsIdRouteImport } from './routes/trips.$id'
 import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
 import { Route as AdminContentTableRouteImport } from './routes/admin.content.$table'
@@ -202,9 +208,25 @@ const CountriesIdRoute = CountriesIdRouteImport.update({
   path: '/countries/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EgyptianHeritageWorldwideIdRoute =
+  EgyptianHeritageWorldwideIdRouteImport.update({
+    id: '/egyptian-heritage-worldwide_/$id',
+    path: '/egyptian-heritage-worldwide/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EventsIdRoute = EventsIdRouteImport.update({
+  id: '/events_/$id',
+  path: '/events/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HeritageSitesIdRoute = HeritageSitesIdRouteImport.update({
+  id: '/heritage-sites_/$id',
+  path: '/heritage-sites/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InvestmentOpportunitiesIdRoute =
@@ -256,6 +278,11 @@ const MarketplaceWearEgyptRoute = MarketplaceWearEgyptRouteImport.update({
   path: '/marketplace/wear-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MuseumsIdRoute = MuseumsIdRouteImport.update({
+  id: '/museums_/$id',
+  path: '/museums/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MyTripsIndexRoute = MyTripsIndexRouteImport.update({
   id: '/my-trips/',
   path: '/my-trips/',
@@ -289,6 +316,16 @@ const PropertiesIdRoute = PropertiesIdRouteImport.update({
 const ProvidersIdRoute = ProvidersIdRouteImport.update({
   id: '/providers_/$id',
   path: '/providers/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchProgramsIdRoute = ResearchProgramsIdRouteImport.update({
+  id: '/research-programs_/$id',
+  path: '/research-programs/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TravelerStoriesIdRoute = TravelerStoriesIdRouteImport.update({
+  id: '/traveler-stories_/$id',
+  path: '/traveler-stories/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TripsIdRoute = TripsIdRouteImport.update({
@@ -350,7 +387,10 @@ export interface FileRoutesByFullPath {
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
+  '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
+  '/events/$id': typeof EventsIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -359,11 +399,14 @@ export interface FileRoutesByFullPath {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/museums/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
+  '/research-programs/$id': typeof ResearchProgramsIdRoute
+  '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
@@ -402,7 +445,10 @@ export interface FileRoutesByTo {
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries/$id': typeof CountriesIdRoute
+  '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
+  '/events/$id': typeof EventsIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -411,11 +457,14 @@ export interface FileRoutesByTo {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/museums/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
+  '/research-programs/$id': typeof ResearchProgramsIdRoute
+  '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
   '/admin': typeof AdminIndexRoute
   '/legal': typeof LegalIndexRoute
@@ -456,7 +505,10 @@ export interface FileRoutesById {
   '/admin/users': typeof AdminUsersRoute
   '/api/concierge': typeof ApiConciergeRoute
   '/countries_/$id': typeof CountriesIdRoute
+  '/egyptian-heritage-worldwide_/$id': typeof EgyptianHeritageWorldwideIdRoute
+  '/events_/$id': typeof EventsIdRoute
   '/governorates/$id': typeof GovernoratesIdRoute
+  '/heritage-sites_/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities_/$id': typeof InvestmentOpportunitiesIdRoute
   '/legal/$slug': typeof LegalSlugRoute
   '/legal/consent': typeof LegalConsentRoute
@@ -465,11 +517,14 @@ export interface FileRoutesById {
   '/marketplace/handmade-crafts': typeof MarketplaceHandmadeCraftsRoute
   '/marketplace/local-producers': typeof MarketplaceLocalProducersRoute
   '/marketplace/wear-egypt': typeof MarketplaceWearEgyptRoute
+  '/museums_/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers_/$id': typeof OffersIdRoute
   '/products_/$id': typeof ProductsIdRoute
   '/properties_/$id': typeof PropertiesIdRoute
   '/providers_/$id': typeof ProvidersIdRoute
+  '/research-programs_/$id': typeof ResearchProgramsIdRoute
+  '/traveler-stories_/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
@@ -511,7 +566,10 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
+    | '/egyptian-heritage-worldwide/$id'
+    | '/events/$id'
     | '/governorates/$id'
+    | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -520,11 +578,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/museums/$id'
     | '/my-trips/new'
     | '/offers/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
+    | '/research-programs/$id'
+    | '/traveler-stories/$id'
     | '/trips/$id'
     | '/admin/'
     | '/legal/'
@@ -563,7 +624,10 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/api/concierge'
     | '/countries/$id'
+    | '/egyptian-heritage-worldwide/$id'
+    | '/events/$id'
     | '/governorates/$id'
+    | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -572,11 +636,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/museums/$id'
     | '/my-trips/new'
     | '/offers/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
+    | '/research-programs/$id'
+    | '/traveler-stories/$id'
     | '/trips/$id'
     | '/admin'
     | '/legal'
@@ -616,7 +683,10 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/api/concierge'
     | '/countries_/$id'
+    | '/egyptian-heritage-worldwide_/$id'
+    | '/events_/$id'
     | '/governorates/$id'
+    | '/heritage-sites_/$id'
     | '/investment-opportunities_/$id'
     | '/legal/$slug'
     | '/legal/consent'
@@ -625,11 +695,14 @@ export interface FileRouteTypes {
     | '/marketplace/handmade-crafts'
     | '/marketplace/local-producers'
     | '/marketplace/wear-egypt'
+    | '/museums_/$id'
     | '/my-trips/new'
     | '/offers_/$id'
     | '/products_/$id'
     | '/properties_/$id'
     | '/providers_/$id'
+    | '/research-programs_/$id'
+    | '/traveler-stories_/$id'
     | '/trips/$id'
     | '/admin/'
     | '/legal/'
@@ -665,7 +738,10 @@ export interface RootRouteChildren {
   AccountBookingsRoute: typeof AccountBookingsRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
+  EgyptianHeritageWorldwideIdRoute: typeof EgyptianHeritageWorldwideIdRoute
+  EventsIdRoute: typeof EventsIdRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
+  HeritageSitesIdRoute: typeof HeritageSitesIdRoute
   InvestmentOpportunitiesIdRoute: typeof InvestmentOpportunitiesIdRoute
   LegalSlugRoute: typeof LegalSlugRoute
   LegalConsentRoute: typeof LegalConsentRoute
@@ -674,11 +750,14 @@ export interface RootRouteChildren {
   MarketplaceHandmadeCraftsRoute: typeof MarketplaceHandmadeCraftsRoute
   MarketplaceLocalProducersRoute: typeof MarketplaceLocalProducersRoute
   MarketplaceWearEgyptRoute: typeof MarketplaceWearEgyptRoute
+  MuseumsIdRoute: typeof MuseumsIdRoute
   MyTripsNewRoute: typeof MyTripsNewRoute
   OffersIdRoute: typeof OffersIdRoute
   ProductsIdRoute: typeof ProductsIdRoute
   PropertiesIdRoute: typeof PropertiesIdRoute
   ProvidersIdRoute: typeof ProvidersIdRoute
+  ResearchProgramsIdRoute: typeof ResearchProgramsIdRoute
+  TravelerStoriesIdRoute: typeof TravelerStoriesIdRoute
   TripsIdRoute: typeof TripsIdRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
@@ -884,11 +963,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/egyptian-heritage-worldwide_/$id': {
+      id: '/egyptian-heritage-worldwide_/$id'
+      path: '/egyptian-heritage-worldwide/$id'
+      fullPath: '/egyptian-heritage-worldwide/$id'
+      preLoaderRoute: typeof EgyptianHeritageWorldwideIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events_/$id': {
+      id: '/events_/$id'
+      path: '/events/$id'
+      fullPath: '/events/$id'
+      preLoaderRoute: typeof EventsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/governorates/$id': {
       id: '/governorates/$id'
       path: '/governorates/$id'
       fullPath: '/governorates/$id'
       preLoaderRoute: typeof GovernoratesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/heritage-sites_/$id': {
+      id: '/heritage-sites_/$id'
+      path: '/heritage-sites/$id'
+      fullPath: '/heritage-sites/$id'
+      preLoaderRoute: typeof HeritageSitesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/investment-opportunities_/$id': {
@@ -954,6 +1054,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketplaceWearEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/museums_/$id': {
+      id: '/museums_/$id'
+      path: '/museums/$id'
+      fullPath: '/museums/$id'
+      preLoaderRoute: typeof MuseumsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/my-trips/': {
       id: '/my-trips/'
       path: '/my-trips'
@@ -1001,6 +1108,20 @@ declare module '@tanstack/react-router' {
       path: '/providers/$id'
       fullPath: '/providers/$id'
       preLoaderRoute: typeof ProvidersIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research-programs_/$id': {
+      id: '/research-programs_/$id'
+      path: '/research-programs/$id'
+      fullPath: '/research-programs/$id'
+      preLoaderRoute: typeof ResearchProgramsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/traveler-stories_/$id': {
+      id: '/traveler-stories_/$id'
+      path: '/traveler-stories/$id'
+      fullPath: '/traveler-stories/$id'
+      preLoaderRoute: typeof TravelerStoriesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trips/$id': {
@@ -1099,7 +1220,10 @@ const rootRouteChildren: RootRouteChildren = {
   AccountBookingsRoute: AccountBookingsRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
+  EgyptianHeritageWorldwideIdRoute: EgyptianHeritageWorldwideIdRoute,
+  EventsIdRoute: EventsIdRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
+  HeritageSitesIdRoute: HeritageSitesIdRoute,
   InvestmentOpportunitiesIdRoute: InvestmentOpportunitiesIdRoute,
   LegalSlugRoute: LegalSlugRoute,
   LegalConsentRoute: LegalConsentRoute,
@@ -1108,11 +1232,14 @@ const rootRouteChildren: RootRouteChildren = {
   MarketplaceHandmadeCraftsRoute: MarketplaceHandmadeCraftsRoute,
   MarketplaceLocalProducersRoute: MarketplaceLocalProducersRoute,
   MarketplaceWearEgyptRoute: MarketplaceWearEgyptRoute,
+  MuseumsIdRoute: MuseumsIdRoute,
   MyTripsNewRoute: MyTripsNewRoute,
   OffersIdRoute: OffersIdRoute,
   ProductsIdRoute: ProductsIdRoute,
   PropertiesIdRoute: PropertiesIdRoute,
   ProvidersIdRoute: ProvidersIdRoute,
+  ResearchProgramsIdRoute: ResearchProgramsIdRoute,
+  TravelerStoriesIdRoute: TravelerStoriesIdRoute,
   TripsIdRoute: TripsIdRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,

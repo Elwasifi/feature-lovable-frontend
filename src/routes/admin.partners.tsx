@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
 import { AdminChecking, AdminDenied, adminHead } from "@/components/admin/AdminStates";
 import {
   PARTNER_TYPES,
@@ -118,6 +119,7 @@ function AdminPartnersPage() {
     setBusy(false);
     if (!result.authorized) return setState("denied");
     if (!result.ok) return setError(result.error ?? "Could not save.");
+    toast.success(editing ? t("Partner updated.") : t("Partner created."));
     startCreate();
     await refresh();
   };

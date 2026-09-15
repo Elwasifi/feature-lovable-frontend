@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -116,6 +117,7 @@ export function CrmBoard({ itemType, heading }: { itemType: CrmItemType; heading
       setError(result.error ?? "Could not save.");
       return;
     }
+    toast.success(t("Saved — the pipeline has been updated."));
     await refresh();
   };
 
@@ -133,6 +135,7 @@ export function CrmBoard({ itemType, heading }: { itemType: CrmItemType; heading
       setError(result.error ?? "Could not save the note.");
       return;
     }
+    toast.success(t("Note added."));
     setNoteDraft("");
     await openItem(current.id);
   };

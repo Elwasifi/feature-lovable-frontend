@@ -298,7 +298,7 @@ export const footerColumns: { title: string; links: FooterLink[] }[] = [
     links: [
       { label: "Investment Sectors", href: "/#invest" },
       { label: "Opportunities", href: "/#invest" },
-      { label: "Partner With Us" },
+      { label: "Partner With Us", to: "/partners" },
       { label: "Press & Media" },
     ],
   },

@@ -132,7 +132,13 @@ function ResearchProgramsPage() {
                 <div className="flex items-start justify-between gap-3">
                   <h2 className="flex items-center gap-2 font-display text-base text-foreground">
                     <GraduationCap className="size-4 shrink-0 text-gold" />
-                    {t(program.name)}
+                    <Link
+                      to="/research-programs/$id"
+                      params={{ id: program.id }}
+                      className="transition-colors hover:text-gold"
+                    >
+                      {t(program.name)}
+                    </Link>
                   </h2>
                   <SourceBadge status="DEMO" />
                 </div>

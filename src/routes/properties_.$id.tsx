@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type Property = {
@@ -168,15 +169,22 @@ function PropertyDetailPage() {
           <Fact label={t("Governorate")} value={t(govName(property.governorate_slug))} />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="property"
-          itemId={property.id}
-          itemName={property.name}
-          itemImage={property.images?.[0] ?? null}
-          amount={property.price_usd}
-          currency="usd"
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="property"
+            itemId={property.id}
+            itemName={property.name}
+            itemImage={property.images?.[0] ?? null}
+            amount={property.price_usd}
+            currency="usd"
+          />
+          <SaveButton
+            itemType="property"
+            itemId={property.id}
+            itemName={property.name}
+            itemImage={property.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Tags")} items={property.tags} />
       </Section>

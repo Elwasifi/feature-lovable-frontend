@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { RequestBookingButton } from "@/lib/trip-actions";
 
 // As on the list page, the source dataset's "demo_verification_label" is deliberately
@@ -171,14 +172,21 @@ function ProviderDetailPage() {
           />
         </FactGrid>
 
-        <RequestBookingButton
-          className="mt-8"
-          itemType="provider"
-          itemId={provider.id}
-          itemName={provider.name}
-          amount={provider.price_from}
-          currency={provider.currency}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <RequestBookingButton
+            itemType="provider"
+            itemId={provider.id}
+            itemName={provider.name}
+            amount={provider.price_from}
+            currency={provider.currency}
+          />
+          <SaveButton
+            itemType="provider"
+            itemId={provider.id}
+            itemName={provider.name}
+            itemImage={provider.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Specialties")} items={provider.specialties} />
         <ChipList label={t("Amenities")} items={provider.amenities} />

@@ -14,6 +14,7 @@ import {
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type Offer = {
@@ -117,13 +118,20 @@ function OfferDetailPage() {
           <Fact label={t("Offer type")} value={offer.kind ? t(offer.kind) : null} />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="offer"
-          itemId={offer.id}
-          itemName={offer.name}
-          itemImage={offer.images?.[0] ?? null}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="offer"
+            itemId={offer.id}
+            itemName={offer.name}
+            itemImage={offer.images?.[0] ?? null}
+          />
+          <SaveButton
+            itemType="offer"
+            itemId={offer.id}
+            itemName={offer.name}
+            itemImage={offer.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Tags")} items={offer.tags} />
       </Section>

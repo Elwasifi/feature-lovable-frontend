@@ -14,6 +14,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type Opportunity = {
@@ -197,12 +198,18 @@ function OpportunityDetailPage() {
           />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="investment_opportunity"
-          itemId={opportunity.id}
-          itemName={opportunity.name}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="investment_opportunity"
+            itemId={opportunity.id}
+            itemName={opportunity.name}
+          />
+          <SaveButton
+            itemType="investment_opportunity"
+            itemId={opportunity.id}
+            itemName={opportunity.name}
+          />
+        </div>
 
         <ChipList label={t("Demand signals")} items={opportunity.demand_signals} />
         <ChipList label={t("Restrictions")} items={opportunity.restrictions} />

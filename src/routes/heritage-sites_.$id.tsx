@@ -15,6 +15,7 @@ import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
 
 type HeritageSite = {
@@ -157,13 +158,20 @@ function HeritageSiteDetailPage() {
           />
         </FactGrid>
 
-        <ItemActions
-          className="mt-8"
-          itemType="heritage_site"
-          itemId={site.id}
-          itemName={site.name}
-          itemImage={site.images?.[0] ?? null}
-        />
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <ItemActions
+            itemType="heritage_site"
+            itemId={site.id}
+            itemName={site.name}
+            itemImage={site.images?.[0] ?? null}
+          />
+          <SaveButton
+            itemType="heritage_site"
+            itemId={site.id}
+            itemName={site.name}
+            itemImage={site.images?.[0] ?? null}
+          />
+        </div>
 
         <ChipList label={t("Accessibility")} items={site.accessibility} />
         <ChipList label={t("Related figures")} items={site.related_figures} />

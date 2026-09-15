@@ -249,8 +249,34 @@ function AccountPage() {
     }
   }
 
-  function tripActionNotLive() {
-    toast.info(t("Trip tracking is preview data — live booking isn't connected yet."));
+  // Reviews are real rows in `trip_reviews`, owned by the traveller.
+  async function saveReview(tripId: string, rating: number, comment: string) {
+    if (!user) return;
+    try {
+      const existing = reviews.find((r) => r.trip_id === tripId);
+      if (existing) {
+        const { data, error } = await supabase
+          .from("trip_reviews")
+          .update({ rating, comment: comment.trim() || null })
+          .eq("id", existing.id)
+          .select("id, trip_id, rating, comment")
+          .single();
+        if (error) throw error;
+        setReviews((prev) => prev.map((r) => (r.id === existing.id ? (data as Review) : r)));
+      } else {
+        const { data, error } = await supabase
+          .from("trip_reviews")
+          .insert({ trip_id: tripId, user_id: user.id, rating, comment: comment.trim() || null })
+          .select("id, trip_id, rating, comment")
+          .single();
+        if (error) throw error;
+        setReviews((prev) => [...prev, data as Review]);
+      }
+      toast.success(t("Thanks — your review has been saved."));
+    } catch (err) {
+      console.error("[account] failed to save review:", err);
+      toast.error(t("Couldn't save your review. Please try again."));
+    }
   }
 
   async function handleSignOut() {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -167,8 +167,43 @@ function ViewAll({ href = "/#explore" }: { href?: string }) {
   );
 }
 
+// Travelpayouts affiliate marker for all widget embeds on this site.
+const TRAVELPAYOUTS_MARKER = "777434";
+
+// Official Travelpayouts embeds: the Aviasales-powered flight search form
+// (promo_id 7879 / campaign_id 100) and the Hotellook-powered hotel search form
+// (promo_id 4038 / campaign_id 101). Both scripts inject their own iframe next
+// to the <script> tag, so we append them into a container ref after mount.
+const TP_FLIGHTS_SRC =
+  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&show_hotels=false&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=7879&campaign_id=100`;
+
+const TP_HOTELS_SRC =
+  `https://tp.media/content?currency=usd&shmarker=${TRAVELPAYOUTS_MARKER}&locale=en&powered_by=true&searchUrl=search.hotellook.com&primary_override=%23D4AF37&color_button=%23D4AF37&color_icons=%23D4AF37&dark=%23262626&light=%23FFFFFF&secondary=%23FFFFFF&special=%23C4C4C4&color_focused=%23D4AF37&border_radius=12&plain=true&promo_id=4131&campaign_id=101`;
+
+function TravelpayoutsWidget({ src }: { src: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const host = ref.current;
+    if (!host) return;
+    host.innerHTML = "";
+    const script = document.createElement("script");
+    script.src = src;
+    script.async = true;
+    script.charset = "utf-8";
+    host.appendChild(script);
+    return () => {
+      host.innerHTML = "";
+    };
+  }, [src]);
+
+  return <div ref={ref} className="w-full min-w-0 overflow-x-hidden [&_iframe]:!w-full" />;
+}
+
 function Hero() {
   const { t } = useI18n();
+  const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
+
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border/70">
       <img
@@ -204,38 +239,50 @@ function Hero() {
 
         <div className="mt-6 rounded-2xl border border-border/70 bg-background/90 p-3 backdrop-blur-xl">
           <div className="flex gap-1 overflow-x-auto pb-2 [scrollbar-width:none]">
-            {searchTabs.map((tab, i) => (
+            {searchTabs.map((tab) => (
               <button
                 key={tab}
+                type="button"
+                onClick={() => setActiveTab(tab)}
+                aria-pressed={activeTab === tab}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
-                  i === 0 ? "bg-gold-soft text-gold" : "text-muted-foreground hover:text-foreground",
+                  activeTab === tab
+                    ? "bg-gold-soft text-gold"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {t(tab)}
               </button>
             ))}
           </div>
-          <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
-            <Field
-              icon={<MapPin className="size-4" />}
-              label={t("Where are you going?")}
-              value="Cairo, Luxor, Aswan"
-            />
-            <Field
-              icon={<CalendarDays className="size-4" />}
-              label={t("Dates")}
-              value={t("Select dates")}
-            />
-            <Field
-              icon={<Users className="size-4" />}
-              label={t("Travellers")}
-              value={t("2 adults, 0 children")}
-            />
-            <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
-              <Search className="size-4" /> {t("Search")}
-            </button>
-          </div>
+
+          {activeTab === "Flights" ? (
+            <TravelpayoutsWidget key="tp-flights" src={TP_FLIGHTS_SRC} />
+          ) : activeTab === "Hotels" ? (
+            <TravelpayoutsWidget key="tp-hotels" src={TP_HOTELS_SRC} />
+          ) : (
+            <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
+              <Field
+                icon={<MapPin className="size-4" />}
+                label={t("Where are you going?")}
+                value="Cairo, Luxor, Aswan"
+              />
+              <Field
+                icon={<CalendarDays className="size-4" />}
+                label={t("Dates")}
+                value={t("Select dates")}
+              />
+              <Field
+                icon={<Users className="size-4" />}
+                label={t("Travellers")}
+                value={t("2 adults, 0 children")}
+              />
+              <button className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
+                <Search className="size-4" /> {t("Search")}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

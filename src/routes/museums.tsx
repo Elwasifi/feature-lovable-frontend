@@ -10,6 +10,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Museum = {
   id: string;
@@ -66,7 +67,8 @@ export const Route = createFileRoute("/museums")({
 const govName = (slug: string) => governorates.find((g) => g.id === slug)?.name ?? slug;
 
 function MuseumsPage() {
-  const { museums } = Route.useLoaderData();
+  const { museums: museumsSource } = Route.useLoaderData();
+  const museums = useLocalizedRows("museums", museumsSource);
   const { t } = useI18n();
   const [gov, setGov] = useState<string | null>(null);
 

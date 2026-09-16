@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { RequestBookingButton } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Product = {
   id: string;
@@ -91,7 +92,8 @@ function ProductNotFound() {
 }
 
 function ProductDetailPage() {
-  const { product } = Route.useLoaderData();
+  const { product: productSource } = Route.useLoaderData();
+  const product = useLocalizedRow("products", productSource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

@@ -16,6 +16,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Opportunity = {
   id: string;
@@ -113,7 +114,8 @@ function OpportunityNotFound() {
 }
 
 function OpportunityDetailPage() {
-  const { opportunity } = Route.useLoaderData();
+  const { opportunity: opportunitySource } = Route.useLoaderData();
+  const opportunity = useLocalizedRow("investment_opportunities", opportunitySource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

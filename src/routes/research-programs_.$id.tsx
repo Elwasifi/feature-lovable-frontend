@@ -16,6 +16,7 @@ import { SaveButton } from "@/components/site/SaveButton";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type ResearchProgram = {
   id: string;
@@ -96,7 +97,8 @@ function ResearchProgramNotFound() {
 }
 
 function ResearchProgramDetailPage() {
-  const { program } = Route.useLoaderData();
+  const { program: programSource } = Route.useLoaderData();
+  const program = useLocalizedRow("research_programs", programSource);
   const { t } = useI18n();
 
   return (

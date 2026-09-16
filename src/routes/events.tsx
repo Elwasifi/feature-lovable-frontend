@@ -10,6 +10,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type EgyptEvent = {
   id: string;
@@ -80,7 +81,8 @@ function formatDateRange(start: string | null, end: string | null, lang: string)
 }
 
 function EventsPage() {
-  const { events } = Route.useLoaderData();
+  const { events: eventsSource } = Route.useLoaderData();
+  const events = useLocalizedRows("events", eventsSource);
   const { t, lang } = useI18n();
   const [category, setCategory] = useState<string | null>(null);
 

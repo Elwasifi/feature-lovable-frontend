@@ -16,6 +16,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type TravellerStory = {
   id: string;
@@ -119,7 +120,8 @@ function Stars({ rating }: { rating: number | null }) {
 }
 
 function StoryDetailPage() {
-  const { story } = Route.useLoaderData();
+  const { story: storySource } = Route.useLoaderData();
+  const story = useLocalizedRow("traveller_stories", storySource);
   const { t } = useI18n();
 
   return (

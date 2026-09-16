@@ -16,6 +16,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Offer = {
   id: string;
@@ -83,7 +84,8 @@ function OfferNotFound() {
 }
 
 function OfferDetailPage() {
-  const { offer } = Route.useLoaderData();
+  const { offer: offerSource } = Route.useLoaderData();
+  const offer = useLocalizedRow("offers", offerSource);
   const { t } = useI18n();
 
   return (

@@ -3,6 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 const title = "Handmade Crafts — artisans, workshops & studios | Egyptora Hub";
 const description =
@@ -28,6 +29,7 @@ export const Route = createFileRoute("/marketplace/handmade-crafts")({
 });
 
 function HandmadeCraftsPage() {
-  const { products } = Route.useLoaderData();
+  const { products: productsSource } = Route.useLoaderData();
+  const products = useLocalizedRows("products", productsSource);
   return <MarketplaceSection page={marketplacePageBySlug["handmade-crafts"]} products={products} />;
 }

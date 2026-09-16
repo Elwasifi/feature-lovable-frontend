@@ -10,6 +10,7 @@ import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Era = {
   key: string;
@@ -90,8 +91,9 @@ const heroChapter = encChapters[0]!;
 
 function EncyclopediaPage() {
   const { t } = useI18n();
-  const { eras, rulers } = Route.useLoaderData();
-
+  const { eras: erasSource, rulers: rulersSource } = Route.useLoaderData();
+  const eras = useLocalizedRows("eras", erasSource, "key");
+  const rulers = useLocalizedRows("rulers", rulersSource);
   const rulersByEra = new Map<string, Ruler[]>();
   for (const ruler of rulers) {
     if (!ruler.era) continue;

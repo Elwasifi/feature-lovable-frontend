@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type HeritageSite = {
   id: string;
@@ -100,7 +101,8 @@ function HeritageSiteNotFound() {
 }
 
 function HeritageSiteDetailPage() {
-  const { site } = Route.useLoaderData();
+  const { site: siteSource } = Route.useLoaderData();
+  const site = useLocalizedRow("heritage_sites", siteSource);
   const { t } = useI18n();
 
   return (

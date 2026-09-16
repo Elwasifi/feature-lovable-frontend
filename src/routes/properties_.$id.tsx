@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Property = {
   id: string;
@@ -95,7 +96,8 @@ function PropertyNotFound() {
 }
 
 function PropertyDetailPage() {
-  const { property } = Route.useLoaderData();
+  const { property: propertySource } = Route.useLoaderData();
+  const property = useLocalizedRow("properties", propertySource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

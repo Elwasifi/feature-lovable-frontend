@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type EgyptEvent = {
   id: string;
@@ -109,7 +110,8 @@ function EventNotFound() {
 }
 
 function EventDetailPage() {
-  const { event } = Route.useLoaderData();
+  const { event: eventSource } = Route.useLoaderData();
+  const event = useLocalizedRow("events", eventSource);
   const { t, lang } = useI18n();
 
   return (

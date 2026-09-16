@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Offer = {
   id: string;
@@ -52,7 +53,8 @@ export const Route = createFileRoute("/offers")({
 });
 
 function OffersPage() {
-  const { offers } = Route.useLoaderData();
+  const { offers: offersSource } = Route.useLoaderData();
+  const offers = useLocalizedRows("offers", offersSource);
   const { t } = useI18n();
   const [kind, setKind] = useState<string | null>(null);
 

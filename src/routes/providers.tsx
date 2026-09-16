@@ -10,6 +10,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 // Note: the source dataset's original "verification" field is intentionally not surfaced
 // here (see the `demo_verification_label` column comment in Supabase) — 239 of 389 demo
@@ -78,7 +79,8 @@ export const Route = createFileRoute("/providers")({
 const govName = (slug: string) => governorates.find((g) => g.id === slug)?.name ?? slug;
 
 function ProvidersPage() {
-  const { providers } = Route.useLoaderData();
+  const { providers: providersSource } = Route.useLoaderData();
+  const providers = useLocalizedRows("providers", providersSource);
   const { t } = useI18n();
   const [type, setType] = useState<string | null>(null);
 

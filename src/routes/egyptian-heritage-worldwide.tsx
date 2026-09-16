@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type HeritageWorldwideItem = {
   id: string;
@@ -83,7 +84,8 @@ export const Route = createFileRoute("/egyptian-heritage-worldwide")({
 });
 
 function HeritageWorldwidePage() {
-  const { items, eras } = Route.useLoaderData();
+  const { items: itemsSource, eras } = Route.useLoaderData();
+  const items = useLocalizedRows("heritage_worldwide", itemsSource);
   const { t } = useI18n();
   const [country, setCountry] = useState<string | null>(null);
 

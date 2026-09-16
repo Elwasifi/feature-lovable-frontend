@@ -15,6 +15,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { RequestBookingButton } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Country = {
   id: string;
@@ -92,7 +93,8 @@ function CountryNotFound() {
 }
 
 function CountryDetailPage() {
-  const { country } = Route.useLoaderData();
+  const { country: countrySource } = Route.useLoaderData();
+  const country = useLocalizedRow("countries", countrySource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

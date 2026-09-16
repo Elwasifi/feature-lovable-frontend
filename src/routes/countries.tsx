@@ -9,6 +9,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Country = {
   id: string;
@@ -60,7 +61,8 @@ export const Route = createFileRoute("/countries")({
 });
 
 function CountriesPage() {
-  const { countries } = Route.useLoaderData();
+  const { countries: countriesSource } = Route.useLoaderData();
+  const countries = useLocalizedRows("countries", countriesSource);
   const { t, lang } = useI18n();
   const [region, setRegion] = useState<string | null>(null);
 

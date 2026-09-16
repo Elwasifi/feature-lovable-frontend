@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { RequestBookingButton } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 // As on the list page, the source dataset's "demo_verification_label" is deliberately
 // not surfaced — it would misrepresent real verification status.
@@ -99,7 +100,8 @@ function ProviderNotFound() {
 }
 
 function ProviderDetailPage() {
-  const { provider } = Route.useLoaderData();
+  const { provider: providerSource } = Route.useLoaderData();
+  const provider = useLocalizedRow("providers", providerSource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

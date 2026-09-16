@@ -10,6 +10,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type HeritageSite = {
   id: string;
@@ -73,7 +74,8 @@ const accessStyles: Record<string, string> = {
 };
 
 function HeritageSitesPage() {
-  const { sites } = Route.useLoaderData();
+  const { sites: sitesSource } = Route.useLoaderData();
+  const sites = useLocalizedRows("heritage_sites", sitesSource);
   const { t } = useI18n();
   const [era, setEra] = useState<string | null>(null);
 

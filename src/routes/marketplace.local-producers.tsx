@@ -3,6 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 const title = "Local Producers — cooperatives, farms & workshops | Egyptora Hub";
 const description =
@@ -28,6 +29,7 @@ export const Route = createFileRoute("/marketplace/local-producers")({
 });
 
 function LocalProducersPage() {
-  const { products } = Route.useLoaderData();
+  const { products: productsSource } = Route.useLoaderData();
+  const products = useLocalizedRows("products", productsSource);
   return <MarketplaceSection page={marketplacePageBySlug["local-producers"]} products={products} />;
 }

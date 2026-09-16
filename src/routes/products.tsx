@@ -10,6 +10,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Product = {
   id: string;
@@ -72,7 +73,8 @@ function formatEgp(egp: number | null, lang: string) {
 }
 
 function ProductsPage() {
-  const { products } = Route.useLoaderData();
+  const { products: productsSource } = Route.useLoaderData();
+  const products = useLocalizedRows("products", productsSource);
   const { t, lang } = useI18n();
   const [category, setCategory] = useState<string | null>(null);
 

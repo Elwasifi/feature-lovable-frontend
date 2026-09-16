@@ -10,6 +10,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type Property = {
   id: string;
@@ -67,7 +68,8 @@ function formatPrice(usd: number | null, lang: string) {
 }
 
 function PropertiesPage() {
-  const { properties } = Route.useLoaderData();
+  const { properties: propertiesSource } = Route.useLoaderData();
+  const properties = useLocalizedRows("properties", propertiesSource);
   const { t, lang } = useI18n();
   const [type, setType] = useState<string | null>(null);
 

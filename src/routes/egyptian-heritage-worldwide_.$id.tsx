@@ -15,6 +15,7 @@ import { SaveButton } from "@/components/site/SaveButton";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type HeritageWorldwideItem = {
   id: string;
@@ -111,7 +112,8 @@ function HeritageWorldwideNotFound() {
 }
 
 function HeritageWorldwideDetailPage() {
-  const { item, eraName } = Route.useLoaderData();
+  const { item: itemSource, eraName } = Route.useLoaderData();
+  const item = useLocalizedRow("heritage_worldwide", itemSource);
   const { t } = useI18n();
 
   return (

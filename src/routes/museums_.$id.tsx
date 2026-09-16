@@ -17,6 +17,7 @@ import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveButton } from "@/components/site/SaveButton";
 import { ItemActions } from "@/lib/trip-actions";
+import { useLocalizedRow } from "@/lib/localized-content";
 
 type Museum = {
   id: string;
@@ -97,7 +98,8 @@ function MuseumNotFound() {
 }
 
 function MuseumDetailPage() {
-  const { museum } = Route.useLoaderData();
+  const { museum: museumSource } = Route.useLoaderData();
+  const museum = useLocalizedRow("museums", museumSource);
   const { t, lang } = useI18n();
   const locale = lang === "ar" ? "ar-EG" : "en-US";
 

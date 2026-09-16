@@ -10,6 +10,7 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 type InvestmentOpportunity = {
   id: string;
@@ -74,7 +75,8 @@ function formatRange(min: number | null, max: number | null, lang: string) {
 }
 
 function InvestmentOpportunitiesPage() {
-  const { opportunities } = Route.useLoaderData();
+  const { opportunities: opportunitiesSource } = Route.useLoaderData();
+  const opportunities = useLocalizedRows("investment_opportunities", opportunitiesSource);
   const { t, lang } = useI18n();
   const [sector, setSector] = useState<string | null>(null);
 

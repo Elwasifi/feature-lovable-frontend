@@ -3,6 +3,7 @@ import { MarketplaceSection } from "@/components/site/MarketplaceSection";
 import { marketplacePageBySlug } from "@/data/marketplace";
 import { loadCollectionProducts } from "@/lib/marketplace-products";
 import { SITE } from "@/config/site";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 const title = "Wear Egypt — embroidery, jewellery & heritage fashion | Egyptora Hub";
 const description =
@@ -28,6 +29,7 @@ export const Route = createFileRoute("/marketplace/wear-egypt")({
 });
 
 function WearEgyptPage() {
-  const { products } = Route.useLoaderData();
+  const { products: productsSource } = Route.useLoaderData();
+  const products = useLocalizedRows("products", productsSource);
   return <MarketplaceSection page={marketplacePageBySlug["wear-egypt"]} products={products} />;
 }

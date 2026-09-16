@@ -119,6 +119,33 @@ export type Database = {
         }
         Relationships: []
       }
+      content_translations: {
+        Row: {
+          created_at: string
+          fields: Json
+          lang: string
+          row_id: string
+          table_name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          fields?: Json
+          lang: string
+          row_id: string
+          table_name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          fields?: Json
+          lang?: string
+          row_id?: string
+          table_name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       countries: {
         Row: {
           created_at: string | null

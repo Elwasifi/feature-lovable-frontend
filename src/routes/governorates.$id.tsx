@@ -8,6 +8,7 @@ import { mailto, SITE } from "@/config/site";
 import { governorates } from "@/data/governorates";
 import { governorateProfiles, type Bilingual } from "@/data/governorate-profiles";
 import { supabase } from "@/integrations/supabase/client";
+import { useLocalizedRows } from "@/lib/localized-content";
 
 // Real place records for the "#places" section below, loaded from Supabase (public.destinations).
 // This is separate from `governorates.ts`'s own `sites` array, which stays as-is and keeps
@@ -103,7 +104,8 @@ function GovernorateNotFound() {
 
 function GovernoratePage() {
   const { id } = Route.useParams();
-  const { destinations } = Route.useLoaderData();
+  const { destinations: destinationsSource } = Route.useLoaderData();
+  const destinations = useLocalizedRows("destinations", destinationsSource);
   const { t, lang } = useI18n();
   const gov = governorates.find((g) => g.id === id)!;
   const profile = governorateProfiles[id]!;

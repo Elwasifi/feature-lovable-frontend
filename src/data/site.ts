@@ -26,7 +26,8 @@ import promoHotel from "@/assets/promo-hotel.jpg";
 
 export type SidebarGroup = {
   title: string;
-  items: { label: string; href: string; badge?: "New" | "Hot" | "AI" }[];
+  /** `soon` entries are planned sections: shown, badged and not navigable. */
+  items: { label: string; href: string; badge?: "New" | "Hot" | "AI"; soon?: boolean }[];
 };
 
 export const sidebarGroups: SidebarGroup[] = [
@@ -379,16 +380,14 @@ import promoSummer from "@/assets/promo-summer.jpg";
 import promoCruise from "@/assets/promo-cruise.jpg";
 import promoAdventure from "@/assets/promo-adventure.jpg";
 
-export const topTabs = [
-  "Home",
-  "Explore",
-  "Experiences",
-  "Stay",
-  "Events",
-  "Transport",
-  "Services",
-  "eSIM & Connectivity",
-] as const;
+// Only tabs with a real destination stay in the top bar. The planned sections
+// (Experiences, Stay, Transport, Services, eSIM) moved to the sidebar as
+// clearly marked "Coming soon" entries instead of dead links.
+export const topTabs: { label: string; to?: string; href?: string }[] = [
+  { label: "Home", to: "/" },
+  { label: "Explore", href: "/#explore" },
+  { label: "Events", to: "/events" },
+];
 
 export const searchTabs = ["Experiences", "Hotels", "Flights", "Packages", "Attractions"] as const;
 

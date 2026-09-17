@@ -694,7 +694,6 @@ function Governorates() {
       id="governorates"
       eyebrow="The map of Egypt"
       title="Explore all 27 governorates"
-      action={<ViewAll href="/#governorates" />}
     >
       <EgyptMap />
 
@@ -708,9 +707,10 @@ function ThroughTime() {
     <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {eras.map((era) => (
-          <figure
+          <Link
             key={era.name}
-            className="group min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
+            to="/encyclopedia"
+            className="group block min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
           >
             <img
               src={era.image}
@@ -726,8 +726,9 @@ function ThroughTime() {
                 {era.years}
               </p>
             </figcaption>
-          </figure>
+          </Link>
         ))}
+
       </div>
     </Block>
   );

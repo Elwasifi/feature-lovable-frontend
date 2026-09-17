@@ -411,14 +411,16 @@ export const topTabs: { label: string; to?: string; href?: string }[] = [
 
 export const searchTabs = ["Experiences", "Hotels", "Flights", "Packages", "Attractions"] as const;
 
+// `gov` is the matching governorate page id (/governorates/$id).
 export const popularDestinations = [
-  { name: "Cairo", note: "The Timeless Capital", rating: 4.8, reviews: "3,245", image: destCairo },
-  { name: "Luxor", note: "World's Greatest Open Air Museum", rating: 4.9, reviews: "2,150", image: destLuxor },
-  { name: "Aswan", note: "Nubian Charm & Timeless Beauty", rating: 4.7, reviews: "1,842", image: destAswan },
-  { name: "Sharm El Sheikh", note: "Red Sea Paradise", rating: 4.6, reviews: "1,523", image: destSharm },
-  { name: "Hurghada", note: "Sun. Sea. Adventure.", rating: 4.5, reviews: "1,234", image: destHurghada },
-  { name: "Alexandria", note: "Mediterranean Elegance", rating: 4.6, reviews: "987", image: destAlexandria },
+  { name: "Cairo", gov: "cairo", note: "The Timeless Capital", rating: 4.8, reviews: "3,245", image: destCairo },
+  { name: "Luxor", gov: "luxor", note: "World's Greatest Open Air Museum", rating: 4.9, reviews: "2,150", image: destLuxor },
+  { name: "Aswan", gov: "aswan", note: "Nubian Charm & Timeless Beauty", rating: 4.7, reviews: "1,842", image: destAswan },
+  { name: "Sharm El Sheikh", gov: "south-sinai", note: "Red Sea Paradise", rating: 4.6, reviews: "1,523", image: destSharm },
+  { name: "Hurghada", gov: "red-sea", note: "Sun. Sea. Adventure.", rating: 4.5, reviews: "1,234", image: destHurghada },
+  { name: "Alexandria", gov: "alexandria", note: "Mediterranean Elegance", rating: 4.6, reviews: "987", image: destAlexandria },
 ];
+
 
 export const promoBanners = [
   {

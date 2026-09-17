@@ -1,4 +1,4 @@
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import type { ComponentType, SVGProps } from "react";
 import { Container } from "@/components/site/Primitives";
 import { SITE } from "@/config/site";
@@ -32,6 +32,7 @@ const socials: Social[] = [
   { label: "TikTok", handle: "@user6696191367181", href: SITE.social.tiktok, Icon: TikTokIcon },
   { label: "Instagram", handle: "@egyptorahub", href: SITE.social.instagram, Icon: Instagram },
   { label: "X", handle: "@EgyptoraHub", href: SITE.social.x, Icon: XIcon },
+  { label: "YouTube", handle: "@EGYPTORA-HUB", href: SITE.social.youtube, Icon: Youtube },
 ];
 
 

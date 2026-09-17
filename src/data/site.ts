@@ -87,7 +87,16 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "My Trips", href: "/my-trips", badge: "New" },
       { label: "Saved Items", href: "/saved", badge: "New" },
       { label: "My Booking Requests", href: "/account/bookings", badge: "New" },
-
+    ],
+  },
+  {
+    title: "Coming soon",
+    items: [
+      { label: "Experiences", href: "#", soon: true },
+      { label: "Stay", href: "#", soon: true },
+      { label: "Transport", href: "#", soon: true },
+      { label: "Services", href: "#", soon: true },
+      { label: "eSIM & Connectivity", href: "#", soon: true },
     ],
   },
 ];

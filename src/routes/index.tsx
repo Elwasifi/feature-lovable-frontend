@@ -167,6 +167,21 @@ function ViewAll({ href = "/#explore" }: { href?: string }) {
   );
 }
 
+/** Shared marker for sections that are planned but have no page yet. */
+function ComingSoonBadge({ className }: { className?: string }) {
+  const { t } = useI18n();
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 rounded-full border border-border/70 bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground backdrop-blur",
+        className,
+      )}
+    >
+      {t("Coming soon")}
+    </span>
+  );
+}
+
 // Official Travelpayouts widget script, generated from our Travelpayouts
 // account (marker 777434). Used for both the Flights and Hotels tabs.
 const TP_WIDGET_SRC =

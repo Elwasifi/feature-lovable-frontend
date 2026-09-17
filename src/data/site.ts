@@ -123,7 +123,15 @@ export const quickCategories: { label: string; to?: string; href?: string }[] = 
 // before these pages existed) — now that dedicated pages exist for heritage sites and
 // museums, they get their real routes; the rest keep the original anchor fallback until
 // they have dedicated pages of their own.
-export const discoverCards = [
+export const discoverCards: {
+  title: string;
+  subtitle: string;
+  image: string;
+  badge?: string;
+  href?: string;
+  /** No dedicated page yet: shown with a "Coming soon" label instead of a link. */
+  soon?: boolean;
+}[] = [
   {
     title: "27 Governorates",
     subtitle: "Explore all regions",
@@ -153,15 +161,16 @@ export const discoverCards = [
     title: "Nile & Sea",
     subtitle: "Rivers, seas & yachts",
     image: cardNileSea,
-    href: "/#explore",
+    soon: true,
   },
   {
     title: "Hidden Heritage",
     subtitle: "Beyond the crowds",
     image: cardHidden,
     badge: "New",
-    href: "/#explore",
+    soon: true,
   },
+
 ];
 
 export const eras = [

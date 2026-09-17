@@ -2,20 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Bed,
   CalendarDays,
   Clapperboard,
+  Compass,
   Dna,
-  Hotel,
-  Plane,
+  Sailboat,
   ShoppingBag,
   Sun,
   TrendingUp,
-  Landmark,
-  MapPin,
-  Search,
+  Utensils,
   ShieldCheck,
   Sparkles,
-  Users,
+  Wrench,
 } from "lucide-react";
 import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egyptora-hub.jpg";

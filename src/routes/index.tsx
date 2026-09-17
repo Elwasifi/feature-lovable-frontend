@@ -851,7 +851,9 @@ function Concierge() {
   const { t } = useI18n();
   return (
     <section id="ai-concierge" className="scroll-mt-32">
-      <div className="grid gap-4 rounded-2xl border border-gold-line bg-gold-soft p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      {/* The floating concierge widget (available on every page) is the entry point,
+          so this section introduces it without a separate button. */}
+      <div className="rounded-2xl border border-gold-line bg-gold-soft p-6">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
             <Sparkles className="size-3.5" /> {t("AI Concierge")}
@@ -865,10 +867,8 @@ function Concierge() {
             )}
           </p>
         </div>
-        <GoldButton href={mailto("Egyptora Hub — AI Concierge access")}>
-          {t("Open AI Concierge")}
-        </GoldButton>
       </div>
+
     </section>
   );
 }

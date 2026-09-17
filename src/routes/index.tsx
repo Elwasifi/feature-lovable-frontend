@@ -410,8 +410,17 @@ function WeatherStrip() {
   );
 }
 
-// One icon per remaining quick category, in the same order.
-const categoryIcons = [Hotel, Plane, Landmark, CalendarDays, ShoppingBag, TrendingUp];
+// One icon per quick category, in the same order as `quickCategories`.
+const categoryIcons = [
+  CalendarDays,
+  ShoppingBag,
+  TrendingUp,
+  Wrench,
+  Sailboat,
+  Compass,
+  Bed,
+  Utensils,
+];
 
 
 function Categories() {

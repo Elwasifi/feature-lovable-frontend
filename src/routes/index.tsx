@@ -379,27 +379,6 @@ function Hero() {
   );
 }
 
-function Field({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-xl border border-border/70 bg-card px-3 py-2.5">
-      <span className="shrink-0 text-gold">{icon}</span>
-      <span className="min-w-0">
-        <span className="block text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-          {label}
-        </span>
-        <span className="block truncate text-xs text-foreground">{value}</span>
-      </span>
-    </div>
-  );
-}
 
 function WeatherStrip() {
   const { t } = useI18n();

@@ -575,7 +575,7 @@ function Destinations() {
         {popularDestinations.map((d) => (
           <article
             key={d.name}
-            className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
+            className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card"
           >
             <div className="relative">
               <img

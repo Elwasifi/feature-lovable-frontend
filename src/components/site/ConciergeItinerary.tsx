@@ -5,6 +5,8 @@ import { ItemActions, type TripItemType } from "@/lib/trip-actions";
 /** One item proposed by the concierge, grounded in a real catalogue row. */
 export type ItineraryItem = {
   day?: number;
+  /** Primary key of the catalogue row; detail routes resolve by id. */
+  id?: string;
   name: string;
   slug: string;
   type: string;
@@ -60,39 +62,61 @@ const TYPE_LABEL: Record<string, string> = {
 
 function ItemLink({ item, label }: { item: ItineraryItem; label: string }) {
   const cls = "text-[11px] font-semibold text-gold hover:underline";
+  // Detail routes resolve rows by primary key, so prefer the id the search returned.
+  const id = item.id;
   switch (item.type) {
     case "governorates":
       return (
-        <Link to="/governorates/$id" params={{ id: item.slug }} className={cls}>
+        <Link to="/governorates/$id" params={{ id: id ?? item.slug }} className={cls}>
           {label}
         </Link>
       );
     case "properties":
-      return (
-        <Link to="/properties/$id" params={{ id: item.slug }} className={cls}>
+      return id ? (
+        <Link to="/properties/$id" params={{ id }} className={cls}>
+          {label}
+        </Link>
+      ) : (
+        <Link to="/properties" className={cls}>
           {label}
         </Link>
       );
     case "offers":
-      return (
-        <Link to="/offers/$id" params={{ id: item.slug }} className={cls}>
+      return id ? (
+        <Link to="/offers/$id" params={{ id }} className={cls}>
+          {label}
+        </Link>
+      ) : (
+        <Link to="/offers" className={cls}>
           {label}
         </Link>
       );
     case "heritage_sites":
-      return (
+      return id ? (
+        <Link to="/heritage-sites/$id" params={{ id }} className={cls}>
+          {label}
+        </Link>
+      ) : (
         <Link to="/heritage-sites" className={cls}>
           {label}
         </Link>
       );
     case "museums":
-      return (
+      return id ? (
+        <Link to="/museums/$id" params={{ id }} className={cls}>
+          {label}
+        </Link>
+      ) : (
         <Link to="/museums" className={cls}>
           {label}
         </Link>
       );
     case "events":
-      return (
+      return id ? (
+        <Link to="/events/$id" params={{ id }} className={cls}>
+          {label}
+        </Link>
+      ) : (
         <Link to="/events" className={cls}>
           {label}
         </Link>
@@ -135,7 +159,11 @@ export function ItineraryCards({ items }: { items: ItineraryItem[] }) {
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <ItemLink item={item} label={t("View details")} />
               {tripType && (
-                <ItemActions itemType={tripType} itemId={item.slug} itemName={item.name} />
+                <ItemActions
+                  itemType={tripType}
+                  itemId={item.id ?? item.slug}
+                  itemName={item.name}
+                />
               )}
             </div>
           </article>

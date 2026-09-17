@@ -19,6 +19,8 @@ export const CONCIERGE_TABLES = [
 export type ConciergeTable = (typeof CONCIERGE_TABLES)[number];
 
 export type ConciergeMatch = {
+  /** Primary key used to build detail-page links. */
+  id: string;
   /** Display name of the entry. */
   name: string;
   /** Stable slug used to build the public link. */
@@ -58,13 +60,14 @@ export async function searchSiteContent(
       try {
         let q = supabaseAdmin
           .from(table)
-          .select("name, slug, summary")
+          .select("id, name, slug, summary")
           .or(`name.ilike.%${term}%,summary.ilike.%${term}%`);
         // Never surface content that is still awaiting review.
         if (table === "properties") q = (q as any).eq("moderation_state", "PUBLISHED");
         const { data, error } = await q.limit(perTable);
         if (error) throw error;
         return (data ?? []).map((row) => ({
+          id: String((row as { id?: string }).id ?? ""),
           name: String((row as { name?: string }).name ?? ""),
           slug: String((row as { slug?: string }).slug ?? ""),
           type: table,

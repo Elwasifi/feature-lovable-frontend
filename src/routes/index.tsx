@@ -456,17 +456,27 @@ function Categories() {
   const { t } = useI18n();
   return (
     <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
-      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12">
+      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
         {quickCategories.map((c, i) => {
           const Icon = categoryIcons[i % categoryIcons.length]!;
-          return (
-            <a
-              key={c}
-              href="/#explore"
-              className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
-            >
+          const className =
+            "grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line";
+          const inner = (
+            <>
               <Icon className="size-5 text-gold" />
-              <span className="w-full truncate text-[11px] text-muted-foreground">{t(c)}</span>
+              <span className="w-full truncate text-[11px] text-muted-foreground">
+                {t(c.label)}
+              </span>
+            </>
+          );
+          return c.to ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={c.label} to={c.to as any} className={className}>
+              {inner}
+            </Link>
+          ) : (
+            <a key={c.label} href={c.href} className={className}>
+              {inner}
             </a>
           );
         })}
@@ -474,6 +484,7 @@ function Categories() {
     </Block>
   );
 }
+
 
 function Discover() {
   const { t } = useI18n();

@@ -452,20 +452,9 @@ function WeatherStrip() {
   );
 }
 
-const categoryIcons = [
-  Hotel,
-  Plane,
-  Landmark,
-  Ship,
-  Compass,
-  Car,
-  Utensils,
-  CalendarDays,
-  ShoppingBag,
-  HeartPulse,
-  TrendingUp,
-  MoreHorizontal,
-];
+// One icon per remaining quick category, in the same order.
+const categoryIcons = [Hotel, Plane, Landmark, CalendarDays, ShoppingBag, TrendingUp];
+
 
 function Categories() {
   const { t } = useI18n();

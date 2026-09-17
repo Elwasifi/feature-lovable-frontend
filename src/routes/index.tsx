@@ -330,10 +330,7 @@ function Hero() {
               <button
                 key={tab}
                 type="button"
-                onClick={() => {
-                  setActiveTab(tab);
-                  setComingSoon(false);
-                }}
+                onClick={() => setActiveTab(tab)}
                 aria-pressed={activeTab === tab}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",

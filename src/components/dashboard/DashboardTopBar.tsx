@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Heart, Menu, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Menu } from "lucide-react";
 import { NotificationsBell } from "@/components/site/NotificationsBell";
 import { useAuth } from "@/hooks/use-auth";
 import { Link, useRouter } from "@tanstack/react-router";
@@ -68,15 +68,6 @@ export function DashboardTopBar({
         </div>
       </div>
 
-      <label className="relative mx-3 mb-2 flex items-center md:hidden">
-        <Search className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
-        <input
-          id="mobile-search"
-          type="search"
-          placeholder={t("Search Egyptora Hub")}
-          className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
-        />
-      </label>
 
       <div className="flex items-center gap-2 overflow-x-auto px-4 pb-3 lg:px-6 [scrollbar-width:none]">
         <button

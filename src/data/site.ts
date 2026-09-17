@@ -97,24 +97,26 @@ export const sidebarGroups: SidebarGroup[] = [
       { label: "Transport", href: "#", soon: true },
       { label: "Services", href: "#", soon: true },
       { label: "eSIM & Connectivity", href: "#", soon: true },
+      { label: "Nile Cruises", href: "#", soon: true },
+      { label: "Guides", href: "#", soon: true },
+      { label: "Food", href: "#", soon: true },
+      { label: "Health", href: "#", soon: true },
     ],
   },
 ];
 
-export const quickCategories = [
-  "Hotels",
-  "Flights",
-  "Attractions",
-  "Nile Cruises",
-  "Guides",
-  "Transport",
-  "Food",
-  "Events",
-  "Shopping",
-  "Health",
-  "Invest",
-  "More",
-] as const;
+// Only categories with a real destination stay in the homepage row. The rest
+// (Nile Cruises, Guides, Transport, Food, Health) moved to the sidebar as
+// clearly marked "Coming soon" entries instead of dead links.
+export const quickCategories: { label: string; to?: string; href?: string }[] = [
+  { label: "Hotels", href: "/#explore" },
+  { label: "Flights", href: "/#explore" },
+  { label: "Attractions", href: "/#explore" },
+  { label: "Events", to: "/events" },
+  { label: "Shopping", to: "/marketplace/egyptian-cotton" },
+  { label: "Invest", href: "/#invest" },
+];
+
 
 // Each card's own destination. Previously every card in this list linked to the same
 // hardcoded "/#governorates" anchor regardless of its title (a leftover placeholder from

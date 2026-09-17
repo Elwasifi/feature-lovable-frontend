@@ -93,13 +93,7 @@ export const sidebarGroups: SidebarGroup[] = [
     title: "Coming soon",
     items: [
       { label: "Experiences", href: "#", soon: true },
-      { label: "Stay", href: "#", soon: true },
       { label: "Transport", href: "#", soon: true },
-      { label: "Services", href: "#", soon: true },
-      { label: "eSIM & Connectivity", href: "#", soon: true },
-      { label: "Nile Cruises", href: "#", soon: true },
-      { label: "Guides", href: "#", soon: true },
-      { label: "Food", href: "#", soon: true },
       { label: "Health", href: "#", soon: true },
     ],
   },

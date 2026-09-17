@@ -54,18 +54,6 @@ export function DashboardTopBar({
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher compact />
           <CurrencySwitcher compact />
-          <button
-            type="button"
-            aria-label={t("Search")}
-            onClick={() => {
-              const el = document.getElementById("mobile-search") as HTMLInputElement | null;
-              el?.scrollIntoView({ block: "center", behavior: "smooth" });
-              el?.focus();
-            }}
-            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
-          >
-            <Search className="size-4" />
-          </button>
           {user && (
             <Link
               to="/saved"

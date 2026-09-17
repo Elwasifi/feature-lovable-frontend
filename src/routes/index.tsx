@@ -428,7 +428,7 @@ function Categories() {
     <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
         {quickCategories.map((c, i) => {
-          const Icon = categoryIcons[i % categoryIcons.length]!;
+          const Icon = categoryIcons[i]!;
           const className =
             "grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line";
           const inner = (
@@ -439,6 +439,15 @@ function Categories() {
               </span>
             </>
           );
+          // Planned categories have no page yet: same card, badged and not clickable.
+          if (c.soon) {
+            return (
+              <div key={c.label} className={cn(className, "opacity-80")}>
+                {inner}
+                <ComingSoonBadge />
+              </div>
+            );
+          }
           return c.to ? (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
             <Link key={c.label} to={c.to as any} className={className}>

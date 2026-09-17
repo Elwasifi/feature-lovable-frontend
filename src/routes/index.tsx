@@ -3,19 +3,13 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarDays,
-  Car,
   Clapperboard,
-  Compass,
   Dna,
-  HeartPulse,
   Hotel,
-  MoreHorizontal,
   Plane,
   ShoppingBag,
-  Ship,
   Sun,
   TrendingUp,
-  Utensils,
   Landmark,
   MapPin,
   Search,
@@ -31,7 +25,7 @@ import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";
+import { GhostButton, SourceBadge } from "@/components/site/Primitives";
 import {
   discoverCards,
   egyptSectors,

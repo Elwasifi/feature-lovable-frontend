@@ -170,6 +170,7 @@ export const Route = createFileRoute("/api/concierge")({
                       if (!hit) return null;
                       return {
                         ...(typeof row.day === "number" ? { day: row.day } : {}),
+                        id: hit.id,
                         name: hit.name,
                         slug: hit.slug,
                         type: hit.type,

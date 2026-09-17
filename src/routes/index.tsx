@@ -2,20 +2,19 @@ import { useEffect, useRef, useState } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
+  Bed,
   CalendarDays,
   Clapperboard,
+  Compass,
   Dna,
-  Hotel,
-  Plane,
+  Sailboat,
   ShoppingBag,
   Sun,
   TrendingUp,
-  Landmark,
-  MapPin,
-  Search,
+  Utensils,
   ShieldCheck,
   Sparkles,
-  Users,
+  Wrench,
 } from "lucide-react";
 import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egyptora-hub.jpg";
@@ -181,6 +180,22 @@ function ComingSoonBadge({ className }: { className?: string }) {
 const TP_WIDGET_SRC =
   "https://tpwgts.com/content?currency=usd&trs=574096&shmarker=777434&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D9B15B&color_button=%23D9B15B&color_icons=%23D9B15B&dark=%23F3F2ED&light=%230F1721&secondary=%230F1721&special=%23303944&color_focused=%23D9B15B&border_radius=12&plain=true&promo_id=7879&campaign_id=100";
 
+// Transfers (promo 4674), car rental (promo 4480), attractions (Klook, promo 4497)
+// and eSIM (promo 8588) widgets — same account marker, one script per product.
+const TP_TRANSFERS_SRC =
+  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&color_background=%230F1721&color_button=%23D9B15B&promo_id=4674&campaign_id=22";
+
+const TP_CAR_RENTAL_SRC =
+  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&show_logo=false&color_background=%230F1721&color_button=%23D9B15B&color_text=%23F5EFE0&color_input_text=%23000000&color_button_text=%230F1721&promo_id=4480&campaign_id=10";
+
+// Klook widget: no confirmed colour-override parameters for this product, so it
+// renders with its default styling rather than risk breaking it with guesses.
+const TP_ATTRACTIONS_SRC =
+  "https://tpwgts.com/content?currency=USD&trs=574096&shmarker=777434&locale=en&city_id=284&category=3&amount=3&powered_by=true&campaign_id=137&promo_id=4497";
+
+const TP_ESIM_SRC =
+  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&country=Egypt&powered_by=true&color_button=%23D9B15B&color_focused=%23D9B15B&secondary=%230F1721&dark=%23F5EFE0&light=%23FFFFFF&special=%233A4657&border_radius=16&plain=true&no_labels=&promo_id=8588&campaign_id=541";
+
 // The widget's flight search already opens in a new tab (its form targets
 // _blank). Its "Show hotels" option, however, sends the *current* tab to the
 // Hotellook deeplink. The widget renders into an open shadow root on our own
@@ -289,9 +304,7 @@ function TravelpayoutsWidget({ src }: { src: string }) {
 function Hero() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
-  // The Experiences / Packages / Attractions tabs are still decorative — there is no
-  // search backend for them yet, so the button says so instead of doing nothing.
-  const [comingSoon, setComingSoon] = useState(false);
+
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border/70">
@@ -332,10 +345,7 @@ function Hero() {
               <button
                 key={tab}
                 type="button"
-                onClick={() => {
-                  setActiveTab(tab);
-                  setComingSoon(false);
-                }}
+                onClick={() => setActiveTab(tab)}
                 aria-pressed={activeTab === tab}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
@@ -353,40 +363,14 @@ function Hero() {
             <TravelpayoutsWidget key="tp-flights" src={TP_WIDGET_SRC} />
           ) : activeTab === "Hotels" ? (
             <TravelpayoutsWidget key="tp-hotels" src={TP_WIDGET_SRC} />
+          ) : activeTab === "Transfers" ? (
+            <TravelpayoutsWidget key="tp-transfers" src={TP_TRANSFERS_SRC} />
+          ) : activeTab === "Car Rental" ? (
+            <TravelpayoutsWidget key="tp-car-rental" src={TP_CAR_RENTAL_SRC} />
+          ) : activeTab === "Attractions" ? (
+            <TravelpayoutsWidget key="tp-attractions" src={TP_ATTRACTIONS_SRC} />
           ) : (
-            <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
-              <Field
-                icon={<MapPin className="size-4" />}
-                label={t("Where are you going?")}
-                value="Cairo, Luxor, Aswan"
-              />
-              <Field
-                icon={<CalendarDays className="size-4" />}
-                label={t("Dates")}
-                value={t("Select dates")}
-              />
-              <Field
-                icon={<Users className="size-4" />}
-                label={t("Travellers")}
-                value={t("2 adults, 0 children")}
-              />
-              <button
-                type="button"
-                onClick={() => setComingSoon(true)}
-                title={t("This search is coming soon")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
-              >
-                <Search className="size-4" /> {t("Search")}
-              </button>
-              {comingSoon && (
-                <p
-                  role="status"
-                  className="text-xs text-muted-foreground lg:col-span-4"
-                >
-                  {t("This search is coming soon — try the Flights or Hotels tabs meanwhile.")}
-                </p>
-              )}
-            </div>
+            <TravelpayoutsWidget key="tp-esim" src={TP_ESIM_SRC} />
           )}
         </div>
       </div>
@@ -394,27 +378,6 @@ function Hero() {
   );
 }
 
-function Field({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-xl border border-border/70 bg-card px-3 py-2.5">
-      <span className="shrink-0 text-gold">{icon}</span>
-      <span className="min-w-0">
-        <span className="block text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-          {label}
-        </span>
-        <span className="block truncate text-xs text-foreground">{value}</span>
-      </span>
-    </div>
-  );
-}
 
 function WeatherStrip() {
   const { t } = useI18n();
@@ -446,8 +409,17 @@ function WeatherStrip() {
   );
 }
 
-// One icon per remaining quick category, in the same order.
-const categoryIcons = [Hotel, Plane, Landmark, CalendarDays, ShoppingBag, TrendingUp];
+// One icon per quick category, in the same order as `quickCategories`.
+const categoryIcons = [
+  CalendarDays,
+  ShoppingBag,
+  TrendingUp,
+  Wrench,
+  Sailboat,
+  Compass,
+  Bed,
+  Utensils,
+];
 
 
 function Categories() {
@@ -456,7 +428,7 @@ function Categories() {
     <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
       <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
         {quickCategories.map((c, i) => {
-          const Icon = categoryIcons[i % categoryIcons.length]!;
+          const Icon = categoryIcons[i]!;
           const className =
             "grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line";
           const inner = (
@@ -467,6 +439,15 @@ function Categories() {
               </span>
             </>
           );
+          // Planned categories have no page yet: same card, badged and not clickable.
+          if (c.soon) {
+            return (
+              <div key={c.label} className={cn(className, "opacity-80")}>
+                {inner}
+                <ComingSoonBadge />
+              </div>
+            );
+          }
           return c.to ? (
             // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
             <Link key={c.label} to={c.to as any} className={className}>

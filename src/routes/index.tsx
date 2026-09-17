@@ -720,12 +720,12 @@ function ThroughTime() {
               height={600}
               className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <figcaption className="p-3">
+            <div className="p-3">
               <p className="truncate font-display text-sm text-foreground">{t(era.name)}</p>
               <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
                 {era.years}
               </p>
-            </figcaption>
+            </div>
           </Link>
         ))}
 

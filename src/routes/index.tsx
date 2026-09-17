@@ -492,37 +492,52 @@ function Discover() {
     <Block id="explore" eyebrow="Discovery" title="Discover Egypt in depth" action={<ViewAll />}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {discoverCards.map((card) => {
-          // Cards that point at a real route navigate client-side; the remaining ones are
-          // in-page anchors on this same page, which stay plain anchors so they still scroll.
-          const isRoute = !card.href.includes("#");
-          const Wrapper = isRoute ? Link : "a";
-          const wrapperProps = isRoute
-            ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-              ({ to: card.href as any } as const)
-            : ({ href: card.href } as const);
-          return (
-            <Wrapper
-              key={card.title}
-              {...wrapperProps}
-              className="group relative overflow-hidden rounded-2xl border border-border/70"
-            >
-            <img
-              src={card.image}
-              alt={card.title}
-              loading="lazy"
-              width={800}
-              height={600}
-              className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            {card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />}
-            <div className="absolute inset-x-0 bottom-0 p-4">
-              <p className="font-display text-base text-foreground">{t(card.title)}</p>
-              <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
-            </div>
-            </Wrapper>
+          // Cards that point at a real route navigate client-side; in-page anchors stay
+          // plain anchors so they still scroll. Cards without a page yet are not links.
+          const href = card.href;
+          const isRoute = !!href && !href.includes("#");
+          const className = "group relative overflow-hidden rounded-2xl border border-border/70";
+          const inner = (
+            <>
+              <img
+                src={card.image}
+                alt={card.title}
+                loading="lazy"
+                width={800}
+                height={600}
+                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
+              {card.soon ? (
+                <ComingSoonBadge className="absolute end-3 top-3" />
+              ) : (
+                card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />
+              )}
+              <div className="absolute inset-x-0 bottom-0 p-4">
+                <p className="font-display text-base text-foreground">{t(card.title)}</p>
+                <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
+              </div>
+            </>
+          );
+          if (card.soon) {
+            return (
+              <div key={card.title} className={className}>
+                {inner}
+              </div>
+            );
+          }
+          return isRoute ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={card.title} to={href as any} className={className}>
+              {inner}
+            </Link>
+          ) : (
+            <a key={card.title} href={href} className={className}>
+              {inner}
+            </a>
           );
         })}
+
       </div>
     </Block>
   );

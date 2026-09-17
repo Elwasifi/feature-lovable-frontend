@@ -48,15 +48,8 @@ export function DashboardTopBar({
         </Link>
 
 
-        <label className="relative hidden min-w-0 items-center md:flex" id="search">
-          <Search className="pointer-events-none absolute left-4 size-4 text-muted-foreground" />
-          <input
-            type="search"
-            placeholder={t("Search destinations, attractions, hotels…")}
-            className="h-11 w-full max-w-2xl rounded-full border border-border bg-card/70 pl-11 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold-line"
-          />
-        </label>
-        <div className="md:hidden" />
+        {/* Search field hidden until a real search feature exists. */}
+        <div />
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher compact />

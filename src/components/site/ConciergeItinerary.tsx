@@ -159,7 +159,11 @@ export function ItineraryCards({ items }: { items: ItineraryItem[] }) {
             <div className="mt-2 flex flex-wrap items-center gap-2">
               <ItemLink item={item} label={t("View details")} />
               {tripType && (
-                <ItemActions itemType={tripType} itemId={item.slug} itemName={item.name} />
+                <ItemActions
+                  itemType={tripType}
+                  itemId={item.id ?? item.slug}
+                  itemName={item.name}
+                />
               )}
             </div>
           </article>

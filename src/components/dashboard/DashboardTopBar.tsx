@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Heart, Menu, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Menu } from "lucide-react";
 import { NotificationsBell } from "@/components/site/NotificationsBell";
 import { useAuth } from "@/hooks/use-auth";
 import { Link, useRouter } from "@tanstack/react-router";
@@ -48,31 +48,12 @@ export function DashboardTopBar({
         </Link>
 
 
-        <label className="relative hidden min-w-0 items-center md:flex" id="search">
-          <Search className="pointer-events-none absolute left-4 size-4 text-muted-foreground" />
-          <input
-            type="search"
-            placeholder={t("Search destinations, attractions, hotels…")}
-            className="h-11 w-full max-w-2xl rounded-full border border-border bg-card/70 pl-11 pr-4 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-gold-line"
-          />
-        </label>
-        <div className="md:hidden" />
+        {/* Search field hidden until a real search feature exists. */}
+        <div />
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <LanguageSwitcher compact />
           <CurrencySwitcher compact />
-          <button
-            type="button"
-            aria-label={t("Search")}
-            onClick={() => {
-              const el = document.getElementById("mobile-search") as HTMLInputElement | null;
-              el?.scrollIntoView({ block: "center", behavior: "smooth" });
-              el?.focus();
-            }}
-            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-gold md:hidden"
-          >
-            <Search className="size-4" />
-          </button>
           {user && (
             <Link
               to="/saved"
@@ -87,15 +68,6 @@ export function DashboardTopBar({
         </div>
       </div>
 
-      <label className="relative mx-3 mb-2 flex items-center md:hidden">
-        <Search className="pointer-events-none absolute start-4 size-4 text-muted-foreground" />
-        <input
-          id="mobile-search"
-          type="search"
-          placeholder={t("Search Egyptora Hub")}
-          className="h-10 w-full rounded-full border border-border bg-card/70 ps-11 pe-4 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-gold-line"
-        />
-      </label>
 
       <div className="flex items-center gap-2 overflow-x-auto px-4 pb-3 lg:px-6 [scrollbar-width:none]">
         <button
@@ -116,20 +88,25 @@ export function DashboardTopBar({
             <span className="hidden sm:inline">{t("Back")}</span>
           </button>
         )}
-        {topTabs.map((tab, i) => (
-          <a
-            key={tab}
-            href="/#explore"
-            className={cn(
-              "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
-              i === 0
-                ? "border-gold-line bg-gold-soft text-gold"
-                : "border-border text-muted-foreground hover:border-gold-line hover:text-foreground",
-            )}
-          >
-            {t(tab)}
-          </a>
-        ))}
+        {topTabs.map((tab, i) => {
+          const className = cn(
+            "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
+            i === 0
+              ? "border-gold-line bg-gold-soft text-gold"
+              : "border-border text-muted-foreground hover:border-gold-line hover:text-foreground",
+          );
+          // Real routes navigate client-side; in-page anchors stay plain links.
+          return tab.to ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={tab.label} to={tab.to as any} className={className}>
+              {t(tab.label)}
+            </Link>
+          ) : (
+            <a key={tab.label} href={tab.href} className={className}>
+              {t(tab.label)}
+            </a>
+          );
+        })}
       </div>
     </header>
   );

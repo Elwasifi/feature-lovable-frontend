@@ -19,6 +19,7 @@ export const SITE = {
     instagram: "https://www.instagram.com/egyptorahub/",
     tiktok: "https://www.tiktok.com/@user6696191367181",
     x: "https://x.com/EgyptoraHub",
+    youtube: "https://www.youtube.com/@EGYPTORA-HUB",
   },
 } as const;
 

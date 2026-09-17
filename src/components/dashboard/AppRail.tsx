@@ -14,6 +14,7 @@ import {
   X,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { toast } from "sonner";
 import { sidebarGroups } from "@/data/site";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -79,6 +80,23 @@ export function AppRail({ open, onClose }: { open: boolean; onClose: () => void 
                     // Entries pointing at a real route navigate client-side; the
                     // remaining ones are in-page anchors and stay plain anchors so
                     // they still scroll to their section.
+                    if (item.soon) {
+                      return (
+                        <li key={item.label}>
+                          <button
+                            type="button"
+                            onClick={() => toast(t("Coming soon"))}
+                            className="group flex w-full cursor-default items-center gap-2.5 rounded-lg px-2.5 py-2 text-start text-[13px] text-sidebar-foreground/45"
+                          >
+                            <Icon className="size-4 shrink-0 text-muted-foreground/50" />
+                            <span className="min-w-0 flex-1 truncate">{t(item.label)}</span>
+                            <span className="shrink-0 rounded-full border border-border/70 bg-muted/40 px-1.5 py-0.5 text-[9px] font-semibold uppercase text-muted-foreground">
+                              {t("Coming soon")}
+                            </span>
+                          </button>
+                        </li>
+                      );
+                    }
                     const isRoute = !item.href.includes("#");
                     const Wrapper = isRoute ? Link : "a";
                     const wrapperProps = isRoute

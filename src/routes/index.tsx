@@ -891,12 +891,23 @@ function Invest() {
             <div className="p-4">
               <p className="font-display text-base text-foreground">{t(s.title)}</p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t(s.body)}</p>
-              <a
-                href={mailto(`Egyptora Hub — ${s.title}`)}
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
-              >
-                {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
-              </a>
+              {/* Real estate has a real, populated page; the other two sectors
+                  still route to email until their pages exist. */}
+              {s.title === "Real Estate in Egypt" ? (
+                <Link
+                  to="/properties"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
+                >
+                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                </Link>
+              ) : (
+                <a
+                  href={mailto(`Egyptora Hub — ${s.title}`)}
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
+                >
+                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                </a>
+              )}
             </div>
           </article>
         ))}
@@ -922,7 +933,10 @@ function Programmes() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {programmes.map((p) => (
           <article key={p.title} className="rounded-2xl border border-border/70 bg-card p-5">
-            <p className="font-display text-sm text-gold">{t(p.title)}</p>
+            <div className="flex items-start justify-between gap-2">
+              <p className="font-display text-sm text-gold">{t(p.title)}</p>
+              <ComingSoonBadge />
+            </div>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t(p.body)}</p>
           </article>
         ))}

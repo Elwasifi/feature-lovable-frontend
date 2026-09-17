@@ -78,7 +78,10 @@ export const Route = createFileRoute("/api/concierge")({
 
         // Everything the read-only search actually returned this request, so the
         // itinerary block can be filtered down to genuinely existing entries.
-        const grounded = new Map<string, { name: string; slug: string; type: string }>();
+        const grounded = new Map<
+          string,
+          { id: string; name: string; slug: string; type: string }
+        >();
 
         try {
           const result = streamText({
@@ -101,12 +104,16 @@ export const Route = createFileRoute("/api/concierge")({
                   const matches = await searchSiteContent(query, category);
                   for (const m of matches) {
                     grounded.set(`${m.type}:${m.slug}`, {
+                      id: m.id,
                       name: m.name,
                       slug: m.slug,
                       type: m.type,
                     });
                   }
-                  return { matches };
+                  // Keep the model payload free of internal ids.
+                  return {
+                    matches: matches.map(({ id: _id, ...rest }) => rest),
+                  };
                 },
               }),
             },

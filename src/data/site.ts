@@ -108,13 +108,21 @@ export const sidebarGroups: SidebarGroup[] = [
 // Only categories with a real destination stay in the homepage row. The rest
 // (Nile Cruises, Guides, Transport, Food, Health) moved to the sidebar as
 // clearly marked "Coming soon" entries instead of dead links.
-export const quickCategories: { label: string; to?: string; href?: string }[] = [
-  { label: "Hotels", href: "/#explore" },
-  { label: "Flights", href: "/#explore" },
-  { label: "Attractions", href: "/#explore" },
+export const quickCategories: {
+  label: string;
+  to?: string;
+  href?: string;
+  /** No dedicated page yet: shown with a "Coming soon" badge instead of a link. */
+  soon?: boolean;
+}[] = [
   { label: "Events", to: "/events" },
   { label: "Shopping", to: "/marketplace/egyptian-cotton" },
   { label: "Invest", href: "/#invest" },
+  { label: "Service", soon: true },
+  { label: "Nile Cruise", soon: true },
+  { label: "Guide", soon: true },
+  { label: "Stay", soon: true },
+  { label: "Food", soon: true },
 ];
 
 

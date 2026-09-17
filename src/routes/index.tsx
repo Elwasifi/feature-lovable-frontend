@@ -588,7 +588,7 @@ function Destinations() {
               />
               <SaveButton
                 variant="icon"
-                className="absolute end-2 top-2"
+                className="absolute end-2 top-2 z-10"
                 itemType="destination"
                 itemId={d.name.toLowerCase().replace(/\s+/g, "-")}
                 itemName={d.name}
@@ -601,6 +601,13 @@ function Destinations() {
                 ★ {d.rating} <span className="text-muted-foreground">({d.reviews})</span>
               </p>
             </div>
+            {/* Whole card opens the matching governorate page; the save icon sits above it. */}
+            <Link
+              to="/governorates/$id"
+              params={{ id: d.gov }}
+              aria-label={t(d.name)}
+              className="absolute inset-0"
+            />
           </article>
         ))}
       </div>

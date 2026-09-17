@@ -409,7 +409,14 @@ export const topTabs: { label: string; to?: string; href?: string }[] = [
   { label: "Events", to: "/events" },
 ];
 
-export const searchTabs = ["Experiences", "Hotels", "Flights", "Packages", "Attractions"] as const;
+export const searchTabs = [
+  "Flights",
+  "Hotels",
+  "Transfers",
+  "Car Rental",
+  "Attractions",
+  "eSIM & Connectivity",
+] as const;
 
 // `gov` is the matching governorate page id (/governorates/$id).
 export const popularDestinations = [

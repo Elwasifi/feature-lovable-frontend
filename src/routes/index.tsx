@@ -289,9 +289,7 @@ function TravelpayoutsWidget({ src }: { src: string }) {
 function Hero() {
   const { t } = useI18n();
   const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
-  // The Experiences / Packages / Attractions tabs are still decorative — there is no
-  // search backend for them yet, so the button says so instead of doing nothing.
-  const [comingSoon, setComingSoon] = useState(false);
+
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-border/70">

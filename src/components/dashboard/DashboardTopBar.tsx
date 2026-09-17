@@ -116,20 +116,25 @@ export function DashboardTopBar({
             <span className="hidden sm:inline">{t("Back")}</span>
           </button>
         )}
-        {topTabs.map((tab, i) => (
-          <a
-            key={tab}
-            href="/#explore"
-            className={cn(
-              "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
-              i === 0
-                ? "border-gold-line bg-gold-soft text-gold"
-                : "border-border text-muted-foreground hover:border-gold-line hover:text-foreground",
-            )}
-          >
-            {t(tab)}
-          </a>
-        ))}
+        {topTabs.map((tab, i) => {
+          const className = cn(
+            "shrink-0 rounded-full border px-4 py-2 text-xs font-medium transition-colors",
+            i === 0
+              ? "border-gold-line bg-gold-soft text-gold"
+              : "border-border text-muted-foreground hover:border-gold-line hover:text-foreground",
+          );
+          // Real routes navigate client-side; in-page anchors stay plain links.
+          return tab.to ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={tab.label} to={tab.to as any} className={className}>
+              {t(tab.label)}
+            </Link>
+          ) : (
+            <a key={tab.label} href={tab.href} className={className}>
+              {t(tab.label)}
+            </a>
+          );
+        })}
       </div>
     </header>
   );

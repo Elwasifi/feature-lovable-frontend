@@ -3,19 +3,13 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   CalendarDays,
-  Car,
   Clapperboard,
-  Compass,
   Dna,
-  HeartPulse,
   Hotel,
-  MoreHorizontal,
   Plane,
   ShoppingBag,
-  Ship,
   Sun,
   TrendingUp,
-  Utensils,
   Landmark,
   MapPin,
   Search,
@@ -31,7 +25,7 @@ import { AppRail } from "@/components/dashboard/AppRail";
 import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { GhostButton, GoldButton, SourceBadge } from "@/components/site/Primitives";
+import { GhostButton, SourceBadge } from "@/components/site/Primitives";
 import {
   discoverCards,
   egyptSectors,
@@ -164,6 +158,21 @@ function ViewAll({ href = "/#explore" }: { href?: string }) {
     >
       {t("View all")}
     </a>
+  );
+}
+
+/** Shared marker for sections that are planned but have no page yet. */
+function ComingSoonBadge({ className }: { className?: string }) {
+  const { t } = useI18n();
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 rounded-full border border-border/70 bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground backdrop-blur",
+        className,
+      )}
+    >
+      {t("Coming soon")}
+    </span>
   );
 }
 
@@ -437,36 +446,35 @@ function WeatherStrip() {
   );
 }
 
-const categoryIcons = [
-  Hotel,
-  Plane,
-  Landmark,
-  Ship,
-  Compass,
-  Car,
-  Utensils,
-  CalendarDays,
-  ShoppingBag,
-  HeartPulse,
-  TrendingUp,
-  MoreHorizontal,
-];
+// One icon per remaining quick category, in the same order.
+const categoryIcons = [Hotel, Plane, Landmark, CalendarDays, ShoppingBag, TrendingUp];
+
 
 function Categories() {
   const { t } = useI18n();
   return (
     <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
-      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-12">
+      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
         {quickCategories.map((c, i) => {
           const Icon = categoryIcons[i % categoryIcons.length]!;
-          return (
-            <a
-              key={c}
-              href="/#explore"
-              className="grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line"
-            >
+          const className =
+            "grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line";
+          const inner = (
+            <>
               <Icon className="size-5 text-gold" />
-              <span className="w-full truncate text-[11px] text-muted-foreground">{t(c)}</span>
+              <span className="w-full truncate text-[11px] text-muted-foreground">
+                {t(c.label)}
+              </span>
+            </>
+          );
+          return c.to ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={c.label} to={c.to as any} className={className}>
+              {inner}
+            </Link>
+          ) : (
+            <a key={c.label} href={c.href} className={className}>
+              {inner}
             </a>
           );
         })}
@@ -475,43 +483,59 @@ function Categories() {
   );
 }
 
+
 function Discover() {
   const { t } = useI18n();
   return (
     <Block id="explore" eyebrow="Discovery" title="Discover Egypt in depth" action={<ViewAll />}>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {discoverCards.map((card) => {
-          // Cards that point at a real route navigate client-side; the remaining ones are
-          // in-page anchors on this same page, which stay plain anchors so they still scroll.
-          const isRoute = !card.href.includes("#");
-          const Wrapper = isRoute ? Link : "a";
-          const wrapperProps = isRoute
-            ? // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-              ({ to: card.href as any } as const)
-            : ({ href: card.href } as const);
-          return (
-            <Wrapper
-              key={card.title}
-              {...wrapperProps}
-              className="group relative overflow-hidden rounded-2xl border border-border/70"
-            >
-            <img
-              src={card.image}
-              alt={card.title}
-              loading="lazy"
-              width={800}
-              height={600}
-              className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            {card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />}
-            <div className="absolute inset-x-0 bottom-0 p-4">
-              <p className="font-display text-base text-foreground">{t(card.title)}</p>
-              <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
-            </div>
-            </Wrapper>
+          // Cards that point at a real route navigate client-side; in-page anchors stay
+          // plain anchors so they still scroll. Cards without a page yet are not links.
+          const href = card.href;
+          const isRoute = !!href && !href.includes("#");
+          const className = "group relative overflow-hidden rounded-2xl border border-border/70";
+          const inner = (
+            <>
+              <img
+                src={card.image}
+                alt={card.title}
+                loading="lazy"
+                width={800}
+                height={600}
+                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
+              {card.soon ? (
+                <ComingSoonBadge className="absolute end-3 top-3" />
+              ) : (
+                card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />
+              )}
+              <div className="absolute inset-x-0 bottom-0 p-4">
+                <p className="font-display text-base text-foreground">{t(card.title)}</p>
+                <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
+              </div>
+            </>
+          );
+          if (card.soon) {
+            return (
+              <div key={card.title} className={className}>
+                {inner}
+              </div>
+            );
+          }
+          return isRoute ? (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+            <Link key={card.title} to={href as any} className={className}>
+              {inner}
+            </Link>
+          ) : (
+            <a key={card.title} href={href} className={className}>
+              {inner}
+            </a>
           );
         })}
+
       </div>
     </Block>
   );
@@ -534,7 +558,7 @@ function Destinations() {
         {popularDestinations.map((d) => (
           <article
             key={d.name}
-            className="group overflow-hidden rounded-2xl border border-border/70 bg-card"
+            className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card"
           >
             <div className="relative">
               <img
@@ -547,7 +571,7 @@ function Destinations() {
               />
               <SaveButton
                 variant="icon"
-                className="absolute end-2 top-2"
+                className="absolute end-2 top-2 z-10"
                 itemType="destination"
                 itemId={d.name.toLowerCase().replace(/\s+/g, "-")}
                 itemName={d.name}
@@ -560,6 +584,13 @@ function Destinations() {
                 ★ {d.rating} <span className="text-muted-foreground">({d.reviews})</span>
               </p>
             </div>
+            {/* Whole card opens the matching governorate page; the save icon sits above it. */}
+            <Link
+              to="/governorates/$id"
+              params={{ id: d.gov }}
+              aria-label={t(d.name)}
+              className="absolute inset-0"
+            />
           </article>
         ))}
       </div>
@@ -646,7 +677,6 @@ function Governorates() {
       id="governorates"
       eyebrow="The map of Egypt"
       title="Explore all 27 governorates"
-      action={<ViewAll href="/#governorates" />}
     >
       <EgyptMap />
 
@@ -660,9 +690,10 @@ function ThroughTime() {
     <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {eras.map((era) => (
-          <figure
+          <Link
             key={era.name}
-            className="group min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
+            to="/encyclopedia"
+            className="group block min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
           >
             <img
               src={era.image}
@@ -672,14 +703,15 @@ function ThroughTime() {
               height={600}
               className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <figcaption className="p-3">
+            <div className="p-3">
               <p className="truncate font-display text-sm text-foreground">{t(era.name)}</p>
               <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
                 {era.years}
               </p>
-            </figcaption>
-          </figure>
+            </div>
+          </Link>
         ))}
+
       </div>
     </Block>
   );
@@ -802,7 +834,9 @@ function Concierge() {
   const { t } = useI18n();
   return (
     <section id="ai-concierge" className="scroll-mt-32">
-      <div className="grid gap-4 rounded-2xl border border-gold-line bg-gold-soft p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+      {/* The floating concierge widget (available on every page) is the entry point,
+          so this section introduces it without a separate button. */}
+      <div className="rounded-2xl border border-gold-line bg-gold-soft p-6">
         <div className="min-w-0">
           <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
             <Sparkles className="size-3.5" /> {t("AI Concierge")}
@@ -816,10 +850,8 @@ function Concierge() {
             )}
           </p>
         </div>
-        <GoldButton href={mailto("Egyptora Hub — AI Concierge access")}>
-          {t("Open AI Concierge")}
-        </GoldButton>
       </div>
+
     </section>
   );
 }
@@ -842,12 +874,23 @@ function Invest() {
             <div className="p-4">
               <p className="font-display text-base text-foreground">{t(s.title)}</p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t(s.body)}</p>
-              <a
-                href={mailto(`Egyptora Hub — ${s.title}`)}
-                className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
-              >
-                {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
-              </a>
+              {/* Real estate has a real, populated page; the other two sectors
+                  still route to email until their pages exist. */}
+              {s.title === "Real Estate in Egypt" ? (
+                <Link
+                  to="/properties"
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
+                >
+                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                </Link>
+              ) : (
+                <a
+                  href={mailto(`Egyptora Hub — ${s.title}`)}
+                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
+                >
+                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                </a>
+              )}
             </div>
           </article>
         ))}
@@ -873,7 +916,10 @@ function Programmes() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {programmes.map((p) => (
           <article key={p.title} className="rounded-2xl border border-border/70 bg-card p-5">
-            <p className="font-display text-sm text-gold">{t(p.title)}</p>
+            <div className="flex items-start justify-between gap-2">
+              <p className="font-display text-sm text-gold">{t(p.title)}</p>
+              <ComingSoonBadge />
+            </div>
             <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t(p.body)}</p>
           </article>
         ))}

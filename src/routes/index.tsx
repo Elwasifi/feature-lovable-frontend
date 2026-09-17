@@ -348,40 +348,14 @@ function Hero() {
             <TravelpayoutsWidget key="tp-flights" src={TP_WIDGET_SRC} />
           ) : activeTab === "Hotels" ? (
             <TravelpayoutsWidget key="tp-hotels" src={TP_WIDGET_SRC} />
+          ) : activeTab === "Transfers" ? (
+            <TravelpayoutsWidget key="tp-transfers" src={TP_TRANSFERS_SRC} />
+          ) : activeTab === "Car Rental" ? (
+            <TravelpayoutsWidget key="tp-car-rental" src={TP_CAR_RENTAL_SRC} />
+          ) : activeTab === "Attractions" ? (
+            <TravelpayoutsWidget key="tp-attractions" src={TP_ATTRACTIONS_SRC} />
           ) : (
-            <div className="grid gap-2 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)_minmax(0,1fr)_auto]">
-              <Field
-                icon={<MapPin className="size-4" />}
-                label={t("Where are you going?")}
-                value="Cairo, Luxor, Aswan"
-              />
-              <Field
-                icon={<CalendarDays className="size-4" />}
-                label={t("Dates")}
-                value={t("Select dates")}
-              />
-              <Field
-                icon={<Users className="size-4" />}
-                label={t("Travellers")}
-                value={t("2 adults, 0 children")}
-              />
-              <button
-                type="button"
-                onClick={() => setComingSoon(true)}
-                title={t("This search is coming soon")}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
-              >
-                <Search className="size-4" /> {t("Search")}
-              </button>
-              {comingSoon && (
-                <p
-                  role="status"
-                  className="text-xs text-muted-foreground lg:col-span-4"
-                >
-                  {t("This search is coming soon — try the Flights or Hotels tabs meanwhile.")}
-                </p>
-              )}
-            </div>
+            <TravelpayoutsWidget key="tp-esim" src={TP_ESIM_SRC} />
           )}
         </div>
       </div>

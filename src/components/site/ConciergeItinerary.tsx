@@ -5,6 +5,8 @@ import { ItemActions, type TripItemType } from "@/lib/trip-actions";
 /** One item proposed by the concierge, grounded in a real catalogue row. */
 export type ItineraryItem = {
   day?: number;
+  /** Primary key of the catalogue row; detail routes resolve by id. */
+  id?: string;
   name: string;
   slug: string;
   type: string;

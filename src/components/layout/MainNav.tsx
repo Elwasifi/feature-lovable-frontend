@@ -200,7 +200,7 @@ export function MainNav() {
             height={40}
             className="size-9 shrink-0 rounded-full ring-1 ring-gold-line sm:size-10"
           />
-          <span className="hidden min-w-0 leading-tight sm:block">
+          <span className="hidden min-w-0 leading-tight sm:block xl:hidden 2xl:block">
             <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
               EGYPTORA <span className="text-gold">HUB</span>
             </span>
@@ -210,11 +210,12 @@ export function MainNav() {
           </span>
         </Link>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-0.5 lg:flex xl:gap-1.5">
+        <nav className="hidden min-w-0 items-center justify-center gap-0 xl:flex 2xl:gap-1">
           {mainNav.map((entry) => (
             <DesktopEntry key={entry.label} entry={entry} />
           ))}
         </nav>
+
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
           <button
@@ -227,17 +228,20 @@ export function MainNav() {
             <Search className="size-4" />
           </button>
           <LanguageSwitcher compact />
-          <CurrencySwitcher compact />
+          <span className="hidden sm:block">
+            <CurrencySwitcher compact />
+          </span>
           <NotificationsBell className="hidden sm:block" />
           <AuthButtons className="hidden sm:flex" />
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label={t("Open menu")}
-            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground lg:hidden"
+            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground xl:hidden"
           >
             <Menu className="size-4" />
           </button>
+
         </div>
       </div>
 

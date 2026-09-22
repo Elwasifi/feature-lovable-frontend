@@ -3,14 +3,26 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   Bed,
+  Briefcase,
+  Building2,
   CalendarDays,
   Clapperboard,
   Compass,
   Dna,
+  FileText,
+  GraduationCap,
+  Landmark,
+  LayoutGrid,
+  MapPin,
+  Home as HomeIcon,
+  Palmtree,
   Sailboat,
+  Search,
   ShoppingBag,
+  Stamp,
   Sun,
   TrendingUp,
+  Users,
   Utensils,
   ShieldCheck,
   Sparkles,
@@ -18,6 +30,13 @@ import {
 } from "lucide-react";
 import { marketplacePages } from "@/data/marketplace";
 import heroImage from "@/assets/hero-egyptora-hub.jpg";
+import featHeritage from "@/assets/card-heritage.jpg";
+import featMuseums from "@/assets/card-museums.jpg";
+import featEvents from "@/assets/promo-summer.jpg";
+import featProperties from "@/assets/sector-realestate.jpg";
+import featInvest from "@/assets/sec-mice.jpg";
+import featMarket from "@/assets/market-crafts.jpg";
+import govBuilding from "@/assets/gov/cairo.jpg";
 import { SaveButton } from "@/components/site/SaveButton";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";
@@ -45,6 +64,7 @@ import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { useCurrency } from "@/i18n/currency";
 import { cn } from "@/lib/utils";
+
 
 const title = "Egyptora Hub — Everything Egypt. One Hub.";
 const description =

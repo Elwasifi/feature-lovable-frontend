@@ -46,9 +46,8 @@ import govAswan from "@/assets/gov/aswan.jpg";
 import govPortSaid from "@/assets/gov/port-said.jpg";
 import { SaveButton } from "@/components/site/SaveButton";
 import { EgyptMap } from "@/components/site/EgyptMap";
-import { AppRail } from "@/components/dashboard/AppRail";
-import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, SourceBadge } from "@/components/site/Primitives";
 import {
@@ -98,15 +97,13 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <>
-      <div className="flex min-h-screen bg-background">
-        <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
-
+      <div className="min-h-screen bg-background">
         <div className="min-w-0 flex-1">
-          <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+          <SiteHeader />
+
+
 
 
         <main>

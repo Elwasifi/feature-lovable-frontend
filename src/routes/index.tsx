@@ -100,10 +100,13 @@ function Home() {
           <DashboardTopBar onMenu={() => setMenuOpen(true)} />
 
 
-        <main className="grid gap-6 px-4 py-5 lg:px-6 2xl:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="grid min-w-0 grid-cols-1 gap-8">
-            <Hero />
-            <WeatherStrip />
+        <main>
+          <Hero />
+
+          <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-12 px-4 py-12 lg:px-8">
+            <FeaturedServices />
+            <BookingSearch />
+            <GovernmentDirectory />
             <Categories />
             <Discover />
             <Destinations />
@@ -111,6 +114,7 @@ function Home() {
             <Offers />
             <Governorates />
             <ThroughTime />
+            <Insights />
             <Research />
             <Film />
             <Marketplace />
@@ -119,12 +123,8 @@ function Home() {
             <Programmes />
             <Trust />
           </div>
-          <div className="min-w-0">
-            <div className="2xl:sticky 2xl:top-32">
-              <IntelligenceRail />
-            </div>
-          </div>
         </main>
+
 
           <SiteFooter />
         </div>

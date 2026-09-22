@@ -492,6 +492,48 @@ export type Database = {
           },
         ]
       }
+      government_entities: {
+        Row: {
+          category_ar: string
+          category_en: string
+          created_at: string
+          description_en: string | null
+          entity_name_ar: string | null
+          entity_name_en: string
+          id: string
+          official_url: string | null
+          sort_order: number
+          updated_at: string
+          verification_status: string
+        }
+        Insert: {
+          category_ar: string
+          category_en: string
+          created_at?: string
+          description_en?: string | null
+          entity_name_ar?: string | null
+          entity_name_en: string
+          id?: string
+          official_url?: string | null
+          sort_order?: number
+          updated_at?: string
+          verification_status?: string
+        }
+        Update: {
+          category_ar?: string
+          category_en?: string
+          created_at?: string
+          description_en?: string | null
+          entity_name_ar?: string | null
+          entity_name_en?: string
+          id?: string
+          official_url?: string | null
+          sort_order?: number
+          updated_at?: string
+          verification_status?: string
+        }
+        Relationships: []
+      }
       governorates: {
         Row: {
           annual_visitors: number | null

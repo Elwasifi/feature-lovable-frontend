@@ -143,3 +143,16 @@
     color: var(--color-foreground);
   }
 }
+
+/*
+ * Scope helper for text that sits on top of dark imagery / dark scrims.
+ * Redefines the raw tokens for the subtree, so all `text-foreground`,
+ * `text-muted-foreground` and `border-border` utilities stay legible.
+ */
+.on-dark {
+  --foreground: oklch(0.99 0.004 90);
+  --muted-foreground: oklch(0.88 0.008 250);
+  --border: oklch(1 0 0 / 28%);
+  --background: oklch(0.243 0.058 249.8);
+  --card: oklch(0.243 0.058 249.8);
+}

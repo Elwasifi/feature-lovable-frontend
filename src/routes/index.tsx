@@ -104,15 +104,18 @@ function Home() {
           <Hero />
 
           <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-12 px-4 py-12 lg:px-8">
-            <FeaturedServices />
-            <BookingSearch />
+            <Mission />
             <GovernmentDirectory />
+            <DirectoryCategoryCards />
+            <ImportantNotice />
+            <FeaturedServices />
             <Categories />
             <Discover />
             <Destinations />
             <SectorStrip />
             <Offers />
             <Governorates />
+            <BookingSearch />
             <ThroughTime />
             <Insights />
             <Research />
@@ -121,7 +124,6 @@ function Home() {
             <Concierge />
             <Invest />
             <Programmes />
-            <Trust />
           </div>
         </main>
 
@@ -148,16 +150,14 @@ function Block({
   children: React.ReactNode;
 }) {
   const { t } = useI18n();
+  // Eyebrow labels were dropped in the reference-aligned typography pass; the
+  // prop is kept so callers stay unchanged.
+  void eyebrow;
   return (
     <section id={id} className="scroll-mt-32">
-      <div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
+      <div className="mb-6 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
         <div className="min-w-0">
-          {eyebrow && (
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold/80">
-              {t(eyebrow)}
-            </p>
-          )}
-          <h2 className="mt-1 font-display text-xl tracking-tight text-foreground sm:text-2xl">
+          <h2 className="font-display text-2xl leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2.1rem]">
             {t(heading)}
           </h2>
         </div>
@@ -597,10 +597,97 @@ function GovernmentDirectory() {
           })}
         </div>
       </div>
-      <p className="mt-3 rounded-2xl border border-border bg-surface-2 p-4 text-[11px] leading-relaxed text-muted-foreground">
+    </section>
+  );
+}
+
+/** Reference-style photo cards for the directory categories. */
+const directoryCards: {
+  label: string;
+  arabic: string;
+  image: string;
+  href?: string;
+}[] = [
+  { label: "Presidency & Cabinet", arabic: "رئاسة الجمهورية ومجلس الوزراء", image: govCairo },
+  { label: "Ministries", arabic: "الوزارات", image: govGiza },
+  { label: "Authorities & Agencies", arabic: "الهيئات والأجهزة الحكومية", image: govAlexandria },
+  { label: "Governorates", arabic: "المحافظات", image: govLuxor, href: "/#governorates" },
+  { label: "Tourism & Antiquities", arabic: "السياحة والآثار", image: govAswan },
+  { label: "Investment & Business", arabic: "الاستثمار والأعمال", image: govPortSaid },
+];
+
+function DirectoryCategoryCards() {
+  const { t } = useI18n();
+  return (
+    <Block
+      title="Browse Government Directory by Category"
+      action={<ViewAll href="/#government-directory" />}
+    >
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {directoryCards.map((c) => {
+          const inner = (
+            <>
+              <img
+                src={c.image}
+                alt={t(c.label)}
+                loading="lazy"
+                width={900}
+                height={600}
+                className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="grid gap-1 p-4">
+                <span className="block truncate font-display text-base text-foreground">
+                  {t(c.label)}
+                </span>
+                <span className="block truncate text-xs text-muted-foreground" dir="rtl">
+                  {c.arabic}
+                </span>
+                {c.href ? (
+                  <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-gold">
+                    {t("View entities")} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                  </span>
+                ) : (
+                  <ComingSoonBadge className="mt-1 w-fit" />
+                )}
+              </div>
+            </>
+          );
+          const className =
+            "group overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors hover:border-gold-line";
+          return c.href ? (
+            <a key={c.label} href={c.href} className={className}>
+              {inner}
+            </a>
+          ) : (
+            <div key={c.label} className={cn(className, "opacity-90")}>
+              {inner}
+            </div>
+          );
+        })}
+      </div>
+    </Block>
+  );
+}
+
+/** Bilingual independence notice, its own band as in the reference. */
+function ImportantNotice() {
+  const { t } = useI18n();
+  return (
+    <section className="grid gap-4 rounded-2xl border border-info/25 bg-info/5 p-5 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-8">
+      <div className="flex items-center gap-2">
+        <Info className="size-5 shrink-0 text-info" />
+        <span className="font-display text-sm text-foreground">
+          {t("Important notice")} <span dir="rtl">— تنويه هام</span>
+        </span>
+      </div>
+      <p className="text-[11px] leading-relaxed text-muted-foreground">
         {t(
           "Egyptora Hub is an independent private platform and is not a governmental entity. Links to government entities and official services are provided for informational purposes only.",
         )}
+      </p>
+      <p className="text-[11px] leading-relaxed text-muted-foreground" dir="rtl">
+        منصة إيجيبتورا هَب منصة رقمية خاصة ومستقلة وليست جهة حكومية. يتم توفير روابط الجهات الحكومية
+        والخدمات الرسمية لأغراض التعريف وتسهيل الوصول فقط.
       </p>
     </section>
   );
@@ -1167,21 +1254,38 @@ function Programmes() {
   );
 }
 
-function Trust() {
+/** Mission band: platform statement plus the trust pillars, as in the reference. */
+function Mission() {
   const { t } = useI18n();
   return (
-    <section className="grid gap-3 rounded-2xl border border-border/70 bg-card p-5 sm:grid-cols-2 lg:grid-cols-5">
-      {trustItems.map((item) => (
-        <div key={item.title} className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-3">
-          <ShieldCheck className="size-5 shrink-0 text-gold" />
-          <span className="min-w-0">
-            <span className="block truncate text-xs font-semibold text-foreground">
-              {t(item.title)}
+    <section className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:items-center">
+      <div>
+        <h2 className="font-display text-2xl leading-tight text-foreground sm:text-3xl lg:text-[2.1rem]">
+          {t("A private platform supporting Egypt's digital future")}
+        </h2>
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
+          {t(
+            "Egyptora Hub is an independent private platform designed to facilitate access to Egypt's opportunities, services and official resources, in one connected gateway.",
+          )}
+        </p>
+        <Link
+          to="/legal"
+          className="mt-5 inline-flex items-center gap-2 rounded-xl border border-gold-line px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold-soft"
+        >
+          {t("Learn more")} <ArrowRight className="size-4 rtl:rotate-180" />
+        </Link>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {trustItems.map((item) => (
+          <div key={item.title} className="grid justify-items-start gap-2">
+            <span className="grid size-10 place-items-center rounded-full bg-gold-soft">
+              <ShieldCheck className="size-5 text-gold" />
             </span>
-            <span className="block truncate text-[11px] text-muted-foreground">{t(item.body)}</span>
-          </span>
-        </div>
-      ))}
+            <span className="text-xs font-semibold text-foreground">{t(item.title)}</span>
+            <span className="text-[11px] leading-relaxed text-muted-foreground">{t(item.body)}</span>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

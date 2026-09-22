@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import type { SVGProps } from "react";
+import { useState, type SVGProps } from "react";
 
 function AppleIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -34,12 +34,52 @@ const legalLinks = [
   { label: "Legal Disclaimer", to: "/legal/disclaimer" },
 ];
 
+/** "Stay connected" column: the address is sent to our inbox as a subscription request. */
+function NewsletterColumn() {
+  const { t } = useI18n();
+  const [email, setEmail] = useState("");
+  return (
+    <div>
+      <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+        {t("Stay connected")}
+      </h3>
+      <p className="mt-4 text-sm text-muted-foreground">{t("Subscribe to our updates")}</p>
+      <form
+        className="mt-3 flex overflow-hidden rounded-xl border border-border bg-card"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!email.trim()) return;
+          window.location.href = `${mailto("Newsletter subscription")}&body=${encodeURIComponent(
+            `Please subscribe this address to Egyptora Hub updates: ${email.trim()}`,
+          )}`;
+        }}
+      >
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t("Your email address")}
+          aria-label={t("Your email address")}
+          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+        />
+        <button
+          type="submit"
+          className="shrink-0 bg-gold px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          {t("Subscribe")}
+        </button>
+      </form>
+    </div>
+  );
+}
+
 export function SiteFooter() {
   const { t } = useI18n();
   return (
     <footer className="border-t border-border bg-sidebar">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)] lg:gap-x-10">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)_1.2fr] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -106,6 +146,8 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+
+          <NewsletterColumn />
         </div>
 
         <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">

@@ -35,10 +35,10 @@ export function MarketplaceSection({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to top, var(--background) 6%, color-mix(in oklab, var(--background) 78%, transparent) 45%, color-mix(in oklab, var(--background) 35%, transparent) 100%)",
+                "linear-gradient(to top, oklch(0.243 0.058 249.8 / 95%) 6%, oklch(0.243 0.058 249.8 / 72%) 45%, oklch(0.243 0.058 249.8 / 25%) 100%)",
             }}
           />
-          <div className="absolute inset-x-0 bottom-0">
+          <div className="on-dark absolute inset-x-0 bottom-0">
             <div className="mx-auto w-full max-w-[1360px] px-5 pb-8 lg:px-10 lg:pb-14">
               <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
                 {t(page.eyebrow)}
@@ -103,7 +103,7 @@ export function MarketplaceSection({
                   className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105 lg:h-96"
                 />
                 <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-                <figcaption className="absolute inset-x-0 bottom-0 p-5">
+                <figcaption className="on-dark absolute inset-x-0 bottom-0 p-5">
                   <p className="font-display text-lg text-foreground">{t(g.caption)}</p>
                   <p className="mt-1 text-xs text-foreground/75">{t(g.note)}</p>
                 </figcaption>
@@ -219,7 +219,7 @@ export function MarketplaceSection({
                   className="h-40 w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-                <span className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-4">
+                <span className="on-dark absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-4">
                   <span className="min-w-0">
                     <span className="block truncate font-display text-base text-foreground">
                       {t(o.title)}

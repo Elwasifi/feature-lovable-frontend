@@ -63,56 +63,57 @@
 
 :root {
   --radius: 0.75rem;
-  --background: oklch(0.16 0.024 255);
-  --foreground: oklch(0.96 0.006 90);
-  --card: oklch(0.2 0.024 255);
-  --card-foreground: oklch(0.96 0.006 90);
-  --popover: oklch(0.2 0.024 255);
-  --popover-foreground: oklch(0.96 0.006 90);
-  --primary: oklch(0.78 0.115 85);
-  --primary-foreground: oklch(0.17 0.03 255);
-  --secondary: oklch(0.26 0.026 255);
-  --secondary-foreground: oklch(0.95 0.006 90);
-  --muted: oklch(0.24 0.024 255);
-  --muted-foreground: oklch(0.72 0.018 250);
-  --accent: oklch(0.28 0.03 255);
-  --accent-foreground: oklch(0.95 0.006 90);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.97 0.01 90);
-  --border: oklch(0.34 0.024 255 / 55%);
-  --input: oklch(0.32 0.024 255 / 70%);
-  --ring: oklch(0.78 0.115 85 / 60%);
-  --chart-1: oklch(0.78 0.115 85);
-  --chart-2: oklch(0.65 0.12 200);
+  /* Light editorial palette: navy #06213A, gold #C8933D, white surfaces. */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.243 0.058 249.8);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.243 0.058 249.8);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.243 0.058 249.8);
+  --primary: oklch(0.243 0.058 249.8);
+  --primary-foreground: oklch(0.99 0.004 90);
+  --secondary: oklch(0.975 0.005 258.3);
+  --secondary-foreground: oklch(0.243 0.058 249.8);
+  --muted: oklch(0.975 0.005 258.3);
+  --muted-foreground: oklch(0.501 0.025 259.2);
+  --accent: oklch(0.944 0.009 247.9);
+  --accent-foreground: oklch(0.243 0.058 249.8);
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(0.99 0.004 90);
+  --border: oklch(0.898 0.013 255.5);
+  --input: oklch(0.898 0.013 255.5);
+  --ring: oklch(0.699 0.12 76.4 / 55%);
+  --chart-1: oklch(0.699 0.12 76.4);
+  --chart-2: oklch(0.55 0.1 240);
   --chart-3: oklch(0.6 0.14 30);
-  --chart-4: oklch(0.7 0.1 150);
-  --chart-5: oklch(0.62 0.13 300);
-  --sidebar: oklch(0.14 0.022 255);
-  --sidebar-foreground: oklch(0.92 0.008 90);
-  --sidebar-primary: oklch(0.78 0.115 85);
-  --sidebar-primary-foreground: oklch(0.17 0.03 255);
-  --sidebar-accent: oklch(0.24 0.026 255);
-  --sidebar-accent-foreground: oklch(0.95 0.006 90);
-  --sidebar-border: oklch(0.3 0.024 255 / 55%);
-  --sidebar-ring: oklch(0.78 0.115 85 / 60%);
+  --chart-4: oklch(0.65 0.1 155);
+  --chart-5: oklch(0.55 0.13 300);
+  --sidebar: oklch(0.243 0.058 249.8);
+  --sidebar-foreground: oklch(0.95 0.008 250);
+  --sidebar-primary: oklch(0.699 0.12 76.4);
+  --sidebar-primary-foreground: oklch(0.243 0.058 249.8);
+  --sidebar-accent: oklch(0.298 0.071 249.4);
+  --sidebar-accent-foreground: oklch(0.97 0.006 250);
+  --sidebar-border: oklch(0.35 0.06 249 / 60%);
+  --sidebar-ring: oklch(0.699 0.12 76.4 / 60%);
 
-  --gold: oklch(0.78 0.115 85);
-  --gold-soft: oklch(0.78 0.115 85 / 14%);
-  --gold-line: oklch(0.78 0.115 85 / 35%);
-  --success: oklch(0.72 0.15 155);
-  --info: oklch(0.7 0.12 230);
-  --hot: oklch(0.65 0.19 25);
-  --surface-2: oklch(0.23 0.026 255);
-  --gradient-gold: linear-gradient(135deg, oklch(0.84 0.11 88), oklch(0.68 0.12 60));
+  --gold: oklch(0.699 0.12 76.4);
+  --gold-soft: oklch(0.699 0.12 76.4 / 12%);
+  --gold-line: oklch(0.699 0.12 76.4 / 38%);
+  --success: oklch(0.62 0.14 155);
+  --info: oklch(0.58 0.12 240);
+  --hot: oklch(0.6 0.18 25);
+  --surface-2: oklch(0.975 0.005 258.3);
+  --gradient-gold: linear-gradient(135deg, oklch(0.8 0.11 80.2), oklch(0.65 0.12 66));
   --gradient-fade: linear-gradient(
     to top,
-    oklch(0.12 0.02 255 / 95%) 0%,
-    oklch(0.12 0.02 255 / 55%) 45%,
+    oklch(0.243 0.058 249.8 / 92%) 0%,
+    oklch(0.243 0.058 249.8 / 50%) 45%,
     transparent 100%
   );
-  --shadow-card: 0 12px 32px -18px oklch(0 0 0 / 85%);
-  --font-display: "Cinzel", Georgia, serif;
-  --font-body: "Outfit", "Cairo", system-ui, sans-serif;
+  --shadow-card: 0 14px 34px -22px oklch(0.243 0.058 249.8 / 45%);
+  --font-display: "Lora", "Noto Naskh Arabic", Georgia, serif;
+  --font-body: "Inter", "IBM Plex Sans Arabic", system-ui, sans-serif;
 }
 
 .dark {
@@ -141,4 +142,17 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+}
+
+/*
+ * Scope helper for text that sits on top of dark imagery / dark scrims.
+ * Redefines the raw tokens for the subtree, so all `text-foreground`,
+ * `text-muted-foreground` and `border-border` utilities stay legible.
+ */
+.on-dark {
+  --foreground: oklch(0.99 0.004 90);
+  --muted-foreground: oklch(0.88 0.008 250);
+  --border: oklch(1 0 0 / 28%);
+  --background: oklch(0.243 0.058 249.8);
+  --card: oklch(0.243 0.058 249.8);
 }

@@ -6,6 +6,12 @@
 ## Pending
 - [ ] Machine-translate database content (all content tables) into the 9 supported languages, stored so the switcher swaps content text too. Report summary before publishing.
 
+## Redesign (8-page template system)
+- [x] Step 1: 8-item top nav with 5 dropdown menus (desktop + mobile accordion, RTL-safe).
+- [x] Step 2: shared interior template (PageTemplate/HeroSearch/CategoryTabs/FeaturedRow/ExploreGrid/SidebarWidgets) proven on /properties.
+- [ ] Step 3: Government Directory through the template (awaiting user review).
+- [ ] Steps 4-9: Invest, Explore Egypt, Visit Egypt, Do Business, homepage slim-down, Live in Egypt + Digital Gov Services, RTL/mobile pass.
+
 ## Blocked
 - [ ] Custom email sending domain (notify.egyptora-hub.com) — DNS records pending; after verification, switch auth emails to own domain and re-enable email confirmation.
 

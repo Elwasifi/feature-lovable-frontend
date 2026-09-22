@@ -112,10 +112,10 @@ function Home() {
 
           <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-12 px-4 py-12 lg:px-8">
             <Mission />
+            <FeaturedServices />
             <GovernmentDirectory />
             <DirectoryCategoryCards />
             <ImportantNotice />
-            <FeaturedServices />
             <Categories />
             <Discover />
             <Destinations />
@@ -1268,19 +1268,24 @@ function Mission() {
     <section className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:items-center">
       <div>
         <h2 className="font-display text-2xl leading-tight text-foreground sm:text-3xl lg:text-[2.1rem]">
-          {t("A private platform supporting Egypt's digital future")}
+          {t("A Private Platform Supporting Egypt's Digital Future")}
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
           {t(
-            "Egyptora Hub is an independent private platform designed to facilitate access to Egypt's opportunities, services and official resources, in one connected gateway.",
+            "Egyptora Hub is an independent private digital platform working to strengthen connectivity between the public and private sectors, and to facilitate access to Egypt's services, opportunities and official resources — in line with the goals of Egypt Vision 2030.",
           )}
         </p>
-        <Link
-          to="/legal"
-          className="mt-5 inline-flex items-center gap-2 rounded-xl border border-gold-line px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold-soft"
-        >
-          {t("Learn more")} <ArrowRight className="size-4 rtl:rotate-180" />
-        </Link>
+        <div className="mt-5 flex flex-wrap items-center gap-3">
+          <Link
+            to="/legal"
+            className="inline-flex items-center gap-2 rounded-xl border border-gold-line px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold-soft"
+          >
+            {t("Learn more")} <ArrowRight className="size-4 rtl:rotate-180" />
+          </Link>
+          <span className="inline-flex items-center gap-2 rounded-full bg-gold-soft px-3 py-1.5 text-[11px] font-semibold text-gold">
+            <ShieldCheck className="size-3.5" /> {t("Aligned with Egypt Vision 2030")}
+          </span>
+        </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {trustItems.map((item) => (

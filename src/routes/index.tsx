@@ -112,10 +112,10 @@ function Home() {
 
           <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-12 px-4 py-12 lg:px-8">
             <Mission />
+            <FeaturedServices />
             <GovernmentDirectory />
             <DirectoryCategoryCards />
             <ImportantNotice />
-            <FeaturedServices />
             <Categories />
             <Discover />
             <Destinations />

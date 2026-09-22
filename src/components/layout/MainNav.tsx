@@ -190,6 +190,7 @@ export function MainNav() {
   };
 
   return (
+    <>
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-[1500px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:px-8">
         <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
@@ -268,7 +269,8 @@ export function MainNav() {
         </div>
       )}
 
-      {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} />}
     </header>
+    {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} />}
+    </>
   );
 }

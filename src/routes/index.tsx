@@ -326,7 +326,7 @@ function Hero() {
         }}
       />
 
-      <div className="relative flex min-h-[460px] flex-col justify-end p-5 sm:min-h-[520px] sm:p-8">
+      <div className="on-dark relative flex min-h-[460px] flex-col justify-end p-5 sm:min-h-[520px] sm:p-8">
         <p className="mb-3 inline-flex w-fit items-center gap-2 rounded-full border border-gold-line bg-background/70 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold backdrop-blur">
           <Sparkles className="size-3" /> {t("The official gateway to Egypt")}
         </p>
@@ -492,7 +492,7 @@ function Discover() {
               ) : (
                 card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />
               )}
-              <div className="absolute inset-x-0 bottom-0 p-4">
+              <div className="on-dark absolute inset-x-0 bottom-0 p-4">
                 <p className="font-display text-base text-foreground">{t(card.title)}</p>
                 <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
               </div>
@@ -599,7 +599,7 @@ function SectorStrip() {
               className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            <div className="absolute inset-x-0 bottom-0 p-3">
+            <div className="on-dark absolute inset-x-0 bottom-0 p-3">
               <p className="font-display text-sm leading-tight text-foreground">{t(s.title)}</p>
               <p className="mt-1 text-[10px] leading-snug text-foreground/70">{t(s.note)}</p>
             </div>
@@ -634,7 +634,7 @@ function Offers() {
             <span className="absolute start-3 top-3 rounded-full border border-gold-line bg-background/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold backdrop-blur">
               {t(o.tag)}
             </span>
-            <div className="absolute inset-x-0 bottom-0 p-4">
+            <div className="on-dark absolute inset-x-0 bottom-0 p-4">
               <p className="font-display text-base text-foreground">{t(o.title)}</p>
               <p className="mt-1 text-xs text-foreground/75">{t(o.body)}</p>
               <a
@@ -783,7 +783,7 @@ function Marketplace() {
             className="h-64 w-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-          <div className="absolute inset-x-0 bottom-0 p-5">
+          <div className="on-dark absolute inset-x-0 bottom-0 p-5">
             <p className="font-display text-lg text-foreground">{t("Wear Egypt & local makers")}</p>
             <p className="mt-1 max-w-lg text-xs text-foreground/75">
               {t("Cotton, crafts and produce from verified artisans across the country.")}

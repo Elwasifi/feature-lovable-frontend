@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import type { SVGProps } from "react";
+import { useState, type SVGProps } from "react";
 
 function AppleIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -33,6 +33,46 @@ const legalLinks = [
   { label: "Accessibility", to: "/legal/accessibility" },
   { label: "Legal Disclaimer", to: "/legal/disclaimer" },
 ];
+
+/** "Stay connected" column: the address is sent to our inbox as a subscription request. */
+function NewsletterColumn() {
+  const { t } = useI18n();
+  const [email, setEmail] = useState("");
+  return (
+    <div>
+      <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
+        {t("Stay connected")}
+      </h3>
+      <p className="mt-4 text-sm text-muted-foreground">{t("Subscribe to our updates")}</p>
+      <form
+        className="mt-3 flex overflow-hidden rounded-xl border border-border bg-card"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!email.trim()) return;
+          window.location.href = `${mailto("Newsletter subscription")}&body=${encodeURIComponent(
+            `Please subscribe this address to Egyptora Hub updates: ${email.trim()}`,
+          )}`;
+        }}
+      >
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder={t("Your email address")}
+          aria-label={t("Your email address")}
+          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+        />
+        <button
+          type="submit"
+          className="shrink-0 bg-gold px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+        >
+          {t("Subscribe")}
+        </button>
+      </form>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   const { t } = useI18n();

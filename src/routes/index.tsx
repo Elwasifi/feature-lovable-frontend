@@ -317,12 +317,12 @@ function Hero() {
         className="absolute inset-0 size-full object-cover"
       />
       {/* Legibility scrims: a full darkening wash plus a stronger bottom/leading fade. */}
-      <div className="absolute inset-0 bg-background/15" />
+      <div className="absolute inset-0 bg-primary/20" />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to top, oklch(0.12 0.02 255 / 88%) 0%, oklch(0.12 0.02 255 / 45%) 45%, oklch(0.12 0.02 255 / 6%) 100%)",
+            "linear-gradient(to top, oklch(0.243 0.058 249.8 / 92%) 0%, oklch(0.243 0.058 249.8 / 52%) 45%, oklch(0.243 0.058 249.8 / 10%) 100%)",
         }}
       />
 

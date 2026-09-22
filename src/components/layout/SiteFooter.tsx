@@ -39,7 +39,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-sidebar">
       <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)] lg:gap-x-10">
+        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)_1.2fr] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -106,6 +106,8 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+
+          <NewsletterColumn />
         </div>
 
         <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">

@@ -70,6 +70,8 @@ import {
 import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { useCurrency } from "@/i18n/currency";
+import { supabase } from "@/integrations/supabase/client";
+import { slugifyCategory } from "@/routes/government-directory";
 import { cn } from "@/lib/utils";
 
 
@@ -544,12 +546,20 @@ function BookingSearch() {
 }
 
 const directoryCategories: { label: string; Icon: typeof Landmark; href?: string }[] = [
-  { label: "Ministries", Icon: Landmark },
-  { label: "Authorities & Agencies", Icon: Building2 },
+  { label: "Ministries", Icon: Landmark, href: "/government-directory#ministries" },
+  {
+    label: "Authorities & Agencies",
+    Icon: Building2,
+    href: "/government-directory#authorities-and-agencies",
+  },
   { label: "Governorates", Icon: MapPin, href: "/#governorates" },
   { label: "Government Services", Icon: FileText },
-  { label: "Parliament & Councils", Icon: Users },
-  { label: "More Categories", Icon: LayoutGrid },
+  {
+    label: "Presidency & Cabinet",
+    Icon: Users,
+    href: "/government-directory#presidency-and-cabinet",
+  },
+  { label: "More Categories", Icon: LayoutGrid, href: "/government-directory" },
 ];
 
 function GovernmentDirectory() {
@@ -577,9 +587,12 @@ function GovernmentDirectory() {
               "Access Egyptian government entities, ministries, authorities and services in one place.",
             )}
           </p>
-          <span className="mt-1 inline-flex w-fit items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-xs font-semibold text-primary-foreground">
-            {t("Directory coming soon")} <ArrowRight className="size-4 rtl:rotate-180" />
-          </span>
+          <Link
+            to="/government-directory"
+            className="mt-1 inline-flex w-fit items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-xs font-semibold text-primary-foreground"
+          >
+            {t("Browse the directory")} <ArrowRight className="size-4 rtl:rotate-180" />
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-3 p-6 sm:grid-cols-3">
           {directoryCategories.map(({ label, Icon, href }) => {
@@ -625,13 +638,42 @@ const directoryCards: {
 
 function DirectoryCategoryCards() {
   const { t } = useI18n();
+  const [counts, setCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    let active = true;
+    (async () => {
+      try {
+        const { data, error } = await supabase
+          .from("government_entities")
+          .select("category_en");
+        if (error) {
+          console.error("[home] failed to load directory counts:", error.message);
+          return;
+        }
+        const tally: Record<string, number> = {};
+        for (const row of (data ?? []) as { category_en: string }[]) {
+          tally[row.category_en] = (tally[row.category_en] ?? 0) + 1;
+        }
+        if (active) setCounts(tally);
+      } catch (err) {
+        console.error("[home] unexpected error loading directory counts:", err);
+      }
+    })();
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <Block
       title="Browse Government Directory by Category"
-      action={<ViewAll href="/#government-directory" />}
+      action={<ViewAll href="/government-directory" />}
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {directoryCards.map((c) => {
+          const count = counts[c.label] ?? 0;
+          const href = c.href ?? (count > 0 ? `/government-directory#${slugifyCategory(c.label)}` : undefined);
           const inner = (
             <>
               <img
@@ -649,9 +691,11 @@ function DirectoryCategoryCards() {
                 <span className="block truncate text-xs text-muted-foreground" dir="rtl">
                   {c.arabic}
                 </span>
-                {c.href ? (
+                {href ? (
                   <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-gold">
-                    {t("View entities")} <ArrowRight className="size-3.5 rtl:rotate-180" />
+                    {t("View entities")}
+                    {count > 0 ? <span className="text-muted-foreground">({count})</span> : null}
+                    <ArrowRight className="size-3.5 rtl:rotate-180" />
                   </span>
                 ) : (
                   <ComingSoonBadge className="mt-1 w-fit" />
@@ -661,8 +705,8 @@ function DirectoryCategoryCards() {
           );
           const className =
             "group overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors hover:border-gold-line";
-          return c.href ? (
-            <a key={c.label} href={c.href} className={className}>
+          return href ? (
+            <a key={c.label} href={href} className={className}>
               {inner}
             </a>
           ) : (

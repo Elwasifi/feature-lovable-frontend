@@ -19,6 +19,7 @@ import { Route as EgyptianHeritageWorldwideRouteImport } from './routes/egyptian
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as GovernmentRouteImport } from './routes/government'
+import { Route as GovernmentDirectoryRouteImport } from './routes/government-directory'
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
 import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment-opportunities'
 import { Route as MuseumsRouteImport } from './routes/museums'
@@ -117,6 +118,11 @@ const EventsRoute = EventsRouteImport.update({
 const GovernmentRoute = GovernmentRouteImport.update({
   id: '/government',
   path: '/government',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernmentDirectoryRoute = GovernmentDirectoryRouteImport.update({
+  id: '/government-directory',
+  path: '/government-directory',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HeritageSitesRoute = HeritageSitesRouteImport.update({
@@ -376,6 +382,7 @@ export interface FileRoutesByFullPath {
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/government': typeof GovernmentRoute
+  '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
@@ -435,6 +442,7 @@ export interface FileRoutesByTo {
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/government': typeof GovernmentRoute
+  '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
@@ -496,6 +504,7 @@ export interface FileRoutesById {
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
   '/government': typeof GovernmentRoute
+  '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
   '/museums': typeof MuseumsRoute
@@ -558,6 +567,7 @@ export interface FileRouteTypes {
     | '/encyclopedia'
     | '/events'
     | '/government'
+    | '/government-directory'
     | '/heritage-sites'
     | '/investment-opportunities'
     | '/museums'
@@ -617,6 +627,7 @@ export interface FileRouteTypes {
     | '/encyclopedia'
     | '/events'
     | '/government'
+    | '/government-directory'
     | '/heritage-sites'
     | '/investment-opportunities'
     | '/museums'
@@ -677,6 +688,7 @@ export interface FileRouteTypes {
     | '/encyclopedia'
     | '/events'
     | '/government'
+    | '/government-directory'
     | '/heritage-sites'
     | '/investment-opportunities'
     | '/museums'
@@ -738,6 +750,7 @@ export interface RootRouteChildren {
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
   GovernmentRoute: typeof GovernmentRoute
+  GovernmentDirectoryRoute: typeof GovernmentDirectoryRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
   InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
   MuseumsRoute: typeof MuseumsRoute
@@ -848,6 +861,13 @@ declare module '@tanstack/react-router' {
       path: '/government'
       fullPath: '/government'
       preLoaderRoute: typeof GovernmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government-directory': {
+      id: '/government-directory'
+      path: '/government-directory'
+      fullPath: '/government-directory'
+      preLoaderRoute: typeof GovernmentDirectoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/heritage-sites': {
@@ -1228,6 +1248,7 @@ const rootRouteChildren: RootRouteChildren = {
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
   GovernmentRoute: GovernmentRoute,
+  GovernmentDirectoryRoute: GovernmentDirectoryRoute,
   HeritageSitesRoute: HeritageSitesRoute,
   InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
   MuseumsRoute: MuseumsRoute,

@@ -46,9 +46,8 @@ import govAswan from "@/assets/gov/aswan.jpg";
 import govPortSaid from "@/assets/gov/port-said.jpg";
 import { SaveButton } from "@/components/site/SaveButton";
 import { EgyptMap } from "@/components/site/EgyptMap";
-import { AppRail } from "@/components/dashboard/AppRail";
-import { DashboardTopBar } from "@/components/dashboard/DashboardTopBar";
 import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GhostButton, SourceBadge } from "@/components/site/Primitives";
 import {

@@ -107,7 +107,20 @@ export function FloatingConcierge() {
     [busy, messages],
   );
 
+  // The homepage hero search field hands its question to the concierge.
+  useEffect(() => {
+    const onAsk = (e: Event) => {
+      const question = (e as CustomEvent<string>).detail;
+      if (!question) return;
+      setOpen(true);
+      void send(question);
+    };
+    window.addEventListener("egyptora:ask-concierge", onAsk);
+    return () => window.removeEventListener("egyptora:ask-concierge", onAsk);
+  }, [send]);
+
   const onPointerDown = useCallback((e: React.PointerEvent<HTMLButtonElement>) => {
+
     dragging.current = true;
     moved.current = false;
     const rect = e.currentTarget.getBoundingClientRect();

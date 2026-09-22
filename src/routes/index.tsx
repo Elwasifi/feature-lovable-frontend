@@ -11,6 +11,7 @@ import {
   Dna,
   FileText,
   GraduationCap,
+  Info,
   Landmark,
   LayoutGrid,
   MapPin,
@@ -37,6 +38,12 @@ import featProperties from "@/assets/sector-realestate.jpg";
 import featInvest from "@/assets/sec-mice.jpg";
 import featMarket from "@/assets/market-crafts.jpg";
 import govBuilding from "@/assets/gov/cairo.jpg";
+import govCairo from "@/assets/gov/cairo.jpg";
+import govGiza from "@/assets/gov/giza.jpg";
+import govAlexandria from "@/assets/gov/alexandria.jpg";
+import govLuxor from "@/assets/gov/luxor.jpg";
+import govAswan from "@/assets/gov/aswan.jpg";
+import govPortSaid from "@/assets/gov/port-said.jpg";
 import { SaveButton } from "@/components/site/SaveButton";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { AppRail } from "@/components/dashboard/AppRail";

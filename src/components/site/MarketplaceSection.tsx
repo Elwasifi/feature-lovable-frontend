@@ -35,7 +35,7 @@ export function MarketplaceSection({
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(to top, var(--background) 6%, color-mix(in oklab, var(--background) 78%, transparent) 45%, color-mix(in oklab, var(--background) 35%, transparent) 100%)",
+                "linear-gradient(to top, oklch(0.243 0.058 249.8 / 95%) 6%, oklch(0.243 0.058 249.8 / 72%) 45%, oklch(0.243 0.058 249.8 / 25%) 100%)",
             }}
           />
           <div className="on-dark absolute inset-x-0 bottom-0">

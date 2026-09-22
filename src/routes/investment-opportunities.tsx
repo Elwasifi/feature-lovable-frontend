@@ -195,13 +195,25 @@ function InvestmentOpportunitiesPage() {
     [opportunities],
   );
 
+  /** Tabs stay readable: the busiest sectors get a tab, the rest stay in the list. */
+  const topSectors = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const o of opportunities) {
+      if (o.sector) counts.set(o.sector, (counts.get(o.sector) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 8)
+      .map(([name]) => name);
+  }, [opportunities]);
+
   const tabs: CategoryTab[] = useMemo(
     () => [
       { id: "all", label: "All Sectors", icon: Layers },
-      ...sectors.map((s) => ({ id: s, label: s, icon: sectorIcon(s) })),
+      ...topSectors.map((s) => ({ id: s, label: s, icon: sectorIcon(s) })),
       ...soonTabs,
     ],
-    [sectors],
+    [topSectors],
   );
 
   const activeTab = tabs.find((tb) => tb.id === active);

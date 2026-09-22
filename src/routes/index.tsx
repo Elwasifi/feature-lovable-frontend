@@ -98,15 +98,13 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <>
-      <div className="flex min-h-screen bg-background">
-        <AppRail open={menuOpen} onClose={() => setMenuOpen(false)} />
-
+      <div className="min-h-screen bg-background">
         <div className="min-w-0 flex-1">
-          <DashboardTopBar onMenu={() => setMenuOpen(true)} />
+          <SiteHeader />
+
+
 
 
         <main>

@@ -70,6 +70,8 @@ import {
 import { SITE, mailto } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { useCurrency } from "@/i18n/currency";
+import { supabase } from "@/integrations/supabase/client";
+import { slugifyCategory } from "@/routes/government-directory";
 import { cn } from "@/lib/utils";
 
 

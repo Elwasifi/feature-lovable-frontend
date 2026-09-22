@@ -201,7 +201,7 @@ export function MainNav() {
             height={40}
             className="size-9 shrink-0 rounded-full ring-1 ring-gold-line sm:size-10"
           />
-          <span className="hidden min-w-0 leading-tight sm:block min-[1360px]:hidden min-[1560px]:block">
+          <span className="hidden min-w-0 leading-tight sm:block min-[1360px]:hidden min-[1800px]:block">
             <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
               EGYPTORA <span className="text-gold">HUB</span>
             </span>

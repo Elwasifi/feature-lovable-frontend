@@ -73,7 +73,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         to={entry.to as any}
         activeProps={{ className: "text-gold" }}
         activeOptions={{ exact: entry.to === "/" }}
-        className="whitespace-nowrap rounded-lg px-2.5 py-2 text-[13px] font-medium text-foreground/85 transition-colors hover:text-gold"
+        className="whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium text-foreground/85 transition-colors hover:text-gold"
       >
         {t(entry.label)}
       </Link>
@@ -93,7 +93,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex items-center gap-1 whitespace-nowrap rounded-lg px-2.5 py-2 text-[13px] font-medium transition-colors",
+          "flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium transition-colors",
           open ? "text-gold" : "text-foreground/85 hover:text-gold",
         )}
       >
@@ -118,7 +118,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
   const [openLabel, setOpenLabel] = useState<string | null>(null);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-background lg:hidden">
+    <div className="fixed inset-0 z-50 flex flex-col bg-background xl:hidden">
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <span className="font-display text-sm tracking-[0.2em] text-foreground">
           EGYPTORA <span className="text-gold">HUB</span>

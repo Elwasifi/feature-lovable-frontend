@@ -353,7 +353,7 @@ function LiveBusinessWhy() {
   const { t } = useI18n();
   return (
     <section className="bg-background py-14">
-      <div className={cn(wrap, "grid gap-10 lg:grid-cols-[1fr_1fr_0.75fr]")}>
+      <div className={cn(wrap, "grid gap-10 lg:grid-cols-2 2xl:grid-cols-[1fr_1fr_0.75fr]")}>
         <div>
           <BlockHead
             title="Live in Egypt"
@@ -486,7 +486,8 @@ function GovBand() {
         <img src={govBuildingImg} alt="" className="size-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-navy-band/40 to-navy-band rtl:bg-gradient-to-l" />
       </div>
-      <div className={cn(wrap, "relative py-12 md:ps-[34%]")}>
+      <div className={cn(wrap, "relative py-12")}>
+        <div className="md:ps-[30%]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
@@ -516,6 +517,7 @@ function GovBand() {
               {t(label)}
             </a>
           ))}
+        </div>
         </div>
       </div>
     </section>

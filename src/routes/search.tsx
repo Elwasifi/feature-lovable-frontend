@@ -15,7 +15,7 @@ const description = "Search destinations, investment, living, business, governme
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search: Record<string, unknown>): { q: string } => ({
-    q: typeof search.q === "string" ? search.q : search.q != null ? String(search.q) : "",
+    q: typeof search["q"] === "string" ? search["q"] : search["q"] != null ? String(search["q"]) : "",
   }),
   loader: async () => {
     const gov: SearchEntry[] = [];

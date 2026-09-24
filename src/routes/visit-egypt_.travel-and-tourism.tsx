@@ -14,7 +14,7 @@ import {
 import {
   TravelpayoutsWidget, TP_WIDGET_SRC, TP_ATTRACTIONS_SRC, TP_CAR_RENTAL_SRC,
 } from "@/components/site/BookingSearch";
-import { visitChips } from "@/routes/visit-egypt";
+import { visitChips } from "@/data/visit-chips";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";

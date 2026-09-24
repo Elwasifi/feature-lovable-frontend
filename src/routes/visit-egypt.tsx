@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Globe2, Landmark, Waves, Ship, Building, Mountain, Fish, MapPinned, Church, Users, PartyPopper, Briefcase,
+  Briefcase,
   Lightbulb, Stamp, CalendarDays, Map as MapIcon, Headphones, ArrowRight, ExternalLink,
 } from "lucide-react";
 import hero from "@/assets/inner/visit-hero.jpg";
@@ -18,8 +18,9 @@ import nile from "@/assets/home/nile.jpg";
 import adventure from "@/assets/promo-adventure.jpg";
 import {
   InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, EgyptMap, ViewAll, GoldButton, SmartLink,
-  AppPromoCard, BandPromo, type CardItem, type Chip,
+  AppPromoCard, BandPromo, type CardItem,
 } from "@/components/layout/InnerPage";
+import { visitChips } from "@/data/visit-chips";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 
@@ -44,21 +45,6 @@ export const Route = createFileRoute("/visit-egypt")({
 });
 
 const TT = "/visit-egypt/travel-and-tourism";
-
-export const visitChips: Chip[] = [
-  { label: "All Destinations", Icon: Globe2 },
-  { label: "Must-See Landmarks", Icon: Landmark, to: "/heritage-sites" },
-  { label: "Beaches & Red Sea", Icon: Waves },
-  { label: "Nile Cruises", Icon: Ship, to: TT },
-  { label: "Cultural & Heritage Sites", Icon: Building, to: "/heritage-sites" },
-  { label: "Desert & Adventure", Icon: Mountain },
-  { label: "Diving & Water Sports", Icon: Fish },
-  { label: "Cities to Visit", Icon: MapPinned, to: "/countries" },
-  { label: "Religious Tourism", Icon: Church },
-  { label: "Family-Friendly", Icon: Users },
-  { label: "Events & Festivals", Icon: PartyPopper, to: "/events" },
-  { label: "Travel & Tourism Services", Icon: Briefcase, to: TT },
-];
 
 const destinations: CardItem[] = [
   { title: "Pyramids of Giza", desc: "The last standing wonder of the ancient world.", img: giza, badge: "Landmark", to: "/heritage-sites" },

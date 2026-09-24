@@ -34,6 +34,7 @@ import { Route as ProvidersRouteImport } from './routes/providers'
 import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
+import { Route as VisitEgyptRouteImport } from './routes/visit-egypt'
 import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
@@ -67,6 +68,7 @@ import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
 import { Route as ResearchProgramsIdRouteImport } from './routes/research-programs_.$id'
 import { Route as TravelerStoriesIdRouteImport } from './routes/traveler-stories_.$id'
 import { Route as TripsIdRouteImport } from './routes/trips.$id'
+import { Route as VisitEgyptTravelAndTourismRouteImport } from './routes/visit-egypt_.travel-and-tourism'
 import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
 import { Route as AdminContentTableRouteImport } from './routes/admin.content.$table'
 import { Route as AdminCrmInvestmentRouteImport } from './routes/admin.crm.investment'
@@ -197,6 +199,11 @@ const SavedRoute = SavedRouteImport.update({
 const TravelerStoriesRoute = TravelerStoriesRouteImport.update({
   id: '/traveler-stories',
   path: '/traveler-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitEgyptRoute = VisitEgyptRouteImport.update({
+  id: '/visit-egypt',
+  path: '/visit-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountBookingsRoute = AccountBookingsRouteImport.update({
@@ -369,6 +376,12 @@ const TripsIdRoute = TripsIdRouteImport.update({
   path: '/trips/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisitEgyptTravelAndTourismRoute =
+  VisitEgyptTravelAndTourismRouteImport.update({
+    id: '/visit-egypt_/travel-and-tourism',
+    path: '/visit-egypt/travel-and-tourism',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminContentIndexRoute = AdminContentIndexRouteImport.update({
   id: '/content/',
   path: '/content/',
@@ -421,6 +434,7 @@ export interface FileRoutesByFullPath {
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -450,6 +464,7 @@ export interface FileRoutesByFullPath {
   '/research-programs/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
@@ -485,6 +500,7 @@ export interface FileRoutesByTo {
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -514,6 +530,7 @@ export interface FileRoutesByTo {
   '/research-programs/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin': typeof AdminIndexRoute
   '/legal': typeof LegalIndexRoute
   '/my-trips': typeof MyTripsIndexRoute
@@ -551,6 +568,7 @@ export interface FileRoutesById {
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account_/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -580,6 +598,7 @@ export interface FileRoutesById {
   '/research-programs_/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories_/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt_/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
@@ -618,6 +637,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -647,6 +667,7 @@ export interface FileRouteTypes {
     | '/research-programs/$id'
     | '/traveler-stories/$id'
     | '/trips/$id'
+    | '/visit-egypt/travel-and-tourism'
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
@@ -682,6 +703,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -711,6 +733,7 @@ export interface FileRouteTypes {
     | '/research-programs/$id'
     | '/traveler-stories/$id'
     | '/trips/$id'
+    | '/visit-egypt/travel-and-tourism'
     | '/admin'
     | '/legal'
     | '/my-trips'
@@ -747,6 +770,7 @@ export interface FileRouteTypes {
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account_/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -776,6 +800,7 @@ export interface FileRouteTypes {
     | '/research-programs_/$id'
     | '/traveler-stories_/$id'
     | '/trips/$id'
+    | '/visit-egypt_/travel-and-tourism'
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
@@ -813,6 +838,7 @@ export interface RootRouteChildren {
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   SavedRoute: typeof SavedRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
+  VisitEgyptRoute: typeof VisitEgyptRoute
   AccountBookingsRoute: typeof AccountBookingsRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
@@ -837,6 +863,7 @@ export interface RootRouteChildren {
   ResearchProgramsIdRoute: typeof ResearchProgramsIdRoute
   TravelerStoriesIdRoute: typeof TravelerStoriesIdRoute
   TripsIdRoute: typeof TripsIdRoute
+  VisitEgyptTravelAndTourismRoute: typeof VisitEgyptTravelAndTourismRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
   PartnersIndexRoute: typeof PartnersIndexRoute
@@ -1018,6 +1045,13 @@ declare module '@tanstack/react-router' {
       path: '/traveler-stories'
       fullPath: '/traveler-stories'
       preLoaderRoute: typeof TravelerStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit-egypt': {
+      id: '/visit-egypt'
+      path: '/visit-egypt'
+      fullPath: '/visit-egypt'
+      preLoaderRoute: typeof VisitEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account_/bookings': {
@@ -1251,6 +1285,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TripsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visit-egypt_/travel-and-tourism': {
+      id: '/visit-egypt_/travel-and-tourism'
+      path: '/visit-egypt/travel-and-tourism'
+      fullPath: '/visit-egypt/travel-and-tourism'
+      preLoaderRoute: typeof VisitEgyptTravelAndTourismRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/content/': {
       id: '/admin/content/'
       path: '/content'
@@ -1343,6 +1384,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchProgramsRoute: ResearchProgramsRoute,
   SavedRoute: SavedRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
+  VisitEgyptRoute: VisitEgyptRoute,
   AccountBookingsRoute: AccountBookingsRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
@@ -1367,6 +1409,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchProgramsIdRoute: ResearchProgramsIdRoute,
   TravelerStoriesIdRoute: TravelerStoriesIdRoute,
   TripsIdRoute: TripsIdRoute,
+  VisitEgyptTravelAndTourismRoute: VisitEgyptTravelAndTourismRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,
   PartnersIndexRoute: PartnersIndexRoute,

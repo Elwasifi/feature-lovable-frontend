@@ -20,3 +20,4 @@
 - [x] bookings table extended: amount, currency, stripe_session_id, stripe_payment_intent_id, paid_at.
 - [x] "Request booking" action on provider detail page; records provider price_from as amount in USD.
 - [ ] BLOCKED: Stripe test checkout + webhook — Lovable built-in payments unavailable for seller country EG; needs the user's own Stripe test key (BYO) or a non-EG seller entity.
+- [x] Homepage rebuild (Prompt 3) with photos cropped from mockups

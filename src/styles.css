@@ -139,6 +139,8 @@
   --color-bg-band: var(--bg-band);
   --color-chip-active: var(--chip-active);
   --color-text-body: var(--text-body);
+  --color-navy-band: var(--navy-band);
+  --color-bg-notice: var(--bg-notice);
 }
 
 :root {
@@ -150,6 +152,8 @@
   --bg-band: #e9f0f8;
   --chip-active: #fdf3df;
   --text-body: #5b6472;
+  --navy-band: #072b45;
+  --bg-notice: #ebf3fe;
 }
 
 

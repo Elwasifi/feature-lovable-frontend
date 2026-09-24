@@ -1,5 +1,12 @@
-import { Mail } from "lucide-react";
-import { useState, type SVGProps } from "react";
+import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { useState, type ComponentType, type SVGProps } from "react";
+import { Link } from "@tanstack/react-router";
+import logo from "@/assets/egyptora-hub-logo.png.asset.json";
+import { Container } from "@/components/site/Primitives";
+import { useI18n } from "@/i18n";
+import { SITE, mailto } from "@/config/site";
+
+type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 
 function AppleIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -17,35 +24,114 @@ function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-import { Link } from "@tanstack/react-router";
-import logo from "@/assets/egyptora-hub-logo.png.asset.json";
-import { Container } from "@/components/site/Primitives";
-import { footerColumns, govIntegrations } from "@/data/site";
-import { useI18n } from "@/i18n";
-import { SITE, mailto } from "@/config/site";
-import { SocialBar } from "@/components/layout/SocialBar";
+function TikTokIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M16.5 3c.3 2.1 1.6 3.6 3.7 3.9v2.5c-1.4.1-2.7-.3-3.9-1.1v5.4c0 3.6-2.6 5.9-5.7 5.9-3 0-5.6-2.4-5.6-5.6 0-3.4 2.9-6 6.4-5.5v2.7c-.4-.1-.8-.2-1.2-.2-1.6 0-2.9 1.3-2.9 3s1.3 3 2.9 3c1.6 0 3-1.2 3-2.9V3h3.3Z" />
+    </svg>
+  );
+}
 
-const legalLinks = [
-  { label: "Terms & Conditions", to: "/legal/terms" },
-  { label: "Privacy Policy", to: "/legal/privacy" },
-  { label: "Cookie Policy", to: "/legal/cookies" },
-  { label: "Data Protection", to: "/legal/data-protection" },
-  { label: "Accessibility", to: "/legal/accessibility" },
-  { label: "Legal Disclaimer", to: "/legal/disclaimer" },
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M17.5 3h3l-6.6 7.5L21.8 21h-6l-4.7-6.1L5.7 21H2.6l7-8L2.4 3h6.2l4.2 5.6L17.5 3Zm-1.1 16.1h1.7L7.7 4.8H5.9l10.5 14.3Z" />
+    </svg>
+  );
+}
+
+/** Social order is fixed by the brand brief. LinkedIn has no official page yet. */
+const socials: { label: string; href?: string; Icon: IconType }[] = [
+  { label: "Facebook", href: SITE.social.facebook, Icon: Facebook },
+  { label: "Instagram", href: SITE.social.instagram, Icon: Instagram },
+  { label: "LinkedIn", Icon: Linkedin },
+  { label: "YouTube", href: SITE.social.youtube, Icon: Youtube },
+  { label: "X (Twitter)", href: SITE.social.x, Icon: XIcon },
+  { label: "TikTok", href: SITE.social.tiktok, Icon: TikTokIcon },
 ];
 
-/** "Stay connected" column: the address is sent to our inbox as a subscription request. */
-function NewsletterColumn() {
+type FLink = { label: string; to?: string; href?: string; soon?: boolean };
+
+const exploreLinks: FLink[] = [
+  { label: "Explore Egypt", to: "/encyclopedia" },
+  { label: "Live in Egypt", to: "/properties" },
+  { label: "Invest in Egypt", to: "/investment-opportunities" },
+  { label: "Do Business", to: "/providers" },
+  { label: "Visit Egypt", to: "/offers" },
+  { label: "Government Directory", to: "/government-directory" },
+];
+
+const aboutLinks: FLink[] = [
+  { label: "About Egyptora", to: "/legal" },
+  { label: "Our Mission", soon: true },
+  { label: "Vision & Values", soon: true },
+  { label: "Contact Us", to: "/contact" },
+  { label: "FAQ", soon: true },
+  { label: "Terms of Use", to: "/legal/terms" },
+  { label: "Privacy Policy", to: "/legal/privacy" },
+  { label: "Press & Media", href: mailto("Egyptora Hub — Press & Media") },
+];
+
+const linkCls = "text-sm text-foreground/75 transition-colors hover:text-shell-gold";
+
+function FooterLink({ link }: { link: FLink }) {
+  const { t } = useI18n();
+  if (link.to)
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static route paths
+      <Link to={link.to as any} className={linkCls}>
+        {t(link.label)}
+      </Link>
+    );
+  if (link.href)
+    return (
+      <a href={link.href} className={linkCls}>
+        {t(link.label)}
+      </a>
+    );
+  return (
+    <span className="inline-flex items-center gap-2 text-sm text-foreground/50">
+      {t(link.label)}
+      <span className="rounded border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-wide">
+        {t("Coming soon")}
+      </span>
+    </span>
+  );
+}
+
+function ColumnTitle({ children }: { children: React.ReactNode }) {
+  return <h3 className="font-display text-base font-semibold text-foreground">{children}</h3>;
+}
+
+/** Decorative gold skyline: pyramids + tower line-art with script "Egypt". */
+function Skyline() {
+  const { t } = useI18n();
+  return (
+    <div aria-hidden className="hidden text-shell-gold xl:block">
+      <svg viewBox="0 0 220 90" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-56">
+        <path d="M4 84h212" />
+        <path d="M14 84 44 44l30 40M52 84l30-46 30 46M100 84l18-24 18 24" />
+        <path d="M44 44l-6 40M82 38l-8 46" opacity=".5" />
+        <path d="M168 84V30l4-10 4 10v54M164 44h16M162 58h20M166 30h12" />
+        <path d="M172 20v-10" />
+        <path d="M150 84V66h8v18M186 84V70h10v14" opacity=".7" />
+      </svg>
+      <p className="mt-1 font-display text-3xl italic">{t("Egypt")}</p>
+      <p className="text-[11px] tracking-wide text-foreground/70">{t("More Than a Destination")}</p>
+      <p className="text-[11px] tracking-wide text-foreground/70">{t("A Brighter Tomorrow")}</p>
+    </div>
+  );
+}
+
+function Newsletter() {
   const { t } = useI18n();
   const [email, setEmail] = useState("");
   return (
     <div>
-      <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-        {t("Stay connected")}
-      </h3>
-      <p className="mt-4 text-sm text-muted-foreground">{t("Subscribe to our updates")}</p>
+      <ColumnTitle>{t("Stay Connected")}</ColumnTitle>
+      <p className="mt-4 text-sm text-foreground/75">{t("Subscribe to our updates")}</p>
       <form
-        className="mt-3 flex overflow-hidden rounded-xl border border-border bg-card"
+        className="mt-3 flex max-w-sm gap-2"
         onSubmit={(e) => {
           e.preventDefault();
           if (!email.trim()) return;
@@ -61,15 +147,35 @@ function NewsletterColumn() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t("Your email address")}
           aria-label={t("Your email address")}
-          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-sm text-foreground outline-none placeholder:text-muted-foreground"
+          className="min-w-0 flex-1 rounded-lg bg-primary-foreground px-3 py-2.5 text-sm text-navy outline-none placeholder:text-text-body"
         />
         <button
           type="submit"
-          className="shrink-0 bg-gold px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+          className="shrink-0 rounded-lg bg-gold-cta px-4 py-2.5 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90"
         >
           {t("Subscribe")}
         </button>
       </form>
+
+      <p className="mt-6 text-xs font-semibold uppercase tracking-[0.18em] text-shell-gold">
+        {t("Download the app")}
+      </p>
+      <ul className="mt-3 flex items-center gap-3">
+        {[
+          { label: "App Store", Icon: AppleIcon },
+          { label: "Google Play", Icon: GooglePlayIcon },
+        ].map(({ label, Icon }) => (
+          <li key={label}>
+            <span
+              title={t(label)}
+              aria-label={t(label)}
+              className="grid size-11 place-items-center rounded-full border border-shell-gold/60 text-shell-gold"
+            >
+              <Icon className="size-5" />
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -77,9 +183,9 @@ function NewsletterColumn() {
 export function SiteFooter() {
   const { t } = useI18n();
   return (
-    <footer className="border-t border-border bg-sidebar">
-      <Container className="py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_repeat(5,1fr)_1.2fr] lg:gap-x-10">
+    <footer className="on-dark bg-navy-deep text-foreground">
+      <Container className="py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr] xl:grid-cols-[1.5fr_1fr_1fr_1.4fr_auto] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -91,136 +197,93 @@ export function SiteFooter() {
               />
               <span>
                 <span className="block font-display text-base tracking-[0.2em] text-foreground">
-                  EGYPTORA <span className="text-gold">HUB</span>
+                  EGYPTORA <span className="text-shell-gold">HUB</span>
                 </span>
-                <span className="block text-[10px] tracking-[0.12em] text-muted-foreground">
+                <span className="block text-[10px] tracking-[0.12em] text-foreground/70">
                   {t(SITE.tagline)}
                 </span>
               </span>
             </div>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/75">
               {t(
-                "A unified digital gateway presenting Egypt's destinations, heritage, culture and investment landscape through one platform.",
+                "A private platform connecting the world to Egypt's opportunities, people and possibilities.",
               )}
             </p>
-            <a
-              href={mailto("Egyptora Hub — general enquiry")}
-              className="mt-4 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-foreground"
-            >
-              <Mail className="size-4" />
-              <span dir="ltr">{SITE.email}</span>
-            </a>
-            <p className="mt-1 text-xs text-muted-foreground" dir="ltr">
-              {SITE.domain}
-            </p>
-            <p className="mt-2 text-xs text-muted-foreground/80">
-              {t("Egyptora Hub is a brand operated by")} {SITE.parentCompany}.
-            </p>
-          </div>
-
-          {footerColumns.map((col) => (
-            <div key={col.title}>
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-                {t(col.title)}
-              </h3>
-              <ul className="mt-4 space-y-2.5">
-                {col.links.map((link) => (
-                  <li key={link.label}>
-                    {link.to ? (
-                      <Link
-                        to={link.to}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {t(link.label)}
-                      </Link>
-                    ) : (
-                      <a
-                        href={link.href ?? mailto(`Egyptora Hub — ${link.label}`)}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {t(link.label)}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-
-          <NewsletterColumn />
-        </div>
-
-        <div className="mt-14 grid gap-10 border-t border-border pt-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-              {t("Government integration")}
-            </h3>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {govIntegrations.map((g) => (
-                <li
-                  key={g}
-                  className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
-                >
-                  {t(g)}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="text-start">
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold/80">
-              {t("Download the app")}
-            </h3>
-            <ul className="mt-4 flex flex-nowrap items-center justify-start gap-3">
-              {[
-                { label: "App Store", Icon: AppleIcon },
-                { label: "Google Play", Icon: GooglePlayIcon },
-              ].map(({ label, Icon }) => (
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {socials.map(({ label, href, Icon }) => (
                 <li key={label}>
-                  <span
-                    title={t(label)}
-                    aria-label={t(label)}
-                    className="group grid size-14 place-items-center rounded-full border border-gold-line/60 bg-card/70 text-gold transition-all duration-300 hover:-translate-y-0.5 hover:border-gold-line hover:bg-gold hover:text-background hover:shadow-[0_10px_24px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
-                  >
-                    <Icon className="size-7" />
-                  </span>
+                  {href ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={label}
+                      title={label}
+                      className="grid size-9 place-items-center rounded-full border border-foreground/70 text-foreground transition-colors hover:border-shell-gold hover:text-shell-gold"
+                    >
+                      <Icon className="size-4" />
+                    </a>
+                  ) : (
+                    <span
+                      aria-label={`${label} — ${t("Coming soon")}`}
+                      title={`${label} — ${t("Coming soon")}`}
+                      className="grid size-9 place-items-center rounded-full border border-foreground/40 text-foreground/50"
+                    >
+                      <Icon className="size-4" />
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
+
+          <div>
+            <ColumnTitle>{t("Explore")}</ColumnTitle>
+            <ul className="mt-4 space-y-2.5">
+              {exploreLinks.map((l) => (
+                <li key={l.label}>
+                  <FooterLink link={l} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <ColumnTitle>{t("About")}</ColumnTitle>
+            <ul className="mt-4 space-y-2.5">
+              {aboutLinks.map((l) => (
+                <li key={l.label}>
+                  <FooterLink link={l} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <Newsletter />
+          <Skyline />
         </div>
       </Container>
 
-      <SocialBar />
-
-      <div className="border-t border-border/70 bg-background/40">
-        <Container className="py-6">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}{" "}
-              <span className="text-muted-foreground/80">
-                {t("Egyptora Hub is a brand of")} {SITE.parentCompany}.
-              </span>
-            </p>
-            <nav aria-label={t("Legal")}>
-              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                {legalLinks.map((l) => (
-                  <li key={l.label}>
-                    <Link
-                      to={l.to}
-                      className="text-xs text-muted-foreground transition-colors hover:text-gold"
-                    >
-                      {t(l.label)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-          <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground/80">
-            {t("Content shown on this preview is demonstration data unless labelled otherwise.")}{" "}
-            {t(
-              "All legal documents are drafts pending review by qualified Egyptian legal counsel and do not guarantee compliance with Egyptian or international law.",
-            )}
+      <div className="border-t border-border">
+        <Container className="flex flex-col gap-2 py-5 text-xs text-foreground/70 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}
+          </p>
+          <nav aria-label={t("Legal")} className="flex flex-wrap gap-x-4 gap-y-1">
+            {[
+              ["Legal Center", "/legal"],
+              ["Cookie Policy", "/legal/cookies"],
+              ["Accessibility", "/legal/accessibility"],
+              ["Partner With Us", "/partners"],
+            ].map(([label, to]) => (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static route paths
+              <Link key={to} to={to as any} className="hover:text-shell-gold">
+                {t(label!)}
+              </Link>
+            ))}
+          </nav>
+          <p>
+            {t("A Private Platform")} | {t("Your Gateway to Egypt")}
           </p>
         </Container>
       </div>

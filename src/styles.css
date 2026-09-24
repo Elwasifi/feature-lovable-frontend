@@ -130,6 +130,26 @@
   --color-surface-2: var(--surface-2);
   --font-display: var(--font-display);
   --font-sans: var(--font-body);
+  /* Shell tokens (nav + footer). */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-shell-gold: var(--shell-gold);
+  --color-gold-cta: var(--gold-cta);
+  --color-bg-alt: var(--bg-alt);
+  --color-bg-band: var(--bg-band);
+  --color-chip-active: var(--chip-active);
+  --color-text-body: var(--text-body);
+}
+
+:root {
+  --navy: #0b2a45;
+  --navy-deep: #092334;
+  --shell-gold: #c9a968;
+  --gold-cta: #c99945;
+  --bg-alt: #fafafa;
+  --bg-band: #e9f0f8;
+  --chip-active: #fdf3df;
+  --text-body: #5b6472;
 }
 
 

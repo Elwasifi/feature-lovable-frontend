@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/egyptora-hub-logo.png.asset.json";
@@ -66,14 +66,20 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
     };
   }, [open]);
 
+  const pathname = useRouterState({ select: (st) => st.location.pathname });
+  const active =
+    !!entry.items &&
+    !mainNav.some((e) => !e.items && e.to === pathname) &&
+    entry.items.some((i) => i.to && i.to !== "/" && !i.to.includes("#") && pathname === i.to);
+
   if (!entry.items) {
     return (
       <Link
         // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
         to={entry.to as any}
-        activeProps={{ className: "text-gold" }}
+        activeProps={{ className: "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold" }}
         activeOptions={{ exact: entry.to === "/" }}
-        className="whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium text-foreground/85 transition-colors hover:text-gold"
+        className="relative whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
       >
         {t(entry.label)}
       </Link>
@@ -93,15 +99,17 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium transition-colors",
-          open ? "text-gold" : "text-foreground/85 hover:text-gold",
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium transition-colors",
+          open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
+          active &&
+            "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
         )}
       >
         {t(entry.label)}
         <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
       </button>
       {open && (
-        <div className="absolute top-full z-50 w-[280px] pt-1 start-0">
+        <div className={cn("absolute top-full z-50 w-[280px] pt-1", entry.label === "About" ? "end-0" : "start-0")}>
           <div className="grid gap-0.5 rounded-2xl border border-border bg-popover p-2 shadow-xl">
             {entry.items.map((item) => (
               <LeafLink key={item.label} item={item} onNavigate={() => setOpen(false)} />
@@ -171,6 +179,9 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
           ),
         )}
       </nav>
+      <div className="border-t border-border px-4 py-4 sm:hidden">
+        <AuthButtons variant="nav" className="w-full justify-center" />
+      </div>
     </div>
   );
 }
@@ -233,7 +244,7 @@ export function MainNav() {
             <CurrencySwitcher compact />
           </span>
           <NotificationsBell className="hidden sm:block" />
-          <AuthButtons className="hidden sm:flex" />
+          <AuthButtons variant="nav" className="hidden sm:flex" />
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
@@ -261,7 +272,7 @@ export function MainNav() {
             />
             <button
               type="submit"
-              className="shrink-0 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+              className="shrink-0 rounded-lg bg-gold-cta px-5 py-2.5 text-sm font-semibold text-primary-foreground"
             >
               {t("Search")}
             </button>

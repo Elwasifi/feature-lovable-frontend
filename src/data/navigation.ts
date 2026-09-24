@@ -102,5 +102,15 @@ export const mainNav: NavEntry[] = [
     ],
   },
   { label: "Government Directory", to: "/government-directory" },
-  { label: "About", to: "/legal" },
+  {
+    label: "About",
+    to: "/legal",
+    items: [
+      { label: "About Egyptora", to: "/legal" },
+      { label: "Our Mission", soon: true },
+      { label: "Vision & Values", soon: true },
+      { label: "Contact Us", to: "/contact" },
+      { label: "FAQ", soon: true },
+    ],
+  },
 ];

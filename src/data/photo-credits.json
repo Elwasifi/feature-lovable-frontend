@@ -192,12 +192,12 @@
   "subject": "Hurghada Marina"
  },
  "src/assets/dest-sharm.jpg": {
-  "title": "File:Naama Bay, Sharm el Sheikh, Egypt.jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Naama_Bay%2C_Sharm_el_Sheikh%2C_Egypt.jpg/1920px-Naama_Bay%2C_Sharm_el_Sheikh%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Naama_Bay,_Sharm_el_Sheikh,_Egypt.jpg",
-  "license": "CC BY 4.0",
-  "author": "74papa",
-  "subject": "Naama Bay, Sharm El Sheikh"
+  "title": "File:Naama Bay R01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Naama_Bay_R01.jpg/1920px-Naama_Bay_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Naama_Bay_R01.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "=File:Naama Bay R01.jpg"
  },
  "src/assets/dest-aswan.jpg": {
   "title": "File:Felucca ride In Aswan.jpg",
@@ -254,5 +254,85 @@
   "license": "CC BY-SA 4.0",
   "author": "Abdelrhman 1990",
   "subject": "New Administrative Capital towers"
+ },
+ "src/assets/re-compound.jpg": {
+  "title": "File:ALrehab1.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/ALrehab1.JPG/1920px-ALrehab1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:ALrehab1.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "No machine-readable author provided. Lollylolly78~commonswiki assumed (based on copyright claims).",
+  "subject": "=File:ALrehab1.JPG"
+ },
+ "src/assets/inner/visit-hero.jpg": {
+  "title": "File:Luxor Dromos R03.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Luxor_Dromos_R03.jpg/1920px-Luxor_Dromos_R03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Luxor_Dromos_R03.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert (MJJR)",
+  "subject": "=File:Luxor Dromos R03.jpg"
+ },
+ "src/assets/inner/live-hero.jpg": {
+  "title": "File:Madinaty.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Madinaty.JPG/1920px-Madinaty.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Madinaty.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris El-Gwely",
+  "subject": "=File:Madinaty.JPG"
+ },
+ "src/assets/sec-family.jpg": {
+  "title": "File:Al-Azhar-Park 2016-03-28l.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Al-Azhar-Park_2016-03-28l.jpg/1920px-Al-Azhar-Park_2016-03-28l.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Al-Azhar-Park_2016-03-28l.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Djehouty",
+  "subject": "=File:Al-Azhar-Park 2016-03-28l.jpg"
+ },
+ "src/assets/sec-wellness.jpg": {
+  "title": "File:Cleopatra's Pool - Spring of Juba.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Cleopatra%27s_Pool_-_Spring_of_Juba.jpg/1920px-Cleopatra%27s_Pool_-_Spring_of_Juba.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Cleopatra%27s_Pool_-_Spring_of_Juba.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Ahmed Emad Hamdy",
+  "subject": "=File:Cleopatra's Pool - Spring of Juba.jpg"
+ },
+ "src/assets/sec-marina.jpg": {
+  "title": "File:El Gouna R13.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/El_Gouna_R13.jpg/1920px-El_Gouna_R13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:El_Gouna_R13.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "=File:El Gouna R13.jpg"
+ },
+ "src/assets/promo-cruise.jpg": {
+  "title": "File:Sun Ray Nile cruise ship R01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Sun_Ray_Nile_cruise_ship_R01.jpg/1920px-Sun_Ray_Nile_cruise_ship_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Sun_Ray_Nile_cruise_ship_R01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Marc Ryckaert",
+  "subject": "=File:Sun Ray Nile cruise ship R01.jpg"
+ },
+ "src/assets/promo-adventure.jpg": {
+  "title": "File:Balloon over Luxor - Egypt denoised.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Balloon_over_Luxor_-_Egypt_denoised.jpg/1920px-Balloon_over_Luxor_-_Egypt_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Balloon_over_Luxor_-_Egypt_denoised.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Balloon_over_Luxor_-_Egypt.jpg: Marcosleal\nderivative work: Pro2 (talk)",
+  "subject": "=File:Balloon over Luxor - Egypt denoised.jpg"
+ },
+ "src/assets/sec-desert.jpg": {
+  "title": "File:White Desert, Rock formations in desert landscape, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/White_Desert%2C_Rock_formations_in_desert_landscape%2C_Egypt.jpg/1920px-White_Desert%2C_Rock_formations_in_desert_landscape%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:White_Desert,_Rock_formations_in_desert_landscape,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "=File:White Desert, Rock formations in desert landscape, Egypt.jpg"
+ },
+ "src/assets/sector-rural.jpg": {
+  "title": "File:Cultivating Egypt’s Desert.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Cultivating_Egypt%E2%80%99s_Desert.jpg/1920px-Cultivating_Egypt%E2%80%99s_Desert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Cultivating_Egypt%E2%80%99s_Desert.jpg",
+  "license": "CC BY 2.0",
+  "author": "NASA Goddard Photo and Video",
+  "subject": "=File:Cultivating Egypt’s Desert.jpg"
  }
 }

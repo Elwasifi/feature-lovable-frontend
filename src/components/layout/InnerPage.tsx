@@ -251,7 +251,7 @@ export function EgyptMap({ pins, className }: { pins: string[]; className?: stri
         return (
           <g key={p}>
             <circle cx={x} cy={y} r="5" className="fill-gold-cta stroke-card" strokeWidth="1.5" />
-            <text x={x + 8} y={y + 4} className="fill-navy text-[11px] font-semibold">
+            <text x={x + 8} y={y + (p === "New Capital" ? 16 : p === "Cairo" ? -6 : 4)} className="fill-navy text-[11px] font-semibold">
               {t(p)}
             </text>
           </g>

@@ -108,7 +108,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
       </button>
       {open && (
-        <div className="absolute top-full z-50 w-[280px] pt-1 start-0">
+        <div className={cn("absolute top-full z-50 w-[280px] pt-1", entry.label === "About" ? "end-0" : "start-0")}>
           <div className="grid gap-0.5 rounded-2xl border border-border bg-popover p-2 shadow-xl">
             {entry.items.map((item) => (
               <LeafLink key={item.label} item={item} onNavigate={() => setOpen(false)} />

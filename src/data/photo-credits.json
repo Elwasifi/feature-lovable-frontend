@@ -230,5 +230,29 @@
   "license": "Public domain",
   "author": "Earth Science and Remote Sensing Unit, NASA Johnson Space Center",
   "subject": "Benban Solar Park from the ISS"
+ },
+ "src/assets/dest-cairo.jpg": {
+  "title": "File:A shot taken from Cairo Tower that includes the Cairo Opera, Museum of Egyptian Modern Arts and the Nile.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/A_shot_taken_from_Cairo_Tower_that_includes_the_Cairo_Opera%2C_Museum_of_Egyptian_Modern_Arts_and_the_Nile.jpg/1920px-A_shot_taken_from_Cairo_Tower_that_includes_the_Cairo_Opera%2C_Museum_of_Egyptian_Modern_Arts_and_the_Nile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:A_shot_taken_from_Cairo_Tower_that_includes_the_Cairo_Opera,_Museum_of_Egyptian_Modern_Arts_and_the_Nile.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Rania magdy",
+  "subject": "Cairo and the Nile from Cairo Tower"
+ },
+ "src/assets/dest-alexandria.jpg": {
+  "title": "File:Alexandria Corniche at Dusk.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Alexandria_Corniche_at_Dusk.jpg/1920px-Alexandria_Corniche_at_Dusk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Alexandria_Corniche_at_Dusk.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Slyronit",
+  "subject": "Alexandria Corniche"
+ },
+ "src/assets/sector-realestate.jpg": {
+  "title": "File:Central business district 3, New Administrative Capital.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Central_business_district_3%2C_New_Administrative_Capital.jpg/1920px-Central_business_district_3%2C_New_Administrative_Capital.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Central_business_district_3,_New_Administrative_Capital.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "New Administrative Capital towers"
  }
 }

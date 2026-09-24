@@ -69,6 +69,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
   const pathname = useRouterState({ select: (st) => st.location.pathname });
   const active =
     !!entry.items &&
+    !mainNav.some((e) => !e.items && e.to === pathname) &&
     entry.items.some((i) => i.to && i.to !== "/" && !i.to.includes("#") && pathname === i.to);
 
   if (!entry.items) {

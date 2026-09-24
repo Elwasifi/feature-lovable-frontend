@@ -88,12 +88,12 @@
   "subject": "Smart Village Egypt"
  },
  "src/assets/home/gov-building.jpg": {
-  "title": "File:Egyptian Museum (14795799955).jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Egyptian_Museum_%2814795799955%29.jpg/1920px-Egyptian_Museum_%2814795799955%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Egyptian_Museum_(14795799955).jpg",
-  "license": "CC BY 2.0",
-  "author": "Jorge Láscar from Melbourne, Australia",
-  "subject": "Egyptian House of Representatives building Cairo"
+  "title": "File:Old Buildings new parliament - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Old_Buildings_new_parliament_-_panoramio.jpg/1920px-Old_Buildings_new_parliament_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Old_Buildings_new_parliament_-_panoramio.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "KaiAbuSir",
+  "subject": "Egyptian Parliament building Cairo"
  },
  "src/assets/home/news-giza.jpg": {
   "title": "File:Grand Egyptian Museum 2025.jpg",
@@ -126,5 +126,21 @@
   "license": "Public domain",
   "author": "MohamedHelmyOff",
   "subject": "=File:Egypt Vision 2030.png"
+ },
+ "src/assets/home/start-biz.jpg": {
+  "title": "File:2010 Cairo 4508241881.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/2010_Cairo_4508241881.jpg/1920px-2010_Cairo_4508241881.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:2010_Cairo_4508241881.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "flyvancity from New York, United States",
+  "subject": "Nile City Towers Cairo"
+ },
+ "src/assets/home/residency.jpg": {
+  "title": "File:Egypt, Night Cairo and river Nile, Zamalek city lights.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Egypt%2C_Night_Cairo_and_river_Nile%2C_Zamalek_city_lights.jpg/1920px-Egypt%2C_Night_Cairo_and_river_Nile%2C_Zamalek_city_lights.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Egypt,_Night_Cairo_and_river_Nile,_Zamalek_city_lights.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Zamalek Cairo"
  }
 }

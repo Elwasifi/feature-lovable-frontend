@@ -129,3 +129,55 @@ function TravelpayoutsWidget({ src }: { src: string }) {
   return <div ref={ref} className="w-full min-w-0 overflow-x-hidden [&_iframe]:!w-full" />;
 }
 
+
+/** Real Travelpayouts booking search (marker 777434), restyled for the navy/gold homepage. */
+export function BookingSearch() {
+  const { t } = useI18n();
+  const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
+
+  return (
+    <section id="book" className="scroll-mt-24 bg-background pb-4 pt-8 lg:pt-10">
+      <div className="mx-auto w-full max-w-[1280px] px-5 lg:px-10">
+        <div className="overflow-hidden rounded-[14px] border border-shell-gold/40 bg-navy p-4 shadow-[var(--shadow-card)] sm:p-5">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="font-display text-lg text-primary-foreground sm:text-xl">
+              {t("Book your trip")}
+            </h2>
+            <div className="flex gap-1 overflow-x-auto [scrollbar-width:none]">
+              {searchTabs.map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  aria-pressed={activeTab === tab}
+                  className={cn(
+                    "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
+                    activeTab === tab
+                      ? "bg-gold-cta text-navy"
+                      : "text-primary-foreground/75 hover:bg-primary-foreground/10 hover:text-primary-foreground",
+                  )}
+                >
+                  {t(tab)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {activeTab === "Flights" ? (
+            <TravelpayoutsWidget key="tp-flights" src={TP_WIDGET_SRC} />
+          ) : activeTab === "Hotels" ? (
+            <TravelpayoutsWidget key="tp-hotels" src={TP_WIDGET_SRC} />
+          ) : activeTab === "Transfers" ? (
+            <TravelpayoutsWidget key="tp-transfers" src={TP_TRANSFERS_SRC} />
+          ) : activeTab === "Car Rental" ? (
+            <TravelpayoutsWidget key="tp-car-rental" src={TP_CAR_RENTAL_SRC} />
+          ) : activeTab === "Attractions" ? (
+            <TravelpayoutsWidget key="tp-attractions" src={TP_ATTRACTIONS_SRC} />
+          ) : (
+            <TravelpayoutsWidget key="tp-esim" src={TP_ESIM_SRC} />
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -43,7 +43,7 @@ import newsRedSeaImg from "@/assets/home/news-redsea.jpg";
 import phonesImg from "@/assets/home/phones.jpg";
 import worldImg from "@/assets/home/world.jpg";
 import globeImg from "@/assets/home/globe.jpg";
-import visionImg from "@/assets/home/vision2030.jpg";
+import { BookingSearch } from "@/components/site/BookingSearch";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { askConcierge } from "@/components/layout/MainNav";
@@ -84,6 +84,7 @@ function Home() {
       <main>
         <Hero />
         <QuickStrip />
+        <BookingSearch />
         <ExploreInvest />
         <LiveBusinessWhy />
         <Vision2030 />
@@ -451,7 +452,18 @@ function Vision2030() {
         <div className="hidden h-full w-px bg-border lg:block" />
         <div className="mx-auto flex w-full max-w-[260px] flex-col items-center gap-4">
           <div className="w-full overflow-hidden rounded-[10px] border border-shell-gold/60 bg-background p-3">
-            <img src={visionImg} alt={t("Vision of Egypt 2030")} className="mx-auto w-full" />
+            <div role="img" aria-label="Vision of Egypt 2030" className="flex flex-col items-center py-3 text-center">
+              <svg viewBox="0 0 48 48" className="size-11 text-hot" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="29" cy="8" r="4.2" fill="currentColor" stroke="none" />
+                <path d="M27 15 L20 27 L29 32 L27 44" />
+                <path d="M20 27 L13 38" />
+                <path d="M25 18 L34 23 L40 20" />
+                <path d="M24 17 L15 19 L10 25" />
+              </svg>
+              <p dir="ltr" className="mt-2 font-display text-base font-bold uppercase tracking-[0.12em] text-navy">Vision of Egypt</p>
+              <p dir="ltr" className="font-display text-5xl font-bold leading-none text-navy">2030</p>
+              <p dir="rtl" lang="ar" className="mt-2 text-lg font-bold text-navy" style={{ fontFamily: "'Noto Naskh Arabic', serif" }}>رؤية مصر</p>
+            </div>
           </div>
           <Link
             to="/legal"

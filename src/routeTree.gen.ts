@@ -18,6 +18,7 @@ import { Route as CountriesRouteImport } from './routes/countries'
 import { Route as EgyptianHeritageWorldwideRouteImport } from './routes/egyptian-heritage-worldwide'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as ExploreEgyptRouteImport } from './routes/explore-egypt'
 import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as GovernmentDirectoryRouteImport } from './routes/government-directory'
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
@@ -113,6 +114,11 @@ const EncyclopediaRoute = EncyclopediaRouteImport.update({
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreEgyptRoute = ExploreEgyptRouteImport.update({
+  id: '/explore-egypt',
+  path: '/explore-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernmentRoute = GovernmentRouteImport.update({
@@ -381,6 +387,7 @@ export interface FileRoutesByFullPath {
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -441,6 +448,7 @@ export interface FileRoutesByTo {
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -503,6 +511,7 @@ export interface FileRoutesById {
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
@@ -566,6 +575,7 @@ export interface FileRouteTypes {
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
@@ -626,6 +636,7 @@ export interface FileRouteTypes {
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
@@ -687,6 +698,7 @@ export interface FileRouteTypes {
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
@@ -749,6 +761,7 @@ export interface RootRouteChildren {
   EgyptianHeritageWorldwideRoute: typeof EgyptianHeritageWorldwideRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
+  ExploreEgyptRoute: typeof ExploreEgyptRoute
   GovernmentRoute: typeof GovernmentRoute
   GovernmentDirectoryRoute: typeof GovernmentDirectoryRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
@@ -854,6 +867,13 @@ declare module '@tanstack/react-router' {
       path: '/events'
       fullPath: '/events'
       preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore-egypt': {
+      id: '/explore-egypt'
+      path: '/explore-egypt'
+      fullPath: '/explore-egypt'
+      preLoaderRoute: typeof ExploreEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/government': {
@@ -1247,6 +1267,7 @@ const rootRouteChildren: RootRouteChildren = {
   EgyptianHeritageWorldwideRoute: EgyptianHeritageWorldwideRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
+  ExploreEgyptRoute: ExploreEgyptRoute,
   GovernmentRoute: GovernmentRoute,
   GovernmentDirectoryRoute: GovernmentDirectoryRoute,
   HeritageSitesRoute: HeritageSitesRoute,

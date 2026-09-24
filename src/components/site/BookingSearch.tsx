@@ -5,23 +5,23 @@ import { cn } from "@/lib/utils";
 
 // Official Travelpayouts widget script, generated from our Travelpayouts
 // account (marker 777434). Used for both the Flights and Hotels tabs.
-const TP_WIDGET_SRC =
+export const TP_WIDGET_SRC =
   "https://tpwgts.com/content?currency=usd&trs=574096&shmarker=777434&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D9B15B&color_button=%23D9B15B&color_icons=%23D9B15B&dark=%23F3F2ED&light=%230F1721&secondary=%230F1721&special=%23303944&color_focused=%23D9B15B&border_radius=12&plain=true&promo_id=7879&campaign_id=100";
 
 // Transfers (promo 4674), car rental (promo 4480), attractions (Klook, promo 4497)
 // and eSIM (promo 8588) widgets — same account marker, one script per product.
-const TP_TRANSFERS_SRC =
+export const TP_TRANSFERS_SRC =
   "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&color_background=%230F1721&color_button=%23D9B15B&promo_id=4674&campaign_id=22";
 
-const TP_CAR_RENTAL_SRC =
+export const TP_CAR_RENTAL_SRC =
   "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&show_logo=false&color_background=%230F1721&color_button=%23D9B15B&color_text=%23F5EFE0&color_input_text=%23000000&color_button_text=%230F1721&promo_id=4480&campaign_id=10";
 
 // Klook widget: no confirmed colour-override parameters for this product, so it
 // renders with its default styling rather than risk breaking it with guesses.
-const TP_ATTRACTIONS_SRC =
+export const TP_ATTRACTIONS_SRC =
   "https://tpwgts.com/content?currency=USD&trs=574096&shmarker=777434&locale=en&city_id=284&category=3&amount=3&powered_by=true&campaign_id=137&promo_id=4497";
 
-const TP_ESIM_SRC =
+export const TP_ESIM_SRC =
   "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&country=Egypt&powered_by=true&color_button=%23D9B15B&color_focused=%23D9B15B&secondary=%230F1721&dark=%23F5EFE0&light=%23FFFFFF&special=%233A4657&border_radius=16&plain=true&no_labels=&promo_id=8588&campaign_id=541";
 
 // The widget's flight search already opens in a new tab (its form targets
@@ -61,7 +61,7 @@ function buildHotelDeeplink(root: ShadowRoot): string | null {
   return `https://yasen.hotellook.com/adaptors/location_deeplink?${params.toString()}`;
 }
 
-function TravelpayoutsWidget({ src }: { src: string }) {
+export function TravelpayoutsWidget({ src }: { src: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

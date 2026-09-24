@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { zodValidator, fallback } from "@tanstack/zod-adapter";
-import { z } from "zod";
 import { ArrowRight, Search, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -12,13 +10,13 @@ import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
 
-const searchSchema = z.object({ q: fallback(z.string(), "").default("") });
-
 const title = "Search | Egyptora Hub";
 const description = "Search destinations, investment, living, business, government services and real estate across Egyptora Hub.";
 
 export const Route = createFileRoute("/search")({
-  validateSearch: zodValidator(searchSchema),
+  validateSearch: (search: Record<string, unknown>): { q: string } => ({
+    q: typeof search.q === "string" ? search.q : search.q != null ? String(search.q) : "",
+  }),
   loader: async () => {
     const gov: SearchEntry[] = [];
     try {

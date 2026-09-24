@@ -12,7 +12,7 @@ import tourism from "@/assets/gov/red-sea.jpg";
 import residential from "@/assets/sector-realestate.jpg";
 import agri from "@/assets/sector-rural.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, NavyPromo, GoldButton,
+  InnerPage, SectionHead, ProcessStepsRow, PhotoCard, IconCard, SidePanel, LinkList, NavyPromo, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -156,21 +156,7 @@ function DoBusiness() {
       </section>
       <section>
         <SectionHead title="Start Your Business Journey" body="Simple steps to establish and grow your business in Egypt." to="/government-directory" toLabel="View Full Guide" />
-        <ol className="grid gap-4 md:grid-cols-4">
-          {steps.map((s, i) => (
-            <li key={s.title} className="relative grid justify-items-center gap-2 rounded-[10px] border border-border bg-card p-5 text-center shadow-sm">
-              <span className="grid size-14 place-items-center rounded-full bg-gold-cta text-primary-foreground">
-                <s.Icon className="size-6" />
-              </span>
-              <span className="font-display text-2xl font-bold text-navy">{i + 1}</span>
-              <h3 className="text-sm font-bold text-navy">{t(s.title)}</h3>
-              <p className="text-xs text-text-body">{t(s.desc)}</p>
-              {i < steps.length - 1 && (
-                <ChevronRight className="absolute -end-4 top-1/2 z-10 hidden size-6 -translate-y-1/2 text-shell-gold md:block rtl:rotate-180" />
-              )}
-            </li>
-          ))}
-        </ol>
+        <ProcessStepsRow steps={steps} />
       </section>
       <section>
         <SectionHead title="Featured Business Opportunities" body="Discover current opportunities across key sectors." to={IO} toLabel="View All Opportunities" />

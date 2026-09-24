@@ -5,7 +5,7 @@
  */
 import { useState, type ComponentType, type ReactNode, type SVGProps } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronRight, Search } from "lucide-react";
+import { ArrowRight, ChevronRight, Info, Search } from "lucide-react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -272,6 +272,8 @@ export type HeroConfig = {
   tagline: string[];
   popular?: string[];
   extra?: ReactNode;
+  /** Replaces the search bar (e.g. a booking widget). */
+  replaceSearch?: ReactNode;
 };
 
 function InnerHero({ h }: { h: HeroConfig }) {
@@ -298,6 +300,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
           </h1>
           <p className="mt-3 text-lg font-bold text-foreground sm:text-xl">{t(h.subtitle)}</p>
           {h.body && <p className="mt-2 max-w-xl text-sm leading-relaxed text-foreground/85">{t(h.body)}</p>}
+          {h.replaceSearch ? null : (
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -318,6 +321,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
               {t("Search")}
             </button>
           </form>
+          )}
           {h.popular && (
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <span className="text-sm font-bold text-foreground">{t("Popular:")}</span>
@@ -334,6 +338,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
             </div>
           )}
         </div>
+        {h.replaceSearch && <div className="mt-6 max-w-4xl">{h.replaceSearch}</div>}
         {h.extra}
       </div>
     </section>
@@ -355,9 +360,11 @@ function MoreDots({ className }: { className?: string }) {
   );
 }
 
-function ChipStrip({ chips, moreTo }: { chips: Chip[]; moreTo?: string | undefined }) {
+function ChipStrip({ chips, moreTo, showMore = true }: { chips: Chip[]; moreTo?: string | undefined; showMore?: boolean | undefined }) {
   const { t } = useI18n();
-  const all: (Chip & { more?: boolean })[] = [...chips, { label: "More", Icon: MoreDots, to: moreTo, more: true }];
+  const all: (Chip & { more?: boolean })[] = showMore
+    ? [...chips, { label: "More", Icon: MoreDots, to: moreTo, more: true }]
+    : chips;
   return (
     <div className={cn(innerWrap, "relative z-10 -mt-12")}>
       <div className="flex overflow-x-auto rounded-xl border border-border bg-card shadow-[0_18px_40px_-28px_rgba(6,33,58,0.45)] [scrollbar-width:none]">
@@ -406,7 +413,13 @@ export function InnerPage({
   children,
   sidebar,
   bottom,
+  parent,
+  notice,
+  showMore,
 }: {
+  parent?: { label: string; to: string };
+  notice?: ReactNode;
+  showMore?: boolean | undefined;
   pageName: string;
   hero: HeroConfig;
   chips: Chip[];
@@ -425,11 +438,20 @@ export function InnerPage({
             {t("Home")}
           </Link>
           <ChevronRight className="size-3 rtl:rotate-180" />
+          {parent && (
+            <>
+              <SmartLink to={parent.to} className="hover:text-shell-gold">
+                {t(parent.label)}
+              </SmartLink>
+              <ChevronRight className="size-3 rtl:rotate-180" />
+            </>
+          )}
           <span className="font-medium text-navy">{t(pageName)}</span>
         </div>
       </nav>
       <InnerHero h={hero} />
-      <ChipStrip chips={chips} moreTo={moreTo} />
+      <ChipStrip chips={chips} moreTo={moreTo} showMore={showMore} />
+      {notice && <div className={cn(innerWrap, "pt-8")}>{notice}</div>}
       <main className={cn(innerWrap, "py-12 lg:py-14")}>
         <div className={cn("grid gap-10", sidebar && "lg:grid-cols-[minmax(0,1fr)_320px]")}>
           <div className="grid min-w-0 content-start gap-12">{children}</div>
@@ -439,5 +461,97 @@ export function InnerPage({
       </main>
       <SiteFooter />
     </div>
+  );
+}
+
+/* ---------------- shared blocks ---------------- */
+
+export function ImportantNoticeBox({
+  text = "Information is provided for guidance only. Please verify procedures and requirements with the official entity before proceeding.",
+}: {
+  text?: string;
+}) {
+  const { t } = useI18n();
+  return (
+    <div className="flex items-start gap-4 rounded-[10px] border border-info/25 bg-bg-notice p-5">
+      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-navy text-primary-foreground">
+        <Info className="size-5" />
+      </span>
+      <div className="min-w-0">
+        <p className="font-display text-base font-bold text-navy">{t("Important Notice")}</p>
+        <p className="mt-1 text-xs leading-relaxed text-navy/80">{t(text)}</p>
+      </div>
+    </div>
+  );
+}
+
+export type ProcessStep = { Icon: Icon; title: string; desc: string };
+
+export function ProcessStepsRow({ steps }: { steps: ProcessStep[] }) {
+  const { t } = useI18n();
+  return (
+    <ol className="grid gap-4 md:grid-cols-4">
+      {steps.map((s, i) => (
+        <li key={s.title} className="relative grid justify-items-center gap-2 rounded-[10px] border border-border bg-card p-5 text-center shadow-sm">
+          <span className="grid size-14 place-items-center rounded-full bg-gold-cta text-primary-foreground">
+            <s.Icon className="size-6" />
+          </span>
+          <span className="font-display text-2xl font-bold text-navy">{i + 1}</span>
+          <h3 className="text-sm font-bold text-navy">{t(s.title)}</h3>
+          <p className="text-xs text-text-body">{t(s.desc)}</p>
+          {i < steps.length - 1 && (
+            <ChevronRight className="absolute -end-4 top-1/2 z-10 hidden size-6 -translate-y-1/2 text-shell-gold md:block rtl:rotate-180" />
+          )}
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** Circular icon tile with a label beneath (ministries, services). */
+export function CircleTile({ label, Icon: I, to }: { label: string; Icon: Icon; to: string }) {
+  const { t } = useI18n();
+  return (
+    <SmartLink to={to} className="group grid justify-items-center gap-2 text-center">
+      <span className="grid size-16 place-items-center rounded-full border border-shell-gold/50 bg-chip-active text-shell-gold transition-colors group-hover:bg-gold-cta group-hover:text-primary-foreground">
+        <I className="size-6" />
+      </span>
+      <span className="text-xs font-semibold leading-tight text-navy">{t(label)}</span>
+    </SmartLink>
+  );
+}
+
+/** Dark navy app-download promo used in bottom banner rows. */
+export function AppPromoCard({ eyebrow = "Explore on the Go", title = "Download EGYPTORA App" }: { eyebrow?: string; title?: string }) {
+  const { t } = useI18n();
+  return (
+    <section className="on-dark rounded-[10px] bg-navy p-6">
+      <p className="text-xs uppercase tracking-[0.2em] text-shell-gold">{t(eyebrow)}</p>
+      <p className="mt-1 font-display text-xl font-bold text-foreground">{t(title)}</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {["App Store", "Google Play"].map((s) => (
+          <span key={s} className="rounded-lg border border-foreground/30 px-3 py-1.5 text-xs font-semibold text-foreground">
+            {t(s)}
+          </span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/** Light band promo with icon, copy and gold button. */
+export function BandPromo({ Icon: I, title, body, cta, to }: { Icon: Icon; title: string; body: string; cta: string; to: string }) {
+  const { t } = useI18n();
+  return (
+    <section className="rounded-[10px] border border-border bg-bg-band p-6">
+      <I className="size-7 text-shell-gold" />
+      <h3 className="mt-3 font-display text-lg font-bold text-navy">{t(title)}</h3>
+      <p className="mt-1 text-sm text-text-body">{t(body)}</p>
+      <div className="mt-4">
+        <GoldButton to={to}>
+          {t(cta)} <ArrowRight className="size-4 rtl:rotate-180" />
+        </GoldButton>
+      </div>
+    </section>
   );
 }

@@ -31,9 +31,11 @@ import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as RealEstateRouteImport } from './routes/real-estate'
 import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
+import { Route as VisitEgyptRouteImport } from './routes/visit-egypt'
 import { Route as AccountBookingsRouteImport } from './routes/account_.bookings'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
@@ -45,6 +47,7 @@ import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
 import { Route as EgyptianHeritageWorldwideIdRouteImport } from './routes/egyptian-heritage-worldwide_.$id'
 import { Route as EventsIdRouteImport } from './routes/events_.$id'
+import { Route as GovernmentDirectoryDigitalServicesRouteImport } from './routes/government-directory_.digital-services'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as HeritageSitesIdRouteImport } from './routes/heritage-sites_.$id'
 import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities_.$id'
@@ -67,6 +70,7 @@ import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
 import { Route as ResearchProgramsIdRouteImport } from './routes/research-programs_.$id'
 import { Route as TravelerStoriesIdRouteImport } from './routes/traveler-stories_.$id'
 import { Route as TripsIdRouteImport } from './routes/trips.$id'
+import { Route as VisitEgyptTravelAndTourismRouteImport } from './routes/visit-egypt_.travel-and-tourism'
 import { Route as AdminContentIndexRouteImport } from './routes/admin.content.index'
 import { Route as AdminContentTableRouteImport } from './routes/admin.content.$table'
 import { Route as AdminCrmInvestmentRouteImport } from './routes/admin.crm.investment'
@@ -184,6 +188,11 @@ const ProvidersRoute = ProvidersRouteImport.update({
   path: '/providers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealEstateRoute = RealEstateRouteImport.update({
+  id: '/real-estate',
+  path: '/real-estate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchProgramsRoute = ResearchProgramsRouteImport.update({
   id: '/research-programs',
   path: '/research-programs',
@@ -197,6 +206,11 @@ const SavedRoute = SavedRouteImport.update({
 const TravelerStoriesRoute = TravelerStoriesRouteImport.update({
   id: '/traveler-stories',
   path: '/traveler-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitEgyptRoute = VisitEgyptRouteImport.update({
+  id: '/visit-egypt',
+  path: '/visit-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountBookingsRoute = AccountBookingsRouteImport.update({
@@ -255,6 +269,12 @@ const EventsIdRoute = EventsIdRouteImport.update({
   path: '/events/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernmentDirectoryDigitalServicesRoute =
+  GovernmentDirectoryDigitalServicesRouteImport.update({
+    id: '/government-directory_/digital-services',
+    path: '/government-directory/digital-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
@@ -369,6 +389,12 @@ const TripsIdRoute = TripsIdRouteImport.update({
   path: '/trips/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VisitEgyptTravelAndTourismRoute =
+  VisitEgyptTravelAndTourismRouteImport.update({
+    id: '/visit-egypt_/travel-and-tourism',
+    path: '/visit-egypt/travel-and-tourism',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminContentIndexRoute = AdminContentIndexRouteImport.update({
   id: '/content/',
   path: '/content/',
@@ -418,9 +444,11 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -431,6 +459,7 @@ export interface FileRoutesByFullPath {
   '/countries/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events/$id': typeof EventsIdRoute
+  '/government-directory/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
@@ -450,6 +479,7 @@ export interface FileRoutesByFullPath {
   '/research-programs/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
@@ -482,9 +512,11 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -495,6 +527,7 @@ export interface FileRoutesByTo {
   '/countries/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events/$id': typeof EventsIdRoute
+  '/government-directory/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
@@ -514,6 +547,7 @@ export interface FileRoutesByTo {
   '/research-programs/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin': typeof AdminIndexRoute
   '/legal': typeof LegalIndexRoute
   '/my-trips': typeof MyTripsIndexRoute
@@ -548,9 +582,11 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
+  '/visit-egypt': typeof VisitEgyptRoute
   '/account_/bookings': typeof AccountBookingsRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/integrations': typeof AdminIntegrationsRoute
@@ -561,6 +597,7 @@ export interface FileRoutesById {
   '/countries_/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide_/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events_/$id': typeof EventsIdRoute
+  '/government-directory_/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites_/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities_/$id': typeof InvestmentOpportunitiesIdRoute
@@ -580,6 +617,7 @@ export interface FileRoutesById {
   '/research-programs_/$id': typeof ResearchProgramsIdRoute
   '/traveler-stories_/$id': typeof TravelerStoriesIdRoute
   '/trips/$id': typeof TripsIdRoute
+  '/visit-egypt_/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
@@ -615,9 +653,11 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -628,6 +668,7 @@ export interface FileRouteTypes {
     | '/countries/$id'
     | '/egyptian-heritage-worldwide/$id'
     | '/events/$id'
+    | '/government-directory/digital-services'
     | '/governorates/$id'
     | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
@@ -647,6 +688,7 @@ export interface FileRouteTypes {
     | '/research-programs/$id'
     | '/traveler-stories/$id'
     | '/trips/$id'
+    | '/visit-egypt/travel-and-tourism'
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
@@ -679,9 +721,11 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -692,6 +736,7 @@ export interface FileRouteTypes {
     | '/countries/$id'
     | '/egyptian-heritage-worldwide/$id'
     | '/events/$id'
+    | '/government-directory/digital-services'
     | '/governorates/$id'
     | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
@@ -711,6 +756,7 @@ export interface FileRouteTypes {
     | '/research-programs/$id'
     | '/traveler-stories/$id'
     | '/trips/$id'
+    | '/visit-egypt/travel-and-tourism'
     | '/admin'
     | '/legal'
     | '/my-trips'
@@ -744,9 +790,11 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
+    | '/visit-egypt'
     | '/account_/bookings'
     | '/admin/bookings'
     | '/admin/integrations'
@@ -757,6 +805,7 @@ export interface FileRouteTypes {
     | '/countries_/$id'
     | '/egyptian-heritage-worldwide_/$id'
     | '/events_/$id'
+    | '/government-directory_/digital-services'
     | '/governorates/$id'
     | '/heritage-sites_/$id'
     | '/investment-opportunities_/$id'
@@ -776,6 +825,7 @@ export interface FileRouteTypes {
     | '/research-programs_/$id'
     | '/traveler-stories_/$id'
     | '/trips/$id'
+    | '/visit-egypt_/travel-and-tourism'
     | '/admin/'
     | '/legal/'
     | '/my-trips/'
@@ -810,14 +860,17 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
+  RealEstateRoute: typeof RealEstateRoute
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   SavedRoute: typeof SavedRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
+  VisitEgyptRoute: typeof VisitEgyptRoute
   AccountBookingsRoute: typeof AccountBookingsRoute
   ApiConciergeRoute: typeof ApiConciergeRoute
   CountriesIdRoute: typeof CountriesIdRoute
   EgyptianHeritageWorldwideIdRoute: typeof EgyptianHeritageWorldwideIdRoute
   EventsIdRoute: typeof EventsIdRoute
+  GovernmentDirectoryDigitalServicesRoute: typeof GovernmentDirectoryDigitalServicesRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   HeritageSitesIdRoute: typeof HeritageSitesIdRoute
   InvestmentOpportunitiesIdRoute: typeof InvestmentOpportunitiesIdRoute
@@ -837,6 +890,7 @@ export interface RootRouteChildren {
   ResearchProgramsIdRoute: typeof ResearchProgramsIdRoute
   TravelerStoriesIdRoute: typeof TravelerStoriesIdRoute
   TripsIdRoute: typeof TripsIdRoute
+  VisitEgyptTravelAndTourismRoute: typeof VisitEgyptTravelAndTourismRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
   PartnersIndexRoute: typeof PartnersIndexRoute
@@ -999,6 +1053,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProvidersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/real-estate': {
+      id: '/real-estate'
+      path: '/real-estate'
+      fullPath: '/real-estate'
+      preLoaderRoute: typeof RealEstateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research-programs': {
       id: '/research-programs'
       path: '/research-programs'
@@ -1018,6 +1079,13 @@ declare module '@tanstack/react-router' {
       path: '/traveler-stories'
       fullPath: '/traveler-stories'
       preLoaderRoute: typeof TravelerStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visit-egypt': {
+      id: '/visit-egypt'
+      path: '/visit-egypt'
+      fullPath: '/visit-egypt'
+      preLoaderRoute: typeof VisitEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/account_/bookings': {
@@ -1095,6 +1163,13 @@ declare module '@tanstack/react-router' {
       path: '/events/$id'
       fullPath: '/events/$id'
       preLoaderRoute: typeof EventsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government-directory_/digital-services': {
+      id: '/government-directory_/digital-services'
+      path: '/government-directory/digital-services'
+      fullPath: '/government-directory/digital-services'
+      preLoaderRoute: typeof GovernmentDirectoryDigitalServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governorates/$id': {
@@ -1251,6 +1326,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TripsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/visit-egypt_/travel-and-tourism': {
+      id: '/visit-egypt_/travel-and-tourism'
+      path: '/visit-egypt/travel-and-tourism'
+      fullPath: '/visit-egypt/travel-and-tourism'
+      preLoaderRoute: typeof VisitEgyptTravelAndTourismRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/content/': {
       id: '/admin/content/'
       path: '/content'
@@ -1340,14 +1422,18 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
+  RealEstateRoute: RealEstateRoute,
   ResearchProgramsRoute: ResearchProgramsRoute,
   SavedRoute: SavedRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
+  VisitEgyptRoute: VisitEgyptRoute,
   AccountBookingsRoute: AccountBookingsRoute,
   ApiConciergeRoute: ApiConciergeRoute,
   CountriesIdRoute: CountriesIdRoute,
   EgyptianHeritageWorldwideIdRoute: EgyptianHeritageWorldwideIdRoute,
   EventsIdRoute: EventsIdRoute,
+  GovernmentDirectoryDigitalServicesRoute:
+    GovernmentDirectoryDigitalServicesRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   HeritageSitesIdRoute: HeritageSitesIdRoute,
   InvestmentOpportunitiesIdRoute: InvestmentOpportunitiesIdRoute,
@@ -1367,6 +1453,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResearchProgramsIdRoute: ResearchProgramsIdRoute,
   TravelerStoriesIdRoute: TravelerStoriesIdRoute,
   TripsIdRoute: TripsIdRoute,
+  VisitEgyptTravelAndTourismRoute: VisitEgyptTravelAndTourismRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,
   PartnersIndexRoute: PartnersIndexRoute,

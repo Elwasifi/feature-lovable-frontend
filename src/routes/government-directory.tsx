@@ -1,33 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Briefcase,
-  Building2,
-  ChevronDown,
-  ExternalLink,
-  Info,
-  Landmark,
-  LayoutGrid,
-  MapPin,
-  Mail,
-  Plane,
-  ShieldCheck,
-  Sparkles,
+  Briefcase, Building2, ChevronDown, ExternalLink, Landmark, MapPin, Plane, ShieldCheck, Sparkles, LayoutGrid,
+  Scale, Link2, Map as MapIcon, Users, TrendingUp, Gavel, Globe2, GraduationCap, Hospital, BookOpen, Home, Bus,
+  Wallet, BadgeCheck, IdCard, Car, FileText, Receipt, Stamp, Baby, Heart, Package, Factory, Headphones, Search,
 } from "lucide-react";
 import {
-  BlockHeader,
-  CategoryTabs,
-  FeaturedRow,
-  HeroSearch,
-  PageTemplate,
-  type CategoryTab,
-} from "@/components/layout/PageTemplate";
-import {
-  SidebarContactCard,
-  SidebarLinkCard,
-  SidebarPromoCard,
-} from "@/components/layout/SidebarWidgets";
-import heroImage from "@/assets/gov/cairo.jpg";
+  InnerPage, SectionHead, PhotoCard, SidePanel, EgyptMap, ViewAll, CircleTile, ImportantNoticeBox,
+  AppPromoCard, BandPromo, type CardItem, type Chip,
+} from "@/components/layout/InnerPage";
+import { askConcierge } from "@/components/layout/MainNav";
+import mfa from "@/assets/home/world.jpg";
+import tourism from "@/assets/gov/luxor.jpg";
+import gafi from "@/assets/home/inv-opps.jpg";
+import cbe from "@/assets/home/biz-support.jpg";
+import cairoGov from "@/assets/gov/cairo.jpg";
+import heroImage from "@/assets/inner/gov-hero.jpg";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
 import { supabase } from "@/integrations/supabase/client";
@@ -151,174 +139,215 @@ function EntityRow({ entity }: { entity: GovEntity }) {
   );
 }
 
-function FeaturedEntityCard({ entity }: { entity: GovEntity }) {
+const GD = "/government-directory";
+
+const chips: Chip[] = [
+  { label: "All Entities", Icon: LayoutGrid },
+  { label: "Ministries", Icon: Landmark, to: `${GD}#ministries` },
+  { label: "Regulatory Bodies", Icon: Scale, to: `${GD}#authorities-and-agencies` },
+  { label: "Related Entities", Icon: Link2 },
+  { label: "Governorates", Icon: MapIcon, to: "/explore-egypt" },
+  { label: "Public Services", Icon: Users, to: `${GD}/digital-services` },
+  { label: "Economic Authorities", Icon: TrendingUp, to: `${GD}#investment-and-business` },
+  { label: "Judicial Bodies", Icon: Gavel },
+  { label: "Diplomatic Missions", Icon: Globe2 },
+  { label: "Educational Institutions", Icon: GraduationCap, to: "/research-programs" },
+];
+
+const featuredSpec: { title: string; match: RegExp; desc: string; img: string; badge: string; fallback: string }[] = [
+  { title: "Ministry of Foreign Affairs", match: /foreign affairs/i, desc: "Egypt's foreign policy, consular and diplomatic services.", img: mfa, badge: "Ministry", fallback: "https://www.mfa.gov.eg" },
+  { title: "Ministry of Tourism & Antiquities", match: /tourism/i, desc: "Tourism development and protection of Egypt's heritage.", img: tourism, badge: "Ministry", fallback: "https://mota.gov.eg" },
+  { title: "General Authority for Investment (GAFI)", match: /GAFI|general authority for investment/i, desc: "The official gateway for investors and company setup.", img: gafi, badge: "Authority", fallback: "https://www.gafi.gov.eg" },
+  { title: "Central Bank of Egypt", match: /central bank/i, desc: "Monetary policy, banking supervision and exchange rates.", img: cbe, badge: "Regulatory", fallback: "https://www.cbe.org.eg" },
+  { title: "Cairo Governorate", match: /cairo governorate/i, desc: "Local services and administration for the capital.", img: cairoGov, badge: "Governorate", fallback: "https://www.cairo.gov.eg" },
+];
+
+const ministries: { label: string; Icon: typeof Landmark; match: RegExp }[] = [
+  { label: "Foreign Affairs", Icon: Globe2, match: /foreign affairs/i },
+  { label: "Tourism & Antiquities", Icon: Landmark, match: /tourism/i },
+  { label: "Trade & Industry", Icon: Factory, match: /industry/i },
+  { label: "Investment & Foreign Trade", Icon: TrendingUp, match: /investment/i },
+  { label: "Health & Population", Icon: Hospital, match: /health/i },
+  { label: "Education", Icon: BookOpen, match: /education/i },
+  { label: "Housing", Icon: Home, match: /housing/i },
+  { label: "Transport", Icon: Bus, match: /transport/i },
+  { label: "Finance", Icon: Wallet, match: /finance/i },
+  { label: "Interior", Icon: ShieldCheck, match: /interior/i },
+];
+
+const DS = `${GD}/digital-services`;
+const services = [
+  { label: "Passport Renewal", Icon: Stamp },
+  { label: "National ID", Icon: IdCard },
+  { label: "Business Registration", Icon: Briefcase },
+  { label: "Driving License", Icon: Car },
+  { label: "Property Registration", Icon: Home },
+  { label: "Tax Filing", Icon: Receipt },
+  { label: "Visa Services", Icon: Plane },
+  { label: "Birth Certificate", Icon: Baby },
+  { label: "Marriage Certificate", Icon: Heart },
+  { label: "Customs Clearance", Icon: Package },
+];
+
+function FindServicesForm({ categories }: { categories: string[] }) {
   const { t } = useI18n();
-  const Icon = categoryIcon(entity.category_en);
+  const [cat, setCat] = useState("");
+  const [gov, setGov] = useState("");
+  const [type, setType] = useState("");
+  const sel = "w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-navy";
   return (
-    <article className="grid content-start gap-2 rounded-2xl border border-border bg-card p-5">
-      <Icon className="size-5 text-gold" />
-      <h3 className="font-display text-base leading-snug text-foreground">
-        {entity.entity_name_en}
-      </h3>
-      {entity.entity_name_ar ? (
-        <p className="text-xs text-muted-foreground" dir="rtl">
-          {entity.entity_name_ar}
-        </p>
-      ) : null}
-      {entity.description_en ? (
-        <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground">
-          {entity.description_en}
-        </p>
-      ) : null}
-      {entity.official_url ? (
-        <a
-          href={entity.official_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-1 inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-gold"
-        >
-          {t("Visit Official Website")} <ExternalLink className="size-3.5" />
-        </a>
-      ) : null}
-    </article>
+    <form
+      className="grid gap-3"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const parts = [type, cat, gov].filter(Boolean).map((x) => t(x));
+        askConcierge(parts.length ? `${t("Find government services")}: ${parts.join(", ")}` : t("Find government services"));
+      }}
+    >
+      <select aria-label={t("Category")} value={cat} onChange={(e) => setCat(e.target.value)} className={sel}>
+        <option value="">{t("Category")}</option>
+        {categories.map((c) => <option key={c} value={c}>{t(c)}</option>)}
+      </select>
+      <select aria-label={t("Governorate")} value={gov} onChange={(e) => setGov(e.target.value)} className={sel}>
+        <option value="">{t("Governorate")}</option>
+        {["Cairo", "Giza", "Alexandria", "Luxor", "Aswan", "Red Sea", "South Sinai"].map((g) => <option key={g} value={g}>{t(g)}</option>)}
+      </select>
+      <select aria-label={t("Service Type")} value={type} onChange={(e) => setType(e.target.value)} className={sel}>
+        <option value="">{t("Service Type")}</option>
+        {services.map((s) => <option key={s.label} value={s.label}>{t(s.label)}</option>)}
+      </select>
+      <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-cta px-5 py-2.5 text-sm font-semibold text-primary-foreground">
+        <Search className="size-4" /> {t("Search")}
+      </button>
+    </form>
   );
 }
 
 function GovernmentDirectoryPage() {
   const { entities } = Route.useLoaderData();
   const { t } = useI18n();
-  const [active, setActive] = useState("ALL");
 
   const categories = useMemo(() => {
     const map = new Map<string, { en: string; ar: string; slug: string; rows: GovEntity[] }>();
     for (const e of entities) {
       const existing = map.get(e.category_en);
       if (existing) existing.rows.push(e);
-      else
-        map.set(e.category_en, {
-          en: e.category_en,
-          ar: e.category_ar,
-          slug: slugifyCategory(e.category_en),
-          rows: [e],
-        });
+      else map.set(e.category_en, { en: e.category_en, ar: e.category_ar, slug: slugifyCategory(e.category_en), rows: [e] });
     }
     return Array.from(map.values());
   }, [entities]);
 
-  /* Homepage links land here with a #category hash — honour it. */
+  /* Homepage links land here with a #category hash — scroll to it. */
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
-    if (hash && categories.some((c) => c.slug === hash)) setActive(hash);
+    if (hash) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, [categories]);
 
-  const tabs: CategoryTab[] = [
-    { id: "ALL", label: "All Categories", labelAr: "جميع الفئات", icon: LayoutGrid },
-    ...categories.map((c) => ({
-      id: c.slug,
-      label: c.en,
-      labelAr: c.ar,
-      icon: categoryIcon(c.en),
-    })),
-  ];
-
-  const visible = active === "ALL" ? categories : categories.filter((c) => c.slug === active);
-  const featured = entities
-    .filter((e) => e.verification_status === "Verified" && e.official_url)
-    .slice(0, 6);
+  const findUrl = (re: RegExp) => entities.find((e) => re.test(e.entity_name_en) && e.official_url)?.official_url ?? null;
+  const featured: CardItem[] = featuredSpec.map((f) => ({
+    title: f.title, desc: f.desc, img: f.img, badge: f.badge, to: findUrl(f.match) ?? f.fallback,
+  }));
+  const ministriesSlug = categories.find((c) => /ministr/i.test(c.en))?.slug ?? "ministries";
+  const ministryRows = categories.find((c) => /ministr/i.test(c.en))?.rows ?? [];
 
   return (
-    <PageTemplate
-      hero={
-        <HeroSearch
-          title="Egypt Official Government Directory"
-          subtitle="Your direct access to official government entities and information."
-          description="One place. All official links. A more connected Egypt."
-          image={heroImage}
-          imageAlt={t("Cairo government district")}
-          placeholder="Search for a government entity, service or keyword..."
-          breadcrumb={[{ label: "Home", to: "/" }, { label: "Government Directory" }]}
-          sideNote={["People", "Services", "A stronger tomorrow"]}
-        />
-      }
-      tabs={<CategoryTabs tabs={tabs} active={active} onSelect={setActive} />}
+    <InnerPage
+      pageName="Government Directory"
+      hero={{
+        image: heroImage,
+        title: "Government Directory",
+        subtitle: "One Point of Access to Official Egypt.",
+        body: "Find official government entities, their responsibilities and direct links to their services.",
+        placeholder: "Search ministries, entities, or services…",
+        tagline: ["People", "Services", "A stronger tomorrow"],
+      }}
+      chips={chips}
+      moreTo={`${GD}#all-entities`}
+      notice={<ImportantNoticeBox />}
       sidebar={
         <>
-          <SidebarPromoCard
-            title="All government links in one place"
-            description="Every entity below links straight to its own official website."
-            stats={[
-              { label: "Entities", value: String(entities.length) },
-              { label: "Categories", value: String(categories.length) },
-              { label: "Verified", value: String(entities.filter((e) => e.verification_status === "Verified").length) },
-            ]}
-          />
-          <SidebarLinkCard
-            title="Popular government services"
-            description="Direct routes to the services people ask about most."
-            links={[
-              { label: "Passports & Immigration", icon: Plane, soon: true },
-              { label: "Tax Services", icon: Briefcase, soon: true },
-              { label: "Civil Status", icon: ShieldCheck, soon: true },
-              { label: "Real Estate Registration", icon: Building2, soon: true },
-              { label: "Business Licensing", icon: Landmark, soon: true },
-            ]}
-          />
-          <SidebarLinkCard
-            title="Find your way around Egypt"
-            links={[
-              { label: "Governorates", icon: MapPin, to: "/governorates" },
-              { label: "Invest in Egypt", icon: Briefcase, to: "/investment-opportunities" },
-              { label: "Real Estate", icon: Building2, to: "/properties" },
-            ]}
-          />
-          <SidebarContactCard
-            title="Need help finding an entity?"
-            description="Tell us what you are looking for and we will point you to the right official body."
-            actionLabel="Contact us"
-            actionTo="/contact"
-          />
+          <SidePanel title="Find Government Services">
+            <FindServicesForm categories={categories.map((c) => c.en)} />
+          </SidePanel>
+          <SidePanel title="Egypt Map – Government Entities">
+            <EgyptMap pins={["Alexandria", "Cairo", "New Capital", "Suez", "Luxor", "Aswan"]} />
+            <div className="mt-3">
+              <ViewAll to="/explore-egypt" label="Explore the Map" />
+            </div>
+          </SidePanel>
+          <SidePanel title="Directory at a glance">
+            <dl className="grid grid-cols-3 gap-2 text-center">
+              {[
+                ["Entities", entities.length],
+                ["Categories", categories.length],
+                ["Verified", entities.filter((e) => e.verification_status === "Verified").length],
+              ].map(([l, v]) => (
+                <div key={l} className="rounded-lg bg-bg-band p-2">
+                  <dt className="text-[10px] uppercase text-text-body">{t(String(l))}</dt>
+                  <dd className="font-display text-xl font-bold text-navy">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </SidePanel>
         </>
       }
+      bottom={
+        <div className="grid gap-4 md:grid-cols-2">
+          <BandPromo Icon={Headphones} title="Need Help Finding a Service?" body="Tell us what you are looking for and we will point you to the right official body." cta="Contact Us" to="/contact" />
+          <AppPromoCard />
+        </div>
+      }
     >
-      {featured.length > 0 && (
-        <section>
-          <BlockHeader
-            title="Featured Government Entities"
-            description="Quick access to the most important government entities in Egypt."
-          />
-          <FeaturedRow>
-            {featured.map((e) => (
-              <FeaturedEntityCard key={e.id} entity={e} />
-            ))}
-          </FeaturedRow>
-        </section>
-      )}
+      <section>
+        <SectionHead title="Featured Entities" body="Quick access to key government entities in Egypt." to={`${GD}#all-entities`} />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
+        </div>
+      </section>
 
       <section>
-        <BlockHeader
-          title="Browse by Category"
-          description="Explore all government entities by category."
-        />
-        {visible.length === 0 ? (
-          <p className="text-sm text-muted-foreground">{t("No entries yet.")}</p>
+        <SectionHead title="Browse by Ministry" to={`${GD}#${ministriesSlug}`} />
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-5">
+          {ministries.map((m) => {
+            const url = ministryRows.find((e) => m.match.test(e.entity_name_en) && e.official_url)?.official_url;
+            return <CircleTile key={m.label} label={m.label} Icon={m.Icon} to={url ?? `${GD}#${ministriesSlug}`} />;
+          })}
+        </div>
+      </section>
+
+      <section>
+        <SectionHead title="Most Searched Services" to={DS} />
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          {services.map((s) => (
+            <a
+              key={s.label}
+              href={DS}
+              className="flex items-center gap-2.5 rounded-[10px] border border-border bg-card px-3 py-3 text-xs font-semibold text-navy shadow-sm transition-colors hover:border-shell-gold"
+            >
+              <s.Icon className="size-4 shrink-0 text-shell-gold" />
+              <span className="min-w-0">{t(s.label)}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="all-entities" className="scroll-mt-28">
+        <SectionHead title="All Government Entities" body="Every entity links straight to its own official website." />
+        {categories.length === 0 ? (
+          <p className="text-sm text-text-body">{t("No entries yet.")}</p>
         ) : (
           <div className="grid gap-10">
-            {visible.map((c) => {
+            {categories.map((c) => {
               const Icon = categoryIcon(c.en);
               return (
                 <div key={c.en} id={c.slug} className="grid scroll-mt-28 gap-4">
                   <div className="flex items-center gap-3 border-b border-border pb-3">
-                    <Icon className="size-5 text-gold" />
-                    <h3 className="font-display text-lg text-foreground sm:text-xl">{c.en}</h3>
-                    <span className="text-xs text-muted-foreground" dir="rtl">
-                      {c.ar}
-                    </span>
-                    <span className="ms-auto text-xs text-muted-foreground">{c.rows.length}</span>
+                    <Icon className="size-5 text-shell-gold" />
+                    <h3 className="font-display text-lg font-bold text-navy sm:text-xl">{t(c.en)}</h3>
+                    <span className="ms-auto text-xs text-text-body">{c.rows.length}</span>
                   </div>
                   <div className="grid gap-3 xl:grid-cols-2">
-                    {c.rows.map((e) => (
-                      <EntityRow key={e.id} entity={e} />
-                    ))}
+                    {c.rows.map((e) => <EntityRow key={e.id} entity={e} />)}
                   </div>
                 </div>
               );
@@ -326,26 +355,6 @@ function GovernmentDirectoryPage() {
           </div>
         )}
       </section>
-
-      <section className="rounded-2xl border border-border bg-card p-5">
-        <div className="flex items-start gap-3">
-          <Info className="mt-0.5 size-5 shrink-0 text-gold" />
-          <div className="grid gap-1.5">
-            <h2 className="font-display text-base text-foreground">{t("Important Notice")}</h2>
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              {t(
-                "Egyptora Hub is an independent private platform and is not a governmental entity. Links to government entities and official services are provided for information and accessibility purposes only. Users are redirected to the relevant official government websites, subject to the applicable terms, conditions, laws and regulations.",
-              )}
-            </p>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="mt-1 inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-gold"
-            >
-              <Mail className="size-3.5" /> {SITE.email}
-            </a>
-          </div>
-        </div>
-      </section>
-    </PageTemplate>
+    </InnerPage>
   );
 }

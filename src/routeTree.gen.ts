@@ -31,6 +31,7 @@ import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
+import { Route as RealEstateRouteImport } from './routes/real-estate'
 import { Route as ResearchProgramsRouteImport } from './routes/research-programs'
 import { Route as SavedRouteImport } from './routes/saved'
 import { Route as TravelerStoriesRouteImport } from './routes/traveler-stories'
@@ -46,6 +47,7 @@ import { Route as ApiConciergeRouteImport } from './routes/api/concierge'
 import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
 import { Route as EgyptianHeritageWorldwideIdRouteImport } from './routes/egyptian-heritage-worldwide_.$id'
 import { Route as EventsIdRouteImport } from './routes/events_.$id'
+import { Route as GovernmentDirectoryDigitalServicesRouteImport } from './routes/government-directory_.digital-services'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as HeritageSitesIdRouteImport } from './routes/heritage-sites_.$id'
 import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities_.$id'
@@ -186,6 +188,11 @@ const ProvidersRoute = ProvidersRouteImport.update({
   path: '/providers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RealEstateRoute = RealEstateRouteImport.update({
+  id: '/real-estate',
+  path: '/real-estate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResearchProgramsRoute = ResearchProgramsRouteImport.update({
   id: '/research-programs',
   path: '/research-programs',
@@ -262,6 +269,12 @@ const EventsIdRoute = EventsIdRouteImport.update({
   path: '/events/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GovernmentDirectoryDigitalServicesRoute =
+  GovernmentDirectoryDigitalServicesRouteImport.update({
+    id: '/government-directory_/digital-services',
+    path: '/government-directory/digital-services',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
@@ -431,6 +444,7 @@ export interface FileRoutesByFullPath {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
@@ -445,6 +459,7 @@ export interface FileRoutesByFullPath {
   '/countries/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events/$id': typeof EventsIdRoute
+  '/government-directory/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
@@ -497,6 +512,7 @@ export interface FileRoutesByTo {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
@@ -511,6 +527,7 @@ export interface FileRoutesByTo {
   '/countries/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events/$id': typeof EventsIdRoute
+  '/government-directory/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities/$id': typeof InvestmentOpportunitiesIdRoute
@@ -565,6 +582,7 @@ export interface FileRoutesById {
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
+  '/real-estate': typeof RealEstateRoute
   '/research-programs': typeof ResearchProgramsRoute
   '/saved': typeof SavedRoute
   '/traveler-stories': typeof TravelerStoriesRoute
@@ -579,6 +597,7 @@ export interface FileRoutesById {
   '/countries_/$id': typeof CountriesIdRoute
   '/egyptian-heritage-worldwide_/$id': typeof EgyptianHeritageWorldwideIdRoute
   '/events_/$id': typeof EventsIdRoute
+  '/government-directory_/digital-services': typeof GovernmentDirectoryDigitalServicesRoute
   '/governorates/$id': typeof GovernoratesIdRoute
   '/heritage-sites_/$id': typeof HeritageSitesIdRoute
   '/investment-opportunities_/$id': typeof InvestmentOpportunitiesIdRoute
@@ -634,6 +653,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
@@ -648,6 +668,7 @@ export interface FileRouteTypes {
     | '/countries/$id'
     | '/egyptian-heritage-worldwide/$id'
     | '/events/$id'
+    | '/government-directory/digital-services'
     | '/governorates/$id'
     | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
@@ -700,6 +721,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
@@ -714,6 +736,7 @@ export interface FileRouteTypes {
     | '/countries/$id'
     | '/egyptian-heritage-worldwide/$id'
     | '/events/$id'
+    | '/government-directory/digital-services'
     | '/governorates/$id'
     | '/heritage-sites/$id'
     | '/investment-opportunities/$id'
@@ -767,6 +790,7 @@ export interface FileRouteTypes {
     | '/products'
     | '/properties'
     | '/providers'
+    | '/real-estate'
     | '/research-programs'
     | '/saved'
     | '/traveler-stories'
@@ -781,6 +805,7 @@ export interface FileRouteTypes {
     | '/countries_/$id'
     | '/egyptian-heritage-worldwide_/$id'
     | '/events_/$id'
+    | '/government-directory_/digital-services'
     | '/governorates/$id'
     | '/heritage-sites_/$id'
     | '/investment-opportunities_/$id'
@@ -835,6 +860,7 @@ export interface RootRouteChildren {
   ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
+  RealEstateRoute: typeof RealEstateRoute
   ResearchProgramsRoute: typeof ResearchProgramsRoute
   SavedRoute: typeof SavedRoute
   TravelerStoriesRoute: typeof TravelerStoriesRoute
@@ -844,6 +870,7 @@ export interface RootRouteChildren {
   CountriesIdRoute: typeof CountriesIdRoute
   EgyptianHeritageWorldwideIdRoute: typeof EgyptianHeritageWorldwideIdRoute
   EventsIdRoute: typeof EventsIdRoute
+  GovernmentDirectoryDigitalServicesRoute: typeof GovernmentDirectoryDigitalServicesRoute
   GovernoratesIdRoute: typeof GovernoratesIdRoute
   HeritageSitesIdRoute: typeof HeritageSitesIdRoute
   InvestmentOpportunitiesIdRoute: typeof InvestmentOpportunitiesIdRoute
@@ -1026,6 +1053,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProvidersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/real-estate': {
+      id: '/real-estate'
+      path: '/real-estate'
+      fullPath: '/real-estate'
+      preLoaderRoute: typeof RealEstateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/research-programs': {
       id: '/research-programs'
       path: '/research-programs'
@@ -1129,6 +1163,13 @@ declare module '@tanstack/react-router' {
       path: '/events/$id'
       fullPath: '/events/$id'
       preLoaderRoute: typeof EventsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/government-directory_/digital-services': {
+      id: '/government-directory_/digital-services'
+      path: '/government-directory/digital-services'
+      fullPath: '/government-directory/digital-services'
+      preLoaderRoute: typeof GovernmentDirectoryDigitalServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/governorates/$id': {
@@ -1381,6 +1422,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,
+  RealEstateRoute: RealEstateRoute,
   ResearchProgramsRoute: ResearchProgramsRoute,
   SavedRoute: SavedRoute,
   TravelerStoriesRoute: TravelerStoriesRoute,
@@ -1390,6 +1432,8 @@ const rootRouteChildren: RootRouteChildren = {
   CountriesIdRoute: CountriesIdRoute,
   EgyptianHeritageWorldwideIdRoute: EgyptianHeritageWorldwideIdRoute,
   EventsIdRoute: EventsIdRoute,
+  GovernmentDirectoryDigitalServicesRoute:
+    GovernmentDirectoryDigitalServicesRoute,
   GovernoratesIdRoute: GovernoratesIdRoute,
   HeritageSitesIdRoute: HeritageSitesIdRoute,
   InvestmentOpportunitiesIdRoute: InvestmentOpportunitiesIdRoute,

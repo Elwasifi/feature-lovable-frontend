@@ -8,7 +8,7 @@ import hero from "@/assets/inner/realestate-hero.jpg";
 import capital from "@/assets/sector-realestate.jpg";
 import coast from "@/assets/dest-alexandria.jpg";
 import zamalek from "@/assets/dest-cairo.jpg";
-import october from "@/assets/sec-family.jpg";
+import october from "@/assets/re-compound.jpg";
 import sahl from "@/assets/dest-hurghada.jpg";
 import {
   InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, EgyptMap, ViewAll, GoldButton, AppPromoCard,

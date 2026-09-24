@@ -66,7 +66,7 @@ export function NavyBadge({ children }: { children: ReactNode }) {
   );
 }
 
-export function ViewAll({ to, label = "View All" }: { to: string; label?: string }) {
+export function ViewAll({ to, label = "View All" }: { to: string; label?: string | undefined }) {
   const { t } = useI18n();
   return (
     <SmartLink
@@ -342,7 +342,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
 
 /* ---------------- chip strip ---------------- */
 
-export type Chip = { label: string; Icon: Icon; to?: string };
+export type Chip = { label: string; Icon: Icon; to?: string | undefined };
 
 function MoreDots({ className }: { className?: string }) {
   return (
@@ -355,7 +355,7 @@ function MoreDots({ className }: { className?: string }) {
   );
 }
 
-function ChipStrip({ chips, moreTo }: { chips: Chip[]; moreTo?: string }) {
+function ChipStrip({ chips, moreTo }: { chips: Chip[]; moreTo?: string | undefined }) {
   const { t } = useI18n();
   const all: (Chip & { more?: boolean })[] = [...chips, { label: "More", Icon: MoreDots, to: moreTo, more: true }];
   return (
@@ -410,7 +410,7 @@ export function InnerPage({
   pageName: string;
   hero: HeroConfig;
   chips: Chip[];
-  moreTo?: string;
+  moreTo?: string | undefined;
   children: ReactNode;
   sidebar?: ReactNode;
   bottom?: ReactNode;

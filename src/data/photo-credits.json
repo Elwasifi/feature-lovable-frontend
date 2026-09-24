@@ -142,5 +142,85 @@
   "license": "CC BY 4.0",
   "author": "Vyacheslav Argenberg",
   "subject": "Zamalek Cairo"
+ },
+ "src/assets/inner/invest-hero.jpg": {
+  "title": "File:Central business district, New Administrative Capital.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Central_business_district%2C_New_Administrative_Capital.jpg/1920px-Central_business_district%2C_New_Administrative_Capital.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Central_business_district,_New_Administrative_Capital.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "=File:Central business district, New Administrative Capital.jpg"
+ },
+ "src/assets/inner/gov-hero.jpg": {
+  "title": "File:Ministry of Finance (Egypt).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Ministry_of_Finance_%28Egypt%29.jpg/1920px-Ministry_of_Finance_%28Egypt%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ministry_of_Finance_(Egypt).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "=File:Ministry of Finance (Egypt).jpg"
+ },
+ "src/assets/inner/realestate-hero.jpg": {
+  "title": "File:DSC 0808 (1) (1).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/DSC_0808_%281%29_%281%29.jpg/1920px-DSC_0808_%281%29_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:DSC_0808_(1)_(1).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "احمد رزق حسين",
+  "subject": "=File:DSC 0808 (1) (1).jpg"
+ },
+ "src/assets/inner/digital-hero.jpg": {
+  "title": "File:Telecom Egypt Smart Village building 1.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Telecom_Egypt_Smart_Village_building_1.jpg/1920px-Telecom_Egypt_Smart_Village_building_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Telecom_Egypt_Smart_Village_building_1.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mohamed Ouda",
+  "subject": "=File:Telecom Egypt Smart Village building 1.jpg"
+ },
+ "src/assets/dest-luxor.jpg": {
+  "title": "File:Templo de Karnak, Luxor, Egipto, 2022-04-03, DD 146.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Templo_de_Karnak%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_146.jpg/1920px-Templo_de_Karnak%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_146.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Templo_de_Karnak,_Luxor,_Egipto,_2022-04-03,_DD_146.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "=File:Templo de Karnak, Luxor, Egipto, 2022-04-03, DD 146.jpg"
+ },
+ "src/assets/dest-hurghada.jpg": {
+  "title": "File:Hurghada, Marina.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Hurghada%2C_Marina.jpg/1920px-Hurghada%2C_Marina.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hurghada,_Marina.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vojtasekd",
+  "subject": "=File:Hurghada, Marina.jpg"
+ },
+ "src/assets/dest-sharm.jpg": {
+  "title": "File:Naama Bay, Sharm el Sheikh, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Naama_Bay%2C_Sharm_el_Sheikh%2C_Egypt.jpg/1920px-Naama_Bay%2C_Sharm_el_Sheikh%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Naama_Bay,_Sharm_el_Sheikh,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "74papa",
+  "subject": "=File:Naama Bay, Sharm el Sheikh, Egypt.jpg"
+ },
+ "src/assets/dest-aswan.jpg": {
+  "title": "File:Felucca ride In Aswan.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Felucca_ride_In_Aswan.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Felucca_ride_In_Aswan.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Omar Ahmed Elhossiny",
+  "subject": "=File:Felucca ride In Aswan.jpg"
+ },
+ "src/assets/gov/red-sea.jpg": {
+  "title": "File:Makadi Bay 20240222 105027.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Makadi_Bay_20240222_105027.jpg/1920px-Makadi_Bay_20240222_105027.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Makadi_Bay_20240222_105027.jpg",
+  "license": "CC BY 4.0",
+  "author": "Xxlstier",
+  "subject": "=File:Makadi Bay 20240222 105027.jpg"
+ },
+ "src/assets/home/energy.jpg": {
+  "title": "File:Wind turbine at Zaafarana by Hatem Moushir 11.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Wind_turbine_at_Zaafarana_by_Hatem_Moushir_11.JPG/1920px-Wind_turbine_at_Zaafarana_by_Hatem_Moushir_11.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Wind_turbine_at_Zaafarana_by_Hatem_Moushir_11.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Hatem Moushir",
+  "subject": "=File:Wind turbine at Zaafarana by Hatem Moushir 11.JPG"
  }
 }

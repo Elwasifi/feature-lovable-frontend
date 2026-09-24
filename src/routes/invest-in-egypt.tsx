@@ -7,7 +7,7 @@ import hero from "@/assets/inner/invest-hero.jpg";
 import capital from "@/assets/sector-realestate.jpg";
 import industrial from "@/assets/home/biz-opps.jpg";
 import redsea from "@/assets/gov/red-sea.jpg";
-import energy from "@/assets/home/tenders.jpg";
+import energy from "@/assets/home/energy.jpg";
 import people from "@/assets/home/inv-opps.jpg";
 import banner from "@/assets/gov/cairo.jpg";
 import {

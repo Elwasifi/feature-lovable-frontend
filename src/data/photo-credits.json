@@ -149,7 +149,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Central_business_district,_New_Administrative_Capital.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Abdelrhman 1990",
-  "subject": "=File:Central business district, New Administrative Capital.jpg"
+  "subject": "Central Business District, New Administrative Capital"
  },
  "src/assets/inner/gov-hero.jpg": {
   "title": "File:Ministry of Finance (Egypt).jpg",
@@ -157,7 +157,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Ministry_of_Finance_(Egypt).jpg",
   "license": "CC BY-SA 4.0",
   "author": "Abdelrhman 1990",
-  "subject": "=File:Ministry of Finance (Egypt).jpg"
+  "subject": "Ministry of Finance, New Administrative Capital"
  },
  "src/assets/inner/realestate-hero.jpg": {
   "title": "File:DSC 0808 (1) (1).jpg",
@@ -165,7 +165,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:DSC_0808_(1)_(1).jpg",
   "license": "CC BY-SA 4.0",
   "author": "احمد رزق حسين",
-  "subject": "=File:DSC 0808 (1) (1).jpg"
+  "subject": "New Alamein towers"
  },
  "src/assets/inner/digital-hero.jpg": {
   "title": "File:Telecom Egypt Smart Village building 1.jpg",
@@ -173,7 +173,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Telecom_Egypt_Smart_Village_building_1.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Mohamed Ouda",
-  "subject": "=File:Telecom Egypt Smart Village building 1.jpg"
+  "subject": "Telecom Egypt, Smart Village"
  },
  "src/assets/dest-luxor.jpg": {
   "title": "File:Templo de Karnak, Luxor, Egipto, 2022-04-03, DD 146.jpg",
@@ -181,7 +181,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Templo_de_Karnak,_Luxor,_Egipto,_2022-04-03,_DD_146.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Diego Delso",
-  "subject": "=File:Templo de Karnak, Luxor, Egipto, 2022-04-03, DD 146.jpg"
+  "subject": "Karnak Temple, Luxor"
  },
  "src/assets/dest-hurghada.jpg": {
   "title": "File:Hurghada, Marina.jpg",
@@ -189,7 +189,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Hurghada,_Marina.jpg",
   "license": "CC BY 4.0",
   "author": "Vojtasekd",
-  "subject": "=File:Hurghada, Marina.jpg"
+  "subject": "Hurghada Marina"
  },
  "src/assets/dest-sharm.jpg": {
   "title": "File:Naama Bay, Sharm el Sheikh, Egypt.jpg",
@@ -197,7 +197,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Naama_Bay,_Sharm_el_Sheikh,_Egypt.jpg",
   "license": "CC BY 4.0",
   "author": "74papa",
-  "subject": "=File:Naama Bay, Sharm el Sheikh, Egypt.jpg"
+  "subject": "Naama Bay, Sharm El Sheikh"
  },
  "src/assets/dest-aswan.jpg": {
   "title": "File:Felucca ride In Aswan.jpg",
@@ -205,7 +205,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Felucca_ride_In_Aswan.jpg",
   "license": "CC BY-SA 4.0",
   "author": "Omar Ahmed Elhossiny",
-  "subject": "=File:Felucca ride In Aswan.jpg"
+  "subject": "Felucca on the Nile, Aswan"
  },
  "src/assets/gov/red-sea.jpg": {
   "title": "File:Makadi Bay 20240222 105027.jpg",
@@ -213,7 +213,7 @@
   "page": "https://commons.wikimedia.org/wiki/File:Makadi_Bay_20240222_105027.jpg",
   "license": "CC BY 4.0",
   "author": "Xxlstier",
-  "subject": "=File:Makadi Bay 20240222 105027.jpg"
+  "subject": "Makadi Bay, Red Sea"
  },
  "src/assets/home/energy.jpg": {
   "title": "File:Wind turbine at Zaafarana by Hatem Moushir 11.JPG",
@@ -221,6 +221,14 @@
   "page": "https://commons.wikimedia.org/wiki/File:Wind_turbine_at_Zaafarana_by_Hatem_Moushir_11.JPG",
   "license": "CC BY-SA 3.0",
   "author": "Hatem Moushir",
-  "subject": "=File:Wind turbine at Zaafarana by Hatem Moushir 11.JPG"
+  "subject": "Zafarana wind farm, Gulf of Suez"
+ },
+ "src/assets/home/benban.jpg": {
+  "title": "File:ISS059-E-114033 - View of Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/ISS059-E-114033_-_View_of_Egypt.jpg/1920px-ISS059-E-114033_-_View_of_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:ISS059-E-114033_-_View_of_Egypt.jpg",
+  "license": "Public domain",
+  "author": "Earth Science and Remote Sensing Unit, NASA Johnson Space Center",
+  "subject": "Benban Solar Park from the ISS"
  }
 }

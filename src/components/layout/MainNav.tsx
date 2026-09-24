@@ -68,9 +68,10 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
 
   const pathname = useRouterState({ select: (st) => st.location.pathname });
   const active =
-    !!entry.items &&
+    (!!entry.items && pathname === entry.to) ||
+    (!!entry.items &&
     !mainNav.some((e) => !e.items && e.to === pathname) &&
-    entry.items.some((i) => i.to && i.to !== "/" && !i.to.includes("#") && pathname === i.to);
+    entry.items.some((i) => i.to && i.to !== "/" && !i.to.includes("#") && pathname === i.to));
 
   if (!entry.items) {
     return (
@@ -93,6 +94,23 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
+      {entry.to && entry.label !== "About" ? (
+        <Link
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
+          to={entry.to as any}
+          aria-haspopup="true"
+          onClick={() => setOpen(false)}
+          className={cn(
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-2 py-2 text-[12.5px] font-medium transition-colors",
+          open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
+          active &&
+            "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
+        )}
+        >
+          {t(entry.label)}
+        <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
+        </Link>
+      ) : (
       <button
         type="button"
         aria-expanded={open}
@@ -108,6 +126,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         {t(entry.label)}
         <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
       </button>
+      )}
       {open && (
         <div className={cn("absolute top-full z-50 w-[280px] pt-1", entry.label === "About" ? "end-0" : "start-0")}>
           <div className="grid gap-0.5 rounded-2xl border border-border bg-popover p-2 shadow-xl">

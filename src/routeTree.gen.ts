@@ -15,6 +15,7 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as DoBusinessRouteImport } from './routes/do-business'
 import { Route as EgyptianHeritageWorldwideRouteImport } from './routes/egyptian-heritage-worldwide'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
@@ -100,6 +101,11 @@ const ContactRoute = ContactRouteImport.update({
 const CountriesRoute = CountriesRouteImport.update({
   id: '/countries',
   path: '/countries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoBusinessRoute = DoBusinessRouteImport.update({
+  id: '/do-business',
+  path: '/do-business',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EgyptianHeritageWorldwideRoute =
@@ -396,6 +402,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
@@ -459,6 +466,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
@@ -524,6 +532,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
@@ -590,6 +599,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
@@ -653,6 +663,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
@@ -717,6 +728,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
@@ -782,6 +794,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
+  DoBusinessRoute: typeof DoBusinessRoute
   EgyptianHeritageWorldwideRoute: typeof EgyptianHeritageWorldwideRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
@@ -872,6 +885,13 @@ declare module '@tanstack/react-router' {
       path: '/countries'
       fullPath: '/countries'
       preLoaderRoute: typeof CountriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/do-business': {
+      id: '/do-business'
+      path: '/do-business'
+      fullPath: '/do-business'
+      preLoaderRoute: typeof DoBusinessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/egyptian-heritage-worldwide': {
@@ -1304,6 +1324,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
+  DoBusinessRoute: DoBusinessRoute,
   EgyptianHeritageWorldwideRoute: EgyptianHeritageWorldwideRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,

@@ -53,12 +53,23 @@ const socials: { label: string; href?: string; Icon: IconType }[] = [
 type FLink = { label: string; to?: string; href?: string; soon?: boolean };
 
 const exploreLinks: FLink[] = [
-  { label: "Explore Egypt", to: "/encyclopedia" },
-  { label: "Live in Egypt", to: "/properties" },
-  { label: "Invest in Egypt", to: "/investment-opportunities" },
-  { label: "Do Business", to: "/providers" },
-  { label: "Visit Egypt", to: "/offers" },
+  { label: "Explore Egypt", to: "/explore-egypt" },
+  { label: "Visit Egypt", to: "/visit-egypt" },
+  { label: "Live in Egypt", to: "/live-in-egypt" },
+  { label: "Invest in Egypt", to: "/invest-in-egypt" },
+  { label: "Do Business", to: "/do-business" },
   { label: "Government Directory", to: "/government-directory" },
+];
+
+/** Deep links into real pages that sit under the main menu sections. */
+const discoverLinks: FLink[] = [
+  { label: "Visual Encyclopedia", to: "/encyclopedia" },
+  { label: "Heritage Sites", to: "/heritage-sites" },
+  { label: "Museums & Galleries", to: "/museums" },
+  { label: "Events & Festivals", to: "/events" },
+  { label: "Real Estate", to: "/real-estate" },
+  { label: "Investment Opportunities", to: "/investment-opportunities" },
+  { label: "Digital Government Services", to: "/government-directory/digital-services" },
 ];
 
 const aboutLinks: FLink[] = [
@@ -67,28 +78,26 @@ const aboutLinks: FLink[] = [
   { label: "Vision & Values", soon: true },
   { label: "Contact Us", to: "/contact" },
   { label: "FAQ", soon: true },
-  { label: "Terms of Use", to: "/legal/terms" },
-  { label: "Privacy Policy", to: "/legal/privacy" },
+  { label: "Partner With Us", to: "/partners" },
   { label: "Press & Media", href: mailto("Egyptora Hub — Press & Media") },
 ];
 
-const moreLinks: FLink[] = [
-  { label: "Visual Encyclopedia", to: "/encyclopedia" },
-  { label: "Destinations & Heritage", href: "/#explore" },
-  { label: "27 Governorates", href: "/#governorates" },
-  { label: "Egypt Through Time", href: "/#through-time" },
-  { label: "Programmes", href: "/#programmes" },
-  { label: "Investment Sectors", href: "/#invest" },
+const legalLinks: FLink[] = [
+  { label: "Terms of Use", to: "/legal/terms" },
+  { label: "Privacy Policy", to: "/legal/privacy" },
+  { label: "Legal Disclaimer", to: "/legal/disclaimer" },
+  { label: "Cookie Policy", to: "/legal/cookies" },
+  { label: "Accessibility", to: "/legal/accessibility" },
   { label: "Consent Centre", to: "/legal/consent" },
   { label: "Report an Issue", to: "/legal/incident-reporting" },
   { label: "Complaints & Disputes", to: "/legal/complaints-disputes" },
   { label: "Safety Policy", to: "/legal/safety" },
   { label: "AI Transparency", to: "/legal/ai-transparency" },
   { label: "Data Protection", to: "/legal/data-protection" },
-  { label: "Legal Disclaimer", to: "/legal/disclaimer" },
+  { label: "Photo Credits", to: "/photo-credits" },
 ];
 
-const linkCls = "text-sm text-foreground/75 transition-colors hover:text-shell-gold";
+const linkCls = "text-[13px] leading-snug text-foreground/75 transition-colors hover:text-shell-gold";
 
 function FooterLink({ link }: { link: FLink }) {
   const { t } = useI18n();
@@ -116,27 +125,7 @@ function FooterLink({ link }: { link: FLink }) {
 }
 
 function ColumnTitle({ children }: { children: React.ReactNode }) {
-  return <h3 className="font-display text-base font-semibold text-foreground">{children}</h3>;
-}
-
-/** Decorative gold skyline: pyramids + tower line-art with script "Egypt". */
-function Skyline() {
-  const { t } = useI18n();
-  return (
-    <div aria-hidden className="hidden text-shell-gold xl:block">
-      <svg viewBox="0 0 220 90" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-56">
-        <path d="M4 84h212" />
-        <path d="M14 84 44 44l30 40M52 84l30-46 30 46M100 84l18-24 18 24" />
-        <path d="M44 44l-6 40M82 38l-8 46" opacity=".5" />
-        <path d="M168 84V30l4-10 4 10v54M164 44h16M162 58h20M166 30h12" />
-        <path d="M172 20v-10" />
-        <path d="M150 84V66h8v18M186 84V70h10v14" opacity=".7" />
-      </svg>
-      <p className="mt-1 font-display text-3xl italic">{t("Egypt")}</p>
-      <p className="text-[11px] tracking-wide text-foreground/70">{t("More Than a Destination")}</p>
-      <p className="text-[11px] tracking-wide text-foreground/70">{t("A Brighter Tomorrow")}</p>
-    </div>
-  );
+  return <h3 className="border-b border-shell-gold/30 pb-3 font-display text-[15px] font-semibold tracking-wide text-shell-gold">{children}</h3>;
 }
 
 function Newsletter() {
@@ -201,7 +190,7 @@ export function SiteFooter() {
   return (
     <footer className="on-dark bg-navy-deep text-foreground">
       <Container className="py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr_1fr] xl:grid-cols-[1.4fr_1fr_1fr_1.4fr_1fr_auto] lg:gap-x-10">
+        <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1.5fr_1fr_1.15fr_1fr_1.15fr_1.4fr]">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -265,6 +254,17 @@ export function SiteFooter() {
           </div>
 
           <div>
+            <ColumnTitle>{t("Discover")}</ColumnTitle>
+            <ul className="mt-4 space-y-2.5">
+              {discoverLinks.map((l) => (
+                <li key={l.label}>
+                  <FooterLink link={l} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <ColumnTitle>{t("About")}</ColumnTitle>
             <ul className="mt-4 space-y-2.5">
               {aboutLinks.map((l) => (
@@ -275,19 +275,18 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <Newsletter />
-
           <div>
-            <ColumnTitle>{t("More")}</ColumnTitle>
+            <ColumnTitle>{t("Legal & Compliance")}</ColumnTitle>
             <ul className="mt-4 space-y-2.5">
-              {moreLinks.map((l) => (
+              {legalLinks.map((l) => (
                 <li key={l.label}>
                   <FooterLink link={l} />
                 </li>
               ))}
             </ul>
           </div>
-          <Skyline />
+
+          <Newsletter />
         </div>
       </Container>
 
@@ -296,19 +295,6 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}
           </p>
-          <nav aria-label={t("Legal")} className="flex flex-wrap gap-x-4 gap-y-1">
-            {[
-              ["Legal Center", "/legal"],
-              ["Cookie Policy", "/legal/cookies"],
-              ["Accessibility", "/legal/accessibility"],
-              ["Partner With Us", "/partners"],
-            ].map(([label, to]) => (
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static route paths
-              <Link key={to} to={to as any} className="hover:text-shell-gold">
-                {t(label!)}
-              </Link>
-            ))}
-          </nav>
           <p>
             {t("A Private Platform")} | {t("Your Gateway to Egypt")}
           </p>

@@ -1,0 +1,130 @@
+{
+ "src/assets/home/hero.jpg": {
+  "title": "File:All pyramids of Giza panorama 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/All_pyramids_of_Giza_panorama_2.jpg/1920px-All_pyramids_of_Giza_panorama_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:All_pyramids_of_Giza_panorama_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "kallerna",
+  "subject": "Giza pyramids panorama"
+ },
+ "src/assets/home/visit.jpg": {
+  "title": "File:Luxor Temple R04.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Luxor_Temple_R04.jpg/1920px-Luxor_Temple_R04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Luxor_Temple_R04.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Luxor Temple"
+ },
+ "src/assets/home/diving.jpg": {
+  "title": "File:Coral reef near Marsa Alam.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Coral_reef_near_Marsa_Alam.jpg/1920px-Coral_reef_near_Marsa_Alam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Coral_reef_near_Marsa_Alam.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Thomas Hubauer",
+  "subject": "Red Sea coral reef Egypt diving"
+ },
+ "src/assets/home/nile.jpg": {
+  "title": "File:Sun Ray Nile cruise ship R01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Sun_Ray_Nile_cruise_ship_R01.jpg/1920px-Sun_Ray_Nile_cruise_ship_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Sun_Ray_Nile_cruise_ship_R01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Marc Ryckaert",
+  "subject": "Nile cruise ship Aswan"
+ },
+ "src/assets/home/cultural.jpg": {
+  "title": "File:The Khan el-Khalili market in Cairo, Egypt (2743501345).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/The_Khan_el-Khalili_market_in_Cairo%2C_Egypt_%282743501345%29.jpg/1920px-The_Khan_el-Khalili_market_in_Cairo%2C_Egypt_%282743501345%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Khan_el-Khalili_market_in_Cairo,_Egypt_(2743501345).jpg",
+  "license": "CC BY 2.0",
+  "author": "V Manninen from Funland",
+  "subject": "Khan el-Khalili Cairo"
+ },
+ "src/assets/home/inv-opps.jpg": {
+  "title": "File:The Government District, New Capital 1.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/The_Government_District%2C_New_Capital_1.jpg/1920px-The_Government_District%2C_New_Capital_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Government_District,_New_Capital_1.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "New Administrative Capital Egypt"
+ },
+ "src/assets/home/education.jpg": {
+  "title": "File:Cairo University after sunset.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Cairo_University_after_sunset.JPG/1920px-Cairo_University_after_sunset.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Cairo_University_after_sunset.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Faris knight",
+  "subject": "Cairo University"
+ },
+ "src/assets/home/health.jpg": {
+  "title": "File:New Kasr El Aini Teaching Hospital, Cairo Egypt - panoramio (1).jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/New_Kasr_El_Aini_Teaching_Hospital%2C_Cairo_Egypt_-_panoramio_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:New_Kasr_El_Aini_Teaching_Hospital,_Cairo_Egypt_-_panoramio_(1).jpg",
+  "license": "CC BY 3.0",
+  "author": "The Erica Chang",
+  "subject": "hospital Cairo Egypt"
+ },
+ "src/assets/home/biz-opps.jpg": {
+  "title": "File:Container Ship 'Ever Given' stuck in the Suez Canal, Egypt - March 24th, 2021 cropped.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Container_Ship_%27Ever_Given%27_stuck_in_the_Suez_Canal%2C_Egypt_-_March_24th%2C_2021_cropped.jpg/1920px-Container_Ship_%27Ever_Given%27_stuck_in_the_Suez_Canal%2C_Egypt_-_March_24th%2C_2021_cropped.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Container_Ship_%27Ever_Given%27_stuck_in_the_Suez_Canal,_Egypt_-_March_24th,_2021_cropped.jpg",
+  "license": "CC BY 2.0",
+  "author": "Contains modified Copernicus Sentinel data [2021], processed by Pierre Markuse",
+  "subject": "Suez Canal container ship"
+ },
+ "src/assets/home/tenders.jpg": {
+  "title": "File:Port Said, Egypt, Street.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Port_Said%2C_Egypt%2C_Street.jpg/1920px-Port_Said%2C_Egypt%2C_Street.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Said,_Egypt,_Street.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Port Said port Egypt"
+ },
+ "src/assets/home/biz-support.jpg": {
+  "title": "File:Telecom Egypt Smart Village building 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Telecom_Egypt_Smart_Village_building_2.jpg/1920px-Telecom_Egypt_Smart_Village_building_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Telecom_Egypt_Smart_Village_building_2.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mohamed Ouda",
+  "subject": "Smart Village Egypt"
+ },
+ "src/assets/home/gov-building.jpg": {
+  "title": "File:Egyptian Museum (14795799955).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Egyptian_Museum_%2814795799955%29.jpg/1920px-Egyptian_Museum_%2814795799955%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Egyptian_Museum_(14795799955).jpg",
+  "license": "CC BY 2.0",
+  "author": "Jorge Láscar from Melbourne, Australia",
+  "subject": "Egyptian House of Representatives building Cairo"
+ },
+ "src/assets/home/news-giza.jpg": {
+  "title": "File:Grand Egyptian Museum 2025.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Grand_Egyptian_Museum_2025.jpg/1920px-Grand_Egyptian_Museum_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand_Egyptian_Museum_2025.jpg",
+  "license": "Public domain",
+  "author": "Amr F.Nagy",
+  "subject": "Grand Egyptian Museum"
+ },
+ "src/assets/home/news-invest.jpg": {
+  "title": "File:Iconic Tower Egypt(18-6-2023)(cropped).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Iconic_Tower_Egypt%2818-6-2023%29%28cropped%29.jpg/1920px-Iconic_Tower_Egypt%2818-6-2023%29%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Iconic_Tower_Egypt(18-6-2023)(cropped).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mohamed Ouda",
+  "subject": "Iconic Tower New Administrative Capital"
+ },
+ "src/assets/home/news-redsea.jpg": {
+  "title": "File:Hurghada TTC Sunny Beach Resort R01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Hurghada_TTC_Sunny_Beach_Resort_R01.jpg/1920px-Hurghada_TTC_Sunny_Beach_Resort_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hurghada_TTC_Sunny_Beach_Resort_R01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Marc Ryckaert",
+  "subject": "Hurghada beach resort"
+ },
+ "src/assets/vision-2030.png": {
+  "title": "File:Egypt Vision 2030.png",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Egypt_Vision_2030.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Egypt_Vision_2030.png",
+  "license": "Public domain",
+  "author": "MohamedHelmyOff",
+  "subject": "=File:Egypt Vision 2030.png"
+ }
+}

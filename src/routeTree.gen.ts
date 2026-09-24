@@ -24,6 +24,7 @@ import { Route as GovernmentDirectoryRouteImport } from './routes/government-dir
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
 import { Route as InvestInEgyptRouteImport } from './routes/invest-in-egypt'
 import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment-opportunities'
+import { Route as LiveInEgyptRouteImport } from './routes/live-in-egypt'
 import { Route as MuseumsRouteImport } from './routes/museums'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -145,6 +146,11 @@ const InvestInEgyptRoute = InvestInEgyptRouteImport.update({
 const InvestmentOpportunitiesRoute = InvestmentOpportunitiesRouteImport.update({
   id: '/investment-opportunities',
   path: '/investment-opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveInEgyptRoute = LiveInEgyptRouteImport.update({
+  id: '/live-in-egypt',
+  path: '/live-in-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MuseumsRoute = MuseumsRouteImport.update({
@@ -399,6 +405,7 @@ export interface FileRoutesByFullPath {
   '/heritage-sites': typeof HeritageSitesRoute
   '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -461,6 +468,7 @@ export interface FileRoutesByTo {
   '/heritage-sites': typeof HeritageSitesRoute
   '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -525,6 +533,7 @@ export interface FileRoutesById {
   '/heritage-sites': typeof HeritageSitesRoute
   '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -590,6 +599,7 @@ export interface FileRouteTypes {
     | '/heritage-sites'
     | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -652,6 +662,7 @@ export interface FileRouteTypes {
     | '/heritage-sites'
     | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -715,6 +726,7 @@ export interface FileRouteTypes {
     | '/heritage-sites'
     | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -779,6 +791,7 @@ export interface RootRouteChildren {
   HeritageSitesRoute: typeof HeritageSitesRoute
   InvestInEgyptRoute: typeof InvestInEgyptRoute
   InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
+  LiveInEgyptRoute: typeof LiveInEgyptRoute
   MuseumsRoute: typeof MuseumsRoute
   OffersRoute: typeof OffersRoute
   ProductsRoute: typeof ProductsRoute
@@ -922,6 +935,13 @@ declare module '@tanstack/react-router' {
       path: '/investment-opportunities'
       fullPath: '/investment-opportunities'
       preLoaderRoute: typeof InvestmentOpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-in-egypt': {
+      id: '/live-in-egypt'
+      path: '/live-in-egypt'
+      fullPath: '/live-in-egypt'
+      preLoaderRoute: typeof LiveInEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/museums': {
@@ -1293,6 +1313,7 @@ const rootRouteChildren: RootRouteChildren = {
   HeritageSitesRoute: HeritageSitesRoute,
   InvestInEgyptRoute: InvestInEgyptRoute,
   InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
+  LiveInEgyptRoute: LiveInEgyptRoute,
   MuseumsRoute: MuseumsRoute,
   OffersRoute: OffersRoute,
   ProductsRoute: ProductsRoute,

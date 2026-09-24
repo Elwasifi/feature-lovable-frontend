@@ -26,7 +26,7 @@ import marsa from "@/assets/gov/red-sea.jpg";
 import move from "@/assets/sec-marina.jpg";
 import banner from "@/assets/home/nile.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, GoldButton, ViewAll,
+  InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -186,7 +186,6 @@ function LiveInEgypt() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cities.map((c) => <PhotoCard key={c.title} c={c} h="h-28" />)}
         </div>
-        <span className="sr-only"><ViewAll to="/countries" /></span>
       </section>
     </InnerPage>
   );

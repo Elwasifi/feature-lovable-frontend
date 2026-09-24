@@ -205,7 +205,7 @@ function Hero() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            askConcierge(q);
+            siteSearch(q);
             setQ("");
           }}
           className="mt-6 flex max-w-xl overflow-hidden rounded-lg bg-primary-foreground shadow-lg"
@@ -231,7 +231,7 @@ function Hero() {
             <button
               key={p}
               type="button"
-              onClick={() => askConcierge(t(p))}
+              onClick={() => siteSearch(t(p))}
               className="rounded-full border border-foreground/40 bg-navy/50 px-3 py-1 text-xs text-foreground transition-colors hover:border-shell-gold"
             >
               {t(p)}

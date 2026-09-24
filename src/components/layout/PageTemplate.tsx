@@ -35,7 +35,7 @@ export function HeroSearch({
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    askConcierge(query);
+    siteSearch(query);
     setQuery("");
   };
 

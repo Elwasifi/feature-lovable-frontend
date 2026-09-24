@@ -304,7 +304,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              askConcierge(q);
+              siteSearch(q);
               setQ("");
             }}
             className="mt-6 flex max-w-xl items-center gap-2 rounded-full bg-primary-foreground p-1.5 shadow-lg"
@@ -329,7 +329,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
                 <button
                   key={p}
                   type="button"
-                  onClick={() => askConcierge(t(p))}
+                  onClick={() => siteSearch(t(p))}
                   className="rounded-full border border-foreground/40 bg-navy/50 px-3 py-1 text-xs text-foreground transition-colors hover:border-shell-gold"
                 >
                   {t(p)}

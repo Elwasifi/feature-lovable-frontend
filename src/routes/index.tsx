@@ -1,82 +1,59 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, type ComponentType, type SVGProps } from "react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Bed,
+  BarChart3,
   Briefcase,
   Building2,
-  CalendarDays,
-  Clapperboard,
-  Compass,
-  Dna,
-  FileText,
+  Crosshair,
   GraduationCap,
+  Home as HomeIcon,
   Info,
   Landmark,
   LayoutGrid,
+  Leaf,
   MapPin,
-  Home as HomeIcon,
+  Monitor,
+  Network,
   Palmtree,
-  Sailboat,
+  Plane,
   Search,
-  ShoppingBag,
-  Stamp,
-  Sun,
-  TrendingUp,
-  Users,
-  Utensils,
   ShieldCheck,
-  Sparkles,
-  Wrench,
+  Stamp,
+  Users,
+  Globe2,
 } from "lucide-react";
-import { marketplacePages } from "@/data/marketplace";
-import heroImage from "@/assets/hero-egyptora-hub.jpg";
-import featHeritage from "@/assets/card-heritage.jpg";
-import featMuseums from "@/assets/card-museums.jpg";
-import featEvents from "@/assets/promo-summer.jpg";
-import featProperties from "@/assets/sector-realestate.jpg";
-import featInvest from "@/assets/sec-mice.jpg";
-import featMarket from "@/assets/market-crafts.jpg";
-import govBuilding from "@/assets/gov/cairo.jpg";
-import govCairo from "@/assets/gov/cairo.jpg";
-import govGiza from "@/assets/gov/giza.jpg";
-import govAlexandria from "@/assets/gov/alexandria.jpg";
-import govLuxor from "@/assets/gov/luxor.jpg";
-import govAswan from "@/assets/gov/aswan.jpg";
-import govPortSaid from "@/assets/gov/port-said.jpg";
-import { SaveButton } from "@/components/site/SaveButton";
-import { EgyptMap } from "@/components/site/EgyptMap";
-import { IntelligenceRail } from "@/components/dashboard/IntelligenceRail";
+import heroImg from "@/assets/home/hero.jpg";
+import visitImg from "@/assets/home/visit.jpg";
+import divingImg from "@/assets/home/diving.jpg";
+import nileImg from "@/assets/home/nile.jpg";
+import culturalImg from "@/assets/home/cultural.jpg";
+import invOppsImg from "@/assets/home/inv-opps.jpg";
+import startBizImg from "@/assets/home/start-biz.jpg";
+import residencyImg from "@/assets/home/residency.jpg";
+import educationImg from "@/assets/home/education.jpg";
+import healthImg from "@/assets/home/health.jpg";
+import bizOppsImg from "@/assets/home/biz-opps.jpg";
+import tendersImg from "@/assets/home/tenders.jpg";
+import bizSupportImg from "@/assets/home/biz-support.jpg";
+import govBuildingImg from "@/assets/home/gov-building.jpg";
+import newsGizaImg from "@/assets/home/news-giza.jpg";
+import newsInvestImg from "@/assets/home/news-invest.jpg";
+import newsRedSeaImg from "@/assets/home/news-redsea.jpg";
+import phonesImg from "@/assets/home/phones.jpg";
+import worldImg from "@/assets/home/world.jpg";
+import globeImg from "@/assets/home/globe.jpg";
+import visionImg from "@/assets/home/vision2030.jpg";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { GhostButton, SourceBadge } from "@/components/site/Primitives";
-import {
-  discoverCards,
-  egyptSectors,
-  eras,
-  heroImages,
-  investSectors,
-  offerCards,
-  popularDestinations,
-  programmes,
-  quickCategories,
-  researchItems,
-  searchTabs,
-  sectorCards,
-  trustItems,
-  weatherStrip,
-} from "@/data/site";
-import { SITE, mailto } from "@/config/site";
+import { askConcierge } from "@/components/layout/MainNav";
+import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
-import { useCurrency } from "@/i18n/currency";
-import { supabase } from "@/integrations/supabase/client";
-import { slugifyCategory } from "@/routes/government-directory";
 import { cn } from "@/lib/utils";
 
-
-const title = "Egyptora Hub — Everything Egypt. One Hub.";
+const title = "Egyptora Hub — Your Gateway to Egypt";
 const description =
-  "Egyptora Hub is a unified digital gateway to Egypt: destinations, 27 governorates, heritage, culture, events and investment — presented through one intelligent platform.";
+  "Explore. Invest. Live. Do Business. Belong. Egyptora Hub is a private platform connecting the world to Egypt's opportunities, people and possibilities.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,1256 +65,600 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: SITE.url },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:image", content: `${SITE.url}/og-image.jpg` },
-      { name: "twitter:image", content: `${SITE.url}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE.url}/` }],
   }),
   component: Home,
 });
 
+type Icon = ComponentType<SVGProps<SVGSVGElement> & { className?: string }>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any -- static route paths
+const L = (to: string) => to as any;
+
+const wrap = "mx-auto w-full max-w-[1280px] px-4 lg:px-8";
+
 function Home() {
   return (
-    <>
-      <div className="min-h-screen bg-background">
-        <div className="min-w-0 flex-1">
-          <SiteHeader />
-
-
-
-
-        <main>
-          <Hero />
-
-          <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 gap-12 px-4 py-12 lg:px-8">
-            <Mission />
-            <FeaturedServices />
-            <GovernmentDirectory />
-            <DirectoryCategoryCards />
-            <ImportantNotice />
-            <Categories />
-            <Discover />
-            <Destinations />
-            <SectorStrip />
-            <Offers />
-            <Governorates />
-            <BookingSearch />
-            <ThroughTime />
-            <Insights />
-            <Research />
-            <Film />
-            <Marketplace />
-            <Concierge />
-            <Invest />
-            <Programmes />
-          </div>
-        </main>
-
-
-          <SiteFooter />
-        </div>
-      </div>
-    </>
-  );
-
-}
-
-function Block({
-  id,
-  eyebrow,
-  title: heading,
-  action,
-  children,
-}: {
-  id?: string;
-  eyebrow?: string;
-  title: string;
-  action?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  const { t } = useI18n();
-  // Eyebrow labels were dropped in the reference-aligned typography pass; the
-  // prop is kept so callers stay unchanged.
-  void eyebrow;
-  return (
-    <section id={id} className="scroll-mt-32">
-      <div className="mb-6 grid grid-cols-[minmax(0,1fr)_auto] items-end gap-3">
-        <div className="min-w-0">
-          <h2 className="font-display text-2xl leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2.1rem]">
-            {t(heading)}
-          </h2>
-        </div>
-        {action}
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function ViewAll({ href = "/#explore" }: { href?: string }) {
-  const { t } = useI18n();
-  return (
-    <a
-      href={href}
-      className="shrink-0 text-xs font-semibold text-gold transition-opacity hover:opacity-80"
-    >
-      {t("View all")}
-    </a>
-  );
-}
-
-/** Shared marker for sections that are planned but have no page yet. */
-function ComingSoonBadge({ className }: { className?: string }) {
-  const { t } = useI18n();
-  return (
-    <span
-      className={cn(
-        "inline-flex shrink-0 rounded-full border border-border/70 bg-background/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-muted-foreground backdrop-blur",
-        className,
-      )}
-    >
-      {t("Coming soon")}
-    </span>
-  );
-}
-
-// Official Travelpayouts widget script, generated from our Travelpayouts
-// account (marker 777434). Used for both the Flights and Hotels tabs.
-const TP_WIDGET_SRC =
-  "https://tpwgts.com/content?currency=usd&trs=574096&shmarker=777434&show_hotels=true&powered_by=true&locale=en&searchUrl=www.aviasales.com%2Fsearch&primary_override=%23D9B15B&color_button=%23D9B15B&color_icons=%23D9B15B&dark=%23F3F2ED&light=%230F1721&secondary=%230F1721&special=%23303944&color_focused=%23D9B15B&border_radius=12&plain=true&promo_id=7879&campaign_id=100";
-
-// Transfers (promo 4674), car rental (promo 4480), attractions (Klook, promo 4497)
-// and eSIM (promo 8588) widgets — same account marker, one script per product.
-const TP_TRANSFERS_SRC =
-  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&color_background=%230F1721&color_button=%23D9B15B&promo_id=4674&campaign_id=22";
-
-const TP_CAR_RENTAL_SRC =
-  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&powered_by=true&border_radius=16&plain=true&show_logo=false&color_background=%230F1721&color_button=%23D9B15B&color_text=%23F5EFE0&color_input_text=%23000000&color_button_text=%230F1721&promo_id=4480&campaign_id=10";
-
-// Klook widget: no confirmed colour-override parameters for this product, so it
-// renders with its default styling rather than risk breaking it with guesses.
-const TP_ATTRACTIONS_SRC =
-  "https://tpwgts.com/content?currency=USD&trs=574096&shmarker=777434&locale=en&city_id=284&category=3&amount=3&powered_by=true&campaign_id=137&promo_id=4497";
-
-const TP_ESIM_SRC =
-  "https://tpwgts.com/content?trs=574096&shmarker=777434&locale=en&country=Egypt&powered_by=true&color_button=%23D9B15B&color_focused=%23D9B15B&secondary=%230F1721&dark=%23F5EFE0&light=%23FFFFFF&special=%233A4657&border_radius=16&plain=true&no_labels=&promo_id=8588&campaign_id=541";
-
-// The widget's flight search already opens in a new tab (its form targets
-// _blank). Its "Show hotels" option, however, sends the *current* tab to the
-// Hotellook deeplink. The widget renders into an open shadow root on our own
-// page (no cross-origin iframe), so we intercept that one interaction: on
-// submit with "Show hotels" ticked we untick it (widget then only runs the
-// flight search), open the identical Hotellook deeplink in a new tab, and
-// restore the tick. Marker/tracking parameters are copied from the widget's
-// own hidden fields, never altered.
-function buildHotelDeeplink(root: ShadowRoot): string | null {
-  const val = (name: string) =>
-    (root.querySelector(`input[name="${name}"]`) as HTMLInputElement | null)?.value?.trim() ?? "";
-  const destination = val("destination_slug");
-  const checkIn = val("DateRange_from_name");
-  const checkOut = val("DateRange_to_name");
-  const marker = val("marker");
-  const promo = val("p");
-  if (!destination || !checkIn || !marker) return null;
-
-  const params = new URLSearchParams({
-    gateId: "2",
-    skipRulerCheck: "skip",
-    utm_campaign: "checkbox",
-    "flags[utm]": `tp_cascoon_${promo}`,
-    utm_source: "tp_cascoon",
-    utm_medium: `campaign_${promo}`,
-    destination,
-    selectedHotelId: destination,
-    language: val("locale") || "en",
-    currency: val("currency") || "usd",
-    marker,
-    adults: val("passengers_adults") || "1",
-    checkIn,
-  });
-  if (checkOut) params.set("checkOut", checkOut);
-  return `https://yasen.hotellook.com/adaptors/location_deeplink?${params.toString()}`;
-}
-
-function TravelpayoutsWidget({ src }: { src: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const host = ref.current;
-    if (!host) return;
-    host.innerHTML = "";
-    const script = document.createElement("script");
-    script.src = src;
-    script.async = true;
-    script.charset = "utf-8";
-    host.appendChild(script);
-
-    let attached: ShadowRoot | null = null;
-    let bypass = false;
-    const onCapture = (event: Event) => {
-      const root = attached;
-      if (!root || bypass) return;
-      const path = (event as MouseEvent).composedPath();
-      const submit = path.find(
-        (n) =>
-          n instanceof HTMLElement &&
-          (n.tagName === "BUTTON" || n.tagName === "INPUT") &&
-          (n as HTMLButtonElement).type === "submit",
-      ) as HTMLElement | undefined;
-      if (!submit) return;
-      const checkbox = root.querySelector(
-        'input[name="Show_hotels"]',
-      ) as HTMLInputElement | null;
-      if (!checkbox || !checkbox.checked) return;
-      const url = buildHotelDeeplink(root);
-      if (!url) return;
-
-      // Hold this submit, untick "Show hotels" so the widget performs only the
-      // flight search (its own new-tab behaviour), open the hotel deeplink in a
-      // new tab while we still have the click gesture, then replay the submit.
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      checkbox.click();
-      window.open(url, "_blank", "noopener,noreferrer");
-      window.setTimeout(() => {
-        bypass = true;
-        submit.click();
-        window.setTimeout(() => {
-          bypass = false;
-          if (!checkbox.checked) checkbox.click();
-        }, 600);
-      }, 200);
-    };
-
-    const timer = window.setInterval(() => {
-      const el = host.querySelector("tp-cascoon");
-      const root = el?.shadowRoot ?? null;
-      if (!root || attached) return;
-      attached = root;
-      root.addEventListener("click", onCapture, true);
-    }, 400);
-
-    return () => {
-      window.clearInterval(timer);
-      attached?.removeEventListener("click", onCapture, true);
-      host.innerHTML = "";
-    };
-  }, [src]);
-
-  return <div ref={ref} className="w-full min-w-0 overflow-x-hidden [&_iframe]:!w-full" />;
-}
-
-/** Quick entry tiles sitting inside the hero, each pointing at a real section. */
-const heroTiles: {
-  label: string;
-  note: string;
-  Icon: typeof Palmtree;
-  to?: string;
-  href?: string;
-}[] = [
-  { label: "Tourism", note: "Explore timeless beauty", Icon: Palmtree, href: "/#explore" },
-  {
-    label: "Investment",
-    note: "Opportunities for growth",
-    Icon: TrendingUp,
-    to: "/investment-opportunities",
-  },
-  { label: "Real Estate", note: "Find your place", Icon: HomeIcon, to: "/properties" },
-  { label: "Visa & Entry", note: "Start your journey", Icon: Stamp, to: "/countries" },
-  { label: "Education", note: "A brighter future", Icon: GraduationCap, to: "/research-programs" },
-  { label: "Do Business", note: "Launch and expand", Icon: Briefcase, to: "/providers" },
-  {
-    label: "Government Services",
-    note: "Access official resources",
-    Icon: Landmark,
-    href: "/#government-directory",
-  },
-];
-
-function Hero() {
-  const { t } = useI18n();
-  const [query, setQuery] = useState("");
-
-  // One search field: the question is handed to the live AI concierge, which
-  // is grounded in the platform's own content.
-  const ask = (e: React.FormEvent) => {
-    e.preventDefault();
-    const q = query.trim();
-    if (!q) return;
-    window.dispatchEvent(new CustomEvent("egyptora:ask-concierge", { detail: q }));
-    setQuery("");
-  };
-
-  return (
-    <section className="relative overflow-hidden">
-      <img
-        src={heroImage}
-        alt={t("The Sphinx, the Pyramids of Giza and a Nile felucca at dusk")}
-        width={1920}
-        height={1088}
-        fetchPriority="high"
-        className="absolute inset-0 size-full object-cover"
-      />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to right, oklch(0.243 0.058 249.8 / 88%) 0%, oklch(0.243 0.058 249.8 / 62%) 55%, oklch(0.243 0.058 249.8 / 30%) 100%)",
-        }}
-      />
-
-      <div className="on-dark relative mx-auto w-full max-w-[1360px] px-4 pb-8 pt-14 sm:pt-20 lg:px-8">
-        <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border border-gold-line bg-primary/40 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold backdrop-blur">
-          <Sparkles className="size-3" /> {t("The official gateway to Egypt")}
-        </p>
-        <h1 className="max-w-3xl font-display text-4xl leading-[1.05] text-foreground drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)] sm:text-6xl">
-          {t("Your Gateway to Egypt")}
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/85 sm:text-lg">
-          {t("Discover. Invest. Live. Explore. Belong.")}
-        </p>
-
-        <form
-          onSubmit={ask}
-          className="mt-7 grid max-w-2xl grid-cols-[minmax(0,1fr)_auto] items-center gap-2 rounded-2xl bg-background/95 p-2 shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)]"
-        >
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t("What are you looking for in Egypt?")}
-            aria-label={t("What are you looking for in Egypt?")}
-            className="h-12 w-full min-w-0 rounded-xl bg-transparent px-4 text-sm text-primary outline-none placeholder:text-muted-foreground"
-          />
-          <button
-            type="submit"
-            aria-label={t("Search")}
-            className="grid h-12 w-14 shrink-0 place-items-center rounded-xl bg-gold text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            <Search className="size-5" />
-          </button>
-        </form>
-
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
-          {heroTiles.map(({ label, note, Icon, to, href }) => {
-            const className =
-              "grid place-items-center gap-1.5 rounded-xl border border-gold-line/50 bg-primary/55 px-3 py-4 text-center backdrop-blur transition-colors hover:border-gold-line hover:bg-primary/75";
-            const inner = (
-              <>
-                <Icon className="size-6 text-gold" />
-                <span className="w-full truncate text-xs font-semibold text-foreground">
-                  {t(label)}
-                </span>
-                <span className="w-full truncate text-[10px] text-foreground/70">{t(note)}</span>
-              </>
-            );
-            return to ? (
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-              <Link key={label} to={to as any} className={className}>
-                {inner}
-              </Link>
-            ) : (
-              <a key={label} href={href} className={className}>
-                {inner}
-              </a>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const featuredServices: { title: string; note: string; image: string; to: string }[] = [
-  { title: "Heritage Sites", note: "Thousands of listed sites", image: featHeritage, to: "/heritage-sites" },
-  { title: "Museums", note: "Collections across Egypt", image: featMuseums, to: "/museums" },
-  { title: "Events & Festivals", note: "What's on right now", image: featEvents, to: "/events" },
-  { title: "Real Estate", note: "Buy, rent or invest", image: featProperties, to: "/properties" },
-  {
-    title: "Investment Opportunities",
-    note: "Projects seeking partners",
-    image: featInvest,
-    to: "/investment-opportunities",
-  },
-  { title: "Made in Egypt", note: "Crafts, cotton & producers", image: featMarket, to: "/products" },
-];
-
-function FeaturedServices() {
-  const { t } = useI18n();
-  return (
-    <Block eyebrow="Featured" title="Featured services">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {featuredServices.map((s) => (
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-          <Link
-            key={s.title}
-            to={s.to as any}
-            className="group overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors hover:border-gold-line"
-          >
-            <img
-              src={s.image}
-              alt={s.title}
-              loading="lazy"
-              width={900}
-              height={600}
-              className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 p-4">
-              <span className="min-w-0">
-                <span className="block truncate font-display text-base text-foreground">
-                  {t(s.title)}
-                </span>
-                <span className="block truncate text-xs text-muted-foreground">{t(s.note)}</span>
-              </span>
-              <ArrowRight className="size-4 shrink-0 text-gold rtl:rotate-180" />
-            </div>
-          </Link>
-        ))}
-      </div>
-    </Block>
-  );
-}
-
-/** The real Travelpayouts booking search, now a dedicated section below the hero. */
-function BookingSearch() {
-  const { t } = useI18n();
-  const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
-
-  return (
-    <Block id="book" eyebrow="Book your trip" title="Flights, stays and everything in between">
-      <div className="overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-[var(--shadow-card)] sm:p-6">
-        <div className="mb-3 flex gap-1 overflow-x-auto pb-2 [scrollbar-width:none]">
-          {searchTabs.map((tab) => (
-            <button
-              key={tab}
-              type="button"
-              onClick={() => setActiveTab(tab)}
-              aria-pressed={activeTab === tab}
-              className={cn(
-                "shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors",
-                activeTab === tab
-                  ? "bg-gold text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {t(tab)}
-            </button>
-          ))}
-        </div>
-
-        {activeTab === "Flights" ? (
-          <TravelpayoutsWidget key="tp-flights" src={TP_WIDGET_SRC} />
-        ) : activeTab === "Hotels" ? (
-          <TravelpayoutsWidget key="tp-hotels" src={TP_WIDGET_SRC} />
-        ) : activeTab === "Transfers" ? (
-          <TravelpayoutsWidget key="tp-transfers" src={TP_TRANSFERS_SRC} />
-        ) : activeTab === "Car Rental" ? (
-          <TravelpayoutsWidget key="tp-car-rental" src={TP_CAR_RENTAL_SRC} />
-        ) : activeTab === "Attractions" ? (
-          <TravelpayoutsWidget key="tp-attractions" src={TP_ATTRACTIONS_SRC} />
-        ) : (
-          <TravelpayoutsWidget key="tp-esim" src={TP_ESIM_SRC} />
-        )}
-      </div>
-    </Block>
-  );
-}
-
-const directoryCategories: { label: string; Icon: typeof Landmark; href?: string }[] = [
-  { label: "Ministries", Icon: Landmark, href: "/government-directory#ministries" },
-  {
-    label: "Authorities & Agencies",
-    Icon: Building2,
-    href: "/government-directory#authorities-and-agencies",
-  },
-  { label: "Governorates", Icon: MapPin, href: "/#governorates" },
-  { label: "Government Services", Icon: FileText },
-  {
-    label: "Presidency & Cabinet",
-    Icon: Users,
-    href: "/government-directory#presidency-and-cabinet",
-  },
-  { label: "More Categories", Icon: LayoutGrid, href: "/government-directory" },
-];
-
-function GovernmentDirectory() {
-  const { t } = useI18n();
-  return (
-    <section id="government-directory" className="scroll-mt-32">
-      <div className="on-dark grid overflow-hidden rounded-3xl bg-primary lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)_minmax(0,1fr)]">
-        <img
-          src={govBuilding}
-          alt={t("Egyptian government building")}
-          loading="lazy"
-          width={800}
-          height={600}
-          className="h-48 w-full object-cover lg:h-full"
-        />
-        <div className="grid content-center gap-3 p-6">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gold">
-            {t("Official links. Trusted sources.")}
-          </p>
-          <h2 className="font-display text-2xl leading-tight text-foreground">
-            {t("Egypt Official Government Directory")}
-          </h2>
-          <p className="text-sm leading-relaxed text-foreground/75">
-            {t(
-              "Access Egyptian government entities, ministries, authorities and services in one place.",
-            )}
-          </p>
-          <Link
-            to="/government-directory"
-            className="mt-1 inline-flex w-fit items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-xs font-semibold text-primary-foreground"
-          >
-            {t("Browse the directory")} <ArrowRight className="size-4 rtl:rotate-180" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 gap-3 p-6 sm:grid-cols-3">
-          {directoryCategories.map(({ label, Icon, href }) => {
-            const className =
-              "grid place-items-center gap-2 rounded-xl border border-gold-line/40 bg-primary/40 px-2 py-4 text-center";
-            const inner = (
-              <>
-                <Icon className="size-5 text-gold" />
-                <span className="w-full text-[11px] leading-tight text-foreground">{t(label)}</span>
-              </>
-            );
-            return href ? (
-              <a key={label} href={href} className={cn(className, "transition-colors hover:border-gold-line")}>
-                {inner}
-              </a>
-            ) : (
-              <div key={label} className={cn(className, "opacity-75")}>
-                {inner}
-                <ComingSoonBadge />
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/** Reference-style photo cards for the directory categories. */
-const directoryCards: {
-  label: string;
-  arabic: string;
-  image: string;
-  href?: string;
-}[] = [
-  { label: "Presidency & Cabinet", arabic: "رئاسة الجمهورية ومجلس الوزراء", image: govCairo },
-  { label: "Ministries", arabic: "الوزارات", image: govGiza },
-  { label: "Authorities & Agencies", arabic: "الهيئات والأجهزة الحكومية", image: govAlexandria },
-  { label: "Governorates", arabic: "المحافظات", image: govLuxor, href: "/#governorates" },
-  { label: "Tourism & Antiquities", arabic: "السياحة والآثار", image: govAswan },
-  { label: "Investment & Business", arabic: "الاستثمار والأعمال", image: govPortSaid },
-];
-
-function DirectoryCategoryCards() {
-  const { t } = useI18n();
-  const [counts, setCounts] = useState<Record<string, number>>({});
-
-  useEffect(() => {
-    let active = true;
-    (async () => {
-      try {
-        const { data, error } = await supabase
-          .from("government_entities")
-          .select("category_en");
-        if (error) {
-          console.error("[home] failed to load directory counts:", error.message);
-          return;
-        }
-        const tally: Record<string, number> = {};
-        for (const row of (data ?? []) as { category_en: string }[]) {
-          tally[row.category_en] = (tally[row.category_en] ?? 0) + 1;
-        }
-        if (active) setCounts(tally);
-      } catch (err) {
-        console.error("[home] unexpected error loading directory counts:", err);
-      }
-    })();
-    return () => {
-      active = false;
-    };
-  }, []);
-
-  return (
-    <Block
-      title="Browse Government Directory by Category"
-      action={<ViewAll href="/government-directory" />}
-    >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {directoryCards.map((c) => {
-          const count = counts[c.label] ?? 0;
-          const href = c.href ?? (count > 0 ? `/government-directory#${slugifyCategory(c.label)}` : undefined);
-          const inner = (
-            <>
-              <img
-                src={c.image}
-                alt={t(c.label)}
-                loading="lazy"
-                width={900}
-                height={600}
-                className="h-40 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="grid gap-1 p-4">
-                <span className="block truncate font-display text-base text-foreground">
-                  {t(c.label)}
-                </span>
-                <span className="block truncate text-xs text-muted-foreground" dir="rtl">
-                  {c.arabic}
-                </span>
-                {href ? (
-                  <span className="mt-1 inline-flex items-center gap-1.5 text-xs font-semibold text-gold">
-                    {t("View entities")}
-                    {count > 0 ? <span className="text-muted-foreground">({count})</span> : null}
-                    <ArrowRight className="size-3.5 rtl:rotate-180" />
-                  </span>
-                ) : (
-                  <ComingSoonBadge className="mt-1 w-fit" />
-                )}
-              </div>
-            </>
-          );
-          const className =
-            "group overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors hover:border-gold-line";
-          return href ? (
-            <a key={c.label} href={href} className={className}>
-              {inner}
-            </a>
-          ) : (
-            <div key={c.label} className={cn(className, "opacity-90")}>
-              {inner}
-            </div>
-          );
-        })}
-      </div>
-    </Block>
-  );
-}
-
-/** Bilingual independence notice, its own band as in the reference. */
-function ImportantNotice() {
-  const { t } = useI18n();
-  return (
-    <section className="grid gap-4 rounded-2xl border border-info/25 bg-info/5 p-5 lg:grid-cols-[auto_minmax(0,1fr)_minmax(0,1fr)] lg:items-start lg:gap-8">
-      <div className="flex items-center gap-2">
-        <Info className="size-5 shrink-0 text-info" />
-        <span className="font-display text-sm text-foreground">
-          {t("Important notice")} <span dir="rtl">— تنويه هام</span>
-        </span>
-      </div>
-      <p className="text-[11px] leading-relaxed text-muted-foreground">
-        {t(
-          "Egyptora Hub is an independent private platform and is not a governmental entity. Links to government entities and official services are provided for informational purposes only.",
-        )}
-      </p>
-      <p className="text-[11px] leading-relaxed text-muted-foreground" dir="rtl">
-        منصة إيجيبتورا هَب منصة رقمية خاصة ومستقلة وليست جهة حكومية. يتم توفير روابط الجهات الحكومية
-        والخدمات الرسمية لأغراض التعريف وتسهيل الوصول فقط.
-      </p>
-    </section>
-  );
-}
-
-/** Live weather / currency strip plus the visitor-intelligence panels. */
-function Insights() {
-  return (
-    <Block eyebrow="Live signals" title="Egypt right now">
-      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
-        <div className="grid content-start gap-6">
-          <WeatherStrip />
-          <EgyptMapNote />
-        </div>
-        <IntelligenceRail />
-      </div>
-    </Block>
-  );
-}
-
-function EgyptMapNote() {
-  const { t } = useI18n();
-  return (
-    <div className="rounded-2xl border border-border bg-card p-5">
-      <p className="font-display text-base text-foreground">{t("Weather, currency and demand")}</p>
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-        {t(
-          "Seasonal conditions, exchange rates and visitor trends, gathered in one place to help you time your trip or your investment.",
-        )}
-      </p>
+    <div className="min-h-screen bg-background">
+      <SiteHeader />
+      <main>
+        <Hero />
+        <QuickStrip />
+        <ExploreInvest />
+        <LiveBusinessWhy />
+        <Vision2030 />
+        <GovBand />
+        <GlobalBand />
+        <NewsApp />
+        <ImportantNotice />
+      </main>
+      <SiteFooter />
     </div>
   );
 }
 
+/* ---------- shared bits ---------- */
 
-
-function WeatherStrip() {
-  const { t } = useI18n();
-  const { currency } = useCurrency();
+function ArrowCta({ to, label }: { to: string; label: string }) {
   return (
-    <section className="relative grid gap-2 rounded-2xl border border-border/70 bg-card p-3 sm:grid-cols-2 lg:grid-cols-5">
-      <SourceBadge status="DEMO" className="absolute -top-2 end-3" />
-      {weatherStrip.map((w) => (
-        <div
-          key={w.city}
-          className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2.5 rounded-xl border border-border/60 bg-surface-2 px-3 py-2"
-        >
-          <Sun className="size-4 shrink-0 text-gold" />
-          <span className="min-w-0">
-            <span className="block truncate text-xs text-foreground">{t(w.city)}</span>
-            <span className="block truncate text-[10px] text-muted-foreground">{t(w.state)}</span>
-          </span>
-          <span className="shrink-0 font-display text-sm text-gold">{w.temp}</span>
-        </div>
-      ))}
-      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2.5 rounded-xl border border-gold-line bg-gold-soft px-3 py-2">
-        <TrendingUp className="size-4 shrink-0 text-gold" />
-        <span className="min-w-0 truncate text-xs text-gold" dir="ltr">
-          1 {currency.code} ≈ {(48.2 / currency.perUsd).toLocaleString(undefined, { maximumFractionDigits: 2 })}{" "}
-          EGP
-        </span>
-      </div>
-    </section>
+    <Link
+      to={L(to)}
+      aria-label={label}
+      className="grid size-8 shrink-0 place-items-center rounded-full bg-gold-cta text-primary-foreground shadow-sm transition-transform hover:scale-105"
+    >
+      <ArrowRight className="size-4 rtl:rotate-180" />
+    </Link>
   );
 }
 
-// One icon per quick category, in the same order as `quickCategories`.
-const categoryIcons = [
-  CalendarDays,
-  ShoppingBag,
-  TrendingUp,
-  Wrench,
-  Sailboat,
-  Compass,
-  Bed,
-  Utensils,
+function NavyBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="absolute start-2 top-2 rounded-full bg-navy px-2.5 py-0.5 text-[10px] font-semibold text-primary-foreground">
+      {children}
+    </span>
+  );
+}
+
+function ViewAll({ to }: { to: string }) {
+  const { t } = useI18n();
+  return (
+    <Link
+      to={L(to)}
+      className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-navy hover:text-shell-gold"
+    >
+      {t("View All")} <ArrowRight className="size-4 text-shell-gold rtl:rotate-180" />
+    </Link>
+  );
+}
+
+function BlockHead({ title, body, to }: { title: string; body: string; to: string }) {
+  const { t } = useI18n();
+  return (
+    <div className="mb-4 flex items-start justify-between gap-4">
+      <div>
+        <h2 className="font-display text-2xl font-bold text-navy">{t(title)}</h2>
+        <p className="mt-1 max-w-md text-sm text-text-body">{t(body)}</p>
+      </div>
+      <ViewAll to={to} />
+    </div>
+  );
+}
+
+type CardData = { title: string; sub: string; img: string; to: string; badge?: string };
+
+function ImgCard({ c, h = "h-32" }: { c: CardData; h?: string }) {
+  const { t } = useI18n();
+  return (
+    <article className="flex flex-col overflow-hidden rounded-[10px] border border-border bg-card shadow-sm">
+      <div className={cn("relative overflow-hidden", h)}>
+        <img src={c.img} alt={t(c.title)} loading="lazy" className="size-full object-cover" />
+        {c.badge && <NavyBadge>{t(c.badge)}</NavyBadge>}
+      </div>
+      <div className="flex flex-1 items-end justify-between gap-2 p-3">
+        <div className="min-w-0">
+          <h3 className="text-sm font-bold text-navy">{t(c.title)}</h3>
+          <p className="mt-0.5 text-xs text-text-body">{t(c.sub)}</p>
+        </div>
+        <ArrowCta to={c.to} label={t(c.title)} />
+      </div>
+    </article>
+  );
+}
+
+/* ---------- 1. Hero ---------- */
+
+const popular = [
+  "Tourist Visa",
+  "Real Estate",
+  "Investment Opportunities",
+  "Universities",
+  "Travel Companies",
+  "Government Services",
 ];
 
-
-function Categories() {
+function Hero() {
   const { t } = useI18n();
+  const [q, setQ] = useState("");
   return (
-    <Block eyebrow="Browse by category" title="Everything Egypt, one click away">
-      <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 lg:grid-cols-6">
-        {quickCategories.map((c, i) => {
-          const Icon = categoryIcons[i]!;
-          const className =
-            "grid place-items-center gap-2 rounded-xl border border-border/70 bg-card px-2 py-3.5 text-center transition-colors hover:border-gold-line";
-          const inner = (
-            <>
-              <Icon className="size-5 text-gold" />
-              <span className="w-full truncate text-[11px] text-muted-foreground">
-                {t(c.label)}
-              </span>
-            </>
-          );
-          // Planned categories have no page yet: same card, badged and not clickable.
-          if (c.soon) {
-            return (
-              <div key={c.label} className={cn(className, "opacity-80")}>
-                {inner}
-                <ComingSoonBadge />
-              </div>
-            );
-          }
-          return c.to ? (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-            <Link key={c.label} to={c.to as any} className={className}>
-              {inner}
-            </Link>
-          ) : (
-            <a key={c.label} href={c.href} className={className}>
-              {inner}
-            </a>
-          );
-        })}
-      </div>
-    </Block>
-  );
-}
-
-
-function Discover() {
-  const { t } = useI18n();
-  return (
-    <Block id="explore" eyebrow="Discovery" title="Discover Egypt in depth" action={<ViewAll />}>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {discoverCards.map((card) => {
-          // Cards that point at a real route navigate client-side; in-page anchors stay
-          // plain anchors so they still scroll. Cards without a page yet are not links.
-          const href = card.href;
-          const isRoute = !!href && !href.includes("#");
-          const className = "group relative overflow-hidden rounded-2xl border border-border/70";
-          const inner = (
-            <>
-              <img
-                src={card.image}
-                alt={card.title}
-                loading="lazy"
-                width={800}
-                height={600}
-                className="h-44 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-              {card.soon ? (
-                <ComingSoonBadge className="absolute end-3 top-3" />
-              ) : (
-                card.badge && <SourceBadge status="DEMO" className="absolute end-3 top-3" />
-              )}
-              <div className="on-dark absolute inset-x-0 bottom-0 p-4">
-                <p className="font-display text-base text-foreground">{t(card.title)}</p>
-                <p className="text-xs text-foreground/70">{t(card.subtitle)}</p>
-              </div>
-            </>
-          );
-          if (card.soon) {
-            return (
-              <div key={card.title} className={className}>
-                {inner}
-              </div>
-            );
-          }
-          return isRoute ? (
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static, typed route paths
-            <Link key={card.title} to={href as any} className={className}>
-              {inner}
-            </Link>
-          ) : (
-            <a key={card.title} href={href} className={className}>
-              {inner}
-            </a>
-          );
-        })}
-
-      </div>
-    </Block>
-  );
-}
-
-function Destinations() {
-  const { t } = useI18n();
-  return (
-    <Block
-      eyebrow="Destinations"
-      title="Popular destinations"
-      action={
-        <span className="flex items-center gap-2">
-          <SourceBadge status="DEMO" />
-          <ViewAll />
-        </span>
-      }
-    >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-        {popularDestinations.map((d) => (
-          <article
-            key={d.name}
-            className="group relative overflow-hidden rounded-2xl border border-border/70 bg-card"
-          >
-            <div className="relative">
-              <img
-                src={d.image}
-                alt={d.name}
-                loading="lazy"
-                width={800}
-                height={600}
-                className="h-36 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <SaveButton
-                variant="icon"
-                className="absolute end-2 top-2 z-10"
-                itemType="destination"
-                itemId={d.name.toLowerCase().replace(/\s+/g, "-")}
-                itemName={d.name}
-              />
-            </div>
-            <div className="p-3">
-              <p className="truncate font-display text-sm text-foreground">{t(d.name)}</p>
-              <p className="mt-0.5 line-clamp-2 text-[11px] text-muted-foreground">{t(d.note)}</p>
-              <p className="mt-2 text-[11px] text-gold">
-                ★ {d.rating} <span className="text-muted-foreground">({d.reviews})</span>
-              </p>
-            </div>
-            {/* Whole card opens the matching governorate page; the save icon sits above it. */}
-            <Link
-              to="/governorates/$id"
-              params={{ id: d.gov }}
-              aria-label={t(d.name)}
-              className="absolute inset-0"
-            />
-          </article>
-        ))}
-      </div>
-    </Block>
-  );
-}
-
-function SectorStrip() {
-  const { t } = useI18n();
-  return (
-    <Block id="sectors" eyebrow="Sectors" title="Egypt sectors" action={<ViewAll href="/#invest" />}>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-        {egyptSectors.map((s) => (
-          <a
-            key={s.title}
-            href="/#invest"
-            className="group relative overflow-hidden rounded-2xl border border-border/70"
-          >
-            <img
-              src={s.image}
-              alt={s.title}
-              loading="lazy"
-              width={800}
-              height={1000}
-              className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            <div className="on-dark absolute inset-x-0 bottom-0 p-3">
-              <p className="font-display text-sm leading-tight text-foreground">{t(s.title)}</p>
-              <p className="mt-1 text-[10px] leading-snug text-foreground/70">{t(s.note)}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </Block>
-  );
-}
-
-function Offers() {
-  const { t } = useI18n();
-  return (
-    <Block
-      id="offers"
-      eyebrow="Offers"
-      title="Offers & programmes"
-      action={<SourceBadge status="DEMO" />}
-    >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {offerCards.map((o) => (
-          <article key={o.title} className="relative overflow-hidden rounded-2xl border border-border/70">
-            <img
-              src={o.image}
-              alt={o.title}
-              loading="lazy"
-              width={1000}
-              height={700}
-              className="h-44 w-full object-cover"
-            />
-            <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-            <span className="absolute start-3 top-3 rounded-full border border-gold-line bg-background/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-gold backdrop-blur">
-              {t(o.tag)}
-            </span>
-            <div className="on-dark absolute inset-x-0 bottom-0 p-4">
-              <p className="font-display text-base text-foreground">{t(o.title)}</p>
-              <p className="mt-1 text-xs text-foreground/75">{t(o.body)}</p>
-              <a
-                href={mailto(`Egyptora Hub — ${o.title}`)}
-                className="mt-3 inline-flex rounded-lg bg-gold px-3 py-1.5 text-[11px] font-semibold text-primary-foreground"
-              >
-                {t(o.cta)}
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </Block>
-  );
-}
-
-function Governorates() {
-  const { t } = useI18n();
-  return (
-    <Block
-      id="governorates"
-      eyebrow="The map of Egypt"
-      title="Explore all 27 governorates"
-    >
-      <EgyptMap />
-
-    </Block>
-  );
-}
-
-function ThroughTime() {
-  const { t } = useI18n();
-  return (
-    <Block id="through-time" eyebrow="Timeline" title="Egypt through time">
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {eras.map((era) => (
-          <Link
-            key={era.name}
-            to="/encyclopedia"
-            className="group block min-w-0 overflow-hidden rounded-xl border border-border/70 bg-card"
-          >
-            <img
-              src={era.image}
-              alt={`${era.name} era in Egypt`}
-              loading="lazy"
-              width={800}
-              height={600}
-              className="h-32 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="p-3">
-              <p className="truncate font-display text-sm text-foreground">{t(era.name)}</p>
-              <p className="mt-1 text-[11px] text-muted-foreground" dir="ltr">
-                {era.years}
-              </p>
-            </div>
-          </Link>
-        ))}
-
-      </div>
-    </Block>
-  );
-}
-
-function Research() {
-  const { t } = useI18n();
-  return (
-    <Block id="research" eyebrow="Research & continuity" title="Egyptian genetic continuity">
-      <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        <img
-          src={heroImages.research}
-          alt={t("Golden DNA helix over a hieroglyph wall")}
-          loading="lazy"
-          width={1200}
-          height={800}
-          className="h-56 w-full object-cover lg:h-full"
-        />
-        <div className="grid content-center gap-3 p-6">
-          <Dna className="size-6 text-gold" />
-          <p className="font-display text-lg text-foreground">
-            {t("An unbroken line, studied and documented")}
+    <section className="on-dark relative isolate overflow-hidden">
+      <img src={heroImg} alt="" className="absolute inset-0 -z-10 size-full object-cover" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/70 via-navy/30 to-transparent rtl:bg-gradient-to-l" />
+      <div className={cn(wrap, "relative pb-24 pt-14 lg:pb-32 lg:pt-20")}>
+        <div className="absolute end-6 top-8 hidden text-end md:block lg:end-16">
+          <p className="font-display text-5xl italic text-foreground">{t("Egypt")}</p>
+          <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-foreground">
+            {t("A history that inspires")}
+            <br />
+            {t("A future that welcomes")}
           </p>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {t(
-              "A dedicated research track presenting genetic, linguistic and cultural continuity between ancient and modern Egyptians — sourced from published studies and national archives.",
-            )}
-          </p>
-          <ul className="mt-1 grid gap-2 sm:grid-cols-2">
-            {researchItems.map((r) => (
-              <li key={r.title} className="rounded-xl border border-border/60 bg-surface-2 p-3">
-                <p className="text-xs text-foreground">{t(r.title)}</p>
-                <p className="mt-1 text-[11px] text-muted-foreground">{t(r.note)}</p>
-              </li>
-            ))}
-          </ul>
-          <SourceBadge status="PLANNED" className="w-fit" />
         </div>
-      </div>
-    </Block>
-  );
-}
-
-function Film() {
-  const { t } = useI18n();
-  return (
-    <Block id="film" eyebrow="Film & culture" title="Film, culture & creative Egypt">
-      <div className="grid gap-4 overflow-hidden rounded-2xl border border-border/70 bg-card lg:grid-cols-2">
-        <img
-          src={heroImages.film}
-          alt={t("Film crew shooting on location in the Egyptian desert at dusk")}
-          loading="lazy"
-          width={1200}
-          height={800}
-          className="h-56 w-full object-cover lg:h-full"
-        />
-        <div className="grid content-center gap-3 p-6">
-          <Clapperboard className="size-6 text-gold" />
-          <p className="font-display text-lg text-foreground">
-            {t("Films, series and location scouting")}
-          </p>
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {t(
-              "A dedicated track for productions: shooting locations, permits guidance and cultural advisers — turning screen exposure into visits.",
-            )}
-          </p>
-          <GhostButton href={mailto("Egyptora Hub — Film & screen tourism")} className="w-fit">
-            {t("Contact the film desk")}
-          </GhostButton>
-        </div>
-      </div>
-    </Block>
-  );
-}
-
-function Marketplace() {
-  const { t } = useI18n();
-  return (
-    <Block id="marketplace" eyebrow="Marketplace & crafts" title="Made in Egypt">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-        <div className="relative overflow-hidden rounded-2xl border border-border/70">
-          <img
-            src={heroImages.market}
-            alt={t("Egyptian handicrafts and textiles in a lantern-lit souk")}
-            loading="lazy"
-            width={1000}
-            height={700}
-            className="h-64 w-full object-cover"
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-shell-gold">
+          {t("Discover a Timeless Land")}
+        </p>
+        <h1 className="mt-3 max-w-2xl font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl">
+          {t("Your Gateway to Egypt")}
+        </h1>
+        <p className="mt-3 text-lg font-light text-foreground sm:text-xl">
+          {t("Explore. Invest. Live. Do Business. Belong.")}
+        </p>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            askConcierge(q);
+            setQ("");
+          }}
+          className="mt-6 flex max-w-xl overflow-hidden rounded-lg bg-primary-foreground shadow-lg"
+        >
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder={t("What are you looking for in Egypt?")}
+            aria-label={t("What are you looking for in Egypt?")}
+            className="min-w-0 flex-1 bg-transparent px-4 py-3.5 text-sm text-navy outline-none placeholder:text-text-body"
           />
-          <div className="absolute inset-0" style={{ background: "var(--gradient-fade)" }} />
-          <div className="on-dark absolute inset-x-0 bottom-0 p-5">
-            <p className="font-display text-lg text-foreground">{t("Wear Egypt & local makers")}</p>
-            <p className="mt-1 max-w-lg text-xs text-foreground/75">
-              {t("Cotton, crafts and produce from verified artisans across the country.")}
-            </p>
-          </div>
-        </div>
-        <div className="grid content-start gap-3">
-          {marketplacePages.map((m) => (
-            <Link
-              key={m.title}
-              to={m.href}
-              className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-2xl border border-border/70 bg-card p-4 transition-colors hover:border-gold-line"
+          <button
+            type="submit"
+            aria-label={t("Search")}
+            className="grid w-14 place-items-center bg-gold-cta text-primary-foreground"
+          >
+            <Search className="size-5" />
+          </button>
+        </form>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <span className="text-sm font-bold text-foreground">{t("Popular searches:")}</span>
+          {popular.map((p) => (
+            <button
+              key={p}
+              type="button"
+              onClick={() => askConcierge(t(p))}
+              className="rounded-full border border-foreground/40 bg-navy/50 px-3 py-1 text-xs text-foreground transition-colors hover:border-shell-gold"
             >
-              <ShoppingBag className="size-5 shrink-0 text-gold" />
-              <span className="min-w-0">
-                <span className="block truncate text-sm text-foreground">{t(m.title)}</span>
-                <span className="block truncate text-[11px] text-muted-foreground">{t(m.tagline)}</span>
-              </span>
-              <ArrowRight className="size-4 shrink-0 text-muted-foreground rtl:rotate-180" />
-            </Link>
+              {t(p)}
+            </button>
           ))}
         </div>
       </div>
-    </Block>
-  );
-}
-
-function Concierge() {
-  const { t } = useI18n();
-  return (
-    <section id="ai-concierge" className="scroll-mt-32">
-      {/* The floating concierge widget (available on every page) is the entry point,
-          so this section introduces it without a separate button. */}
-      <div className="rounded-2xl border border-gold-line bg-gold-soft p-6">
-        <div className="min-w-0">
-          <p className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gold">
-            <Sparkles className="size-3.5" /> {t("AI Concierge")}
-          </p>
-          <h2 className="mt-2 font-display text-xl text-foreground sm:text-2xl">
-            {t("Your personal assistant for everything Egypt")}
-          </h2>
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            {t(
-              "Ask for a 7-day itinerary, a Nile cruise window or a quiet heritage route — the concierge drafts it, you refine it.",
-            )}
-          </p>
-        </div>
-      </div>
-
     </section>
   );
 }
 
-function Invest() {
-  const { t } = useI18n();
-  return (
-    <Block id="invest" eyebrow="Invest & Business" title="Build with Egypt">
-      <div className="grid gap-4 md:grid-cols-3">
-        {sectorCards.map((s) => (
-          <article key={s.title} className="overflow-hidden rounded-2xl border border-border/70 bg-card">
-            <img
-              src={s.image}
-              alt={s.title}
-              loading="lazy"
-              width={800}
-              height={600}
-              className="h-36 w-full object-cover"
-            />
-            <div className="p-4">
-              <p className="font-display text-base text-foreground">{t(s.title)}</p>
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t(s.body)}</p>
-              {/* Real estate has a real, populated page; the other two sectors
-                  still route to email until their pages exist. */}
-              {s.title === "Real Estate in Egypt" ? (
-                <Link
-                  to="/properties"
-                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
-                >
-                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
-                </Link>
-              ) : (
-                <a
-                  href={mailto(`Egyptora Hub — ${s.title}`)}
-                  className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-gold"
-                >
-                  {t(s.cta)} <ArrowRight className="size-3.5 rtl:rotate-180" />
-                </a>
-              )}
-            </div>
-          </article>
-        ))}
-      </div>
-      <div className="mt-4 flex flex-wrap gap-2">
-        {investSectors.map((s) => (
-          <span
-            key={s}
-            className="rounded-full border border-border/70 bg-card px-3 py-1.5 text-[11px] text-muted-foreground"
-          >
-            {t(s)}
-          </span>
-        ))}
-      </div>
-    </Block>
-  );
-}
+/* ---------- 2. Quick strip ---------- */
 
-function Programmes() {
-  const { t } = useI18n();
-  return (
-    <Block id="programmes" eyebrow="National programmes" title="Egyptora Hub initiatives">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {programmes.map((p) => (
-          <article key={p.title} className="rounded-2xl border border-border/70 bg-card p-5">
-            <div className="flex items-start justify-between gap-2">
-              <p className="font-display text-sm text-gold">{t(p.title)}</p>
-              <ComingSoonBadge />
-            </div>
-            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t(p.body)}</p>
-          </article>
-        ))}
-      </div>
-    </Block>
-  );
-}
+const quick: { Icon: Icon; title: string; sub?: string; to: string }[] = [
+  { Icon: Palmtree, title: "Tourism & Experiences", to: "/offers" },
+  { Icon: BarChart3, title: "Investment Opportunities", to: "/investment-opportunities" },
+  { Icon: HomeIcon, title: "Real Estate", sub: "Find Your Place", to: "/properties" },
+  { Icon: Stamp, title: "Visa & Immigration", sub: "Start Your Journey", to: "/government-directory" },
+  { Icon: GraduationCap, title: "Education", sub: "A Brighter Future", to: "/research-programs" },
+  { Icon: Briefcase, title: "Do Business", sub: "Launch & Grow", to: "/providers" },
+  { Icon: Users, title: "Live in Egypt", sub: "Residency & Lifestyle", to: "/properties" },
+  { Icon: Landmark, title: "Government Directory", to: "/government-directory" },
+];
 
-/** Mission band: platform statement plus the trust pillars, as in the reference. */
-function Mission() {
+function QuickStrip() {
   const { t } = useI18n();
   return (
-    <section className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:items-center">
-      <div>
-        <h2 className="font-display text-2xl leading-tight text-foreground sm:text-3xl lg:text-[2.1rem]">
-          {t("A Private Platform Supporting Egypt's Digital Future")}
-        </h2>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          {t(
-            "Egyptora Hub is an independent private digital platform working to strengthen connectivity between the public and private sectors, and to facilitate access to Egypt's services, opportunities and official resources — in line with the goals of Egypt Vision 2030.",
-          )}
-        </p>
-        <div className="mt-5 flex flex-wrap items-center gap-3">
+    <div className={cn(wrap, "relative z-10 -mt-12")}>
+      <div className="grid grid-cols-2 overflow-hidden rounded-[10px] border border-border bg-card shadow-[var(--shadow-card)] sm:grid-cols-4 lg:grid-cols-8">
+        {quick.map(({ Icon, title, sub, to }) => (
           <Link
-            to="/legal"
-            className="inline-flex items-center gap-2 rounded-xl border border-gold-line px-4 py-2.5 text-xs font-semibold text-gold transition-colors hover:bg-gold-soft"
+            key={title}
+            to={L(to)}
+            className="flex flex-col items-center gap-1.5 border-b border-e border-border px-2 py-5 text-center transition-colors hover:bg-bg-alt lg:border-b-0 lg:last:border-e-0"
           >
-            {t("Learn more")} <ArrowRight className="size-4 rtl:rotate-180" />
+            <Icon className="size-8 text-navy" strokeWidth={1.5} />
+            <span className="text-sm font-bold leading-tight text-navy">{t(title)}</span>
+            {sub && <span className="text-xs text-text-body">{t(sub)}</span>}
           </Link>
-          <span className="inline-flex items-center gap-2 rounded-full bg-gold-soft px-3 py-1.5 text-[11px] font-semibold text-gold">
-            <ShieldCheck className="size-3.5" /> {t("Aligned with Egypt Vision 2030")}
-          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ---------- 3. Explore + Invest ---------- */
+
+const exploreCards: CardData[] = [
+  { title: "Visit Egypt", sub: "Tourist information and guides", img: visitImg, to: "/offers" },
+  { title: "Diving & Marine Activities", sub: "Explore the Red Sea", img: divingImg, to: "/offers" },
+  { title: "Nile Cruises", sub: "A unique journey", img: nileImg, to: "/offers" },
+  { title: "Cultural & Historical Sites", sub: "Discover Egypt's heritage", img: culturalImg, to: "/heritage-sites" },
+];
+const investCards: CardData[] = [
+  { title: "Investment Opportunities", sub: "Sectors and incentives", img: invOppsImg, to: "/investment-opportunities" },
+  { title: "Start Your Business", sub: "Guides and resources", img: startBizImg, to: "/providers" },
+];
+
+function ExploreInvest() {
+  return (
+    <section className="bg-bg-alt py-14">
+      <div className={cn(wrap, "grid gap-10 lg:grid-cols-[2fr_1fr]")}>
+        <div>
+          <BlockHead
+            title="Explore Egypt"
+            body="From iconic landmarks to hidden gems, Egypt offers unforgettable experiences for every traveler."
+            to="/encyclopedia"
+          />
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {exploreCards.map((c) => (
+              <ImgCard key={c.title} c={c} />
+            ))}
+          </div>
+        </div>
+        <div>
+          <BlockHead
+            title="Invest in Egypt"
+            body="Explore opportunities in a growing economy with a strategic global location."
+            to="/investment-opportunities"
+          />
+          <div className="grid grid-cols-2 gap-4">
+            {investCards.map((c) => (
+              <ImgCard key={c.title} c={c} />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {trustItems.map((item) => (
-          <div key={item.title} className="grid justify-items-start gap-2">
-            <span className="grid size-10 place-items-center rounded-full bg-gold-soft">
-              <ShieldCheck className="size-5 text-gold" />
-            </span>
-            <span className="text-xs font-semibold text-foreground">{t(item.title)}</span>
-            <span className="text-[11px] leading-relaxed text-muted-foreground">{t(item.body)}</span>
+    </section>
+  );
+}
+
+/* ---------- 4. Live + Business + Why ---------- */
+
+const liveCards: CardData[] = [
+  { title: "Residency & Visas", sub: "Live, work and study", img: residencyImg, to: "/properties" },
+  { title: "Education", sub: "Universities and schools", img: educationImg, to: "/research-programs" },
+  { title: "Healthcare", sub: "Quality medical services", img: healthImg, to: "/providers" },
+];
+const bizCards: CardData[] = [
+  { title: "Business Opportunities", sub: "Across key sectors", img: bizOppsImg, to: "/investment-opportunities" },
+  { title: "Tenders & Projects", sub: "Government and private", img: tendersImg, to: "/investment-opportunities" },
+  { title: "Business Support", sub: "Legal, financial and more", img: bizSupportImg, to: "/providers" },
+];
+const why: { Icon: Icon; title: string; body: string }[] = [
+  { Icon: ShieldCheck, title: "Trusted Information", body: "Verified and reliable content" },
+  { Icon: Users, title: "All in One Place", body: "Tourism, investment, living and more" },
+  { Icon: Crosshair, title: "Global Access", body: "From Egypt to 195 countries" },
+  { Icon: Globe2, title: "Aligned with Egypt Vision 2030", body: "Supporting a digital and prosperous Egypt" },
+];
+
+function IconBadge({ Icon }: { Icon: Icon }) {
+  return (
+    <span className="grid size-12 shrink-0 place-items-center rounded-full border border-shell-gold/60 bg-chip-active text-navy">
+      <Icon className="size-5" strokeWidth={1.6} />
+    </span>
+  );
+}
+
+function LiveBusinessWhy() {
+  const { t } = useI18n();
+  return (
+    <section className="bg-background py-14">
+      <div className={cn(wrap, "grid gap-10 lg:grid-cols-[1fr_1fr_0.75fr]")}>
+        <div>
+          <BlockHead
+            title="Live in Egypt"
+            body="Experience a vibrant lifestyle, rich culture and a welcoming community."
+            to="/properties"
+          />
+          <div className="grid grid-cols-3 gap-3">
+            {liveCards.map((c) => (
+              <ImgCard key={c.title} c={c} h="h-24" />
+            ))}
           </div>
-        ))}
+        </div>
+        <div>
+          <BlockHead
+            title="Do Business"
+            body="Connect with partners, explore markets and grow your business in Egypt."
+            to="/providers"
+          />
+          <div className="grid grid-cols-3 gap-3">
+            {bizCards.map((c) => (
+              <ImgCard key={c.title} c={c} h="h-24" />
+            ))}
+          </div>
+        </div>
+        <div className="rounded-[10px] bg-bg-alt p-5">
+          <h2 className="font-display text-2xl font-bold text-navy">{t("Why EGYPTORA?")}</h2>
+          <ul className="mt-4 space-y-4">
+            {why.map(({ Icon, title, body }) => (
+              <li key={title} className="flex items-center gap-3">
+                <IconBadge Icon={Icon} />
+                <div>
+                  <p className="text-sm font-bold text-navy">{t(title)}</p>
+                  <p className="text-xs text-text-body">{t(body)}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 5. Vision 2030 ---------- */
+
+const pillars: { Icon: Icon; title: string; body: string }[] = [
+  { Icon: Monitor, title: "Digital Access", body: "Easier access to information and services" },
+  {
+    Icon: Network,
+    title: "Public – Private Connectivity",
+    body: "Bridging users with private sector providers and official resources",
+  },
+  { Icon: Crosshair, title: "Opportunities for All", body: "Investment, tourism and sustainable growth" },
+  {
+    Icon: Leaf,
+    title: "Aligned with Egypt Vision 2030",
+    body: "Contributing to a more digital, connected and prosperous Egypt",
+  },
+];
+
+function Vision2030() {
+  const { t } = useI18n();
+  return (
+    <section className="border-y border-border bg-background py-14">
+      <div className={cn(wrap, "grid gap-10 lg:grid-cols-[1fr_auto_260px] lg:items-center")}>
+        <div>
+          <h2 className="font-display text-3xl font-bold leading-tight text-navy">
+            {t("A Private Platform Supporting")}
+            <br />
+            {t("Egypt's Digital Future")}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-text-body">
+            {t(
+              "EGYPTORA is an independent private platform designed to facilitate access to Egypt's opportunities, services and official resources, in alignment with Egypt's Vision 2030 and the country's digital transformation journey.",
+            )}
+          </p>
+          <Link
+            to="/legal"
+            className="mt-5 inline-flex items-center gap-2 rounded-full border border-shell-gold px-5 py-2 text-sm font-semibold text-navy hover:bg-chip-active"
+          >
+            {t("Learn More")} <ArrowRight className="size-4 rtl:rotate-180" />
+          </Link>
+          <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
+            {pillars.map(({ Icon, title, body }) => (
+              <div key={title} className="flex flex-col items-center text-center">
+                <span className="grid size-14 place-items-center rounded-full bg-chip-active text-navy">
+                  <Icon className="size-6" strokeWidth={1.5} />
+                </span>
+                <p className="mt-3 text-sm font-bold text-navy">{t(title)}</p>
+                <p className="mt-1 text-xs text-text-body">{t(body)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="hidden h-full w-px bg-border lg:block" />
+        <div className="mx-auto flex w-full max-w-[260px] flex-col items-center gap-4">
+          <div className="w-full overflow-hidden rounded-[10px] border border-shell-gold/60 bg-background p-3">
+            <img src={visionImg} alt={t("Vision of Egypt 2030")} className="mx-auto w-full" />
+          </div>
+          <Link
+            to="/legal"
+            className="inline-flex items-center gap-2 rounded-full border border-shell-gold bg-background px-5 py-2 text-sm font-semibold text-navy hover:bg-chip-active"
+          >
+            {t("About Our Vision")} <ArrowRight className="size-4 rtl:rotate-180" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 6. Government band ---------- */
+
+const govTiles: { Icon: Icon; label: string; hash?: string }[] = [
+  { Icon: ShieldCheck, label: "Presidency & Cabinet", hash: "presidency-and-cabinet" },
+  { Icon: Landmark, label: "Ministries", hash: "ministries" },
+  { Icon: Building2, label: "Authorities & Agencies", hash: "authorities-and-agencies" },
+  { Icon: MapPin, label: "Governorates" },
+  { Icon: Plane, label: "Tourism & Antiquities", hash: "tourism-and-antiquities" },
+  { Icon: Briefcase, label: "Investment & Business", hash: "investment-and-business" },
+  { Icon: Stamp, label: "Visa & Immigration" },
+  { Icon: LayoutGrid, label: "All Categories" },
+];
+
+function GovBand() {
+  const { t } = useI18n();
+  return (
+    <section className="on-dark relative overflow-hidden bg-navy-band">
+      <div className="absolute inset-y-0 start-0 hidden w-[34%] md:block">
+        <img src={govBuildingImg} alt="" className="size-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-navy-band/40 to-navy-band rtl:bg-gradient-to-l" />
+      </div>
+      <div className={cn(wrap, "relative py-12 md:ps-[34%]")}>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
+              {t("Egypt Official Government Directory")}
+            </h2>
+            <p className="mt-2 max-w-xl text-sm text-muted-foreground">
+              {t(
+                "Access all Egyptian government entities, ministries, authorities and services in one place.",
+              )}
+            </p>
+          </div>
+          <Link
+            to="/government-directory"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-shell-gold"
+          >
+            {t("View Directory")} <ArrowRight className="size-4 text-shell-gold rtl:rotate-180" />
+          </Link>
+        </div>
+        <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
+          {govTiles.map(({ Icon, label, hash }) => (
+            <a
+              key={label}
+              href={`/government-directory${hash ? `#${hash}` : ""}`}
+              className="flex flex-col items-center gap-2 rounded-lg border border-foreground/20 bg-foreground/5 px-2 py-4 text-center text-xs text-foreground transition-colors hover:border-shell-gold"
+            >
+              <Icon className="size-6" strokeWidth={1.4} />
+              {t(label)}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 7. 195 countries ---------- */
+
+function GlobalBand() {
+  const { t } = useI18n();
+  return (
+    <section className="bg-bg-band py-10">
+      <div className={cn(wrap, "grid items-center gap-8 lg:grid-cols-[auto_1fr_1fr]")}>
+        <div className="flex items-center gap-4">
+          <img src={globeImg} alt="" className="size-16 rounded-full" />
+          <p className="font-display text-xl font-bold uppercase leading-tight text-navy">
+            {t("From Egypt to")}
+            <br />
+            <span className="text-3xl">{t("195 Countries")}</span>
+          </p>
+        </div>
+        <div className="border-border lg:border-s lg:ps-8">
+          <p className="font-display text-xl font-bold text-navy">
+            {t("One Platform. One Global Gateway.")}
+          </p>
+          <p className="mt-1 text-sm text-text-body">
+            {t("Connecting Egypt with the world through opportunities, people and culture.")}
+          </p>
+        </div>
+        <div className="relative">
+          <img src={worldImg} alt="" className="w-full rounded-lg mix-blend-multiply" />
+          <p className="mt-1 text-end text-[11px] font-semibold uppercase tracking-[0.2em] text-navy">
+            {t("Egypt to the World")}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 8. News + App ---------- */
+
+const news = [
+  { tag: "Tourism", title: "New Discoveries at Giza Plateau", sub: "Insights into Egypt's ancient wonders", date: "Sep 12, 2026", img: newsGizaImg },
+  { tag: "Investment", title: "Egypt's Growing Investment Opportunities", sub: "A strategic destination for global investors", date: "Sep 10, 2026", img: newsInvestImg },
+  { tag: "Travel", title: "Top Red Sea Destinations for 2026", sub: "Sun, sea and unforgettable experiences", date: "Sep 8, 2026", img: newsRedSeaImg },
+];
+
+function AppleIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6-.1 0-2.4-.9-2.4-3.4ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3Z" />
+    </svg>
+  );
+}
+function GooglePlayIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3Zm11.1 6.5L5.5 3.5l8.4 8.4.8-.8.9-.9-1-.9.1-.5Zm.9 3.9-.9-.9-8.4 8.4 9.2-5.3.1-2.2Zm3.9-2.9-2.6-1.5-1.1 1.1 1.6 1.6-1.6 1.6 1.1 1.1 2.6-1.5c.8-.4.8-1.6 0-2.4Z" />
+    </svg>
+  );
+}
+
+function NewsApp() {
+  const { t } = useI18n();
+  return (
+    <section className="bg-background py-14">
+      <div className={cn(wrap, "grid gap-8 lg:grid-cols-[2fr_1fr]")}>
+        <div>
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="font-display text-2xl font-bold text-navy">{t("Latest News & Insights")}</h2>
+            <ViewAll to="/traveler-stories" />
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {news.map((n) => (
+              <article key={n.title} className="overflow-hidden rounded-[10px] border border-border bg-card shadow-sm">
+                <img src={n.img} alt={t(n.title)} loading="lazy" className="h-36 w-full object-cover" />
+                <div className="p-4">
+                  <span className="rounded-full bg-bg-band px-2.5 py-0.5 text-[10px] font-semibold uppercase text-navy">
+                    {t(n.tag)}
+                  </span>
+                  <h3 className="mt-2 text-sm font-bold text-navy">{t(n.title)}</h3>
+                  <p className="mt-1 text-xs text-text-body">{t(n.sub)}</p>
+                  <p className="mt-3 text-xs text-text-body" dir="ltr">{n.date}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-4 rounded-[10px] bg-bg-band p-5">
+          <img src={phonesImg} alt={t("EGYPTORA Mobile App")} className="w-1/2 max-w-[200px] rounded-lg" />
+          <div>
+            <h2 className="font-display text-2xl font-bold text-navy">{t("EGYPTORA Mobile App")}</h2>
+            <p className="mt-1 text-sm text-text-body">{t("Explore Egypt anytime, anywhere.")}</p>
+            <div className="mt-4 flex flex-col gap-2">
+              {[
+                { label: "App Store", Icon: AppleIcon },
+                { label: "Google Play", Icon: GooglePlayIcon },
+              ].map(({ label, Icon }) => (
+                <span
+                  key={label}
+                  className="inline-flex w-36 items-center gap-2 rounded-lg bg-navy px-3 py-2 text-xs font-semibold text-primary-foreground"
+                >
+                  <Icon className="size-5" /> {label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 9. Important notice ---------- */
+
+function ImportantNotice() {
+  return (
+    <section className="bg-background pb-14">
+      <div className={wrap}>
+        <div className="grid gap-5 rounded-[10px] border border-info/25 bg-bg-notice p-5 md:grid-cols-[auto_1fr_1fr] md:items-center">
+          <div className="flex items-center gap-3">
+            <span className="grid size-11 place-items-center rounded-full bg-navy text-primary-foreground">
+              <Info className="size-5" />
+            </span>
+            <p className="font-display text-lg font-bold leading-tight text-navy">
+              Important Notice
+              <br />
+              <span lang="ar">تنويه هام</span>
+            </p>
+          </div>
+          <p dir="ltr" lang="en" className="text-start text-xs leading-relaxed text-navy/80 md:border-s md:border-border md:ps-5">
+            EGYPTORA-HUB is an independent private platform and is not a governmental entity. Links to
+            government entities and official services are provided for informational and accessibility
+            purposes only. Users are redirected to the relevant official government websites, subject to
+            the applicable terms, conditions, laws and regulations.
+          </p>
+          <p dir="rtl" lang="ar" className="text-right text-xs leading-relaxed text-navy/80 md:border-s md:border-border md:ps-5">
+            منصة إيجيبتورا-هب منصة رقمية خاصة ومستقلة وليست جهة حكومية. يتم توفير روابط الجهات الحكومية
+            والخدمات الرسمية لأغراض التعريف وتسهيل الوصول فقط. ويتم تحويل المستخدمين إلى المواقع الحكومية
+            الرسمية وفقاً للشروط والأحكام والقوانين واللوائح المعمول بها.
+          </p>
+        </div>
       </div>
     </section>
   );

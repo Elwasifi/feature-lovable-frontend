@@ -72,6 +72,22 @@ const aboutLinks: FLink[] = [
   { label: "Press & Media", href: mailto("Egyptora Hub — Press & Media") },
 ];
 
+const moreLinks: FLink[] = [
+  { label: "Visual Encyclopedia", to: "/encyclopedia" },
+  { label: "Destinations & Heritage", href: "/#explore" },
+  { label: "27 Governorates", href: "/#governorates" },
+  { label: "Egypt Through Time", href: "/#through-time" },
+  { label: "Programmes", href: "/#programmes" },
+  { label: "Investment Sectors", href: "/#invest" },
+  { label: "Consent Centre", to: "/legal/consent" },
+  { label: "Report an Issue", to: "/legal/incident-reporting" },
+  { label: "Complaints & Disputes", to: "/legal/complaints-disputes" },
+  { label: "Safety Policy", to: "/legal/safety" },
+  { label: "AI Transparency", to: "/legal/ai-transparency" },
+  { label: "Data Protection", to: "/legal/data-protection" },
+  { label: "Legal Disclaimer", to: "/legal/disclaimer" },
+];
+
 const linkCls = "text-sm text-foreground/75 transition-colors hover:text-shell-gold";
 
 function FooterLink({ link }: { link: FLink }) {
@@ -185,7 +201,7 @@ export function SiteFooter() {
   return (
     <footer className="on-dark bg-navy-deep text-foreground">
       <Container className="py-14">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr] xl:grid-cols-[1.5fr_1fr_1fr_1.4fr_auto] lg:gap-x-10">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.4fr_1fr] xl:grid-cols-[1.4fr_1fr_1fr_1.4fr_1fr_auto] lg:gap-x-10">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -260,6 +276,17 @@ export function SiteFooter() {
           </div>
 
           <Newsletter />
+
+          <div>
+            <ColumnTitle>{t("More")}</ColumnTitle>
+            <ul className="mt-4 space-y-2.5">
+              {moreLinks.map((l) => (
+                <li key={l.label}>
+                  <FooterLink link={l} />
+                </li>
+              ))}
+            </ul>
+          </div>
           <Skyline />
         </div>
       </Container>

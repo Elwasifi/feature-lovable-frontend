@@ -5,7 +5,14 @@ import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
 /** Sign in / Create account controls — collapses to a dashboard link once signed in. */
-export function AuthButtons({ className }: { className?: string }) {
+export function AuthButtons({
+  className,
+  variant = "default",
+}: {
+  className?: string;
+  /** "nav": single gold rounded-rectangle Login button (shared top navigation). */
+  variant?: "default" | "nav";
+}) {
   const { t } = useI18n();
   const { user, loading } = useAuth();
 
@@ -22,6 +29,21 @@ export function AuthButtons({ className }: { className?: string }) {
       >
         <LayoutDashboard className="size-4" />
         <span className="hidden sm:inline">{t("My dashboard")}</span>
+      </Link>
+    );
+  }
+
+  if (variant === "nav") {
+    return (
+      <Link
+        to="/auth"
+        className={cn(
+          "flex items-center gap-2 rounded-lg bg-gold-cta px-4 py-2 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90",
+          className,
+        )}
+      >
+        <LogIn className="size-4" />
+        {t("Login")}
       </Link>
     );
   }

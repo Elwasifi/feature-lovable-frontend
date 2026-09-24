@@ -11,7 +11,7 @@ type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 function AppleIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.200-2.5 1.2-2.6-.1 0-2.4-.9-2.4-3.4ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3Z" />
+      <path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8c-1.5 0-2.9.9-3.7 2.3-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 2.9 2.2 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.2-2.6-.1 0-2.4-.9-2.4-3.4ZM14.2 5.9c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-.9 2.9 1 .1 2-.5 2.7-1.3Z" />
     </svg>
   );
 }
@@ -269,6 +269,19 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {SITE.parentCompany}. {t("All rights reserved.")}
           </p>
+          <nav aria-label={t("Legal")} className="flex flex-wrap gap-x-4 gap-y-1">
+            {[
+              ["Legal Center", "/legal"],
+              ["Cookie Policy", "/legal/cookies"],
+              ["Accessibility", "/legal/accessibility"],
+              ["Partner With Us", "/partners"],
+            ].map(([label, to]) => (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any -- static route paths
+              <Link key={to} to={to as any} className="hover:text-shell-gold">
+                {t(label!)}
+              </Link>
+            ))}
+          </nav>
           <p>
             {t("A Private Platform")} | {t("Your Gateway to Egypt")}
           </p>

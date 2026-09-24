@@ -15,13 +15,17 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CountriesRouteImport } from './routes/countries'
+import { Route as DoBusinessRouteImport } from './routes/do-business'
 import { Route as EgyptianHeritageWorldwideRouteImport } from './routes/egyptian-heritage-worldwide'
 import { Route as EncyclopediaRouteImport } from './routes/encyclopedia'
 import { Route as EventsRouteImport } from './routes/events'
+import { Route as ExploreEgyptRouteImport } from './routes/explore-egypt'
 import { Route as GovernmentRouteImport } from './routes/government'
 import { Route as GovernmentDirectoryRouteImport } from './routes/government-directory'
 import { Route as HeritageSitesRouteImport } from './routes/heritage-sites'
+import { Route as InvestInEgyptRouteImport } from './routes/invest-in-egypt'
 import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment-opportunities'
+import { Route as LiveInEgyptRouteImport } from './routes/live-in-egypt'
 import { Route as MuseumsRouteImport } from './routes/museums'
 import { Route as OffersRouteImport } from './routes/offers'
 import { Route as ProductsRouteImport } from './routes/products'
@@ -99,6 +103,11 @@ const CountriesRoute = CountriesRouteImport.update({
   path: '/countries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DoBusinessRoute = DoBusinessRouteImport.update({
+  id: '/do-business',
+  path: '/do-business',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EgyptianHeritageWorldwideRoute =
   EgyptianHeritageWorldwideRouteImport.update({
     id: '/egyptian-heritage-worldwide',
@@ -113,6 +122,11 @@ const EncyclopediaRoute = EncyclopediaRouteImport.update({
 const EventsRoute = EventsRouteImport.update({
   id: '/events',
   path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreEgyptRoute = ExploreEgyptRouteImport.update({
+  id: '/explore-egypt',
+  path: '/explore-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GovernmentRoute = GovernmentRouteImport.update({
@@ -130,9 +144,19 @@ const HeritageSitesRoute = HeritageSitesRouteImport.update({
   path: '/heritage-sites',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestInEgyptRoute = InvestInEgyptRouteImport.update({
+  id: '/invest-in-egypt',
+  path: '/invest-in-egypt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InvestmentOpportunitiesRoute = InvestmentOpportunitiesRouteImport.update({
   id: '/investment-opportunities',
   path: '/investment-opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveInEgyptRoute = LiveInEgyptRouteImport.update({
+  id: '/live-in-egypt',
+  path: '/live-in-egypt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MuseumsRoute = MuseumsRouteImport.update({
@@ -378,13 +402,17 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -438,13 +466,17 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -500,13 +532,17 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/countries': typeof CountriesRoute
+  '/do-business': typeof DoBusinessRoute
   '/egyptian-heritage-worldwide': typeof EgyptianHeritageWorldwideRoute
   '/encyclopedia': typeof EncyclopediaRoute
   '/events': typeof EventsRoute
+  '/explore-egypt': typeof ExploreEgyptRoute
   '/government': typeof GovernmentRoute
   '/government-directory': typeof GovernmentDirectoryRoute
   '/heritage-sites': typeof HeritageSitesRoute
+  '/invest-in-egypt': typeof InvestInEgyptRoute
   '/investment-opportunities': typeof InvestmentOpportunitiesRoute
+  '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
   '/products': typeof ProductsRoute
@@ -563,13 +599,17 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
+    | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -623,13 +663,17 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
+    | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -684,13 +728,17 @@ export interface FileRouteTypes {
     | '/auth'
     | '/contact'
     | '/countries'
+    | '/do-business'
     | '/egyptian-heritage-worldwide'
     | '/encyclopedia'
     | '/events'
+    | '/explore-egypt'
     | '/government'
     | '/government-directory'
     | '/heritage-sites'
+    | '/invest-in-egypt'
     | '/investment-opportunities'
+    | '/live-in-egypt'
     | '/museums'
     | '/offers'
     | '/products'
@@ -746,13 +794,17 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
   CountriesRoute: typeof CountriesRoute
+  DoBusinessRoute: typeof DoBusinessRoute
   EgyptianHeritageWorldwideRoute: typeof EgyptianHeritageWorldwideRoute
   EncyclopediaRoute: typeof EncyclopediaRoute
   EventsRoute: typeof EventsRoute
+  ExploreEgyptRoute: typeof ExploreEgyptRoute
   GovernmentRoute: typeof GovernmentRoute
   GovernmentDirectoryRoute: typeof GovernmentDirectoryRoute
   HeritageSitesRoute: typeof HeritageSitesRoute
+  InvestInEgyptRoute: typeof InvestInEgyptRoute
   InvestmentOpportunitiesRoute: typeof InvestmentOpportunitiesRoute
+  LiveInEgyptRoute: typeof LiveInEgyptRoute
   MuseumsRoute: typeof MuseumsRoute
   OffersRoute: typeof OffersRoute
   ProductsRoute: typeof ProductsRoute
@@ -835,6 +887,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/do-business': {
+      id: '/do-business'
+      path: '/do-business'
+      fullPath: '/do-business'
+      preLoaderRoute: typeof DoBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/egyptian-heritage-worldwide': {
       id: '/egyptian-heritage-worldwide'
       path: '/egyptian-heritage-worldwide'
@@ -854,6 +913,13 @@ declare module '@tanstack/react-router' {
       path: '/events'
       fullPath: '/events'
       preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore-egypt': {
+      id: '/explore-egypt'
+      path: '/explore-egypt'
+      fullPath: '/explore-egypt'
+      preLoaderRoute: typeof ExploreEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/government': {
@@ -877,11 +943,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HeritageSitesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/invest-in-egypt': {
+      id: '/invest-in-egypt'
+      path: '/invest-in-egypt'
+      fullPath: '/invest-in-egypt'
+      preLoaderRoute: typeof InvestInEgyptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/investment-opportunities': {
       id: '/investment-opportunities'
       path: '/investment-opportunities'
       fullPath: '/investment-opportunities'
       preLoaderRoute: typeof InvestmentOpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-in-egypt': {
+      id: '/live-in-egypt'
+      path: '/live-in-egypt'
+      fullPath: '/live-in-egypt'
+      preLoaderRoute: typeof LiveInEgyptRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/museums': {
@@ -1244,13 +1324,17 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
   CountriesRoute: CountriesRoute,
+  DoBusinessRoute: DoBusinessRoute,
   EgyptianHeritageWorldwideRoute: EgyptianHeritageWorldwideRoute,
   EncyclopediaRoute: EncyclopediaRoute,
   EventsRoute: EventsRoute,
+  ExploreEgyptRoute: ExploreEgyptRoute,
   GovernmentRoute: GovernmentRoute,
   GovernmentDirectoryRoute: GovernmentDirectoryRoute,
   HeritageSitesRoute: HeritageSitesRoute,
+  InvestInEgyptRoute: InvestInEgyptRoute,
   InvestmentOpportunitiesRoute: InvestmentOpportunitiesRoute,
+  LiveInEgyptRoute: LiveInEgyptRoute,
   MuseumsRoute: MuseumsRoute,
   OffersRoute: OffersRoute,
   ProductsRoute: ProductsRoute,

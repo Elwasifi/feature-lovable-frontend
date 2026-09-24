@@ -21,8 +21,9 @@ export const mainNav: NavEntry[] = [
   { label: "Home", to: "/" },
   {
     label: "Explore Egypt",
+    to: "/explore-egypt",
     items: [
-      { label: "All Experiences", to: "/encyclopedia" },
+      { label: "All Experiences", to: "/explore-egypt" },
       { label: "Cultural & Historical Tours", to: "/heritage-sites" },
       { label: "Nile Cruises", soon: true },
       { label: "Diving & Marine Activities", soon: true },
@@ -37,8 +38,9 @@ export const mainNav: NavEntry[] = [
   },
   {
     label: "Live in Egypt",
+    to: "/live-in-egypt",
     items: [
-      { label: "All Living Options", soon: true },
+      { label: "All Living Options", to: "/live-in-egypt" },
       { label: "Residency & Visas", soon: true },
       { label: "Housing & Real Estate", to: "/properties" },
       { label: "Education & Schools", to: "/research-programs" },
@@ -53,8 +55,9 @@ export const mainNav: NavEntry[] = [
   },
   {
     label: "Invest in Egypt",
+    to: "/invest-in-egypt",
     items: [
-      { label: "All Sectors", to: "/investment-opportunities" },
+      { label: "All Sectors", to: "/invest-in-egypt" },
       { label: "Real Estate & New Cities", to: "/properties" },
       { label: "Industry & Manufacturing", soon: true },
       { label: "Tourism & Hospitality", soon: true },
@@ -69,8 +72,9 @@ export const mainNav: NavEntry[] = [
   },
   {
     label: "Do Business",
+    to: "/do-business",
     items: [
-      { label: "All Business Services", to: "/providers" },
+      { label: "All Business Services", to: "/do-business" },
       { label: "Start a Business", soon: true },
       { label: "Licenses & Permits", soon: true },
       { label: "Investment Incentives", to: "/investment-opportunities" },

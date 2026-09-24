@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import hero from "@/assets/inner/realestate-hero.jpg";
 import capital from "@/assets/sector-realestate.jpg";
-import coast from "@/assets/sec-marina.jpg";
+import coast from "@/assets/dest-alexandria.jpg";
 import zamalek from "@/assets/dest-cairo.jpg";
 import october from "@/assets/sec-family.jpg";
 import sahl from "@/assets/dest-hurghada.jpg";

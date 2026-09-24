@@ -48,12 +48,12 @@
   "subject": "New Administrative Capital Egypt"
  },
  "src/assets/home/education.jpg": {
-  "title": "File:Cairouni.jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Cairouni.jpg/1920px-Cairouni.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Cairouni.jpg",
-  "license": "CC BY-SA 3.0",
-  "author": "user:mmustafa",
-  "subject": "Cairo University dome"
+  "title": "File:Cairo University-View from Faculty of Arts.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Cairo_University-View_from_Faculty_of_Arts.JPG/1920px-Cairo_University-View_from_Faculty_of_Arts.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Cairo_University-View_from_Faculty_of_Arts.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris El-Gwely",
+  "subject": "Cairo University campus"
  },
  "src/assets/home/health.jpg": {
   "title": "File:مستشفى سرطان الاطفال 57357.jpg",
@@ -72,12 +72,12 @@
   "subject": "Suez Canal container ship"
  },
  "src/assets/home/tenders.jpg": {
-  "title": "File:Power plant, Aswan High Dam, Aswan, Egypt.jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Power_plant%2C_Aswan_High_Dam%2C_Aswan%2C_Egypt.jpg/1920px-Power_plant%2C_Aswan_High_Dam%2C_Aswan%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Power_plant,_Aswan_High_Dam,_Aswan,_Egypt.jpg",
-  "license": "CC BY 4.0",
-  "author": "Vyacheslav Argenberg",
-  "subject": "Aswan High Dam power plant"
+  "title": "File:Tahya Misr Axis Bridge01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Tahya_Misr_Axis_Bridge01.jpg/1920px-Tahya_Misr_Axis_Bridge01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Tahya_Misr_Axis_Bridge01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris El-Gwely",
+  "subject": "Tahya Misr (Rod El Farag Axis) Bridge, Cairo"
  },
  "src/assets/home/biz-support.jpg": {
   "title": "File:SmartVillageMicrosoft.jpg",
@@ -88,20 +88,20 @@
   "subject": "Microsoft offices, Smart Village"
  },
  "src/assets/home/gov-building.jpg": {
-  "title": "File:The Egyptian Parliament building.jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/The_Egyptian_Parliament_building.jpg/1920px-The_Egyptian_Parliament_building.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:The_Egyptian_Parliament_building.jpg",
-  "license": "CC BY 4.0",
+  "title": "File:The Government District, New Capital 3.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/95/The_Government_District%2C_New_Capital_3.jpg/1920px-The_Government_District%2C_New_Capital_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Government_District,_New_Capital_3.jpg",
+  "license": "CC BY-SA 4.0",
   "author": "Abdelrhman 1990",
-  "subject": "Egyptian Parliament, New Administrative Capital"
+  "subject": "Government District, New Administrative Capital"
  },
  "src/assets/home/news-giza.jpg": {
-  "title": "File:Giza-pyramids.JPG",
-  "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Giza-pyramids.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-  "page": "https://commons.wikimedia.org/wiki/File:Giza-pyramids.JPG",
-  "license": "CC0",
-  "author": "Robster1983 at English Wikipedia",
-  "subject": "Giza Plateau aerial"
+  "title": "File:GEM, December 22nd, 2025, by Dyolf77, ZVE07609.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/GEM%2C_December_22nd%2C_2025%2C_by_Dyolf77%2C_ZVE07609.jpg/1920px-GEM%2C_December_22nd%2C_2025%2C_by_Dyolf77%2C_ZVE07609.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:GEM,_December_22nd,_2025,_by_Dyolf77,_ZVE07609.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Habib M'henni",
+  "subject": "Grand Egyptian Museum grand atrium"
  },
  "src/assets/home/news-invest.jpg": {
   "title": "File:Iconic Tower Egypt(18-6-2023)(cropped).jpg",

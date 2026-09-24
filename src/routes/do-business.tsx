@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/inner/business-hero.jpg";
-import solar from "@/assets/home/tenders.jpg";
+import solar from "@/assets/home/benban.jpg";
 import land from "@/assets/home/biz-opps.jpg";
 import tourism from "@/assets/gov/red-sea.jpg";
 import residential from "@/assets/sector-realestate.jpg";

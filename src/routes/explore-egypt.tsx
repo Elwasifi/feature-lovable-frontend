@@ -3,7 +3,7 @@ import {
   Landmark, Ship, Waves, Mountain, Umbrella, Building2, Church, Leaf, Users, PartyPopper,
   Map as MapIcon, Lightbulb, Stamp, UserRound, Ticket, ExternalLink, ArrowRight,
 } from "lucide-react";
-import hero from "@/assets/inner/explore-hero.jpg";
+import hero from "@/assets/home/hero.jpg";
 import giza from "@/assets/gov/giza.jpg";
 import diving from "@/assets/home/diving.jpg";
 import nile from "@/assets/home/nile.jpg";

@@ -28,6 +28,7 @@ import { Route as InvestmentOpportunitiesRouteImport } from './routes/investment
 import { Route as LiveInEgyptRouteImport } from './routes/live-in-egypt'
 import { Route as MuseumsRouteImport } from './routes/museums'
 import { Route as OffersRouteImport } from './routes/offers'
+import { Route as PhotoCreditsRouteImport } from './routes/photo-credits'
 import { Route as ProductsRouteImport } from './routes/products'
 import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as ProvidersRouteImport } from './routes/providers'
@@ -172,6 +173,11 @@ const MuseumsRoute = MuseumsRouteImport.update({
 const OffersRoute = OffersRouteImport.update({
   id: '/offers',
   path: '/offers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotoCreditsRoute = PhotoCreditsRouteImport.update({
+  id: '/photo-credits',
+  path: '/photo-credits',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsRoute = ProductsRouteImport.update({
@@ -447,6 +453,7 @@ export interface FileRoutesByFullPath {
   '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
@@ -516,6 +523,7 @@ export interface FileRoutesByTo {
   '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
@@ -587,6 +595,7 @@ export interface FileRoutesById {
   '/live-in-egypt': typeof LiveInEgyptRoute
   '/museums': typeof MuseumsRoute
   '/offers': typeof OffersRoute
+  '/photo-credits': typeof PhotoCreditsRoute
   '/products': typeof ProductsRoute
   '/properties': typeof PropertiesRoute
   '/providers': typeof ProvidersRoute
@@ -659,6 +668,7 @@ export interface FileRouteTypes {
     | '/live-in-egypt'
     | '/museums'
     | '/offers'
+    | '/photo-credits'
     | '/products'
     | '/properties'
     | '/providers'
@@ -728,6 +738,7 @@ export interface FileRouteTypes {
     | '/live-in-egypt'
     | '/museums'
     | '/offers'
+    | '/photo-credits'
     | '/products'
     | '/properties'
     | '/providers'
@@ -798,6 +809,7 @@ export interface FileRouteTypes {
     | '/live-in-egypt'
     | '/museums'
     | '/offers'
+    | '/photo-credits'
     | '/products'
     | '/properties'
     | '/providers'
@@ -869,6 +881,7 @@ export interface RootRouteChildren {
   LiveInEgyptRoute: typeof LiveInEgyptRoute
   MuseumsRoute: typeof MuseumsRoute
   OffersRoute: typeof OffersRoute
+  PhotoCreditsRoute: typeof PhotoCreditsRoute
   ProductsRoute: typeof ProductsRoute
   PropertiesRoute: typeof PropertiesRoute
   ProvidersRoute: typeof ProvidersRoute
@@ -1043,6 +1056,13 @@ declare module '@tanstack/react-router' {
       path: '/offers'
       fullPath: '/offers'
       preLoaderRoute: typeof OffersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photo-credits': {
+      id: '/photo-credits'
+      path: '/photo-credits'
+      fullPath: '/photo-credits'
+      preLoaderRoute: typeof PhotoCreditsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products': {
@@ -1439,6 +1459,7 @@ const rootRouteChildren: RootRouteChildren = {
   LiveInEgyptRoute: LiveInEgyptRoute,
   MuseumsRoute: MuseumsRoute,
   OffersRoute: OffersRoute,
+  PhotoCreditsRoute: PhotoCreditsRoute,
   ProductsRoute: ProductsRoute,
   PropertiesRoute: PropertiesRoute,
   ProvidersRoute: ProvidersRoute,

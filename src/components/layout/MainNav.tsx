@@ -233,11 +233,11 @@ export function MainNav() {
             height={40}
             className="size-9 shrink-0 rounded-full ring-1 ring-gold-line sm:size-10"
           />
-          <span className="hidden min-w-0 leading-tight min-[1800px]:block">
-            <span className="block truncate font-display text-sm tracking-[0.22em] text-foreground">
-              EGYPTORA <span className="text-gold">HUB</span>
+          <span className="block min-w-0 leading-tight">
+            <span className="block whitespace-nowrap font-display text-[13px] font-semibold tracking-[0.16em] text-navy">
+              EGYPTORA <span className="text-shell-gold">HUB</span>
             </span>
-            <span className="block truncate text-[10px] tracking-[0.1em] text-muted-foreground">
+            <span className="block whitespace-nowrap text-[9.5px] tracking-[0.06em] text-muted-foreground">
               {t(SITE.tagline)}
             </span>
           </span>

@@ -9,7 +9,6 @@ import {
   InnerPage, SectionHead, PhotoCard, SidePanel, EgyptMap, ViewAll, CircleTile, ImportantNoticeBox,
   AppPromoCard, BandPromo, type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
-import { askConcierge } from "@/components/layout/MainNav";
 import mfa from "@/assets/home/world.jpg";
 import tourism from "@/assets/gov/luxor.jpg";
 import gafi from "@/assets/home/inv-opps.jpg";
@@ -189,7 +188,38 @@ const services = [
   { label: "Customs Clearance", Icon: Package },
 ];
 
-function FindServicesForm({ categories }: { categories: string[] }) {
+export type GovFilter = { cat: string; gov: string; type: string };
+
+const GOVERNORATES = ["Cairo", "Giza", "Alexandria", "Luxor", "Aswan", "Red Sea", "South Sinai"];
+const SERVICE_KEYWORDS: Record<string, RegExp> = {
+  "Passport Renewal": /passport|interior|immigration|civil/i,
+  "National ID": /national id|civil status|interior|identity/i,
+  "Business Registration": /business|company|companies|investment|gafi|commercial|trade/i,
+  "Driving License": /driving|traffic|interior|transport/i,
+  "Property Registration": /property|real estate|registry|notar|housing|justice/i,
+  "Tax Filing": /tax|finance|revenue/i,
+  "Visa Services": /visa|foreign affairs|consular|immigration|interior|tourism/i,
+  "Birth Certificate": /birth|civil status|interior|health/i,
+  "Marriage Certificate": /marriage|civil status|justice|interior/i,
+  "Customs Clearance": /customs|finance|trade|port/i,
+};
+
+/** Filters live Government Directory entities by the three form criteria. */
+export function filterGovEntities(entities: GovEntity[], f: GovFilter) {
+  return entities.filter((e) => {
+    if (f.cat && e.category_en !== f.cat) return false;
+    const text = `${e.entity_name_en} ${e.entity_name_ar ?? ""} ${e.description_en ?? ""} ${e.category_en}`;
+    if (f.type && !(SERVICE_KEYWORDS[f.type] ?? new RegExp(f.type, "i")).test(text)) return false;
+    if (f.gov) {
+      const mentionsAny = GOVERNORATES.some((g) => new RegExp(g, "i").test(text));
+      // National bodies (no governorate named) serve every governorate.
+      if (mentionsAny && !new RegExp(f.gov, "i").test(text)) return false;
+    }
+    return true;
+  });
+}
+
+function FindServicesForm({ categories, onSearch }: { categories: string[]; onSearch: (f: GovFilter) => void }) {
   const { t } = useI18n();
   const [cat, setCat] = useState("");
   const [gov, setGov] = useState("");
@@ -200,8 +230,7 @@ function FindServicesForm({ categories }: { categories: string[] }) {
       className="grid gap-3"
       onSubmit={(e) => {
         e.preventDefault();
-        const parts = [type, cat, gov].filter(Boolean).map((x) => t(x));
-        askConcierge(parts.length ? `${t("Find government services")}: ${parts.join(", ")}` : t("Find government services"));
+        onSearch({ cat, gov, type });
       }}
     >
       <select aria-label={t("Category")} value={cat} onChange={(e) => setCat(e.target.value)} className={sel}>
@@ -210,7 +239,7 @@ function FindServicesForm({ categories }: { categories: string[] }) {
       </select>
       <select aria-label={t("Governorate")} value={gov} onChange={(e) => setGov(e.target.value)} className={sel}>
         <option value="">{t("Governorate")}</option>
-        {["Cairo", "Giza", "Alexandria", "Luxor", "Aswan", "Red Sea", "South Sinai"].map((g) => <option key={g} value={g}>{t(g)}</option>)}
+        {GOVERNORATES.map((g) => <option key={g} value={g}>{t(g)}</option>)}
       </select>
       <select aria-label={t("Service Type")} value={type} onChange={(e) => setType(e.target.value)} className={sel}>
         <option value="">{t("Service Type")}</option>
@@ -226,6 +255,12 @@ function FindServicesForm({ categories }: { categories: string[] }) {
 function GovernmentDirectoryPage() {
   const { entities } = Route.useLoaderData();
   const { t } = useI18n();
+  const [filter, setFilter] = useState<GovFilter | null>(null);
+  const filtered = useMemo(() => (filter ? filterGovEntities(entities, filter) : entities), [entities, filter]);
+  const runFilter = (f: GovFilter) => {
+    setFilter(f.cat || f.gov || f.type ? f : null);
+    requestAnimationFrame(() => document.getElementById("all-entities")?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
 
   const categories = useMemo(() => {
     const map = new Map<string, { en: string; ar: string; slug: string; rows: GovEntity[] }>();
@@ -267,7 +302,7 @@ function GovernmentDirectoryPage() {
       sidebar={
         <>
           <SidePanel title="Find Government Services">
-            <FindServicesForm categories={categories.map((c) => c.en)} />
+            <FindServicesForm categories={categories.map((c) => c.en)} onSearch={runFilter} />
           </SidePanel>
           <SidePanel title="Egypt Map – Government Entities">
             <EgyptMap pins={["Alexandria", "Cairo", "New Capital", "Suez", "Luxor", "Aswan"]} />
@@ -333,21 +368,36 @@ function GovernmentDirectoryPage() {
 
       <section id="all-entities" className="scroll-mt-28">
         <SectionHead title="All Government Entities" body="Every entity links straight to its own official website." />
-        {categories.length === 0 ? (
+        {filter ? (
+          <div className="mb-5 flex flex-wrap items-center gap-2 rounded-[10px] border border-border bg-bg-band px-4 py-3 text-sm text-navy">
+            <span className="font-semibold">{t("Filtered results")}: {filtered.length}</span>
+            {[filter.cat, filter.gov, filter.type].filter(Boolean).map((x) => (
+              <span key={x} className="rounded-full bg-card px-2.5 py-0.5 text-xs">{t(x)}</span>
+            ))}
+            <button type="button" onClick={() => setFilter(null)} className="ms-auto text-xs font-semibold text-shell-gold underline">
+              {t("Clear filters")}
+            </button>
+          </div>
+        ) : null}
+        {filter && filtered.length === 0 ? (
+          <p className="text-sm text-text-body">{t("No government entities match these filters.")}</p>
+        ) : categories.length === 0 ? (
           <p className="text-sm text-text-body">{t("No entries yet.")}</p>
         ) : (
           <div className="grid gap-10">
             {categories.map((c) => {
               const Icon = categoryIcon(c.en);
+              const rows = filter ? c.rows.filter((r) => filtered.includes(r)) : c.rows;
+              if (rows.length === 0) return null;
               return (
                 <div key={c.en} id={c.slug} className="grid scroll-mt-28 gap-4">
                   <div className="flex items-center gap-3 border-b border-border pb-3">
                     <Icon className="size-5 text-shell-gold" />
                     <h3 className="font-display text-lg font-bold text-navy sm:text-xl">{t(c.en)}</h3>
-                    <span className="ms-auto text-xs text-text-body">{c.rows.length}</span>
+                    <span className="ms-auto text-xs text-text-body">{rows.length}</span>
                   </div>
                   <div className="grid gap-3 xl:grid-cols-2">
-                    {c.rows.map((e) => <EntityRow key={e.id} entity={e} />)}
+                    {rows.map((e) => <EntityRow key={e.id} entity={e} />)}
                   </div>
                 </div>
               );

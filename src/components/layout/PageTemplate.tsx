@@ -2,7 +2,8 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronRight, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
-import { MainNav, askConcierge } from "@/components/layout/MainNav";
+import { MainNav } from "@/components/layout/MainNav";
+import { useSiteSearch } from "@/lib/site-search";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -32,10 +33,11 @@ export function HeroSearch({
 }) {
   const { t } = useI18n();
   const [query, setQuery] = useState("");
+  const siteSearch = useSiteSearch();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    askConcierge(query);
+    siteSearch(query);
     setQuery("");
   };
 

@@ -9,7 +9,7 @@ import { ArrowRight, ChevronRight, Info, Search } from "lucide-react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
-import { askConcierge } from "@/components/layout/MainNav";
+import { useSiteSearch } from "@/lib/site-search";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
 
@@ -279,6 +279,7 @@ export type HeroConfig = {
 function InnerHero({ h }: { h: HeroConfig }) {
   const { t } = useI18n();
   const [q, setQ] = useState("");
+  const siteSearch = useSiteSearch();
   return (
     <section className="on-dark relative isolate overflow-hidden">
       <img src={h.image} alt="" fetchPriority="high" className="absolute inset-0 -z-10 size-full object-cover" />
@@ -304,7 +305,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              askConcierge(q);
+              siteSearch(q);
               setQ("");
             }}
             className="mt-6 flex max-w-xl items-center gap-2 rounded-full bg-primary-foreground p-1.5 shadow-lg"
@@ -329,7 +330,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
                 <button
                   key={p}
                   type="button"
-                  onClick={() => askConcierge(t(p))}
+                  onClick={() => siteSearch(p)}
                   className="rounded-full border border-foreground/40 bg-navy/50 px-3 py-1 text-xs text-foreground transition-colors hover:border-shell-gold"
                 >
                   {t(p)}

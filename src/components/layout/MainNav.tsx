@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
+import { useSiteSearch } from "@/lib/site-search";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { toast } from "sonner";
 import logo from "@/assets/egyptora-hub-logo.png.asset.json";
@@ -211,10 +212,11 @@ export function MainNav() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const siteSearch = useSiteSearch();
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    askConcierge(query);
+    siteSearch(query);
     setQuery("");
     setSearchOpen(false);
   };

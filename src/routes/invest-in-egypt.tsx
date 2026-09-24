@@ -11,8 +11,8 @@ import energy from "@/assets/home/tenders.jpg";
 import people from "@/assets/home/inv-opps.jpg";
 import banner from "@/assets/gov/cairo.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, EgyptMap, ViewAll, GoldButton,
-  innerWrap, type CardItem, type Chip,
+  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, EgyptMap, GoldButton,
+  type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
 import { useI18n } from "@/i18n";
@@ -189,7 +189,6 @@ function InvestInEgypt() {
           {sectors.map((c) => <IconCard key={c.title} c={c} />)}
         </div>
       </section>
-      <span className={cn(innerWrap, "hidden")}><ViewAll to={IO} /></span>
     </InnerPage>
   );
 }

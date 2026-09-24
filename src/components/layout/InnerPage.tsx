@@ -360,7 +360,7 @@ function MoreDots({ className }: { className?: string }) {
   );
 }
 
-function ChipStrip({ chips, moreTo, showMore = true }: { chips: Chip[]; moreTo?: string | undefined; showMore?: boolean }) {
+function ChipStrip({ chips, moreTo, showMore = true }: { chips: Chip[]; moreTo?: string | undefined; showMore?: boolean | undefined }) {
   const { t } = useI18n();
   const all: (Chip & { more?: boolean })[] = showMore
     ? [...chips, { label: "More", Icon: MoreDots, to: moreTo, more: true }]
@@ -419,7 +419,7 @@ export function InnerPage({
 }: {
   parent?: { label: string; to: string };
   notice?: ReactNode;
-  showMore?: boolean;
+  showMore?: boolean | undefined;
   pageName: string;
   hero: HeroConfig;
   chips: Chip[];

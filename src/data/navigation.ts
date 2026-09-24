@@ -42,7 +42,7 @@ export const mainNav: NavEntry[] = [
     items: [
       { label: "All Living Options", to: "/live-in-egypt" },
       { label: "Residency & Visas", soon: true },
-      { label: "Housing & Real Estate", to: "/properties" },
+      { label: "Housing & Real Estate", to: "/real-estate" },
       { label: "Education & Schools", to: "/research-programs" },
       { label: "Healthcare & Medical Services", soon: true },
       { label: "Work & Employment", soon: true },
@@ -58,7 +58,7 @@ export const mainNav: NavEntry[] = [
     to: "/invest-in-egypt",
     items: [
       { label: "All Sectors", to: "/invest-in-egypt" },
-      { label: "Real Estate & New Cities", to: "/properties" },
+      { label: "Real Estate & New Cities", to: "/real-estate" },
       { label: "Industry & Manufacturing", soon: true },
       { label: "Tourism & Hospitality", soon: true },
       { label: "Energy & Renewable", soon: true },
@@ -90,8 +90,10 @@ export const mainNav: NavEntry[] = [
   },
   {
     label: "Visit Egypt",
+    to: "/visit-egypt",
     items: [
-      { label: "All Experiences", to: "/offers" },
+      { label: "All Experiences", to: "/visit-egypt" },
+      { label: "Travel & Tourism Services", to: "/visit-egypt/travel-and-tourism" },
       { label: "Historical Sites", to: "/heritage-sites" },
       { label: "Beaches & Islands", soon: true },
       { label: "Nile Cruises", soon: true },

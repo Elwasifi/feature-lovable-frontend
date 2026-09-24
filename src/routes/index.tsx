@@ -458,7 +458,7 @@ function Vision2030() {
               src={vision2030Logo}
               alt="Egypt Vision 2030 official logo"
               loading="lazy"
-              className="mx-auto h-auto max-h-44 w-full object-contain"
+              className="mx-auto h-44 w-full scale-125 object-contain"
             />
           </div>
           <Link

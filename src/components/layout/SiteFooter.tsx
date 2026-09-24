@@ -201,10 +201,10 @@ export function SiteFooter() {
                 className="size-11 rounded-full ring-1 ring-gold-line"
               />
               <span>
-                <span className="block font-display text-base tracking-[0.2em] text-foreground">
+                <span className="block whitespace-nowrap font-display text-base tracking-[0.18em] text-foreground">
                   EGYPTORA <span className="text-shell-gold">HUB</span>
                 </span>
-                <span className="block text-[10px] tracking-[0.12em] text-foreground/70">
+                <span className="block whitespace-nowrap text-[10px] tracking-[0.08em] text-foreground/70">
                   {t(SITE.tagline)}
                 </span>
               </span>

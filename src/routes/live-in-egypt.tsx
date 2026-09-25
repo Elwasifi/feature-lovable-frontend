@@ -26,7 +26,7 @@ import marsa from "@/assets/gov/red-sea.jpg";
 import move from "@/assets/sec-marina.jpg";
 import banner from "@/assets/home/nile.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, GoldButton,
+  InnerPage, cardGrid, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -171,19 +171,19 @@ function LiveInEgypt() {
     >
       <section>
         <SectionHead title="Life in Egypt" body="Discover everything you need to live, work, study and enjoy life in Egypt." to={GD} toLabel="View All Living Options" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className={cardGrid}>
           {life.map((c) => <PhotoCard key={c.title} c={c} h="h-28" />)}
         </div>
       </section>
       <section>
         <SectionHead title="Life Stages in Egypt" body="Tailored information for every stage of your journey." to="/properties" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className={cardGrid}>
           {stages.map((c) => <PhotoCard key={c.title} c={c} h="h-28" />)}
         </div>
       </section>
       <section>
         <SectionHead title="Explore Popular Cities" body="Find the right city for your lifestyle." to="/countries" toLabel="View All Cities" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {cities.map((c) => <PhotoCard key={c.title} c={c} h="h-28" />)}
         </div>
       </section>

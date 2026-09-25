@@ -21,3 +21,6 @@
 - [x] "Request booking" action on provider detail page; records provider price_from as amount in USD.
 - [ ] BLOCKED: Stripe test checkout + webhook — Lovable built-in payments unavailable for seller country EG; needs the user's own Stripe test key (BYO) or a non-EG seller entity.
 - [x] Homepage rebuild (Prompt 3) with photos cropped from mockups
+
+## Prompt 9 — mockup fidelity
+- [x] Desktop nav row, shorter heroes, bold navy icons, dense card grids, save hearts, homepage/Invest/Do Business/Visit fixes. Unpublished.

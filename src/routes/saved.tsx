@@ -37,6 +37,7 @@ const DETAIL_ROUTE: Record<string, string> = {
 };
 
 const TYPE_LABEL: Record<string, string> = {
+  page: "Page",
   property: "Property",
   provider: "Service provider",
   offer: "Offer",
@@ -195,6 +196,13 @@ function SavedPage() {
                         <Link
                           to={`${base}/$id` as never}
                           params={{ id: row.item_id } as never}
+                          className="mt-1 block font-display text-base text-foreground hover:text-gold"
+                        >
+                          {name}
+                        </Link>
+                      ) : row.item_type === "page" && row.item_id.includes("|/") ? (
+                        <Link
+                          to={row.item_id.slice(row.item_id.indexOf("|") + 1) as never}
                           className="mt-1 block font-display text-base text-foreground hover:text-gold"
                         >
                           {name}

@@ -16,7 +16,7 @@ import aswan from "@/assets/dest-aswan.jpg";
 import hurghada from "@/assets/dest-hurghada.jpg";
 import alexandria from "@/assets/dest-alexandria.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, EgyptMap, ViewAll, GoldButton, SmartLink,
+  InnerPage, cardGrid, SectionHead, PhotoCard, SidePanel, LinkList, NavyPromo, EgyptMap, ViewAll, GoldButton, SmartLink,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -138,7 +138,7 @@ function ExploreEgypt() {
     >
       <section>
         <SectionHead title="Featured Experiences" body="Handpicked experiences to make your trip unforgettable." to="/offers" />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} />)}
         </div>
       </section>
@@ -152,7 +152,7 @@ function ExploreEgypt() {
         </div>
         <div>
           <SectionHead title="Top Destinations" body="Explore Egypt's most popular cities and regions." to="/countries" toLabel="View All Destinations" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={cardGrid}>
             {destinations.map((c) => <PhotoCard key={c.title} c={c} h="h-28" />)}
           </div>
         </div>

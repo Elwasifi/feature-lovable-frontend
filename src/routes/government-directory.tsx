@@ -6,7 +6,7 @@ import {
   Wallet, BadgeCheck, IdCard, Car, FileText, Receipt, Stamp, Baby, Heart, Package, Factory, Headphones, Search,
 } from "lucide-react";
 import {
-  InnerPage, SectionHead, PhotoCard, SidePanel, EgyptMap, ViewAll, CircleTile, ImportantNoticeBox,
+  InnerPage, cardGrid, SectionHead, PhotoCard, SidePanel, EgyptMap, ViewAll, CircleTile, ImportantNoticeBox,
   AppPromoCard, BandPromo, type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import mfa from "@/assets/home/world.jpg";
@@ -335,7 +335,7 @@ function GovernmentDirectoryPage() {
     >
       <section>
         <SectionHead title="Featured Entities" body="Quick access to key government entities in Egypt." to={`${GD}#all-entities`} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
         </div>
       </section>

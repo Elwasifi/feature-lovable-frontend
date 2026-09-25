@@ -11,7 +11,7 @@ import zamalek from "@/assets/dest-cairo.jpg";
 import october from "@/assets/re-compound.jpg";
 import sahl from "@/assets/dest-hurghada.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, EgyptMap, ViewAll, GoldButton, AppPromoCard,
+  InnerPage, cardGrid, SectionHead, PhotoCard, IconCard, SidePanel, EgyptMap, ViewAll, GoldButton, AppPromoCard,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -145,19 +145,19 @@ function RealEstate() {
     >
       <section>
         <SectionHead title="Featured Properties" body="Sample listings across Egypt's most popular areas." to={P} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} h="h-36" />)}
         </div>
       </section>
       <section>
         <SectionHead title="Explore by Lifestyle" to={P} />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className={cardGrid}>
           {lifestyle.map((c) => <IconCard key={c.title} c={c} />)}
         </div>
       </section>
       <section>
         <SectionHead title="Additional Services" to="/providers" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {services.map((c) => <IconCard key={c.title} c={c} />)}
         </div>
       </section>

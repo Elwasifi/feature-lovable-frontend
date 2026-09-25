@@ -45,6 +45,7 @@ import worldImg from "@/assets/home/world.jpg";
 import globeImg from "@/assets/home/globe.jpg";
 import vision2030Logo from "@/assets/vision-2030.png";
 import { BookingSearch } from "@/components/site/BookingSearch";
+import { SaveButton } from "@/components/site/SaveButton";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { useSiteSearch } from "@/lib/site-search";
@@ -85,12 +86,12 @@ function Home() {
       <main>
         <Hero />
         <QuickStrip />
-        <BookingSearch />
         <ExploreInvest />
         <LiveBusinessWhy />
         <Vision2030 />
         <GovBand />
         <GlobalBand />
+        <BookingSearch />
         <NewsApp />
         <ImportantNotice />
       </main>
@@ -155,6 +156,14 @@ function ImgCard({ c, h = "h-32" }: { c: CardData; h?: string }) {
       <div className={cn("relative overflow-hidden", h)}>
         <img src={c.img} alt={t(c.title)} loading="lazy" className="size-full object-cover" />
         {c.badge && <NavyBadge>{t(c.badge)}</NavyBadge>}
+        <SaveButton
+          variant="icon"
+          itemType="page"
+          itemId={`${c.title}|${c.to}`}
+          itemName={c.title}
+          itemImage={c.img}
+          className="absolute end-2 top-2 size-7 border-primary-foreground/60 bg-navy/35 text-primary-foreground"
+        />
       </div>
       <div className="flex flex-1 items-end justify-between gap-2 p-3">
         <div className="min-w-0">
@@ -186,7 +195,7 @@ function Hero() {
     <section className="on-dark relative isolate overflow-hidden">
       <img src={heroImg} alt="" className="absolute inset-0 -z-10 size-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/70 via-navy/30 to-transparent rtl:bg-gradient-to-l" />
-      <div className={cn(wrap, "relative pb-24 pt-14 lg:pb-32 lg:pt-20")}>
+      <div className={cn(wrap, "relative pb-20 pt-8 lg:pb-24 lg:pt-12")}>
         <div className="absolute end-6 top-8 hidden text-end md:block lg:end-16">
           <p className="font-display text-5xl italic text-foreground">{t("Egypt")}</p>
           <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-foreground">
@@ -198,7 +207,7 @@ function Hero() {
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-shell-gold">
           {t("Discover a Timeless Land")}
         </p>
-        <h1 className="mt-3 max-w-2xl font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-6xl">
+        <h1 className="mt-3 max-w-2xl font-display text-4xl font-bold text-foreground sm:text-5xl lg:text-[52px]">
           {t("Your Gateway to Egypt")}
         </h1>
         <p className="mt-3 text-lg font-light text-foreground sm:text-xl">
@@ -262,16 +271,16 @@ function QuickStrip() {
   const { t } = useI18n();
   return (
     <div className={cn(wrap, "relative z-10 -mt-12")}>
-      <div className="grid grid-cols-2 overflow-hidden rounded-[10px] border border-border bg-card shadow-[var(--shadow-card)] sm:grid-cols-4 lg:grid-cols-8">
+      <div className="on-dark grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-8">
         {quick.map(({ Icon, title, sub, to }) => (
           <Link
             key={title}
             to={L(to)}
-            className="flex flex-col items-center gap-1.5 border-b border-e border-border px-2 py-5 text-center transition-colors hover:bg-bg-alt lg:border-b-0 lg:last:border-e-0"
+            className="flex flex-col items-center gap-1.5 rounded-[10px] border border-foreground/15 bg-navy/90 px-2 py-4 text-center shadow-[var(--shadow-card)] backdrop-blur transition-colors hover:border-shell-gold"
           >
-            <Icon className="size-8 text-navy" strokeWidth={1.5} />
-            <span className="text-sm font-bold leading-tight text-navy">{t(title)}</span>
-            {sub && <span className="text-xs text-text-body">{t(sub)}</span>}
+            <Icon className="size-8 fill-shell-gold/25 text-shell-gold" strokeWidth={2} />
+            <span className="text-sm font-bold leading-tight text-foreground">{t(title)}</span>
+            {sub && <span className="text-xs text-foreground/75">{t(sub)}</span>}
           </Link>
         ))}
       </div>
@@ -356,7 +365,7 @@ function LiveBusinessWhy() {
   const { t } = useI18n();
   return (
     <section className="bg-background py-14">
-      <div className={cn(wrap, "grid gap-10 lg:grid-cols-2 2xl:grid-cols-[1fr_1fr_0.75fr]")}>
+      <div className={cn(wrap, "grid gap-8 md:grid-cols-2 lg:grid-cols-[1fr_1fr_0.8fr]")}>
         <div>
           <BlockHead
             title="Live in Egypt"

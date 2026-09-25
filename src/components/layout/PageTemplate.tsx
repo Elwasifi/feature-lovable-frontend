@@ -80,7 +80,7 @@ export function HeroSearch({
 
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div className="max-w-3xl">
-            <h1 className="font-display text-4xl leading-[1.05] text-foreground drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)] sm:text-5xl lg:text-6xl">
+            <h1 className="font-display text-4xl leading-[1.05] text-foreground drop-shadow-[0_2px_16px_rgba(0,0,0,0.55)] sm:text-5xl lg:text-[52px]">
               {t(title)}
             </h1>
             {subtitle && (
@@ -239,7 +239,7 @@ export function BlockHeader({
 /** Horizontal, scrollable row of feature cards. */
 export function FeaturedRow({ children }: { children: ReactNode }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{children}</div>
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">{children}</div>
   );
 }
 

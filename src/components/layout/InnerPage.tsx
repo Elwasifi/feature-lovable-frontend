@@ -9,6 +9,7 @@ import { ArrowRight, ChevronRight, Info, Search } from "lucide-react";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SaveButton } from "@/components/site/SaveButton";
 import { useSiteSearch } from "@/lib/site-search";
 import { useI18n } from "@/i18n";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,9 @@ const L = (to: string) => to as any;
 const isExternal = (to: string) => /^https?:\/\//.test(to);
 
 export const innerWrap = "mx-auto w-full max-w-[1280px] px-4 lg:px-8";
+
+/** Dense mockup-style card grid: 2 per row on phones, 5–6 per row on desktop. */
+export const cardGrid = "grid gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(126px,1fr))]";
 
 /* ---------------- small shared bits ---------------- */
 
@@ -129,7 +133,7 @@ export type CardItem = {
   Icon?: Icon;
 };
 
-export function PhotoCard({ c, h = "h-40" }: { c: CardItem; h?: string }) {
+export function PhotoCard({ c, h = "h-28" }: { c: CardItem; h?: string }) {
   const { t } = useI18n();
   return (
     <article className="flex flex-col overflow-hidden rounded-[10px] border border-border bg-card shadow-sm">
@@ -137,12 +141,20 @@ export function PhotoCard({ c, h = "h-40" }: { c: CardItem; h?: string }) {
         <div className={cn("relative overflow-hidden", h)}>
           <img src={c.img} alt={t(c.title)} loading="lazy" className="size-full object-cover" />
           {c.badge && <NavyBadge>{t(c.badge)}</NavyBadge>}
+          <SaveButton
+            variant="icon"
+            itemType="page"
+            itemId={`${c.title}|${c.to}`}
+            itemName={c.title}
+            itemImage={c.img}
+            className="absolute end-2 top-2 size-7 border-primary-foreground/60 bg-navy/35 text-primary-foreground"
+          />
         </div>
       )}
-      <div className="flex flex-1 items-end justify-between gap-3 p-4">
+      <div className="flex flex-1 items-end justify-between gap-2 p-3">
         <div className="min-w-0">
-          <h3 className="text-[15px] font-bold text-navy">{t(c.title)}</h3>
-          {c.desc && <p className="mt-1 text-xs leading-relaxed text-text-body">{t(c.desc)}</p>}
+          <h3 className="text-[13px] font-bold leading-snug text-navy">{t(c.title)}</h3>
+          {c.desc && <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-text-body">{t(c.desc)}</p>}
           {c.meta && c.meta.length > 0 && (
             <p className="mt-2 text-[11px] font-medium text-navy/70">
               {c.meta.map((m) => t(m)).join(" · ")}
@@ -158,16 +170,16 @@ export function PhotoCard({ c, h = "h-40" }: { c: CardItem; h?: string }) {
 export function IconCard({ c, cta = true }: { c: CardItem; cta?: boolean }) {
   const { t } = useI18n();
   return (
-    <article className="flex h-full flex-col rounded-[10px] border border-border bg-card p-4 shadow-sm">
+    <article className="flex h-full flex-col rounded-[10px] border border-border bg-card p-3 shadow-sm">
       {c.Icon && (
-        <span className="mb-3 grid size-10 place-items-center rounded-full bg-chip-active text-shell-gold">
-          <c.Icon className="size-5" />
+        <span className="mb-2 grid size-9 place-items-center rounded-full bg-chip-active text-navy">
+          <c.Icon className="size-5 fill-navy/15" strokeWidth={2.2} />
         </span>
       )}
-      <div className="flex flex-1 items-end justify-between gap-3">
+      <div className="flex flex-1 items-end justify-between gap-2">
         <div className="min-w-0">
-          <h3 className="text-sm font-bold text-navy">{t(c.title)}</h3>
-          {c.desc && <p className="mt-1 text-xs leading-relaxed text-text-body">{t(c.desc)}</p>}
+          <h3 className="text-[13px] font-bold leading-snug text-navy">{t(c.title)}</h3>
+          {c.desc && <p className="mt-0.5 line-clamp-2 text-[11px] leading-snug text-text-body">{t(c.desc)}</p>}
         </div>
         {cta && <ArrowCta to={c.to} label={t(c.title)} />}
       </div>
@@ -284,7 +296,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
     <section className="on-dark relative isolate overflow-hidden">
       <img src={h.image} alt="" fetchPriority="high" className="absolute inset-0 -z-10 size-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy/90 via-navy/55 to-transparent to-[62%] rtl:bg-gradient-to-l" />
-      <div className={cn(innerWrap, "relative pb-24 pt-12 lg:pb-28 lg:pt-16")}>
+      <div className={cn(innerWrap, "relative pb-16 pt-8 lg:pb-20 lg:pt-10")}>
         <div className="absolute end-6 top-8 hidden text-end md:block lg:end-10">
           <p className="font-display text-5xl italic text-foreground drop-shadow">{t("Egypt")}</p>
           <p className="mt-1 text-[10px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-foreground">
@@ -296,7 +308,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
           </p>
         </div>
         <div className="max-w-2xl">
-          <h1 className="font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-[56px]">
+          <h1 className="font-display text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-[48px]">
             {t(h.title)}
           </h1>
           <p className="mt-3 text-lg font-bold text-foreground sm:text-xl">{t(h.subtitle)}</p>
@@ -308,7 +320,7 @@ function InnerHero({ h }: { h: HeroConfig }) {
               siteSearch(q);
               setQ("");
             }}
-            className="mt-6 flex max-w-xl items-center gap-2 rounded-full bg-primary-foreground p-1.5 shadow-lg"
+            className="mt-5 flex max-w-xl items-center gap-2 rounded-full bg-primary-foreground p-1.5 shadow-lg"
           >
             <Search className="ms-3 size-4 shrink-0 text-text-body" />
             <input
@@ -352,7 +364,7 @@ export type Chip = { label: string; Icon: Icon; to?: string | undefined };
 
 function MoreDots({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 20 20" className={className} fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 20 20" className={className} style={{ fill: "currentColor" }} aria-hidden>
       <circle cx="5" cy="5" r="2.5" />
       <circle cx="15" cy="5" r="2.5" />
       <circle cx="5" cy="15" r="2.5" />
@@ -367,7 +379,7 @@ function ChipStrip({ chips, moreTo, showMore = true }: { chips: Chip[]; moreTo?:
     ? [...chips, { label: "More", Icon: MoreDots, to: moreTo, more: true }]
     : chips;
   return (
-    <div className={cn(innerWrap, "relative z-10 -mt-12")}>
+    <div className={cn(innerWrap, "relative z-10 -mt-10")}>
       <div className="flex overflow-x-auto rounded-xl border border-border bg-card shadow-[0_18px_40px_-28px_rgba(6,33,58,0.45)] [scrollbar-width:none]">
         {all.map((c, i) => {
           const active = i === 0;
@@ -377,8 +389,8 @@ function ChipStrip({ chips, moreTo, showMore = true }: { chips: Chip[]; moreTo?:
           );
           const inner = (
             <>
-              <c.Icon className={cn("size-5", active ? "text-shell-gold" : "text-navy")} />
-              <span className="text-[11px] font-semibold leading-tight text-navy">{t(c.label)}</span>
+              <c.Icon strokeWidth={2.3} className={cn("size-7", active ? "fill-shell-gold/25 text-shell-gold" : "fill-navy/20 text-navy")} />
+              <span className="text-[12px] font-semibold leading-tight text-navy">{t(c.label)}</span>
             </>
           );
           if (c.to && !active)

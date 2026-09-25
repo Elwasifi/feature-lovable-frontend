@@ -136,7 +136,7 @@ export function BookingSearch() {
   const [activeTab, setActiveTab] = useState<(typeof searchTabs)[number]>(searchTabs[0]);
 
   return (
-    <section id="book" className="scroll-mt-24 bg-background pb-4 pt-8 lg:pt-10">
+    <section id="book" className="scroll-mt-24 bg-background pb-8 pt-10 lg:pt-12">
       <div className="mx-auto w-full max-w-[1280px] px-5 lg:px-10">
         <div className="overflow-hidden rounded-[14px] border border-shell-gold/40 bg-navy p-4 shadow-[var(--shadow-card)] sm:p-5">
           <div className="mb-3 flex flex-wrap items-center justify-between gap-3">

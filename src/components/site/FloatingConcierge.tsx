@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
 import avatar from "@/assets/concierge-avatar.jpg";
 import { ItineraryCards, parseItinerary } from "@/components/site/ConciergeItinerary";
@@ -336,7 +336,7 @@ const URL_RE = /(\[[^\]]+\]\((https?:\/\/[^\s)]+)\)|https?:\/\/[^\s<>()]+[^\s<>(
 
 /** Renders plain URLs and markdown links in a reply as clickable links. */
 function LinkifiedText({ text }: { text: string }) {
-  const parts: React.ReactNode[] = [];
+  const parts: ReactNode[] = [];
   let last = 0;
   for (const m of text.matchAll(URL_RE)) {
     const idx = m.index ?? 0;

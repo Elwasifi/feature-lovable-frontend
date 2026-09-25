@@ -41,6 +41,15 @@ export type ConciergeMatch = {
 const MAX_SUMMARY = 160;
 const SITE = "https://egyptora-hub.com";
 
+const STOP = new Set(["the","and","for","how","what","where","who","can","egypt","egyptian","with","from","into","about","renew","get","buy","find"]);
+
+/** Builds a PostgREST OR filter matching any meaningful word in any column. */
+function orFilter(term: string, cols: string[]): string {
+  const words = term.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w));
+  const list = words.length ? words.slice(0, 5) : [term];
+  return list.flatMap((w) => cols.map((c) => `${c}.ilike.%${w}%`)).join(",");
+}
+
 function oneLine(value: unknown): string {
   if (typeof value !== "string") return "";
   const clean = value.replace(/\s+/g, " ").trim();
@@ -64,9 +73,7 @@ async function searchGovernment(term: string, limit: number): Promise<ConciergeM
   const { data, error } = await supabaseAdmin
     .from("government_entities")
     .select("id, entity_name_en, entity_name_ar, description_en, category_en, official_url")
-    .or(
-      `entity_name_en.ilike.%${term}%,entity_name_ar.ilike.%${term}%,description_en.ilike.%${term}%,category_en.ilike.%${term}%`,
-    )
+    .or(orFilter(term, ["entity_name_en", "entity_name_ar", "description_en", "category_en"]))
     .order("sort_order")
     .limit(limit);
   if (error) throw error;
@@ -99,7 +106,7 @@ export async function searchSiteContent(
         if (table === "government_entities") return await searchGovernment(term, perTable);
         let q = (supabaseAdmin.from(table) as any)
           .select("id, name, slug, summary")
-          .or(`name.ilike.%${term}%,summary.ilike.%${term}%`);
+          .or(orFilter(term, ["name", "summary"]));
         if (table === "properties" || table === "investment_opportunities") {
           q = q.eq("moderation_state", "PUBLISHED");
         }

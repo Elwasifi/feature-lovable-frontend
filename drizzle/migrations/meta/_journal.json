@@ -15,6 +15,13 @@
       "when": 1790350883258,
       "tag": "0001_governorate_rich_content_and_areas",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790350951007,
+      "tag": "0002_governorate_content_import_staging",
+      "breakpoints": true
     }
   ]
 }

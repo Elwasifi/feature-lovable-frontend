@@ -593,6 +593,39 @@ export type Database = {
           },
         ]
       }
+      governorate_content_import: {
+        Row: {
+          famous_clothing: string[] | null
+          famous_food: string[] | null
+          flag_image_url: string | null
+          highlights: string[] | null
+          history: string | null
+          images: string[] | null
+          target_id: string
+          target_table: string
+        }
+        Insert: {
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
+          highlights?: string[] | null
+          history?: string | null
+          images?: string[] | null
+          target_id: string
+          target_table: string
+        }
+        Update: {
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
+          highlights?: string[] | null
+          history?: string | null
+          images?: string[] | null
+          target_id?: string
+          target_table?: string
+        }
+        Relationships: []
+      }
       governorates: {
         Row: {
           annual_visitors: number | null

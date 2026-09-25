@@ -119,7 +119,7 @@ export function FloatingConcierge() {
         setBusy(false);
       }
     },
-    [busy, messages],
+    [busy, messages, scope],
   );
 
   // The homepage hero search field hands its question to the concierge.

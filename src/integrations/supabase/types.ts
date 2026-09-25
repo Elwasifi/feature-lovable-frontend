@@ -534,6 +534,98 @@ export type Database = {
         }
         Relationships: []
       }
+      governorate_areas: {
+        Row: {
+          created_at: string | null
+          data_class: string | null
+          description: string | null
+          governance_status: string
+          governorate_slug: string
+          id: string
+          images: string[] | null
+          name: string
+          name_ar: string | null
+          slug: string
+          source_status: string | null
+          summary: string | null
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug: string
+          id: string
+          images?: string[] | null
+          name: string
+          name_ar?: string | null
+          slug: string
+          source_status?: string | null
+          summary?: string | null
+          type?: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          data_class?: string | null
+          description?: string | null
+          governance_status?: string
+          governorate_slug?: string
+          id?: string
+          images?: string[] | null
+          name?: string
+          name_ar?: string | null
+          slug?: string
+          source_status?: string | null
+          summary?: string | null
+          type?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "governorate_areas_governorate_slug_fkey"
+            columns: ["governorate_slug"]
+            isOneToOne: false
+            referencedRelation: "governorates"
+            referencedColumns: ["slug"]
+          },
+        ]
+      }
+      governorate_content_import: {
+        Row: {
+          famous_clothing: string[] | null
+          famous_food: string[] | null
+          flag_image_url: string | null
+          highlights: string[] | null
+          history: string | null
+          images: string[] | null
+          target_id: string
+          target_table: string
+        }
+        Insert: {
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
+          highlights?: string[] | null
+          history?: string | null
+          images?: string[] | null
+          target_id: string
+          target_table: string
+        }
+        Update: {
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
+          highlights?: string[] | null
+          history?: string | null
+          images?: string[] | null
+          target_id?: string
+          target_table?: string
+        }
+        Relationships: []
+      }
       governorates: {
         Row: {
           annual_visitors: number | null
@@ -545,6 +637,9 @@ export type Database = {
           created_at: string | null
           cuisine: string[] | null
           data_class: string | null
+          famous_clothing: string[] | null
+          famous_food: string[] | null
+          flag_image_url: string | null
           governance_status: string
           guides: number | null
           has_coast: boolean | null
@@ -552,6 +647,7 @@ export type Database = {
           heritage_eras: string[] | null
           heritage_sites: number | null
           highlights: string[] | null
+          history: string | null
           hotels: number | null
           id: string
           investment_sectors: string[] | null
@@ -580,6 +676,9 @@ export type Database = {
           created_at?: string | null
           cuisine?: string[] | null
           data_class?: string | null
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
           governance_status?: string
           guides?: number | null
           has_coast?: boolean | null
@@ -587,6 +686,7 @@ export type Database = {
           heritage_eras?: string[] | null
           heritage_sites?: number | null
           highlights?: string[] | null
+          history?: string | null
           hotels?: number | null
           id: string
           investment_sectors?: string[] | null
@@ -615,6 +715,9 @@ export type Database = {
           created_at?: string | null
           cuisine?: string[] | null
           data_class?: string | null
+          famous_clothing?: string[] | null
+          famous_food?: string[] | null
+          flag_image_url?: string | null
           governance_status?: string
           guides?: number | null
           has_coast?: boolean | null
@@ -622,6 +725,7 @@ export type Database = {
           heritage_eras?: string[] | null
           heritage_sites?: number | null
           highlights?: string[] | null
+          history?: string | null
           hotels?: number | null
           id?: string
           investment_sectors?: string[] | null

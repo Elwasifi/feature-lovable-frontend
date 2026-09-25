@@ -22,7 +22,7 @@ const isExternal = (to: string) => /^https?:\/\//.test(to);
 export const innerWrap = "mx-auto w-full max-w-[1280px] px-4 lg:px-8";
 
 /** Dense mockup-style card grid: 2 per row on phones, 5–6 per row on desktop. */
-export const cardGrid = "grid gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(135px,1fr))]";
+export const cardGrid = "grid gap-3 grid-cols-2 sm:grid-cols-[repeat(auto-fit,minmax(126px,1fr))]";
 
 /* ---------------- small shared bits ---------------- */
 
@@ -364,7 +364,7 @@ export type Chip = { label: string; Icon: Icon; to?: string | undefined };
 
 function MoreDots({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 20 20" className={className} fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 20 20" className={className} style={{ fill: "currentColor" }} aria-hidden>
       <circle cx="5" cy="5" r="2.5" />
       <circle cx="15" cy="5" r="2.5" />
       <circle cx="5" cy="15" r="2.5" />

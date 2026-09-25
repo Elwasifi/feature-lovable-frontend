@@ -113,14 +113,14 @@ export async function searchSiteContent(
         const { data, error } = await q.limit(perTable);
         if (error) throw error;
         return ((data ?? []) as Array<Record<string, unknown>>).map((row) => {
-          const id = String(row.id ?? "");
+          const id = String(row["id"] ?? "");
           const base = DETAIL_PATH[table];
           return {
             id,
-            name: String(row.name ?? ""),
-            slug: String(row.slug ?? ""),
+            name: String(row["name"] ?? ""),
+            slug: String(row["slug"] ?? ""),
             type: table,
-            summary: oneLine(row.summary),
+            summary: oneLine(row["summary"]),
             ...(base ? { link: `${SITE}${base}/${id}` } : {}),
           } as ConciergeMatch;
         });

@@ -10,8 +10,16 @@ import redsea from "@/assets/gov/red-sea.jpg";
 import energy from "@/assets/home/energy.jpg";
 import people from "@/assets/home/inv-opps.jpg";
 import banner from "@/assets/gov/cairo.jpg";
+import sIndustry from "@/assets/home/biz-opps.jpg";
+import sTourism from "@/assets/dest-hurghada.jpg";
+import sInfra from "@/assets/home/tenders.jpg";
+import sAgri from "@/assets/sector-rural.jpg";
+import sIct from "@/assets/home/biz-support.jpg";
+import sHealth from "@/assets/home/health.jpg";
+import sEdu from "@/assets/home/education.jpg";
+import sFinance from "@/assets/inner/gov-hero.jpg";
 import {
-  InnerPage, cardGrid, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, EgyptMap, GoldButton,
+  InnerPage, cardGrid, SectionHead, PhotoCard, SidePanel, LinkList, EgyptMap, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -60,16 +68,16 @@ const featured: CardItem[] = [
 ];
 
 const sectors: CardItem[] = [
-  { title: "Real Estate", desc: "Urban development and new cities", Icon: Building2, to: "/properties" },
-  { title: "Industry", desc: "Manufacturing and industrial zones", Icon: Factory, to: IO },
-  { title: "Tourism", desc: "Hotels, resorts and experience projects", Icon: Hotel, to: IO },
-  { title: "Energy", desc: "Renewable and traditional energy", Icon: Zap, to: IO },
-  { title: "Infrastructure", desc: "Transport, ports and logistics", Icon: TrainFront, to: IO },
-  { title: "Agriculture", desc: "Modern agriculture and food industries", Icon: Wheat, to: IO },
-  { title: "ICT & Innovation", desc: "Technology and digital transformation", Icon: Cpu, to: IO },
-  { title: "Healthcare", desc: "Hospitals and medical industries", Icon: HeartPulse, to: IO },
-  { title: "Education", desc: "Universities and research centers", Icon: GraduationCap, to: "/research-programs" },
-  { title: "Financial Services", desc: "Banks, fintech and financial investments", Icon: Landmark, to: IO },
+  { title: "Real Estate", desc: "Urban development and new cities", img: capital, to: "/properties" },
+  { title: "Industry", desc: "Manufacturing and industrial zones", img: sIndustry, to: IO },
+  { title: "Tourism", desc: "Hotels, resorts and experience projects", img: sTourism, to: IO },
+  { title: "Energy", desc: "Renewable and traditional energy", img: energy, to: IO },
+  { title: "Infrastructure", desc: "Transport, ports and logistics", img: sInfra, to: IO },
+  { title: "Agriculture", desc: "Modern agriculture and food industries", img: sAgri, to: IO },
+  { title: "ICT & Innovation", desc: "Technology and digital transformation", img: sIct, to: IO },
+  { title: "Healthcare", desc: "Hospitals and medical industries", img: sHealth, to: IO },
+  { title: "Education", desc: "Universities and research centers", img: sEdu, to: "/research-programs" },
+  { title: "Financial Services", desc: "Banks, fintech and financial investments", img: sFinance, to: IO },
 ];
 
 const benefits = [
@@ -186,7 +194,7 @@ function InvestInEgypt() {
       <section>
         <SectionHead title="Investment in Key Sectors" body="Explore detailed information, incentives and opportunities." to={IO} toLabel="View All Sectors" />
         <div className={cardGrid}>
-          {sectors.map((c) => <IconCard key={c.title} c={c} />)}
+          {sectors.map((c) => <PhotoCard key={c.title} c={c} h="h-24" />)}
         </div>
       </section>
     </InnerPage>

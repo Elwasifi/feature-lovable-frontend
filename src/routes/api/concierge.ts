@@ -183,7 +183,7 @@ export const Route = createFileRoute("/api/concierge")({
                       const hit =
                         grounded.get(`${String(row.type)}:${slug}`) ??
                         [...grounded.values()].find((g) => g.slug === slug);
-                      if (!hit) return null;
+                      if (!hit || !(ITINERARY_TABLES as readonly string[]).includes(hit.type)) return null;
                       return {
                         ...(typeof row.day === "number" ? { day: row.day } : {}),
                         id: hit.id,

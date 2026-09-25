@@ -55,7 +55,7 @@ const featured: CardItem[] = [
   { title: "New Capital Residence", desc: "Apartment", meta: ["3 Bedrooms", "EGP 4,500,000"], img: capital, badge: "New Capital", to: P },
   { title: "North Coast Villa", desc: "Villa", meta: ["4 Bedrooms", "EGP 12,000,000"], img: coast, badge: "North Coast", to: P },
   { title: "Zamalek Apartment", desc: "Apartment", meta: ["2 Bedrooms", "EGP 6,000,000"], img: zamalek, badge: "Cairo", to: P },
-  { title: "6th of October Compound Unit", desc: "Apartment", meta: ["3 Bedrooms", "EGP 3,200,000"], img: october, badge: "Giza", to: P },
+  { title: "Al Rehab City Compound Unit", desc: "Apartment", meta: ["3 Bedrooms", "EGP 3,200,000"], img: october, badge: "New Cairo", to: P },
   { title: "Sahl Hasheesh Chalet", desc: "Chalet", meta: ["2 Bedrooms", "EGP 5,500,000"], img: sahl, badge: "Red Sea", to: P },
 ];
 

@@ -1938,7 +1938,7 @@ export const staticSearchIndex: SearchEntry[] = [
   "page": "/real-estate"
  },
  {
-  "title": "6th of October Compound Unit",
+  "title": "Al Rehab City Compound Unit",
   "desc": "Apartment",
   "tag": "Giza",
   "to": "/real-estate",

@@ -81,7 +81,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         to={entry.to as any}
         activeProps={{ className: "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold" }}
         activeOptions={{ exact: entry.to === "/" }}
-        className="relative whitespace-nowrap rounded-lg px-1 py-2 text-[11.5px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
+        className="relative whitespace-nowrap rounded-lg px-0.5 py-2 text-[11px] min-[1600px]:px-2 min-[1600px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
       >
         {t(entry.label)}
       </Link>

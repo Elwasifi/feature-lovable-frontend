@@ -334,5 +334,21 @@
   "license": "CC BY 2.0",
   "author": "NASA Goddard Photo and Video",
   "subject": "=File:Cultivating Egypt’s Desert.jpg"
+ },
+ "src/assets/abu-simbel.jpg": {
+  "title": "File:Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 03.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_03.jpg/1280px-Templo_de_Rams%C3%A9s_II%2C_Abu_Simbel%2C_Egipto%2C_2022-04-02%2C_DD_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Templo_de_Rams%C3%A9s_II,_Abu_Simbel,_Egipto,_2022-04-02,_DD_03.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "Great Temple of Ramesses II, Abu Simbel (2022)"
+ },
+ "src/assets/muizz-street.jpg": {
+  "title": "File:Muizz Street between Al Mousky Street and Qalawun complex 06.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg/1280px-Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg",
+  "license": "CC BY 4.0",
+  "author": "Marsupium",
+  "subject": "Al-Muizz Street, Historic Cairo (2024)"
  }
 }

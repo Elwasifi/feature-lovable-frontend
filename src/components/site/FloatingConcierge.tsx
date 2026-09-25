@@ -1,3 +1,5 @@
+import { useRouterState } from "@tanstack/react-router";
+import { governorates } from "@/data/governorates";
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
@@ -35,6 +37,16 @@ export function FloatingConcierge() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Governorate pages scope answers to the governorate being viewed.
+  const pathname = useRouterState({ select: (st) => st.location.pathname });
+  const govMatch = /^\/governorates\/([a-z-]+)/.exec(pathname);
+  const scope = govMatch ? governorates.find((g) => g.id === govMatch[1]) : undefined;
+
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener("egyptora:open-concierge", onOpen);
+    return () => window.removeEventListener("egyptora:open-concierge", onOpen);
+  }, []);
 
   // Default placement (bottom-right) + restore any saved position.
   useEffect(() => {
@@ -77,7 +89,10 @@ export function FloatingConcierge() {
         const res = await fetch("/api/concierge", {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ messages: history.slice(-12) }),
+          body: JSON.stringify({
+            messages: history.slice(-12),
+            ...(scope ? { scope: { slug: scope.id, name: scope.name } } : {}),
+          }),
         });
 
         if (!res.ok || !res.body) {

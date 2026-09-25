@@ -1,12 +1,13 @@
 /**
  * Read-only content search used to ground the AI Concierge in real site data.
  *
- * SECURITY: this helper touches ONLY the seven public, public-read catalogue
- * tables listed below. It never reads trips, bookings, user_roles, profiles or
- * any auth/personal data, and it only ever performs SELECTs.
+ * SECURITY: this helper touches ONLY the public catalogue tables listed below.
+ * It never reads trips, bookings, user_roles, profiles or any auth/personal
+ * data, and it only ever performs SELECTs.
  */
 
-export const CONCIERGE_TABLES = [
+/** Tables that can appear in the itinerary block (have detail pages). */
+export const ITINERARY_TABLES = [
   "governorates",
   "destinations",
   "heritage_sites",
@@ -16,22 +17,38 @@ export const CONCIERGE_TABLES = [
   "offers",
 ] as const;
 
+export const CONCIERGE_TABLES = [
+  ...ITINERARY_TABLES,
+  "government_entities",
+  "investment_opportunities",
+  "providers",
+  "products",
+] as const;
+
 export type ConciergeTable = (typeof CONCIERGE_TABLES)[number];
 
 export type ConciergeMatch = {
-  /** Primary key used to build detail-page links. */
   id: string;
-  /** Display name of the entry. */
   name: string;
-  /** Stable slug used to build the public link. */
   slug: string;
-  /** Which catalogue the entry comes from. */
   type: ConciergeTable;
-  /** One-line summary (truncated) — never the full description. */
   summary: string;
+  /** Public link: official URL for government entities, site path otherwise. */
+  link?: string;
+  category?: string;
 };
 
 const MAX_SUMMARY = 160;
+const SITE = "https://egyptora-hub.com";
+
+const STOP = new Set(["the","and","for","how","what","where","who","can","egypt","egyptian","with","from","into","about","renew","get","buy","find"]);
+
+/** Builds a PostgREST OR filter matching any meaningful word in any column. */
+function orFilter(term: string, cols: string[]): string {
+  const words = term.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w));
+  const list = (words.length ? words.slice(0, 5) : [term]).map((w) => (w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w));
+  return list.flatMap((w) => cols.map((c) => `${c}.ilike.%${w}%`)).join(",");
+}
 
 function oneLine(value: unknown): string {
   if (typeof value !== "string") return "";
@@ -39,10 +56,38 @@ function oneLine(value: unknown): string {
   return clean.length > MAX_SUMMARY ? `${clean.slice(0, MAX_SUMMARY - 1)}…` : clean;
 }
 
-/**
- * Searches the seven public catalogue tables and returns compact matches
- * (name / slug / type / summary only) to keep the token payload small.
- */
+const DETAIL_PATH: Partial<Record<ConciergeTable, string>> = {
+  governorates: "/governorates",
+  heritage_sites: "/heritage-sites",
+  museums: "/museums",
+  events: "/events",
+  properties: "/properties",
+  offers: "/offers",
+  investment_opportunities: "/investment-opportunities",
+  providers: "/providers",
+  products: "/products",
+};
+
+async function searchGovernment(term: string, limit: number): Promise<ConciergeMatch[]> {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const { data, error } = await supabaseAdmin
+    .from("government_entities")
+    .select("id, entity_name_en, entity_name_ar, description_en, category_en, official_url")
+    .or(orFilter(term, ["entity_name_en", "entity_name_ar", "description_en", "category_en"]))
+    .order("sort_order")
+    .limit(limit);
+  if (error) throw error;
+  return (data ?? []).map((e) => ({
+    id: String(e.id),
+    name: e.entity_name_en,
+    slug: String(e.id),
+    type: "government_entities" as const,
+    summary: oneLine(e.description_en),
+    category: e.category_en,
+    link: e.official_url || `${SITE}/government-directory`,
+  }));
+}
+
 export async function searchSiteContent(
   query: string,
   category?: ConciergeTable,
@@ -53,26 +98,32 @@ export async function searchSiteContent(
 
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
   const tables = category ? [category] : [...CONCIERGE_TABLES];
-  const perTable = category ? limit : Math.max(2, Math.ceil(limit / 2));
+  const perTable = category ? limit : 2;
 
   const results = await Promise.all(
     tables.map(async (table) => {
       try {
-        let q = supabaseAdmin
-          .from(table)
+        if (table === "government_entities") return await searchGovernment(term, perTable);
+        let q = (supabaseAdmin.from(table) as any)
           .select("id, name, slug, summary")
-          .or(`name.ilike.%${term}%,summary.ilike.%${term}%`);
-        // Never surface content that is still awaiting review.
-        if (table === "properties") q = (q as any).eq("moderation_state", "PUBLISHED");
+          .or(orFilter(term, ["name", "summary"]));
+        if (table === "properties" || table === "investment_opportunities") {
+          q = q.eq("moderation_state", "PUBLISHED");
+        }
         const { data, error } = await q.limit(perTable);
         if (error) throw error;
-        return (data ?? []).map((row) => ({
-          id: String((row as { id?: string }).id ?? ""),
-          name: String((row as { name?: string }).name ?? ""),
-          slug: String((row as { slug?: string }).slug ?? ""),
-          type: table,
-          summary: oneLine((row as { summary?: string }).summary),
-        })) as ConciergeMatch[];
+        return ((data ?? []) as Array<Record<string, unknown>>).map((row) => {
+          const id = String(row["id"] ?? "");
+          const base = DETAIL_PATH[table];
+          return {
+            id,
+            name: String(row["name"] ?? ""),
+            slug: String(row["slug"] ?? ""),
+            type: table,
+            summary: oneLine(row["summary"]),
+            ...(base ? { link: `${SITE}${base}/${id}` } : {}),
+          } as ConciergeMatch;
+        });
       } catch (err) {
         console.error(`[concierge-search] ${table} lookup failed:`, err);
         return [] as ConciergeMatch[];
@@ -80,5 +131,5 @@ export async function searchSiteContent(
     }),
   );
 
-  return results.flat().filter((m) => m.name && m.slug).slice(0, limit * 2);
+  return results.flat().filter((m) => m.name && m.slug).slice(0, Math.max(limit * 2, 16));
 }

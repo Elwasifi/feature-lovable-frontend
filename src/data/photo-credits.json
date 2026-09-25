@@ -2542,5 +2542,349 @@
   "license": "CC BY 3.0",
   "author": "youssef_alam",
   "subject": "Aswan Museum, Elephantine"
+ },
+ "db:governorate_areas/qalyubia-banha": {
+  "title": "File:Banha-st.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Banha-st.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Banha-st.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris knight",
+  "subject": "Banha"
+ },
+ "db:governorate_areas/kafr-el-sheikh-kafr-el-sheikh": {
+  "title": "File:Main building of Kafr El-Sheikh Governorate.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Main_building_of_Kafr_El-Sheikh_Governorate.JPG/1280px-Main_building_of_Kafr_El-Sheikh_Governorate.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Main_building_of_Kafr_El-Sheikh_Governorate.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Faris El-Gwely",
+  "subject": "Kafr El Sheikh"
+ },
+ "db:governorate_areas/kafr-el-sheikh-qallin": {
+  "title": "File:Souhadaa Sq.-Qallin.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Souhadaa_Sq.-Qallin.JPG/1280px-Souhadaa_Sq.-Qallin.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Souhadaa_Sq.-Qallin.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris El-Gwely",
+  "subject": "Qallin"
+ },
+ "db:governorate_areas/damietta-kafr-saad": {
+  "title": "File:Damietta El-Gadeeda City, Kafr Saad, Damietta Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Damietta_El-Gadeeda_City%2C_Kafr_Saad%2C_Damietta_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Damietta_El-Gadeeda_City%2C_Kafr_Saad%2C_Damietta_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Damietta_El-Gadeeda_City,_Kafr_Saad,_Damietta_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "hesham zaki",
+  "subject": "Kafr Saad"
+ },
+ "db:governorate_areas/gharbia-kafr-el-zayat": {
+  "title": "File:كورنيش كفر الزيات ليلا.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/e/e7/%D9%83%D9%88%D8%B1%D9%86%D9%8A%D8%B4_%D9%83%D9%81%D8%B1_%D8%A7%D9%84%D8%B2%D9%8A%D8%A7%D8%AA_%D9%84%D9%8A%D9%84%D8%A7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:%D9%83%D9%88%D8%B1%D9%86%D9%8A%D8%B4_%D9%83%D9%81%D8%B1_%D8%A7%D9%84%D8%B2%D9%8A%D8%A7%D8%AA_%D9%84%D9%8A%D9%84%D8%A7.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Elgayar",
+  "subject": "Kafr El Zayat"
+ },
+ "db:governorate_areas/gharbia-samannoud": {
+  "title": "File:Samannoud City, Samannoud, Gharbia Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Samannoud_City%2C_Samannoud%2C_Gharbia_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Samannoud_City%2C_Samannoud%2C_Gharbia_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Samannoud_City,_Samannoud,_Gharbia_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Samir Eltaih",
+  "subject": "Samannoud"
+ },
+ "db:governorate_areas/gharbia-qutur": {
+  "title": "File:Qutur.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Qutur.jpg/1280px-Qutur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Qutur.jpg",
+  "license": "CC BY 3.0",
+  "author": "Gharbia’s website",
+  "subject": "Qutur"
+ },
+ "db:governorate_areas/dakahlia-belqas": {
+  "title": "File:براري بلقاس - Barrary-Belqas.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/%D8%A8%D8%B1%D8%A7%D8%B1%D9%8A_%D8%A8%D9%84%D9%82%D8%A7%D8%B3_-_Barrary-Belqas.jpg/1280px-%D8%A8%D8%B1%D8%A7%D8%B1%D9%8A_%D8%A8%D9%84%D9%82%D8%A7%D8%B3_-_Barrary-Belqas.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D8%A8%D8%B1%D8%A7%D8%B1%D9%8A_%D8%A8%D9%84%D9%82%D8%A7%D8%B3_-_Barrary-Belqas.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "كومي مان",
+  "subject": "Belqas"
+ },
+ "db:governorate_areas/beheira-damanhour": {
+  "title": "File:Opera Sq.-Damanhour.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Opera_Sq.-Damanhour.jpg/1280px-Opera_Sq.-Damanhour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Opera_Sq.-Damanhour.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris El-Gwely",
+  "subject": "Damanhour"
+ },
+ "db:governorate_areas/beheira-mahmoudiyah": {
+  "title": "File:Mahmoudiyah Canal.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Mahmoudiyah_Canal.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Mahmoudiyah_Canal.jpg",
+  "license": "Public domain",
+  "author": "Stoddard, John L. 1850-1931",
+  "subject": "Mahmoudiyah"
+ },
+ "db:governorate_areas/beheira-badr": {
+  "title": "File:Badrcity.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Badrcity.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Badrcity.jpg",
+  "license": "Public domain",
+  "author": "Mohamednajm",
+  "subject": "Badr"
+ },
+ "db:governorate_areas/beheira-shubrakhit": {
+  "title": "File:Nile in Shubrakhit.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Nile_in_Shubrakhit.jpg/1280px-Nile_in_Shubrakhit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Nile_in_Shubrakhit.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Ibrahim El-Mezayen",
+  "subject": "Shubrakhit"
+ },
+ "db:governorate_areas/port-said-port-fuad": {
+  "title": "File:Port Fouad.JPG",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Port_Fouad.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Fouad.JPG",
+  "license": "Public domain",
+  "author": "See below",
+  "subject": "Port Fuad"
+ },
+ "db:governorate_areas/north-sinai-al-arish": {
+  "title": "File:نخيل العريش.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/%D9%86%D8%AE%D9%8A%D9%84_%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D8%B4.jpg/1280px-%D9%86%D8%AE%D9%8A%D9%84_%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D8%B4.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D9%86%D8%AE%D9%8A%D9%84_%D8%A7%D9%84%D8%B9%D8%B1%D9%8A%D8%B4.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hesham Farouk Ragab",
+  "subject": "Al-Arish"
+ },
+ "db:governorate_areas/faiyum-faiyum": {
+  "title": "File:MadinatFayyumWaterWheel.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c7/MadinatFayyumWaterWheel.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:MadinatFayyumWaterWheel.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Faiyum"
+ },
+ "db:governorate_areas/beni-suef-el-wasta": {
+  "title": "File:El wasta buildings.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/El_wasta_buildings.jpg/1280px-El_wasta_buildings.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:El_wasta_buildings.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "",
+  "subject": "El Wasta"
+ },
+ "db:governorate_areas/beni-suef-biba": {
+  "title": "File:Bani Suef, Egypt; pilgrims at Biba Wellcome L0044819.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Bani_Suef%2C_Egypt%3B_pilgrims_at_Biba_Wellcome_L0044819.jpg/1280px-Bani_Suef%2C_Egypt%3B_pilgrims_at_Biba_Wellcome_L0044819.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Bani_Suef,_Egypt;_pilgrims_at_Biba_Wellcome_L0044819.jpg",
+  "license": "CC BY 4.0",
+  "author": "",
+  "subject": "Biba"
+ },
+ "db:governorate_areas/minya-matai": {
+  "title": "File:2022-10-24 aldeia Matai, suco Matai.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/2022-10-24_aldeia_Matai%2C_suco_Matai.jpg/1280px-2022-10-24_aldeia_Matai%2C_suco_Matai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:2022-10-24_aldeia_Matai,_suco_Matai.jpg",
+  "license": "Public domain",
+  "author": "Serviço de Apoio à Sociedade Civil e Auditoria Social",
+  "subject": "Matai"
+ },
+ "db:governorate_areas/asyut-dairut": {
+  "title": "File:DairutDam.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/DairutDam.jpg/1280px-DairutDam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:DairutDam.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Dairut"
+ },
+ "db:governorate_areas/asyut-manfalut": {
+  "title": "File:ManfalutKashifMosqueOutside.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/ManfalutKashifMosqueOutside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:ManfalutKashifMosqueOutside.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Manfalut"
+ },
+ "db:governorate_areas/asyut-sahel-selim": {
+  "title": "File:Assiut - As Sahel Road طريق أسيوط الساحل - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Assiut_-_As_Sahel_Road_%D8%B7%D8%B1%D9%8A%D9%82_%D8%A3%D8%B3%D9%8A%D9%88%D8%B7_%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84_-_panoramio.jpg/1280px-Assiut_-_As_Sahel_Road_%D8%B7%D8%B1%D9%8A%D9%82_%D8%A3%D8%B3%D9%8A%D9%88%D8%B7_%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Assiut_-_As_Sahel_Road_%D8%B7%D8%B1%D9%8A%D9%82_%D8%A3%D8%B3%D9%8A%D9%88%D8%B7_%D8%A7%D9%84%D8%B3%D8%A7%D8%AD%D9%84_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Hypatia Foundation",
+  "subject": "Sahel Selim"
+ },
+ "db:governorate_areas/sohag-sohag": {
+  "title": "File:BabsohagC00107.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/BabsohagC00107.jpg/1280px-BabsohagC00107.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:BabsohagC00107.jpg",
+  "license": "GFDL",
+  "author": "عرفة علي at Arabic Wikipedia",
+  "subject": "Sohag"
+ },
+ "db:governorate_areas/sohag-dar-el-salam": {
+  "title": "File:Al Hager Bawlad Yehya, Markaz Dar El-Salam, Sohag Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Al_Hager_Bawlad_Yehya%2C_Markaz_Dar_El-Salam%2C_Sohag_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Al_Hager_Bawlad_Yehya%2C_Markaz_Dar_El-Salam%2C_Sohag_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Al_Hager_Bawlad_Yehya,_Markaz_Dar_El-Salam,_Sohag_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Mahmoud Farrag",
+  "subject": "Dar El Salam"
+ },
+ "db:governorate_areas/sohag-tahta": {
+  "title": "File:Tahta Minare Mosque (2).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Tahta_Minare_Mosque_%282%29.jpg/1280px-Tahta_Minare_Mosque_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Tahta_Minare_Mosque_(2).jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Jelican9",
+  "subject": "Tahta"
+ },
+ "db:governorate_areas/qena-qift": {
+  "title": "File:Al Owaydat, Qift, Qena Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Al_Owaydat%2C_Qift%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Al_Owaydat%2C_Qift%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Al_Owaydat,_Qift,_Qena_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Максим Улитин",
+  "subject": "Qift"
+ },
+ "db:governorate_areas/qena-qus": {
+  "title": "File:Khozam, Qus, Qena Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Khozam%2C_Qus%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Khozam%2C_Qus%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Khozam,_Qus,_Qena_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Максим Улитин",
+  "subject": "Qus"
+ },
+ "db:governorate_areas/aswan-edfu": {
+  "title": "File:Temple Edfou Egypte.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Temple_Edfou_Egypte.jpg/1280px-Temple_Edfou_Egypte.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_Edfou_Egypte.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Patrick.reb",
+  "subject": "Edfu"
+ },
+ "db:governorate_areas/aswan-daraw": {
+  "title": "File:DarawKinziCourt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/DarawKinziCourt.jpg/1280px-DarawKinziCourt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:DarawKinziCourt.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Daraw"
+ },
+ "db:governorate_areas/aswan-nasr": {
+  "title": "File:Aswan - Doaa Nasr.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Aswan_-_Doaa_Nasr.jpg/1280px-Aswan_-_Doaa_Nasr.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Aswan_-_Doaa_Nasr.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Doaa Mo.Nasr",
+  "subject": "Nasr"
+ },
+ "db:governorate_areas/red-sea-el-quseir": {
+  "title": "File:Quseir Street R01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Quseir_Street_R01.jpg/1280px-Quseir_Street_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Quseir_Street_R01.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert (MJJR)",
+  "subject": "El Quseir"
+ },
+ "db:governorate_areas/red-sea-ras-gharib": {
+  "title": "File:Ras Ghareb from air.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Ras_Ghareb_from_air.jpg/1280px-Ras_Ghareb_from_air.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ras_Ghareb_from_air.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Orderinchaos",
+  "subject": "Ras Gharib"
+ },
+ "db:governorate_areas/red-sea-shalateen": {
+  "title": "File:Asch-Schalatin 15.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Asch-Schalatin_15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Asch-Schalatin_15.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Klaus Polak, http://Nikswieweg.com",
+  "subject": "Shalateen"
+ },
+ "db:governorate_areas/new-valley-kharga": {
+  "title": "File:Temple of Hibis.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Temple_of_Hibis.jpg/1280px-Temple_of_Hibis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Hibis.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "ASartan",
+  "subject": "Kharga"
+ },
+ "db:governorate_areas/new-valley-baris": {
+  "title": "File:BarisOldTown.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/BarisOldTown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:BarisOldTown.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Baris"
+ },
+ "db:governorate_areas/cairo-heliopolis": {
+  "title": "File:Baron Palace.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Baron_Palace.jpg/1280px-Baron_Palace.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Baron_Palace.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hoba offendum",
+  "subject": "Heliopolis"
+ },
+ "db:governorate_areas/cairo-shubra": {
+  "title": "File:Shobra.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Shobra.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Shobra.jpg",
+  "license": "CC BY 2.0",
+  "author": "Andrew A. Shenouda",
+  "subject": "Shubra"
+ },
+ "db:governorate_areas/cairo-ain-shams": {
+  "title": "File:Ain Shams Univ Doors4.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Ain_Shams_Univ_Doors4.JPG/1280px-Ain_Shams_Univ_Doors4.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ain_Shams_Univ_Doors4.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Ashashyou",
+  "subject": "Ain Shams"
+ },
+ "db:governorate_areas/cairo-badr-city": {
+  "title": "File:Badrcity.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Badrcity.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Badrcity.jpg",
+  "license": "Public domain",
+  "author": "Mohamednajm",
+  "subject": "Badr City"
+ },
+ "db:governorate_areas/giza-giza": {
+  "title": "File:Pyramids of the Giza Necropolis.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Pyramids_of_the_Giza_Necropolis.jpg/1280px-Pyramids_of_the_Giza_Necropolis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "KennyOMG",
+  "subject": "Giza"
+ },
+ "db:governorate_areas/giza-al-badrashin": {
+  "title": "File:Saqarah, Al Badrashin, Giza Governorate, Egypt - panoramio.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Saqarah%2C_Al_Badrashin%2C_Giza_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Saqarah,_Al_Badrashin,_Giza_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Abanoubo",
+  "subject": "Al-Badrashin"
+ },
+ "db:governorate_areas/giza-kerdasa": {
+  "title": "File:Kerdasa. Panorama gezien vanop de Nijl, GDE000576.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Kerdasa._Panorama_gezien_vanop_de_Nijl%2C_GDE000576.jpg/1280px-Kerdasa._Panorama_gezien_vanop_de_Nijl%2C_GDE000576.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kerdasa._Panorama_gezien_vanop_de_Nijl,_GDE000576.jpg",
+  "license": "Public domain",
+  "author": "Unknown",
+  "subject": "Kerdasa"
+ },
+ "db:governorate_areas/gharbia-tanta": {
+  "title": "File:Tanta-1.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Tanta-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Tanta-1.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Faris knight",
+  "subject": "Tanta"
+ },
+ "db:governorate_areas/gharbia-zefta": {
+  "title": "File:جسر ميت غمر - زفتى.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/%D8%AC%D8%B3%D8%B1_%D9%85%D9%8A%D8%AA_%D8%BA%D9%85%D8%B1_-_%D8%B2%D9%81%D8%AA%D9%89.jpg/1280px-%D8%AC%D8%B3%D8%B1_%D9%85%D9%8A%D8%AA_%D8%BA%D9%85%D8%B1_-_%D8%B2%D9%81%D8%AA%D9%89.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D8%AC%D8%B3%D8%B1_%D9%85%D9%8A%D8%AA_%D8%BA%D9%85%D8%B1_-_%D8%B2%D9%81%D8%AA%D9%89.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Sherif1978nada",
+  "subject": "Zefta"
  }
 }

@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { EgyptMap } from "@/components/site/EgyptMap";
 import { governorates } from "@/data/governorates";
 import { SITE } from "@/config/site";
@@ -27,7 +29,9 @@ function GovernoratesPage() {
   const { t } = useI18n();
   const sorted = [...governorates].sort((a, b) => a.name.localeCompare(b.name));
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
+    <>
+    <SiteHeader />
+    <main className="mx-auto max-w-7xl px-4 py-10 lg:px-8">
       <h1 className="font-display text-3xl font-bold text-navy lg:text-4xl">{t("The 27 Governorates of Egypt")}</h1>
       <p className="mt-2 max-w-2xl text-text-body">{t("Pick a governorate on the map or from the list to see its places, events, investment, real estate and services.")}</p>
       <div className="mt-8"><EgyptMap /></div>
@@ -45,6 +49,8 @@ function GovernoratesPage() {
           </li>
         ))}
       </ul>
-    </div>
+    </main>
+    <SiteFooter />
+    </>
   );
 }

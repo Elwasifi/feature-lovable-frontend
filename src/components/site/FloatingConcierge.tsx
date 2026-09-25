@@ -351,5 +351,18 @@ function LinkifiedText({ text }: { text: string }) {
     last = idx + m[0].length;
   }
   if (last < text.length) parts.push(text.slice(last));
-  return <>{parts}</>;
+  return <>{parts.flatMap((p, i) => (typeof p === "string" ? renderBold(p, i) : [p]))}</>;
+}
+
+/** Renders **bold** markers as <strong>; strips any unpaired leftover asterisks. */
+function renderBold(s: string, k: number): ReactNode[] {
+  return s.split(/\*\*([^*]+?)\*\*/g).map((seg, j) =>
+    j % 2 === 1 ? (
+      <strong key={`${k}-${j}`} className="font-semibold">
+        {seg}
+      </strong>
+    ) : (
+      seg.replace(/\*\*/g, "")
+    ),
+  );
 }

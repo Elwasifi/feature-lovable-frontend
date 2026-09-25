@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   LayoutDashboard, Rocket, FileCheck2, Scale, BadgePercent, PieChart, LifeBuoy, Factory, Gavel,
   Globe2, TrendingUp, Users, Gift, Building2, Landmark, BookOpen, ClipboardList, BadgeCheck, LineChart,
-  ChevronRight, ArrowRight, Download, Headphones, FileText,
+  ArrowRight, Download, Headphones, FileText, Search, FolderOpen,
 } from "lucide-react";
 import { toast } from "sonner";
 import hero from "@/assets/inner/business-hero.jpg";
@@ -11,8 +11,18 @@ import land from "@/assets/home/biz-opps.jpg";
 import tourism from "@/assets/gov/red-sea.jpg";
 import residential from "@/assets/sector-realestate.jpg";
 import agri from "@/assets/sector-rural.jpg";
+import startBiz from "@/assets/home/start-biz.jpg";
+import licenses from "@/assets/inner/gov-hero.jpg";
+import incentives from "@/assets/home/inv-opps.jpg";
+import tenders from "@/assets/home/tenders.jpg";
+import trade from "@/assets/trade-suez.jpg";
+import support from "@/assets/home/biz-support.jpg";
+import energy from "@/assets/home/energy.jpg";
+import hurghada from "@/assets/dest-hurghada.jpg";
+import health from "@/assets/home/health.jpg";
+import finance from "@/assets/gov/cairo.jpg";
 import {
-  InnerPage, cardGrid, SectionHead, ProcessStepsRow, PhotoCard, IconCard, SidePanel, LinkList, NavyPromo, GoldButton,
+  InnerPage, cardGrid, SectionHead, ProcessStepsRow, PhotoCard, SidePanel, LinkList, NavyPromo, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -50,13 +60,41 @@ const chips: Chip[] = [
   { label: "Public Procurement", Icon: Gavel },
 ];
 
-const why: CardItem[] = [
-  { title: "Strategic Location", desc: "A gateway to Africa, the Middle East and global markets.", Icon: Globe2, to: IO },
-  { title: "Growing Economy", desc: "Diverse and resilient economy with high growth potential.", Icon: TrendingUp, to: IO },
-  { title: "Young & Skilled Workforce", desc: "A talented and competitive talent pool.", Icon: Users, to: IO },
-  { title: "Investment Incentives", desc: "Attractive incentives and free zones.", Icon: Gift, to: IO },
-  { title: "Mega Projects", desc: "New cities and national projects create vast opportunities.", Icon: Building2, to: IO },
-  { title: "Supportive Government", desc: "Reforms and digital services to make business easier.", Icon: Landmark, to: IO },
+const why = [
+  { t: "Strategic Location", d: "A gateway to Africa, the Middle East and Europe.", Icon: Globe2 },
+  { t: "Growing Economy", d: "A large and diverse market.", Icon: TrendingUp },
+  { t: "Skilled Workforce", d: "A young and talented population.", Icon: Users },
+  { t: "Investment Incentives", d: "Attractive incentives and free zones.", Icon: Gift },
+  { t: "Mega Projects", d: "New cities and national projects.", Icon: Building2 },
+  { t: "Government Support", d: "Reforms and investor-friendly policies.", Icon: Landmark },
+];
+
+const services: CardItem[] = [
+  { title: "Start a Business", desc: "Step-by-step guidance to establish your company in Egypt.", img: startBiz, to: "/government-directory" },
+  { title: "Licenses & Permits", desc: "Find required licenses and procedures.", img: licenses, to: "/government-directory" },
+  { title: "Investment Incentives", desc: "Explore incentives and support programs.", img: incentives, to: IO },
+  { title: "Tenders & Projects", desc: "Government and private sector opportunities.", img: tenders, to: IO },
+  { title: "Trade & Export", desc: "Access export services and international markets.", img: trade, to: IO },
+  { title: "Business Support", desc: "Find advisory, legal and financial support.", img: support, to: "/providers" },
+];
+
+const sectorRow: CardItem[] = [
+  { title: "Real Estate & Construction", img: residential, to: "/properties" },
+  { title: "Industry & Manufacturing", img: land, to: IO },
+  { title: "Tourism & Hospitality", img: hurghada, to: IO },
+  { title: "Energy & Renewables", img: energy, to: IO },
+  { title: "Agriculture & Food", img: agri, to: IO },
+  { title: "ICT & Innovation", img: support, to: IO },
+  { title: "Healthcare & Pharmaceuticals", img: health, to: IO },
+  { title: "Logistics & Transportation", img: trade, to: IO },
+  { title: "Financial Services", img: finance, to: IO },
+];
+
+const stories: CardItem[] = [
+  { title: "Renewable Energy Project", desc: "Powering a sustainable future in Egypt.", img: solar, badge: "Example", to: IO },
+  { title: "International Hotel Chain", desc: "Expanding hospitality in the Red Sea.", img: tourism, badge: "Example", to: IO },
+  { title: "Manufacturing Investment", desc: "Creating jobs and local value.", img: land, badge: "Example", to: IO },
+  { title: "Logistics Hub", desc: "Connecting regional markets.", img: trade, badge: "Example", to: IO },
 ];
 
 const steps = [
@@ -97,61 +135,86 @@ function DoBusiness() {
       moreTo="/providers"
       sidebar={
         <>
+          <SidePanel title="Why Do Business in Egypt?">
+            <ul className="grid gap-3">
+              {why.map((w) => (
+                <li key={w.t} className="flex gap-3">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full bg-chip-active text-navy">
+                    <w.Icon className="size-4 fill-navy/15" strokeWidth={2.2} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[13px] font-bold text-navy">{t(w.t)}</span>
+                    <span className="block text-[11px] text-text-body">{t(w.d)}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </SidePanel>
+          <SidePanel title="Key Resources">
+            <LinkList
+              items={[
+                { label: "Investment Guide", to: IO, Icon: BookOpen },
+                { label: "Laws & Regulations", to: "/legal", Icon: Scale },
+                { label: "Government Entities", to: "/government-directory", Icon: Landmark },
+                { label: "Industrial & Free Zones", to: IO, Icon: Factory },
+                { label: "Business Service Providers", to: "/providers", Icon: Search },
+                { label: "Useful Documents & Forms", to: "/legal", Icon: FolderOpen },
+              ]}
+            />
+          </SidePanel>
+          <section className="rounded-[10px] border border-border bg-bg-band p-5 text-center">
+            <Headphones className="mx-auto size-8 text-shell-gold" />
+            <h3 className="mt-2 font-display text-lg font-bold text-navy">{t("Need Assistance?")}</h3>
+            <p className="mt-1 text-xs text-text-body">{t("Our team is here to support you.")}</p>
+            <div className="mt-3">
+              <GoldButton to="/contact">
+                {t("Contact Us")} <ArrowRight className="size-4 rtl:rotate-180" />
+              </GoldButton>
+            </div>
+          </section>
+          <SidePanel title="Key Sectors">
+            <LinkList items={keySectors.map((s) => ({ label: s, to: IO }))} />
+          </SidePanel>
+        </>
+      }
+      bottom={
+        <div className="grid gap-4 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
           <NavyPromo>
-            <h3 className="font-display text-xl font-bold">{t("Invest. Partner. Grow.")}</h3>
-            <p className="mt-1 text-sm text-foreground/80">{t("Connect with opportunities across Egypt's key sectors.")}</p>
+            <h3 className="font-display text-2xl font-bold">{t("Invest in People. Invest in Egypt.")}</h3>
+            <p className="mt-1 text-sm text-foreground/80">{t("A dynamic market. A strategic location. A brighter tomorrow.")}</p>
             <div className="mt-4">
               <GoldButton to={IO}>
                 {t("Explore Opportunities")} <ArrowRight className="size-4 rtl:rotate-180" />
               </GoldButton>
             </div>
           </NavyPromo>
-          <SidePanel title="Key Sectors">
-            <LinkList items={keySectors.map((s) => ({ label: s, to: IO }))} />
-            <div className="mt-3">
-              <GoldButton to={IO}>
-                {t("View All Sectors")} <ChevronRight className="size-4 rtl:rotate-180" />
-              </GoldButton>
+          <section className="flex items-center gap-4 rounded-[10px] border border-border bg-bg-band p-5">
+            <div className="min-w-0 flex-1">
+              <h3 className="font-display text-lg font-bold text-navy">{t("Download the Business Guide")}</h3>
+              <p className="mt-1 text-sm text-text-body">{t("Your complete guide to doing business in Egypt.")}</p>
+              <button
+                type="button"
+                onClick={() => toast(t("Coming soon"))}
+                className="mt-3 inline-flex items-center gap-2 rounded-lg border border-navy px-4 py-2 text-sm font-semibold text-navy hover:bg-card"
+              >
+                {t("Download Now")} <Download className="size-4" />
+              </button>
             </div>
-          </SidePanel>
-        </>
-      }
-      bottom={
-        <div className="grid gap-4 md:grid-cols-3">
-          {[
-            { Icon: FileText, t: "Business Resources", d: "Access guides, forms, templates and useful links.", b: "Explore Resources", to: "/legal" },
-            { Icon: Headphones, t: "Need Assistance?", d: "Get support from our business advisory team.", b: "Contact Us", to: "/contact" },
-          ].map((c) => (
-            <section key={c.t} className="rounded-[10px] border border-border bg-bg-band p-6">
-              <c.Icon className="size-7 text-shell-gold" />
-              <h3 className="mt-3 font-display text-lg font-bold text-navy">{t(c.t)}</h3>
-              <p className="mt-1 text-sm text-text-body">{t(c.d)}</p>
-              <div className="mt-4">
-                <GoldButton to={c.to}>
-                  {t(c.b)} <ArrowRight className="size-4 rtl:rotate-180" />
-                </GoldButton>
-              </div>
-            </section>
-          ))}
-          <section className="on-dark rounded-[10px] bg-navy p-6">
-            <Download className="size-7 text-shell-gold" />
-            <h3 className="mt-3 font-display text-lg font-bold text-foreground">{t("Download Business Guide")}</h3>
-            <p className="mt-1 text-sm text-foreground/80">{t("Your complete guide to doing business in Egypt.")}</p>
-            <button
-              type="button"
-              onClick={() => toast(t("Coming soon"))}
-              className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary-foreground px-5 py-2.5 text-sm font-semibold text-navy"
-            >
-              {t("Download PDF")} <Download className="size-4" />
-            </button>
+            <FileText className="size-14 shrink-0 text-shell-gold" strokeWidth={1.5} />
           </section>
         </div>
       }
     >
       <section>
-        <SectionHead title="Why Do Business in Egypt?" />
+        <SectionHead title="Featured Business Services" body="Everything you need to start, run and grow your business in Egypt." to="/providers" toLabel="View All Services" />
         <div className={cardGrid}>
-          {why.map((c) => <IconCard key={c.title} c={c} cta={false} />)}
+          {services.map((c) => <PhotoCard key={c.title} c={c} />)}
+        </div>
+      </section>
+      <section>
+        <SectionHead title="Explore Business Opportunities by Sector" body="Discover opportunities across key sectors." to={IO} toLabel="View All Sectors" />
+        <div className={cardGrid}>
+          {sectorRow.map((c) => <PhotoCard key={c.title} c={c} h="h-20" />)}
         </div>
       </section>
       <section>
@@ -161,7 +224,13 @@ function DoBusiness() {
       <section>
         <SectionHead title="Featured Business Opportunities" body="Discover current opportunities across key sectors." to={IO} toLabel="View All Opportunities" />
         <div className={cardGrid}>
-          {opps.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
+          {opps.map((c) => <PhotoCard key={c.title} c={c} />)}
+        </div>
+      </section>
+      <section>
+        <SectionHead title="Success Stories" body="Illustrative examples of the kinds of businesses growing in Egypt." to={IO} toLabel="View All Stories" />
+        <div className={cardGrid}>
+          {stories.map((c) => <PhotoCard key={c.title} c={c} />)}
         </div>
       </section>
     </InnerPage>

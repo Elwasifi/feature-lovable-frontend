@@ -81,7 +81,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         to={entry.to as any}
         activeProps={{ className: "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold" }}
         activeOptions={{ exact: entry.to === "/" }}
-        className="relative whitespace-nowrap rounded-lg px-1 py-2 text-[11.5px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
+        className="relative whitespace-nowrap rounded-lg px-0.5 py-2 text-[11px] min-[1600px]:px-2 min-[1600px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
       >
         {t(entry.label)}
       </Link>
@@ -102,7 +102,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
           aria-haspopup="true"
           onClick={() => setOpen(false)}
           className={cn(
-          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1 py-2 text-[11.5px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-0.5 py-2 text-[11px] min-[1600px]:px-2 min-[1600px]:text-[12.5px] font-medium transition-colors",
           open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
           active &&
             "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
@@ -118,7 +118,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1 py-2 text-[11.5px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-0.5 py-2 text-[11px] min-[1600px]:px-2 min-[1600px]:text-[12.5px] font-medium transition-colors",
           open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
           active &&
             "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
@@ -234,7 +234,7 @@ export function MainNav() {
             className="size-9 shrink-0 rounded-full ring-1 ring-gold-line sm:size-10"
           />
           <span className="block min-w-0 leading-tight">
-            <span className="block whitespace-nowrap font-display text-[13px] font-semibold tracking-[0.16em] text-navy">
+            <span className="block whitespace-nowrap font-display text-[13px] font-semibold tracking-[0.12em] text-navy">
               EGYPTORA <span className="text-shell-gold">HUB</span>
             </span>
             <span className="block whitespace-nowrap text-[9.5px] tracking-[0.06em] text-muted-foreground">
@@ -243,7 +243,7 @@ export function MainNav() {
           </span>
         </Link>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-0 xl:flex min-[1440px]:gap-1">
+        <nav className="hidden min-w-0 items-center justify-center gap-0 xl:flex min-[1600px]:gap-1">
           {mainNav.map((entry) => (
             <DesktopEntry key={entry.label} entry={entry} />
           ))}

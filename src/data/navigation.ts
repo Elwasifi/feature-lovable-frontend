@@ -24,6 +24,7 @@ export const mainNav: NavEntry[] = [
     to: "/explore-egypt",
     items: [
       { label: "All Experiences", to: "/explore-egypt" },
+      { label: "27 Governorates", to: "/governorates" },
       { label: "Cultural & Historical Tours", to: "/heritage-sites" },
       { label: "Nile Cruises", soon: true },
       { label: "Diving & Marine Activities", soon: true },
@@ -107,6 +108,7 @@ export const mainNav: NavEntry[] = [
       { label: "Wellness & Retreats", soon: true },
     ],
   },
+  { label: "Governorates", to: "/governorates" },
   { label: "Government Directory", to: "/government-directory" },
   {
     label: "About",

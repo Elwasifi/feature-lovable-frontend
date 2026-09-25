@@ -50,6 +50,7 @@ import { Route as CountriesIdRouteImport } from './routes/countries_.$id'
 import { Route as EgyptianHeritageWorldwideIdRouteImport } from './routes/egyptian-heritage-worldwide_.$id'
 import { Route as EventsIdRouteImport } from './routes/events_.$id'
 import { Route as GovernmentDirectoryDigitalServicesRouteImport } from './routes/government-directory_.digital-services'
+import { Route as GovernoratesIndexRouteImport } from './routes/governorates.index'
 import { Route as GovernoratesIdRouteImport } from './routes/governorates.$id'
 import { Route as HeritageSitesIdRouteImport } from './routes/heritage-sites_.$id'
 import { Route as InvestmentOpportunitiesIdRouteImport } from './routes/investment-opportunities_.$id'
@@ -288,6 +289,11 @@ const GovernmentDirectoryDigitalServicesRoute =
     path: '/government-directory/digital-services',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GovernoratesIndexRoute = GovernoratesIndexRouteImport.update({
+  id: '/governorates/',
+  path: '/governorates/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GovernoratesIdRoute = GovernoratesIdRouteImport.update({
   id: '/governorates/$id',
   path: '/governorates/$id',
@@ -502,6 +508,7 @@ export interface FileRoutesByFullPath {
   '/trips/$id': typeof TripsIdRoute
   '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
+  '/governorates/': typeof GovernoratesIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
   '/partners/': typeof PartnersIndexRoute
@@ -573,6 +580,7 @@ export interface FileRoutesByTo {
   '/trips/$id': typeof TripsIdRoute
   '/visit-egypt/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin': typeof AdminIndexRoute
+  '/governorates': typeof GovernoratesIndexRoute
   '/legal': typeof LegalIndexRoute
   '/my-trips': typeof MyTripsIndexRoute
   '/partners': typeof PartnersIndexRoute
@@ -646,6 +654,7 @@ export interface FileRoutesById {
   '/trips/$id': typeof TripsIdRoute
   '/visit-egypt_/travel-and-tourism': typeof VisitEgyptTravelAndTourismRoute
   '/admin/': typeof AdminIndexRoute
+  '/governorates/': typeof GovernoratesIndexRoute
   '/legal/': typeof LegalIndexRoute
   '/my-trips/': typeof MyTripsIndexRoute
   '/partners/': typeof PartnersIndexRoute
@@ -720,6 +729,7 @@ export interface FileRouteTypes {
     | '/trips/$id'
     | '/visit-egypt/travel-and-tourism'
     | '/admin/'
+    | '/governorates/'
     | '/legal/'
     | '/my-trips/'
     | '/partners/'
@@ -791,6 +801,7 @@ export interface FileRouteTypes {
     | '/trips/$id'
     | '/visit-egypt/travel-and-tourism'
     | '/admin'
+    | '/governorates'
     | '/legal'
     | '/my-trips'
     | '/partners'
@@ -863,6 +874,7 @@ export interface FileRouteTypes {
     | '/trips/$id'
     | '/visit-egypt_/travel-and-tourism'
     | '/admin/'
+    | '/governorates/'
     | '/legal/'
     | '/my-trips/'
     | '/partners/'
@@ -930,6 +942,7 @@ export interface RootRouteChildren {
   TravelerStoriesIdRoute: typeof TravelerStoriesIdRoute
   TripsIdRoute: typeof TripsIdRoute
   VisitEgyptTravelAndTourismRoute: typeof VisitEgyptTravelAndTourismRoute
+  GovernoratesIndexRoute: typeof GovernoratesIndexRoute
   LegalIndexRoute: typeof LegalIndexRoute
   MyTripsIndexRoute: typeof MyTripsIndexRoute
   PartnersIndexRoute: typeof PartnersIndexRoute
@@ -1225,6 +1238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GovernmentDirectoryDigitalServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/governorates/': {
+      id: '/governorates/'
+      path: '/governorates'
+      fullPath: '/governorates/'
+      preLoaderRoute: typeof GovernoratesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/governorates/$id': {
       id: '/governorates/$id'
       path: '/governorates/$id'
@@ -1517,6 +1537,7 @@ const rootRouteChildren: RootRouteChildren = {
   TravelerStoriesIdRoute: TravelerStoriesIdRoute,
   TripsIdRoute: TripsIdRoute,
   VisitEgyptTravelAndTourismRoute: VisitEgyptTravelAndTourismRoute,
+  GovernoratesIndexRoute: GovernoratesIndexRoute,
   LegalIndexRoute: LegalIndexRoute,
   MyTripsIndexRoute: MyTripsIndexRoute,
   PartnersIndexRoute: PartnersIndexRoute,

@@ -54,6 +54,7 @@ type FLink = { label: string; to?: string; href?: string; soon?: boolean };
 
 const exploreLinks: FLink[] = [
   { label: "Explore Egypt", to: "/explore-egypt" },
+  { label: "27 Governorates", to: "/governorates" },
   { label: "Visit Egypt", to: "/visit-egypt" },
   { label: "Live in Egypt", to: "/live-in-egypt" },
   { label: "Invest in Egypt", to: "/invest-in-egypt" },

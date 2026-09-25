@@ -546,6 +546,18 @@ function GovBand() {
 function GlobalBand() {
   const { t } = useI18n();
   return (
+    <>
+    <section className="border-y border-border bg-background py-10">
+      <div className={cn(wrap, "flex flex-wrap items-center justify-between gap-6")}>
+        <div className="max-w-2xl">
+          <h2 className="font-display text-3xl font-bold text-navy">{t("Explore the 27 Governorates")}</h2>
+          <p className="mt-2 text-text-body">{t("One interactive map of every governorate — places, events, investment, real estate and services.")}</p>
+        </div>
+        <Link to="/governorates" className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:opacity-90">
+          {t("Open the Governorates Map")} →
+        </Link>
+      </div>
+    </section>
     <section className="bg-bg-band py-10">
       <div className={cn(wrap, "grid items-center gap-8 lg:grid-cols-[auto_1fr_1fr]")}>
         <div className="flex items-center gap-4">
@@ -572,6 +584,7 @@ function GlobalBand() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

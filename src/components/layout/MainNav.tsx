@@ -81,7 +81,7 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         to={entry.to as any}
         activeProps={{ className: "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold" }}
         activeOptions={{ exact: entry.to === "/" }}
-        className="relative whitespace-nowrap rounded-lg px-1.5 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
+        className="relative whitespace-nowrap rounded-lg px-1 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium text-navy/85 transition-colors hover:text-shell-gold"
       >
         {t(entry.label)}
       </Link>
@@ -102,14 +102,14 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
           aria-haspopup="true"
           onClick={() => setOpen(false)}
           className={cn(
-          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1.5 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
           open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
           active &&
             "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
         )}
         >
           {t(entry.label)}
-        <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
+        <ChevronDown className={cn("size-3 transition-transform", open && "rotate-180")} />
         </Link>
       ) : (
       <button
@@ -118,14 +118,14 @@ function DesktopEntry({ entry }: { entry: NavEntry }) {
         aria-haspopup="true"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1.5 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
+          "relative flex items-center gap-1 whitespace-nowrap rounded-lg px-1 py-2 text-[12px] min-[1440px]:px-2 min-[1440px]:text-[12.5px] font-medium transition-colors",
           open ? "text-shell-gold" : "text-navy/85 hover:text-shell-gold",
           active &&
             "font-bold text-navy after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-shell-gold",
         )}
       >
         {t(entry.label)}
-        <ChevronDown className={cn("size-3.5 transition-transform", open && "rotate-180")} />
+        <ChevronDown className={cn("size-3 transition-transform", open && "rotate-180")} />
       </button>
       )}
       {open && (
@@ -224,7 +224,7 @@ export function MainNav() {
   return (
     <>
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-xl">
-      <div className="mx-auto grid w-full max-w-[1500px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 lg:px-8">
+      <div className="mx-auto grid w-full max-w-[1500px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 min-[1440px]:gap-3 py-3 lg:px-8">
         <Link to="/" className="flex min-w-0 shrink-0 items-center gap-2.5">
           <img
             src={logo.url}

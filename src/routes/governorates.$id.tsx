@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import { ArrowRight, Bot, Clock, Landmark, MapPin, Sparkles, UtensilsCrossed, Shirt, Flag } from "lucide-react";
+import { ArrowRight, Bot, Clock, Landmark, MapPin, Sparkles, UtensilsCrossed, Shirt } from "lucide-react";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Section, SectionHeader, GoldButton } from "@/components/site/Primitives";
@@ -477,4 +477,3 @@ function CardGrid({ cards, empty }: { cards: Card[]; empty: string }) {
   );
 }
 
-export { Flag };

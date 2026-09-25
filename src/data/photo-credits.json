@@ -350,5 +350,13 @@
   "license": "CC BY 4.0",
   "author": "Marsupium",
   "subject": "Al-Muizz Street, Historic Cairo (2024)"
+ },
+ "src/assets/trade-suez.jpg": {
+  "title": "File:Evergreen container ship in Suez Canal (4171874814).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Evergreen_container_ship_in_Suez_Canal_%284171874814%29.jpg/1280px-Evergreen_container_ship_in_Suez_Canal_%284171874814%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Evergreen_container_ship_in_Suez_Canal_(4171874814).jpg",
+  "license": "CC BY 2.0",
+  "author": "Aah-Yeah",
+  "subject": "Container ship transiting the Suez Canal"
  }
 }

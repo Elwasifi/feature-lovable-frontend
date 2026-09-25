@@ -584,6 +584,7 @@ function GlobalBand() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 

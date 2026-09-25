@@ -46,7 +46,7 @@ const STOP = new Set(["the","and","for","how","what","where","who","can","egypt"
 /** Builds a PostgREST OR filter matching any meaningful word in any column. */
 function orFilter(term: string, cols: string[]): string {
   const words = term.toLowerCase().split(/\s+/).filter((w) => w.length > 2 && !STOP.has(w));
-  const list = words.length ? words.slice(0, 5) : [term];
+  const list = (words.length ? words.slice(0, 5) : [term]).map((w) => (w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w));
   return list.flatMap((w) => cols.map((c) => `${c}.ilike.%${w}%`)).join(",");
 }
 

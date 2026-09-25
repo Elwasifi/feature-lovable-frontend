@@ -146,7 +146,7 @@ function MobileMenu({ onClose }: { onClose: () => void }) {
   const [openLabel, setOpenLabel] = useState<string | null>(null);
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-background min-[1360px]:hidden">
+    <div className="fixed inset-0 z-50 flex flex-col bg-background xl:hidden">
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <span className="font-display text-sm tracking-[0.2em] text-foreground">
           EGYPTORA <span className="text-gold">HUB</span>
@@ -243,7 +243,7 @@ export function MainNav() {
           </span>
         </Link>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-0 min-[1360px]:flex min-[1560px]:gap-1">
+        <nav className="hidden min-w-0 items-center justify-center gap-0 xl:flex min-[1440px]:gap-1">
           {mainNav.map((entry) => (
             <DesktopEntry key={entry.label} entry={entry} />
           ))}
@@ -270,7 +270,7 @@ export function MainNav() {
             type="button"
             onClick={() => setMobileOpen(true)}
             aria-label={t("Open menu")}
-            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground min-[1360px]:hidden"
+            className="grid size-9 place-items-center rounded-full border border-border text-muted-foreground xl:hidden"
           >
             <Menu className="size-4" />
           </button>

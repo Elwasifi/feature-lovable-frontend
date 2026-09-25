@@ -108,7 +108,6 @@ export const mainNav: NavEntry[] = [
       { label: "Wellness & Retreats", soon: true },
     ],
   },
-  { label: "Governorates", to: "/governorates" },
   { label: "Government Directory", to: "/government-directory" },
   {
     label: "About",

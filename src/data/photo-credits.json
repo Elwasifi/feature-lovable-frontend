@@ -1846,5 +1846,701 @@
   "license": "CC BY-SA 3.0",
   "author": "Roland Unger",
   "subject": "Graeco-Roman Museum"
+ },
+ "db:destinations/dest-islamic-cairo": {
+  "title": "File:Flickr - archer10 (Dennis) - Egypt-13A-061.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Flickr_-_archer10_%28Dennis%29_-_Egypt-13A-061.jpg/1280px-Flickr_-_archer10_%28Dennis%29_-_Egypt-13A-061.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_archer10_(Dennis)_-_Egypt-13A-061.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Dennis G. Jarvis",
+  "subject": "Islamic Cairo"
+ },
+ "db:destinations/dest-coptic-cairo": {
+  "title": "File:Kairo Hanging Church BW 1.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/Kairo_Hanging_Church_BW_1.jpg/1280px-Kairo_Hanging_Church_BW_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kairo_Hanging_Church_BW_1.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Berthold Werner",
+  "subject": "Coptic Cairo"
+ },
+ "db:destinations/dest-salah-el-din-citadel": {
+  "title": "File:Flickr - HuTect ShOts - Citadel of Salah El.Din and Masjid Muhammad Ali قلعة صلاح الدين الأيوبي ومسجد محمد علي - Cairo - Egypt - 17 04 2010 (4).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_%284%29.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_(4).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Ahmed Al.Badawy from Cairo, Egypt",
+  "subject": "Salah El-Din Citadel"
+ },
+ "db:destinations/dest-egyptian-museum-tahrir": {
+  "title": "File:1897 bis 1902 wurde das Ägyptische Museum in Kairo gebaut. 04.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg/1280px-1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Holger Uwe Schmitt",
+  "subject": "Egyptian Museum, Tahrir"
+ },
+ "db:destinations/dest-pyramids-of-giza": {
+  "title": "File:Pyramids of the Giza Necropolis.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Pyramids_of_the_Giza_Necropolis.jpg/1280px-Pyramids_of_the_Giza_Necropolis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "KennyOMG",
+  "subject": "Pyramids of Giza"
+ },
+ "db:destinations/dest-grand-egyptian-museum": {
+  "title": "File:The upper balcony of the Grand Egyptian Museum overlooks the Pyramids of Giza.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/The_upper_balcony_of_the_Grand_Egyptian_Museum_overlooks_the_Pyramids_of_Giza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:The_upper_balcony_of_the_Grand_Egyptian_Museum_overlooks_the_Pyramids_of_Giza.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Egyptiankeng",
+  "subject": "Grand Egyptian Museum"
+ },
+ "db:destinations/dest-saqqara": {
+  "title": "File:Saqqara pyramid ver 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Saqqara_pyramid_ver_2.jpg/1280px-Saqqara_pyramid_ver_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Saqqara_pyramid_ver_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Charles J. Sharp",
+  "subject": "Saqqara"
+ },
+ "db:destinations/dest-dahshur": {
+  "title": "File:Dahshur - Red Pyramid - Tourist policemen on camel.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Dahshur_-_Red_Pyramid_-_Tourist_policemen_on_camel.JPG/1280px-Dahshur_-_Red_Pyramid_-_Tourist_policemen_on_camel.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Dahshur_-_Red_Pyramid_-_Tourist_policemen_on_camel.JPG",
+  "license": "CC BY-SA 4.0",
+  "author": "Daniel Mayer",
+  "subject": "Dahshur"
+ },
+ "db:destinations/dest-memphis": {
+  "title": "File:Memphis200401.JPG",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Memphis200401.JPG/1280px-Memphis200401.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Memphis200401.JPG",
+  "license": "Public domain",
+  "author": "No machine-readable author provided. Neithsabes assumed (based on copyright claims).",
+  "subject": "Memphis"
+ },
+ "db:destinations/dest-qaitbay-citadel": {
+  "title": "File:قلعة قايتباي من الجو.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg/1280px-%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hmkree",
+  "subject": "Qaitbay Citadel"
+ },
+ "db:destinations/dest-catacombs-of-kom-el-shoqafa": {
+  "title": "File:...Catacombsa.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/...Catacombsa.jpg/1280px-...Catacombsa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:...Catacombsa.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bilal Detailz",
+  "subject": "Catacombs of Kom El Shoqafa"
+ },
+ "db:destinations/dest-pompeys-pillar": {
+  "title": "File:AlexSarapeionPompeysPillar.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/AlexSarapeionPompeysPillar.jpg/1280px-AlexSarapeionPompeysPillar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:AlexSarapeionPompeysPillar.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Pompey's Pillar"
+ },
+ "db:destinations/dest-roman-amphitheatre": {
+  "title": "File:Kom el-Dikka, Alexandria.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Kom_el-Dikka%2C_Alexandria.jpg/1280px-Kom_el-Dikka%2C_Alexandria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kom_el-Dikka,_Alexandria.jpg",
+  "license": "CC BY 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "Roman Amphitheatre"
+ },
+ "db:destinations/dest-karnak-temple": {
+  "title": "File:Karnak temple.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Karnak_temple.jpg/1280px-Karnak_temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Karnak_temple.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mira sayed",
+  "subject": "Karnak Temple"
+ },
+ "db:destinations/dest-luxor-temple": {
+  "title": "File:1550 bis 1070 v. Chr. ca. wurde der Tempel von Luxor erbaut. 01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg/1280px-1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Holger Uwe Schmitt",
+  "subject": "Luxor Temple"
+ },
+ "db:destinations/dest-valley-of-the-kings": {
+  "title": "File:Luxor, Tal der Könige (1995, 860x605).jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Luxor%2C_Tal_der_K%C3%B6nige_%281995%2C_860x605%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Luxor,_Tal_der_K%C3%B6nige_(1995,_860x605).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Fotograf/Photographer: Peter J. Bubenik (1995)",
+  "subject": "Valley of the Kings"
+ },
+ "db:destinations/dest-medinet-habu": {
+  "title": "File:Templo funerario de Ramsés III, Luxor, Egipto, 2022-04-03, DD 22.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Templo_funerario_de_Rams%C3%A9s_III%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_22.jpg/1280px-Templo_funerario_de_Rams%C3%A9s_III%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Templo_funerario_de_Rams%C3%A9s_III,_Luxor,_Egipto,_2022-04-03,_DD_22.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "Medinet Habu"
+ },
+ "db:destinations/dest-abu-simbel": {
+  "title": "File:Abu Simbel in 2017 , photo by Hatem Moushir 96.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Abu_Simbel_in_2017_%2C_photo_by_Hatem_Moushir_96.jpg/1280px-Abu_Simbel_in_2017_%2C_photo_by_Hatem_Moushir_96.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Abu_Simbel_in_2017_,_photo_by_Hatem_Moushir_96.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hatem Moushir",
+  "subject": "Abu Simbel"
+ },
+ "db:destinations/dest-philae-temple": {
+  "title": "File:Philae Temple R05.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Philae_Temple_R05.jpg/1280px-Philae_Temple_R05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Philae_Temple_R05.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Philae Temple"
+ },
+ "db:destinations/dest-nubian-museum": {
+  "title": "File:Aswan Nubian Museum entrance.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Aswan_Nubian_Museum_entrance.jpg/1280px-Aswan_Nubian_Museum_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Aswan_Nubian_Museum_entrance.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Nubian Museum"
+ },
+ "db:destinations/dest-elephantine-island": {
+  "title": "File:Aswan, Elephantine, west bank, Egypt, Oct 2004.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Aswan%2C_Elephantine%2C_west_bank%2C_Egypt%2C_Oct_2004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Aswan,_Elephantine,_west_bank,_Egypt,_Oct_2004.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "",
+  "subject": "Elephantine Island"
+ },
+ "db:destinations/dest-unfinished-obelisk": {
+  "title": "File:Obelisco inacabado, Asuán, Egipto, 2022-04-01, DD 153.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Obelisco_inacabado%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_153.jpg/1280px-Obelisco_inacabado%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_153.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Obelisco_inacabado,_Asu%C3%A1n,_Egipto,_2022-04-01,_DD_153.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "Unfinished Obelisk"
+ },
+ "db:destinations/dest-hurghada": {
+  "title": "File:Hurghada Hotels R03.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Hurghada_Hotels_R03.jpg/1280px-Hurghada_Hotels_R03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hurghada_Hotels_R03.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Hurghada"
+ },
+ "db:destinations/dest-sharm-el-sheikh": {
+  "title": "File:Sharm El Sheikh - panoramio (15).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Sharm_El_Sheikh_-_panoramio_%2815%29.jpg/1280px-Sharm_El_Sheikh_-_panoramio_%2815%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Sharm_El_Sheikh_-_panoramio_(15).jpg",
+  "license": "CC BY 3.0",
+  "author": "Tanya Dedyukhina",
+  "subject": "Sharm El Sheikh"
+ },
+ "db:destinations/dest-saint-catherine-monastery": {
+  "title": "File:Katharinenkloster Sinai BW 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Katharinenkloster_Sinai_BW_2.jpg/1280px-Katharinenkloster_Sinai_BW_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Katharinenkloster_Sinai_BW_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Berthold Werner",
+  "subject": "Saint Catherine Monastery"
+ },
+ "db:destinations/dest-ras-mohammed": {
+  "title": "File:Ras Mohammed Sanctuary.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Ras_Mohammed_Sanctuary.jpg/1280px-Ras_Mohammed_Sanctuary.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ras_Mohammed_Sanctuary.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Amr Hamed",
+  "subject": "Ras Mohammed"
+ },
+ "db:destinations/dest-siwa-oasis": {
+  "title": "File:يوم جديد.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/%D9%8A%D9%88%D9%85_%D8%AC%D8%AF%D9%8A%D8%AF.jpg/1280px-%D9%8A%D9%88%D9%85_%D8%AC%D8%AF%D9%8A%D8%AF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D9%8A%D9%88%D9%85_%D8%AC%D8%AF%D9%8A%D8%AF.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Adelbayoumi",
+  "subject": "Siwa Oasis"
+ },
+ "db:destinations/dest-agiba-beach": {
+  "title": "File:Agiba Beach - Marsa Matrouh - Egypt.JPG",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Agiba_Beach_-_Marsa_Matrouh_-_Egypt.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Agiba_Beach_-_Marsa_Matrouh_-_Egypt.JPG",
+  "license": "CC BY-SA 3.0",
+  "author": "Ahmed elkastawy",
+  "subject": "Agiba Beach"
+ },
+ "db:destinations/dest-cleopatras-bath": {
+  "title": "File:The Bath of Cleopatra, Cleopatra Beach, Marsa Matrouh, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/The_Bath_of_Cleopatra%2C_Cleopatra_Beach%2C_Marsa_Matrouh%2C_Egypt.jpg/1280px-The_Bath_of_Cleopatra%2C_Cleopatra_Beach%2C_Marsa_Matrouh%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Bath_of_Cleopatra,_Cleopatra_Beach,_Marsa_Matrouh,_Egypt.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mia",
+  "subject": "Cleopatra's Bath"
+ },
+ "db:destinations/dest-shali-fortress": {
+  "title": "File:Shali Fortress12.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Shali_Fortress12.jpg/1280px-Shali_Fortress12.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Shali_Fortress12.jpg",
+  "license": "Public domain",
+  "author": "ولاء",
+  "subject": "Shali Fortress"
+ },
+ "db:destinations/dest-el-alamein": {
+  "title": "File:Porto marina resort and spa.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Porto_marina_resort_and_spa.jpg/1280px-Porto_marina_resort_and_spa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Porto_marina_resort_and_spa.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Noornenay",
+  "subject": "El Alamein"
+ },
+ "db:destinations/dest-zaranik-protectorate": {
+  "title": "File:The Zaranik Protectorate nature preserve in Egypt's North Sinai region (iss073e0857395).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/The_Zaranik_Protectorate_nature_preserve_in_Egypt%27s_North_Sinai_region_%28iss073e0857395%29.jpg/1280px-The_Zaranik_Protectorate_nature_preserve_in_Egypt%27s_North_Sinai_region_%28iss073e0857395%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_Zaranik_Protectorate_nature_preserve_in_Egypt%27s_North_Sinai_region_(iss073e0857395).jpg",
+  "license": "Public domain",
+  "author": "NASA Johnson Space Center",
+  "subject": "Zaranik Protectorate"
+ },
+ "db:destinations/dest-suez-canal-entrance": {
+  "title": "File:Suez Canal, Port Said - ISS.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Suez_Canal%2C_Port_Said_-_ISS.jpg/1280px-Suez_Canal%2C_Port_Said_-_ISS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Suez_Canal,_Port_Said_-_ISS.jpg",
+  "license": "Public domain",
+  "author": "NASA astronaut",
+  "subject": "Suez Canal entrance"
+ },
+ "db:destinations/dest-ismailia-museum": {
+  "title": "File:Flickr - casillero - Ismailia, Egyptian Museum 2.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Flickr_-_casillero_-_Ismailia%2C_Egyptian_Museum_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_casillero_-_Ismailia,_Egyptian_Museum_2.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Terry Cliss from Frome, Somerset, United Kingdom",
+  "subject": "Ismailia Museum"
+ },
+ "db:destinations/dest-port-tawfik": {
+  "title": "File:Port Tawfik shipyard.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Port_Tawfik_shipyard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Tawfik_shipyard.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "TheEgyptian",
+  "subject": "Port Tawfik"
+ },
+ "db:destinations/dest-old-damietta-houses": {
+  "title": "File:Damietta 5.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/84/Damietta_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Damietta_5.jpg",
+  "license": "Public domain",
+  "author": "Sladen, Douglas",
+  "subject": "Old Damietta houses"
+ },
+ "db:destinations/dest-damanhour-heritage": {
+  "title": "File:Damanhour.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Damanhour.jpg/1280px-Damanhour.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Damanhour.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Mohammed Moussa",
+  "subject": "Damanhour heritage"
+ },
+ "db:destinations/dest-wadi-el-hitan-whale-valley": {
+  "title": "File:The whales fossils at Wadi El-Hitan, Egypt 2017.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/The_whales_fossils_at_Wadi_El-Hitan%2C_Egypt_2017.jpg/1280px-The_whales_fossils_at_Wadi_El-Hitan%2C_Egypt_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_whales_fossils_at_Wadi_El-Hitan,_Egypt_2017.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "AhmedMosaad",
+  "subject": "Wadi El Hitan (Whale Valley)"
+ },
+ "db:destinations/dest-meidum-pyramid": {
+  "title": "File:Meidoum03.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Meidoum03.jpg/1280px-Meidoum03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Meidoum03.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Kurohito",
+  "subject": "Meidum Pyramid"
+ },
+ "db:destinations/dest-tell-el-amarna": {
+  "title": "File:Small aten temple.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Small_aten_temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Small_aten_temple.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "en:User:Markh",
+  "subject": "Tell el-Amarna"
+ },
+ "db:destinations/dest-tuna-el-gebel": {
+  "title": "File:Hathor capitals with demotic script, sculptor models, Ptolemaic period, 323-230 BCE, from Egypt. Neues Museum.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Hathor_capitals_with_demotic_script%2C_sculptor_models%2C_Ptolemaic_period%2C_323-230_BCE%2C_from_Egypt._Neues_Museum.jpg/1280px-Hathor_capitals_with_demotic_script%2C_sculptor_models%2C_Ptolemaic_period%2C_323-230_BCE%2C_from_Egypt._Neues_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Hathor_capitals_with_demotic_script,_sculptor_models,_Ptolemaic_period,_323-230_BCE,_from_Egypt._Neues_Museum.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Osama Shukir Muhammed Amin FRCP(Glasg)",
+  "subject": "Tuna el-Gebel"
+ },
+ "db:destinations/dest-mallawi-museum": {
+  "title": "File:MallawiMuseum.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/MallawiMuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:MallawiMuseum.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Mallawi Museum"
+ },
+ "db:destinations/dest-asyut-barrage": {
+  "title": "File:Assiut Barrage 1.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Assiut_Barrage_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Assiut_Barrage_1.jpg",
+  "license": "Public domain",
+  "author": "MontyofEgypt",
+  "subject": "Asyut Barrage"
+ },
+ "db:destinations/dest-deir-el-muharraq": {
+  "title": "File:DeirMuharraqMainGateInside.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/DeirMuharraqMainGateInside.jpg/1280px-DeirMuharraqMainGateInside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:DeirMuharraqMainGateInside.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Deir El Muharraq"
+ },
+ "db:destinations/dest-abydos-temple-of-seti-i": {
+  "title": "File:Temple of Seti I, Interior, Abydos, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Temple_of_Seti_I%2C_Interior%2C_Abydos%2C_Egypt.jpg/1280px-Temple_of_Seti_I%2C_Interior%2C_Abydos%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Seti_I,_Interior,_Abydos,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Abydos Temple of Seti I"
+ },
+ "db:destinations/dest-akhmim": {
+  "title": "File:New Akhmim City 3.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/New_Akhmim_City_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:New_Akhmim_City_3.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "أبو الدهب",
+  "subject": "Akhmim"
+ },
+ "db:destinations/dest-dendera-temple-of-hathor": {
+  "title": "File:Temple of Hathor, Reliefs, Dendera, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Temple_of_Hathor%2C_Reliefs%2C_Dendera%2C_Egypt.jpg/1280px-Temple_of_Hathor%2C_Reliefs%2C_Dendera%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Hathor,_Reliefs,_Dendera,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Dendera Temple of Hathor"
+ },
+ "db:destinations/dest-qift": {
+  "title": "File:Al Owaydat, Qift, Qena Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Al_Owaydat%2C_Qift%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Al_Owaydat%2C_Qift%2C_Qena_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Al_Owaydat,_Qift,_Qena_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "Максим Улитин",
+  "subject": "Qift"
+ },
+ "db:destinations/dest-naqada": {
+  "title": "File:MbgIMG 0411.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/MbgIMG_0411.jpg/1280px-MbgIMG_0411.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:MbgIMG_0411.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Dr-Vivoo",
+  "subject": "Naqada"
+ },
+ "db:destinations/dest-dakhla-oasis": {
+  "title": "File:Dakhla Oasis view (May 2007).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Dakhla_Oasis_view_%28May_2007%29.jpg/1280px-Dakhla_Oasis_view_%28May_2007%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Dakhla_Oasis_view_(May_2007).jpg",
+  "license": "CC BY 2.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Dakhla Oasis"
+ },
+ "db:heritage_sites/her-pyramids-of-giza": {
+  "title": "File:Pyramids of the Giza Necropolis.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Pyramids_of_the_Giza_Necropolis.jpg/1280px-Pyramids_of_the_Giza_Necropolis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Pyramids_of_the_Giza_Necropolis.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "KennyOMG",
+  "subject": "Pyramids of Giza"
+ },
+ "db:heritage_sites/her-great-sphinx-of-giza": {
+  "title": "File:Sphinx with the third pyramid.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Sphinx_with_the_third_pyramid.jpg/1280px-Sphinx_with_the_third_pyramid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Sphinx_with_the_third_pyramid.jpg",
+  "license": "CC0",
+  "author": "Hesham Ebaid",
+  "subject": "Great Sphinx of Giza"
+ },
+ "db:heritage_sites/her-saqqara-step-pyramid-complex": {
+  "title": "File:Saqqara pyramid ver 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Saqqara_pyramid_ver_2.jpg/1280px-Saqqara_pyramid_ver_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Saqqara_pyramid_ver_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Charles J. Sharp",
+  "subject": "Saqqara Step Pyramid Complex"
+ },
+ "db:heritage_sites/her-dahshur-bent-and-red-pyramids": {
+  "title": "File:Dahshur, Pirámide Acodada 1999 06.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Dahshur%2C_Pir%C3%A1mide_Acodada_1999_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Dahshur,_Pir%C3%A1mide_Acodada_1999_06.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "LBM1948",
+  "subject": "Dahshur Bent and Red Pyramids"
+ },
+ "db:heritage_sites/her-karnak-temple-complex": {
+  "title": "File:Karnak temple.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Karnak_temple.jpg/1280px-Karnak_temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Karnak_temple.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mira sayed",
+  "subject": "Karnak Temple Complex"
+ },
+ "db:heritage_sites/her-luxor-temple": {
+  "title": "File:1550 bis 1070 v. Chr. ca. wurde der Tempel von Luxor erbaut. 01.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg/1280px-1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:1550_bis_1070_v._Chr._ca._wurde_der_Tempel_von_Luxor_erbaut._01.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Holger Uwe Schmitt",
+  "subject": "Luxor Temple"
+ },
+ "db:heritage_sites/her-valley-of-the-kings": {
+  "title": "File:Luxor, Tal der Könige (1995, 860x605).jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Luxor%2C_Tal_der_K%C3%B6nige_%281995%2C_860x605%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Luxor,_Tal_der_K%C3%B6nige_(1995,_860x605).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Fotograf/Photographer: Peter J. Bubenik (1995)",
+  "subject": "Valley of the Kings"
+ },
+ "db:heritage_sites/her-medinet-habu": {
+  "title": "File:Templo funerario de Ramsés III, Luxor, Egipto, 2022-04-03, DD 22.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Templo_funerario_de_Rams%C3%A9s_III%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_22.jpg/1280px-Templo_funerario_de_Rams%C3%A9s_III%2C_Luxor%2C_Egipto%2C_2022-04-03%2C_DD_22.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Templo_funerario_de_Rams%C3%A9s_III,_Luxor,_Egipto,_2022-04-03,_DD_22.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "Medinet Habu"
+ },
+ "db:heritage_sites/her-abu-simbel-temples": {
+  "title": "File:Ramsis, Aswan Governorate, Egypt - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Ramsis%2C_Aswan_Governorate%2C_Egypt_-_panoramio.jpg/1280px-Ramsis%2C_Aswan_Governorate%2C_Egypt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Ramsis,_Aswan_Governorate,_Egypt_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "youssef_alam",
+  "subject": "Abu Simbel Temples"
+ },
+ "db:heritage_sites/her-philae-temple-of-isis": {
+  "title": "File:Philae Temple R05.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Philae_Temple_R05.jpg/1280px-Philae_Temple_R05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Philae_Temple_R05.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Philae Temple of Isis"
+ },
+ "db:heritage_sites/her-unfinished-obelisk": {
+  "title": "File:Obelisco inacabado, Asuán, Egipto, 2022-04-01, DD 153.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Obelisco_inacabado%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_153.jpg/1280px-Obelisco_inacabado%2C_Asu%C3%A1n%2C_Egipto%2C_2022-04-01%2C_DD_153.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Obelisco_inacabado,_Asu%C3%A1n,_Egipto,_2022-04-01,_DD_153.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Diego Delso",
+  "subject": "Unfinished Obelisk"
+ },
+ "db:heritage_sites/her-dendera-temple-of-hathor": {
+  "title": "File:Temple of Hathor, Reliefs, Dendera, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Temple_of_Hathor%2C_Reliefs%2C_Dendera%2C_Egypt.jpg/1280px-Temple_of_Hathor%2C_Reliefs%2C_Dendera%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Hathor,_Reliefs,_Dendera,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Dendera Temple of Hathor"
+ },
+ "db:heritage_sites/her-abydos-temple-of-seti-i": {
+  "title": "File:Temple of Seti I, Interior, Abydos, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Temple_of_Seti_I%2C_Interior%2C_Abydos%2C_Egypt.jpg/1280px-Temple_of_Seti_I%2C_Interior%2C_Abydos%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Temple_of_Seti_I,_Interior,_Abydos,_Egypt.jpg",
+  "license": "CC BY 4.0",
+  "author": "Vyacheslav Argenberg",
+  "subject": "Abydos Temple of Seti I"
+ },
+ "db:heritage_sites/her-tell-el-amarna": {
+  "title": "File:Small aten temple.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Small_aten_temple.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Small_aten_temple.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "en:User:Markh",
+  "subject": "Tell el-Amarna"
+ },
+ "db:heritage_sites/her-deir-el-muharraq": {
+  "title": "File:DeirMuharraqMainGateInside.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/DeirMuharraqMainGateInside.jpg/1280px-DeirMuharraqMainGateInside.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:DeirMuharraqMainGateInside.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Deir El Muharraq"
+ },
+ "db:heritage_sites/her-sultan-hassan-mosque-madrasa": {
+  "title": "File:Kairo Sultan Hassan Moschee BW 1.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Kairo_Sultan_Hassan_Moschee_BW_1.jpg/1280px-Kairo_Sultan_Hassan_Moschee_BW_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kairo_Sultan_Hassan_Moschee_BW_1.jpg",
+  "license": "CC BY 3.0",
+  "author": "Berthold Werner",
+  "subject": "Sultan Hassan Mosque-Madrasa"
+ },
+ "db:heritage_sites/her-citadel-of-salah-el-din": {
+  "title": "File:Flickr - HuTect ShOts - Citadel of Salah El.Din and Masjid Muhammad Ali قلعة صلاح الدين الأيوبي ومسجد محمد علي - Cairo - Egypt - 17 04 2010 (4).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_%284%29.jpg/1280px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_HuTect_ShOts_-_Citadel_of_Salah_El.Din_and_Masjid_Muhammad_Ali_%D9%82%D9%84%D8%B9%D8%A9_%D8%B5%D9%84%D8%A7%D8%AD_%D8%A7%D9%84%D8%AF%D9%8A%D9%86_%D8%A7%D9%84%D8%A3%D9%8A%D9%88%D8%A8%D9%8A_%D9%88%D9%85%D8%B3%D8%AC%D8%AF_%D9%85%D8%AD%D9%85%D8%AF_%D8%B9%D9%84%D9%8A_-_Cairo_-_Egypt_-_17_04_2010_(4).jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Ahmed Al.Badawy from Cairo, Egypt",
+  "subject": "Citadel of Salah El-Din"
+ },
+ "db:heritage_sites/her-qaitbay-citadel-alexandria": {
+  "title": "File:قلعة قايتباي من الجو.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg/1280px-%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:%D9%82%D9%84%D8%B9%D8%A9_%D9%82%D8%A7%D9%8A%D8%AA%D8%A8%D8%A7%D9%8A_%D9%85%D9%86_%D8%A7%D9%84%D8%AC%D9%88.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hmkree",
+  "subject": "Qaitbay Citadel, Alexandria"
+ },
+ "db:heritage_sites/her-catacombs-of-kom-el-shoqafa": {
+  "title": "File:...Catacombsa.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/...Catacombsa.jpg/1280px-...Catacombsa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:...Catacombsa.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Bilal Detailz",
+  "subject": "Catacombs of Kom El Shoqafa"
+ },
+ "db:heritage_sites/her-pompeys-pillar-and-serapeum": {
+  "title": "File:Pompey's Pillar (Archaeological site in Alexandria in 2017) , photo by Hatem Moushir 37.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Pompey%27s_Pillar_%28Archaeological_site_in_Alexandria_in_2017%29_%2C_photo_by_Hatem_Moushir_37.jpg/1280px-Pompey%27s_Pillar_%28Archaeological_site_in_Alexandria_in_2017%29_%2C_photo_by_Hatem_Moushir_37.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Pompey%27s_Pillar_(Archaeological_site_in_Alexandria_in_2017)_,_photo_by_Hatem_Moushir_37.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Hatem Moushir",
+  "subject": "Pompey's Pillar and Serapeum"
+ },
+ "db:heritage_sites/her-roman-amphitheatre-kom-el-dikka": {
+  "title": "File:Kom el-Dikka, Alexandria.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Kom_el-Dikka%2C_Alexandria.jpg/1280px-Kom_el-Dikka%2C_Alexandria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kom_el-Dikka,_Alexandria.jpg",
+  "license": "CC BY 4.0",
+  "author": "Abdelrhman 1990",
+  "subject": "Roman Amphitheatre, Kom el-Dikka"
+ },
+ "db:heritage_sites/her-saint-catherine-monastery": {
+  "title": "File:Katharinenkloster Sinai BW 2.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Katharinenkloster_Sinai_BW_2.jpg/1280px-Katharinenkloster_Sinai_BW_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Katharinenkloster_Sinai_BW_2.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Berthold Werner",
+  "subject": "Saint Catherine Monastery"
+ },
+ "db:heritage_sites/her-wadi-el-hitan-whale-valley": {
+  "title": "File:The whales fossils at Wadi El-Hitan, Egypt 2017.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/The_whales_fossils_at_Wadi_El-Hitan%2C_Egypt_2017.jpg/1280px-The_whales_fossils_at_Wadi_El-Hitan%2C_Egypt_2017.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:The_whales_fossils_at_Wadi_El-Hitan,_Egypt_2017.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "AhmedMosaad",
+  "subject": "Wadi El Hitan (Whale Valley)"
+ },
+ "db:heritage_sites/her-meidum-pyramid": {
+  "title": "File:Meidoum03.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ad/Meidoum03.jpg/1280px-Meidoum03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Meidoum03.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Kurohito",
+  "subject": "Meidum Pyramid"
+ },
+ "db:heritage_sites/her-shali-fortress-siwa": {
+  "title": "File:Shali Fortress001.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Shali_Fortress001.jpg/1280px-Shali_Fortress001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Shali_Fortress001.jpg",
+  "license": "Public domain",
+  "author": "ولاء",
+  "subject": "Shali Fortress, Siwa"
+ },
+ "db:heritage_sites/her-el-alamein-war-cemeteries": {
+  "title": "File:Commonwealth graves of victims of World War II in the Egyptian Salloum town in the province of Marsa Matrouh.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Commonwealth_graves_of_victims_of_World_War_II_in_the_Egyptian_Salloum_town_in_the_province_of_Marsa_Matrouh.jpg/1280px-Commonwealth_graves_of_victims_of_World_War_II_in_the_Egyptian_Salloum_town_in_the_province_of_Marsa_Matrouh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Commonwealth_graves_of_victims_of_World_War_II_in_the_Egyptian_Salloum_town_in_the_province_of_Marsa_Matrouh.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Mohamed",
+  "subject": "El Alamein War Cemeteries"
+ },
+ "db:museums/mus-grand-egyptian-museum": {
+  "title": "File:The upper balcony of the Grand Egyptian Museum overlooks the Pyramids of Giza.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/The_upper_balcony_of_the_Grand_Egyptian_Museum_overlooks_the_Pyramids_of_Giza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:The_upper_balcony_of_the_Grand_Egyptian_Museum_overlooks_the_Pyramids_of_Giza.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Egyptiankeng",
+  "subject": "Grand Egyptian Museum"
+ },
+ "db:museums/mus-egyptian-museum-tahrir": {
+  "title": "File:1897 bis 1902 wurde das Ägyptische Museum in Kairo gebaut. 04.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg/1280px-1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:1897_bis_1902_wurde_das_%C3%84gyptische_Museum_in_Kairo_gebaut._04.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Holger Uwe Schmitt",
+  "subject": "Egyptian Museum, Tahrir"
+ },
+ "db:museums/mus-national-museum-of-egyptian-civilization": {
+  "title": "File:National Museum of Egyptian Civilization (NMEC) in Cairo, Egypt 13.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/National_Museum_of_Egyptian_Civilization_%28NMEC%29_in_Cairo%2C_Egypt_13.jpg/1280px-National_Museum_of_Egyptian_Civilization_%28NMEC%29_in_Cairo%2C_Egypt_13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:National_Museum_of_Egyptian_Civilization_(NMEC)_in_Cairo,_Egypt_13.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Rowyda elshaer",
+  "subject": "National Museum of Egyptian Civilization"
+ },
+ "db:museums/mus-coptic-museum": {
+  "title": "File:Kairo - Altkairo 05.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Kairo_-_Altkairo_05.jpg/1280px-Kairo_-_Altkairo_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Kairo_-_Altkairo_05.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Djehouty",
+  "subject": "Coptic Museum"
+ },
+ "db:museums/mus-bibliotheca-alexandrina-antiquities-museum": {
+  "title": "File:Bibliotheca Alexandrina (2007-05-028).jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Bibliotheca_Alexandrina_%282007-05-028%29.jpg/1280px-Bibliotheca_Alexandrina_%282007-05-028%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Bibliotheca_Alexandrina_(2007-05-028).jpg",
+  "license": "CC BY 2.0",
+  "author": "Argenberg",
+  "subject": "Bibliotheca Alexandrina Antiquities Museum"
+ },
+ "db:museums/mus-luxor-museum": {
+  "title": "File:Luxor Museum 1.JPG",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Luxor_Museum_1.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Luxor_Museum_1.JPG",
+  "license": "Public domain",
+  "author": "Charlesdrakew at English Wikipedia",
+  "subject": "Luxor Museum"
+ },
+ "db:museums/mus-mummification-museum": {
+  "title": "File:Mummification Tool, Luxor Governate, Egypt.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Mummification_Tool%2C_Luxor_Governate%2C_Egypt.jpg/1280px-Mummification_Tool%2C_Luxor_Governate%2C_Egypt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Mummification_Tool,_Luxor_Governate,_Egypt.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Menna.Hassan100",
+  "subject": "Mummification Museum"
+ },
+ "db:museums/mus-nubian-museum": {
+  "title": "File:Aswan Nubian Museum entrance.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Aswan_Nubian_Museum_entrance.jpg/1280px-Aswan_Nubian_Museum_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Aswan_Nubian_Museum_entrance.jpg",
+  "license": "CC BY 3.0",
+  "author": "Marc Ryckaert",
+  "subject": "Nubian Museum"
+ },
+ "db:museums/mus-mallawi-museum": {
+  "title": "File:MallawiMuseum.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/02/MallawiMuseum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:MallawiMuseum.jpg",
+  "license": "CC BY-SA 3.0",
+  "author": "Roland Unger",
+  "subject": "Mallawi Museum"
+ },
+ "db:museums/mus-ismailia-museum": {
+  "title": "File:Flickr - casillero - Ismailia, Egyptian Museum 2.jpg",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Flickr_-_casillero_-_Ismailia%2C_Egyptian_Museum_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "page": "https://commons.wikimedia.org/wiki/File:Flickr_-_casillero_-_Ismailia,_Egyptian_Museum_2.jpg",
+  "license": "CC BY-SA 2.0",
+  "author": "Terry Cliss from Frome, Somerset, United Kingdom",
+  "subject": "Ismailia Museum"
+ },
+ "db:museums/mus-aswan-museum-elephantine": {
+  "title": "File:Musée d'Aszan - panoramio.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Mus%C3%A9e_d%27Aszan_-_panoramio.jpg/1280px-Mus%C3%A9e_d%27Aszan_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Mus%C3%A9e_d%27Aszan_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "author": "youssef_alam",
+  "subject": "Aswan Museum, Elephantine"
  }
 }

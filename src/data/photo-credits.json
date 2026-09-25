@@ -343,14 +343,6 @@
   "author": "Diego Delso",
   "subject": "Great Temple of Ramesses II, Abu Simbel (2022)"
  },
- "src/assets/muizz-street.jpg": {
-  "title": "File:Muizz Street between Al Mousky Street and Qalawun complex 06.jpg",
-  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg/1280px-Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-  "page": "https://commons.wikimedia.org/wiki/File:Muizz_Street_between_Al_Mousky_Street_and_Qalawun_complex_06.jpg",
-  "license": "CC BY 4.0",
-  "author": "Marsupium",
-  "subject": "Al-Muizz Street, Historic Cairo (2024)"
- },
  "src/assets/trade-suez.jpg": {
   "title": "File:Evergreen container ship in Suez Canal (4171874814).jpg",
   "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Evergreen_container_ship_in_Suez_Canal_%284171874814%29.jpg/1280px-Evergreen_container_ship_in_Suez_Canal_%284171874814%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -358,5 +350,13 @@
   "license": "CC BY 2.0",
   "author": "Aah-Yeah",
   "subject": "Container ship transiting the Suez Canal"
+ },
+ "src/assets/khan-khalili.jpg": {
+  "title": "File:Khan el-Khalili 2019.jpg",
+  "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Khan_el-Khalili_2019.jpg/1280px-Khan_el-Khalili_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "page": "https://commons.wikimedia.org/wiki/File:Khan_el-Khalili_2019.jpg",
+  "license": "CC BY-SA 4.0",
+  "author": "Mohammed Moussa",
+  "subject": "Khan el-Khalili, Historic Cairo (2019)"
  }
 }

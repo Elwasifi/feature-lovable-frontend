@@ -21,6 +21,7 @@ const bodySchema = z.object({
     .min(1)
     .max(24),
   locale: z.string().max(12).optional(),
+  scope: z.object({ slug: z.string().regex(/^[a-z-]{2,40}$/), name: z.string().max(60) }).optional(),
 });
 
 const SYSTEM_PROMPT = `You are the Egyptora Hub AI Concierge — the travel assistant of Egyptora Hub, a national digital gateway to Egypt.
@@ -107,7 +108,9 @@ export const Route = createFileRoute("/api/concierge")({
         try {
           const result = streamText({
             model: gateway(MODEL),
-            system: SYSTEM_PROMPT,
+            system: parsed.scope
+              ? `${SYSTEM_PROMPT}\n\nGovernorate focus: the traveller is on the ${parsed.scope.name} governorate page (slug "${parsed.scope.slug}"). Keep answers centred on ${parsed.scope.name} — its places, heritage, food, events, investment, real estate and services — and prefer site results from this governorate. Only widen to the rest of Egypt if asked.`
+              : SYSTEM_PROMPT,
             messages: parsed.messages,
             stopWhen: stepCountIs(6),
             tools: {

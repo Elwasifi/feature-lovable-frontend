@@ -66,6 +66,7 @@ import { Route as MyTripsIndexRouteImport } from './routes/my-trips.index'
 import { Route as MyTripsNewRouteImport } from './routes/my-trips.new'
 import { Route as OffersIdRouteImport } from './routes/offers_.$id'
 import { Route as PartnersIndexRouteImport } from './routes/partners.index'
+import { Route as PlacesIdRouteImport } from './routes/places.$id'
 import { Route as ProductsIdRouteImport } from './routes/products_.$id'
 import { Route as PropertiesIdRouteImport } from './routes/properties_.$id'
 import { Route as ProvidersIdRouteImport } from './routes/providers_.$id'
@@ -371,6 +372,11 @@ const PartnersIndexRoute = PartnersIndexRouteImport.update({
   path: '/partners/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlacesIdRoute = PlacesIdRouteImport.update({
+  id: '/places/$id',
+  path: '/places/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductsIdRoute = ProductsIdRouteImport.update({
   id: '/products_/$id',
   path: '/products/$id',
@@ -487,6 +493,7 @@ export interface FileRoutesByFullPath {
   '/museums/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
+  '/places/$id': typeof PlacesIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
@@ -557,6 +564,7 @@ export interface FileRoutesByTo {
   '/museums/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers/$id': typeof OffersIdRoute
+  '/places/$id': typeof PlacesIdRoute
   '/products/$id': typeof ProductsIdRoute
   '/properties/$id': typeof PropertiesIdRoute
   '/providers/$id': typeof ProvidersIdRoute
@@ -629,6 +637,7 @@ export interface FileRoutesById {
   '/museums_/$id': typeof MuseumsIdRoute
   '/my-trips/new': typeof MyTripsNewRoute
   '/offers_/$id': typeof OffersIdRoute
+  '/places/$id': typeof PlacesIdRoute
   '/products_/$id': typeof ProductsIdRoute
   '/properties_/$id': typeof PropertiesIdRoute
   '/providers_/$id': typeof ProvidersIdRoute
@@ -702,6 +711,7 @@ export interface FileRouteTypes {
     | '/museums/$id'
     | '/my-trips/new'
     | '/offers/$id'
+    | '/places/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
@@ -772,6 +782,7 @@ export interface FileRouteTypes {
     | '/museums/$id'
     | '/my-trips/new'
     | '/offers/$id'
+    | '/places/$id'
     | '/products/$id'
     | '/properties/$id'
     | '/providers/$id'
@@ -843,6 +854,7 @@ export interface FileRouteTypes {
     | '/museums_/$id'
     | '/my-trips/new'
     | '/offers_/$id'
+    | '/places/$id'
     | '/products_/$id'
     | '/properties_/$id'
     | '/providers_/$id'
@@ -910,6 +922,7 @@ export interface RootRouteChildren {
   MuseumsIdRoute: typeof MuseumsIdRoute
   MyTripsNewRoute: typeof MyTripsNewRoute
   OffersIdRoute: typeof OffersIdRoute
+  PlacesIdRoute: typeof PlacesIdRoute
   ProductsIdRoute: typeof ProductsIdRoute
   PropertiesIdRoute: typeof PropertiesIdRoute
   ProvidersIdRoute: typeof ProvidersIdRoute
@@ -1324,6 +1337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartnersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/places/$id': {
+      id: '/places/$id'
+      path: '/places/$id'
+      fullPath: '/places/$id'
+      preLoaderRoute: typeof PlacesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/products_/$id': {
       id: '/products_/$id'
       path: '/products/$id'
@@ -1489,6 +1509,7 @@ const rootRouteChildren: RootRouteChildren = {
   MuseumsIdRoute: MuseumsIdRoute,
   MyTripsNewRoute: MyTripsNewRoute,
   OffersIdRoute: OffersIdRoute,
+  PlacesIdRoute: PlacesIdRoute,
   ProductsIdRoute: ProductsIdRoute,
   PropertiesIdRoute: PropertiesIdRoute,
   ProvidersIdRoute: ProvidersIdRoute,

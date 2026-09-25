@@ -62,7 +62,7 @@ async function safe<T>(label: string, p: PromiseLike<{ data: T[] | null; error: 
 
 export const Route = createFileRoute("/governorates/$id")({
   validateSearch: (s: Record<string, unknown>): { tab?: Tab } =>
-    TABS.includes(s.tab as Tab) ? { tab: s.tab as Tab } : {},
+    TABS.includes(s['tab'] as Tab) ? { tab: s['tab'] as Tab } : {},
   loader: async ({ params }) => {
     const gov = governorates.find((g) => g.id === params.id);
     const profile = governorateProfiles[params.id];

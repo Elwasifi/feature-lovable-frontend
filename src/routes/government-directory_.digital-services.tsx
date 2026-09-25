@@ -11,7 +11,7 @@ import tax from "@/assets/home/tenders.jpg";
 import vehicle from "@/assets/home/nile.jpg";
 import biz from "@/assets/home/start-biz.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, ImportantNoticeBox, ProcessStepsRow,
+  InnerPage, cardGrid, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, ImportantNoticeBox, ProcessStepsRow,
   AppPromoCard, BandPromo, type CardItem, type Chip, type ProcessStep,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -117,7 +117,7 @@ function DigitalServices() {
     >
       <section>
         <SectionHead title="Featured Digital Services" body="Popular online services from official government portals." to={DE} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
         </div>
       </section>

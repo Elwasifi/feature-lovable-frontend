@@ -9,7 +9,7 @@ import nile from "@/assets/home/nile.jpg";
 import adventure from "@/assets/promo-adventure.jpg";
 import luxor from "@/assets/dest-luxor.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, AppPromoCard, BandPromo, type CardItem,
+  InnerPage, cardGrid, SectionHead, PhotoCard, IconCard, AppPromoCard, BandPromo, type CardItem,
 } from "@/components/layout/InnerPage";
 import {
   TravelpayoutsWidget, TP_WIDGET_SRC, TP_ATTRACTIONS_SRC, TP_CAR_RENTAL_SRC,
@@ -126,7 +126,7 @@ function TravelTourism() {
     >
       <section>
         <SectionHead title="Featured Tours & Experiences" body="Hand-picked ways to experience Egypt." to="/offers" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} />)}
         </div>
       </section>

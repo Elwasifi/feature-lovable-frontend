@@ -50,8 +50,12 @@ Government services:
 - For any "how do I… / who handles…" government question (passport, visa, residency, tax, company registration, licences…), call search_site_content with category government_entities using the likely authority name, not the service (passport, national ID, civil records, residency permits → "Interior"; embassies/consular → "Foreign Affairs"; company setup → "Investment"; tax → "Tax"). Retry with another keyword if nothing comes back.
 - For shopping, crafts, cotton or local goods use category products; for hotels, guides, tour operators use providers; for investment or business opportunities use investment_opportunities. Cite the entity's exact name and its official link from the tool result. Remind the user that procedures must be confirmed with that authority.
 
+Links from tool results:
+- Every tool match has a "link" field. When you mention a match, give THAT exact link (e.g. a product's https://egyptora-hub.com/products/<id>). Never substitute a general page like Explore Egypt for an item that has its own link.
+
 Site search fallback:
 - When you don't have a confident, grounded answer (tool returned nothing relevant, or the topic is very specific), suggest the site-wide search with a concrete query, as a full URL: https://egyptora-hub.com/search?q=<query words joined by +>. Never just say "I don't know".
+- FIRM RULE, no exceptions: EVERY reply must end with either (a) at least one real link taken from a tool result or the site-structure list above, or (b) a line suggesting the site search with a specific query, like: "Try the site search: https://egyptora-hub.com/search?q=dive+school+licence". A reply with neither is not allowed.
 
 Grounding in real site content:
 - You have no reliable memory of what exists on Egyptora Hub. The ONLY way to know is the search_site_content tool.
@@ -141,6 +145,7 @@ export const Route = createFileRoute("/api/concierge")({
             async start(controller) {
               let buffer = "";
               let inBlock = false;
+              let emitted = "";
               try {
                 for await (const chunk of result.textStream) {
                   buffer += chunk;
@@ -149,6 +154,7 @@ export const Route = createFileRoute("/api/concierge")({
                   if (idx !== -1) {
                     const prose = buffer.slice(0, idx);
                     if (prose) controller.enqueue(encoder.encode(prose));
+                    emitted += prose;
                     buffer = buffer.slice(idx);
                     inBlock = true;
                     continue;
@@ -158,10 +164,12 @@ export const Route = createFileRoute("/api/concierge")({
                   const emit = buffer.slice(0, buffer.length - keep);
                   buffer = buffer.slice(buffer.length - keep);
                   if (emit) controller.enqueue(encoder.encode(emit));
+                  emitted += emit;
                 }
 
                 if (!inBlock) {
                   if (buffer) controller.enqueue(encoder.encode(buffer));
+                  emitted += buffer;
                 } else {
                   const match = /```itinerary\s*([\s\S]*?)```/.exec(buffer);
                   let raw: unknown[] = [];
@@ -201,6 +209,14 @@ export const Route = createFileRoute("/api/concierge")({
                       encoder.encode(`\n\`\`\`itinerary\n${JSON.stringify(items)}\n\`\`\``),
                     );
                   }
+                }
+                // Guarantee: every reply ends with a link or a site-search suggestion.
+                if (emitted.trim() && !/https?:\/\//.test(emitted)) {
+                  const lastUser = [...parsed.messages].reverse().find((m) => m.role === "user");
+                  const q = (lastUser?.content ?? "").replace(/[^\p{L}\p{N}\s]/gu, " ").trim().split(/\s+/).slice(0, 6).join("+");
+                  controller.enqueue(
+                    encoder.encode(`\n\nTry the site search: https://egyptora-hub.com/search?q=${encodeURIComponent(q).replace(/%2B/g, "+")}`),
+                  );
                 }
               } catch (streamError) {
                 console.error("[concierge] stream failed", streamError);

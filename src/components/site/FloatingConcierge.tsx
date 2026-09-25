@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
 import avatar from "@/assets/concierge-avatar.jpg";
 import { ItineraryCards, parseItinerary } from "@/components/site/ConciergeItinerary";
@@ -243,7 +243,7 @@ export function FloatingConcierge() {
                     <div key={i} className="grid gap-2">
                       {(text || items.length === 0) && (
                         <div className="me-auto max-w-[92%] whitespace-pre-wrap rounded-xl rounded-es-sm border border-border/70 bg-card px-3 py-2 text-[11px] leading-relaxed text-foreground">
-                          {text ||
+                          {(text && <LinkifiedText text={text} />) ||
                             (busy && i === messages.length - 1 ? (
                               <Loader2 className="size-3.5 animate-spin text-gold" />
                             ) : null)}
@@ -330,4 +330,26 @@ export function FloatingConcierge() {
       </button>
     </div>
   );
+}
+
+const URL_RE = /(\[[^\]]+\]\((https?:\/\/[^\s)]+)\)|https?:\/\/[^\s<>()]+[^\s<>().,;:!?'"*])/g;
+
+/** Renders plain URLs and markdown links in a reply as clickable links. */
+function LinkifiedText({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  let last = 0;
+  for (const m of text.matchAll(URL_RE)) {
+    const idx = m.index ?? 0;
+    if (idx > last) parts.push(text.slice(last, idx));
+    const md = /^\[([^\]]+)\]\((.+)\)$/.exec(m[0]);
+    const href = md ? md[2] : m[0];
+    parts.push(
+      <a key={idx} href={href} target="_blank" rel="noopener noreferrer" className="break-all font-medium text-gold underline underline-offset-2">
+        {md ? md[1] : m[0]}
+      </a>,
+    );
+    last = idx + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return <>{parts}</>;
 }

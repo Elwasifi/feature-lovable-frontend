@@ -148,7 +148,7 @@ function ExploreEgypt() {
           <h2 className="font-display text-xl font-bold text-navy">{t("Explore Egypt by Map")}</h2>
           <p className="mt-1 text-sm text-text-body">{t("Discover top destinations and experiences across Egypt.")}</p>
           <EgyptMap className="mt-4" pins={["Alexandria", "Siwa Oasis", "Cairo", "Hurghada", "Luxor", "Aswan"]} />
-          <div className="mt-4"><ViewAll to="/governorates/cairo" label="Explore the Map" /></div>
+          <div className="mt-4"><ViewAll to="/governorates" label="Explore all 27 Governorates" /></div>
         </div>
         <div>
           <SectionHead title="Top Destinations" body="Explore Egypt's most popular cities and regions." to="/countries" toLabel="View All Destinations" />

@@ -384,8 +384,12 @@ function GovernoratePage() {
   );
 }
 
-function ListBox({ icon, title, items }: { icon: ReactNode; title: string; items: string[] | null | undefined }) {
+// Research notes (unconfirmed / "none found" entries) stay in the database for owner review but are not shown publicly.
+const RESEARCH_NOTE = /^no (strongly|single|distinctive|specific)|flagged|owner (review|confirmation)|unverified|needs confirmation/i;
+
+function ListBox({ icon, title, items: raw }: { icon: ReactNode; title: string; items: string[] | null | undefined }) {
   const { t } = useI18n();
+  const items = raw?.filter((it) => !RESEARCH_NOTE.test(it));
   return (
     <div className="rounded-2xl border border-border/70 bg-card p-6">
       <h2 className="flex items-center gap-2 font-display text-xl text-gold">

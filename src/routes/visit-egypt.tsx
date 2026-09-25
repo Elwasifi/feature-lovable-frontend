@@ -17,7 +17,7 @@ import heritage from "@/assets/card-heritage.jpg";
 import nile from "@/assets/home/nile.jpg";
 import adventure from "@/assets/promo-adventure.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, SidePanel, LinkList, EgyptMap, ViewAll, GoldButton, SmartLink,
+  InnerPage, cardGrid, SectionHead, PhotoCard, SidePanel, LinkList, EgyptMap, ViewAll, GoldButton, SmartLink,
   AppPromoCard, BandPromo, type CardItem,
 } from "@/components/layout/InnerPage";
 import { visitChips } from "@/data/visit-chips";
@@ -132,13 +132,13 @@ function VisitEgypt() {
     >
       <section>
         <SectionHead title="Must-See Destinations" body="Iconic places every visitor to Egypt should see." to="/heritage-sites" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {destinations.map((c) => <PhotoCard key={c.title} c={c} />)}
         </div>
       </section>
       <section>
         <SectionHead title="Popular Experiences" body="Unforgettable ways to experience Egypt." to={TT} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {experiences.map((c) => <PhotoCard key={c.title} c={c} />)}
         </div>
       </section>

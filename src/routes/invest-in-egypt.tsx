@@ -11,7 +11,7 @@ import energy from "@/assets/home/energy.jpg";
 import people from "@/assets/home/inv-opps.jpg";
 import banner from "@/assets/gov/cairo.jpg";
 import {
-  InnerPage, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, EgyptMap, GoldButton,
+  InnerPage, cardGrid, SectionHead, PhotoCard, IconCard, SidePanel, LinkList, EgyptMap, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -179,13 +179,13 @@ function InvestInEgypt() {
     >
       <section>
         <SectionHead title="Featured Investment Projects" body="Handpicked opportunities across Egypt." to={IO} />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className={cardGrid}>
           {featured.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
         </div>
       </section>
       <section>
         <SectionHead title="Investment in Key Sectors" body="Explore detailed information, incentives and opportunities." to={IO} toLabel="View All Sectors" />
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className={cardGrid}>
           {sectors.map((c) => <IconCard key={c.title} c={c} />)}
         </div>
       </section>

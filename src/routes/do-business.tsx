@@ -12,7 +12,7 @@ import tourism from "@/assets/gov/red-sea.jpg";
 import residential from "@/assets/sector-realestate.jpg";
 import agri from "@/assets/sector-rural.jpg";
 import {
-  InnerPage, SectionHead, ProcessStepsRow, PhotoCard, IconCard, SidePanel, LinkList, NavyPromo, GoldButton,
+  InnerPage, cardGrid, SectionHead, ProcessStepsRow, PhotoCard, IconCard, SidePanel, LinkList, NavyPromo, GoldButton,
   type CardItem, type Chip,
 } from "@/components/layout/InnerPage";
 import { SITE } from "@/config/site";
@@ -150,7 +150,7 @@ function DoBusiness() {
     >
       <section>
         <SectionHead title="Why Do Business in Egypt?" />
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className={cardGrid}>
           {why.map((c) => <IconCard key={c.title} c={c} cta={false} />)}
         </div>
       </section>
@@ -160,7 +160,7 @@ function DoBusiness() {
       </section>
       <section>
         <SectionHead title="Featured Business Opportunities" body="Discover current opportunities across key sectors." to={IO} toLabel="View All Opportunities" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={cardGrid}>
           {opps.map((c) => <PhotoCard key={c.title} c={c} h="h-32" />)}
         </div>
       </section>
